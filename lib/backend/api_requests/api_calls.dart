@@ -1,0 +1,221 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+
+import '/flutter_flow/flutter_flow_util.dart';
+import 'api_manager.dart';
+
+export 'api_manager.dart' show ApiCallResponse;
+
+const _kPrivateApiFunctionName = 'ffPrivateApiCall';
+
+/// Start VDMS API CALLS Group Code
+
+class VdmsApiCallsGroup {
+  static String getBaseUrl() => 'http://vdmsstaging.pvplglobal.com/api';
+  static Map<String, String> headers = {};
+  static ValidateLoginAPICall validateLoginAPICall = ValidateLoginAPICall();
+  static GetAreasAPICall getAreasAPICall = GetAreasAPICall();
+  static GetCaseAPICall getCaseAPICall = GetCaseAPICall();
+}
+
+class ValidateLoginAPICall {
+  Future<ApiCallResponse> call({
+    String? userId = '',
+    String? password = '',
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'validateLoginAPI',
+      apiUrl: '$baseUrl/validateLoginAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTcyMTg4OTU2OQ==',
+        'correlation_id': 'hfsu8ydfQG',
+        'app_version': '2.1',
+        'api_version': '1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'userId': userId,
+        'password': password,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic loginAPIResponse(dynamic response) => getJsonField(
+        response,
+        r'''$.response''',
+      );
+  String? loginUserId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.userId''',
+      ));
+  String? loginUserName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.firstName''',
+      ));
+  dynamic loginAPIError(dynamic response) => getJsonField(
+        response,
+        r'''$.error''',
+      );
+}
+
+class GetAreasAPICall {
+  Future<ApiCallResponse> call() async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getAreasAPI',
+      apiUrl: '$baseUrl/getAreasAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic getAreasAPIResponse(dynamic response) => getJsonField(
+        response,
+        r'''$.response''',
+      );
+  List? getAreasAPIStates(dynamic response) => getJsonField(
+        response,
+        r'''$.response.states''',
+        true,
+      ) as List?;
+  List<String>? getAreasAPIStatesName(dynamic response) => (getJsonField(
+        response,
+        r'''$.response.states[:].state_name''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? getAreasAPIStatesValues(dynamic response) => (getJsonField(
+        response,
+        r'''$.response.states[:].value''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List? getAreasAPIStatesAreas(dynamic response) => getJsonField(
+        response,
+        r'''$.response.states[:].areas''',
+        true,
+      ) as List?;
+  dynamic getAreasAPIError(dynamic response) => getJsonField(
+        response,
+        r'''$.error''',
+      );
+}
+
+class GetCaseAPICall {
+  Future<ApiCallResponse> call({
+    String? filters = '{\"caseStatus\":\"1\"}',
+    int? userId,
+    int? limit = 10,
+    int? page = 1,
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getCaseAPI',
+      apiUrl: '$baseUrl/getCasesAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTcyMTkyNzA4OA==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'filters': filters,
+        'userId': 103,
+        'limit': limit,
+        'page': page,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End VDMS API CALLS Group Code
+
+class ApiPagingParams {
+  int nextPageNumber = 0;
+  int numItems = 0;
+  dynamic lastResponse;
+
+  ApiPagingParams({
+    required this.nextPageNumber,
+    required this.numItems,
+    required this.lastResponse,
+  });
+
+  @override
+  String toString() =>
+      'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
+}
+
+String _toEncodable(dynamic item) {
+  return item;
+}
+
+String _serializeList(List? list) {
+  list ??= <String>[];
+  try {
+    return json.encode(list, toEncodable: _toEncodable);
+  } catch (_) {
+    if (kDebugMode) {
+      print("List serialization failed. Returning empty list.");
+    }
+    return '[]';
+  }
+}
+
+String _serializeJson(dynamic jsonVar, [bool isList = false]) {
+  jsonVar ??= (isList ? [] : {});
+  try {
+    return json.encode(jsonVar, toEncodable: _toEncodable);
+  } catch (_) {
+    if (kDebugMode) {
+      print("Json serialization failed. Returning empty json.");
+    }
+    return isList ? '[]' : '{}';
+  }
+}
