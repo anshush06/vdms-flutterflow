@@ -1,6 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
-import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -31,7 +30,7 @@ class _MainCaseListingScreenWidgetState
 
     _model.tabBarController = TabController(
       vsync: this,
-      length: 5,
+      length: 4,
       initialIndex: 0,
     )..addListener(() => setState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -398,14 +397,10 @@ class _MainCaseListingScreenWidgetState
                           Tab(
                             text: 'COMPLETED',
                           ),
-                          Tab(
-                            text: 'Example 5',
-                          ),
                         ],
                         controller: _model.tabBarController,
                         onTap: (i) async {
                           [
-                            () async {},
                             () async {},
                             () async {},
                             () async {},
@@ -687,53 +682,6 @@ class _MainCaseListingScreenWidgetState
                                     },
                                   ),
                                 ),
-                              );
-                            },
-                          ),
-                          FutureBuilder<List<GetTaskEntryStstusQueryRow>>(
-                            future: SQLiteManager.instance
-                                .getTaskEntryStstusQuery(),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }
-                              final listViewGetTaskEntryStstusQueryRowList =
-                                  snapshot.data!;
-
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                scrollDirection: Axis.vertical,
-                                itemCount:
-                                    listViewGetTaskEntryStstusQueryRowList
-                                        .length,
-                                itemBuilder: (context, listViewIndex) {
-                                  final listViewGetTaskEntryStstusQueryRow =
-                                      listViewGetTaskEntryStstusQueryRowList[
-                                          listViewIndex];
-                                  return Text(
-                                    valueOrDefault<String>(
-                                      listViewGetTaskEntryStstusQueryRow.status,
-                                      'status',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  );
-                                },
                               );
                             },
                           ),
