@@ -30,6 +30,11 @@ class LoginScreenModel extends FlutterFlowModel<LoginScreenWidget> {
       return 'Password is required';
     }
 
+    if (!RegExp(
+            '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{8,20}\$')
+        .hasMatch(val)) {
+      return 'Password should contain atleast 1 numeric, 1 alpabet and 1 special character.';
+    }
     return null;
   }
 

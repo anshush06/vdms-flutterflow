@@ -35,7 +35,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
           ) ==
           null) {
         if (FFAppState().userId != '') {
-          context.pushNamed(
+          context.goNamed(
             'main_case_listing_screen',
             extra: <String, dynamic>{
               kTransitionInfoKey: const TransitionInfo(
@@ -45,10 +45,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
             },
           );
         } else {
-          if (Navigator.of(context).canPop()) {
-            context.pop();
-          }
-          context.pushNamed(
+          context.goNamed(
             'login_screen',
             extra: <String, dynamic>{
               kTransitionInfoKey: const TransitionInfo(

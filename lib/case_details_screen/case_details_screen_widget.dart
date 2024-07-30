@@ -1,14 +1,27 @@
+import '/backend/schema/structs/index.dart';
 import '/components/documentation_widget_widget.dart';
 import '/components/remark_widget_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/case_card_widget/case_card_widget_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'case_details_screen_model.dart';
 export 'case_details_screen_model.dart';
 
 class CaseDetailsScreenWidget extends StatefulWidget {
-  const CaseDetailsScreenWidget({super.key});
+  const CaseDetailsScreenWidget({
+    super.key,
+    required this.selectedCaseDetails,
+    required this.currentCaseIndex,
+    required this.inspectionform,
+  });
+
+  final ResponseStruct? selectedCaseDetails;
+  final int? currentCaseIndex;
+  final InspectionFormDataStruct? inspectionform;
 
   @override
   State<CaseDetailsScreenWidget> createState() =>
@@ -45,7 +58,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xEB31843A),
+          backgroundColor: const Color(0xFF0F61AB),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -68,32 +81,99 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
               Text(
                 'Case Detail',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      fontFamily: 'Roboto',
                       color: const Color(0xFFF3F6F8),
                       letterSpacing: 0.0,
                     ),
               ),
               Text(
-                'S_2024_JULY_24',
+                valueOrDefault<String>(
+                  widget.selectedCaseDetails?.refNo,
+                  '-',
+                ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      fontFamily: 'Roboto',
                       color: Colors.white,
                       letterSpacing: 0.0,
                     ),
               ),
             ],
           ),
-          actions: const [],
+          actions: [
+            FlutterFlowIconButton(
+              borderColor: const Color(0xFF0F61AB),
+              borderRadius: 20.0,
+              borderWidth: 1.0,
+              buttonSize: 40.0,
+              fillColor: const Color(0xFF0F61AB),
+              icon: const Icon(
+                Icons.remove_red_eye,
+                color: Colors.white,
+                size: 24.0,
+              ),
+              onPressed: () async {
+                context.pushNamed(
+                  'case_actions_screen',
+                  queryParameters: {
+                    'caseDetailsForActionScreen': serializeParam(
+                      widget.selectedCaseDetails,
+                      ParamType.DataStruct,
+                    ),
+                  }.withoutNulls,
+                  extra: <String, dynamic>{
+                    kTransitionInfoKey: const TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
+                    ),
+                  },
+                );
+              },
+            ),
+            FlutterFlowIconButton(
+              borderColor: const Color(0xFF0F61AB),
+              borderRadius: 20.0,
+              borderWidth: 1.0,
+              buttonSize: 40.0,
+              fillColor: const Color(0xFF0F61AB),
+              icon: const Icon(
+                Icons.notification_add_outlined,
+                color: Colors.white,
+                size: 24.0,
+              ),
+              onPressed: () async {
+                context.pushNamed(
+                  'notification_screen',
+                  extra: <String, dynamic>{
+                    kTransitionInfoKey: const TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
+                    ),
+                  },
+                );
+              },
+            ),
+          ],
           centerTitle: false,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: const BoxDecoration(),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                wrapWithModel(
+                  model: _model.caseCardWidgetModel,
+                  updateCallback: () => setState(() {}),
+                  updateOnChange: true,
+                  child: CaseCardWidgetWidget(
+                    case1: widget.selectedCaseDetails!,
+                  ),
+                ),
                 Padding(
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 10.0, 0.0),
@@ -103,18 +183,28 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                       Text(
                         'Remark',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
-                              fontSize: 22.0,
+                              fontFamily: 'Roboto',
+                              color: const Color(0xFF0F61AB),
+                              fontSize: 16.0,
                               letterSpacing: 0.0,
+                              fontWeight: FontWeight.w600,
                             ),
                       ),
                     ],
                   ),
                 ),
-                wrapWithModel(
-                  model: _model.remarkWidgetModel,
-                  updateCallback: () => setState(() {}),
-                  child: const RemarkWidgetWidget(),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                  child: wrapWithModel(
+                    model: _model.remarkWidgetModel,
+                    updateCallback: () => setState(() {}),
+                    updateOnChange: true,
+                    child: RemarkWidgetWidget(
+                      caseIdForRemark: functions.convertStringtoInteger(
+                          widget.selectedCaseDetails!.id),
+                      caseIndexForRemark: widget.currentCaseIndex!,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding:
@@ -125,20 +215,56 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                       Text(
                         'Documentation',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
-                              fontSize: 22.0,
+                              fontFamily: 'Roboto',
+                              color: const Color(0xFF0F61AB),
+                              fontSize: 16.0,
                               letterSpacing: 0.0,
+                              fontWeight: FontWeight.w600,
                             ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                   child: wrapWithModel(
                     model: _model.documentationWidgetModel,
                     updateCallback: () => setState(() {}),
-                    child: const DocumentationWidgetWidget(),
+                    child: DocumentationWidgetWidget(
+                      index: widget.currentCaseIndex!,
+                      caseDetailsForDocumentation: widget.selectedCaseDetails!,
+                      inspectionData: InspectionFormDataStruct(),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
+                  child: FFButtonWidget(
+                    onPressed: () {
+                      print('Button pressed ...');
+                    },
+                    text: 'SUBMIT',
+                    options: FFButtonOptions(
+                      height: 40.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: const Color(0xFFFF8C25),
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Roboto',
+                                color: Colors.white,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 3.0,
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
                   ),
                 ),
               ],

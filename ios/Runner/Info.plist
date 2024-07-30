@@ -43,7 +43,12 @@
 	<true/>
 
 
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Allow Location</string>
+	<key>NSCameraUsageDescription</key>
+    <string>Camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Photo Library</string>
 
 
 	<key>UILaunchStoryboardName</key>

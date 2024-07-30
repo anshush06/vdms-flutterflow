@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
 
-
 import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -57,7 +56,67 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'case_details_screen',
           path: '/caseDetailsScreen',
-          builder: (context, params) => const CaseDetailsScreenWidget(),
+          builder: (context, params) => CaseDetailsScreenWidget(
+            selectedCaseDetails: params.getParam(
+              'selectedCaseDetails',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+            currentCaseIndex: params.getParam(
+              'currentCaseIndex',
+              ParamType.int,
+            ),
+            inspectionform: params.getParam(
+              'inspectionform',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: InspectionFormDataStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'xdfgfgjk',
+          path: '/xdfgfgjk',
+          builder: (context, params) => const XdfgfgjkWidget(),
+        ),
+        FFRoute(
+          name: 'site_pictures_screen',
+          path: '/sitePicturesScreen',
+          builder: (context, params) => const SitePicturesScreenWidget(),
+        ),
+        FFRoute(
+          name: 'report_screen',
+          path: '/reportScreen',
+          builder: (context, params) => ReportScreenWidget(
+            caseIndex: params.getParam(
+              'caseIndex',
+              ParamType.int,
+            ),
+            caseDetailsForReport: params.getParam(
+              'caseDetailsForReport',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'notification_screen',
+          path: '/notificationScreen',
+          builder: (context, params) => const NotificationScreenWidget(),
+        ),
+        FFRoute(
+          name: 'case_actions_screen',
+          path: '/caseActionsScreen',
+          builder: (context, params) => CaseActionsScreenWidget(
+            caseDetailsForActionScreen: params.getParam(
+              'caseDetailsForActionScreen',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

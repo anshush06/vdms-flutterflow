@@ -71,6 +71,7 @@ class InspectionFormDataStruct extends BaseStruct {
     String? dealerMobileNumber,
     String? reasonPortionNotSeen,
     List<String>? anyOtherInformation,
+    int? filledFieldsCount,
   })  : _refNo = refNo,
         _bank = bank,
         _engrName = engrName,
@@ -134,7 +135,8 @@ class InspectionFormDataStruct extends BaseStruct {
         _dealerName = dealerName,
         _dealerMobileNumber = dealerMobileNumber,
         _reasonPortionNotSeen = reasonPortionNotSeen,
-        _anyOtherInformation = anyOtherInformation;
+        _anyOtherInformation = anyOtherInformation,
+        _filledFieldsCount = filledFieldsCount;
 
   // "ref_no" field.
   String? _refNo;
@@ -595,6 +597,16 @@ class InspectionFormDataStruct extends BaseStruct {
 
   bool hasAnyOtherInformation() => _anyOtherInformation != null;
 
+  // "filled_fields_count" field.
+  int? _filledFieldsCount;
+  int get filledFieldsCount => _filledFieldsCount ?? 0;
+  set filledFieldsCount(int? val) => _filledFieldsCount = val;
+
+  void incrementFilledFieldsCount(int amount) =>
+      filledFieldsCount = filledFieldsCount + amount;
+
+  bool hasFilledFieldsCount() => _filledFieldsCount != null;
+
   static InspectionFormDataStruct fromMap(Map<String, dynamic> data) =>
       InspectionFormDataStruct(
         refNo: data['ref_no'] as String?,
@@ -664,6 +676,7 @@ class InspectionFormDataStruct extends BaseStruct {
         dealerMobileNumber: data['dealer_mobile_number'] as String?,
         reasonPortionNotSeen: data['reason_portion_not_seen'] as String?,
         anyOtherInformation: getDataList(data['any_other_information']),
+        filledFieldsCount: castToType<int>(data['filled_fields_count']),
       );
 
   static InspectionFormDataStruct? maybeFromMap(dynamic data) => data is Map
@@ -735,6 +748,7 @@ class InspectionFormDataStruct extends BaseStruct {
         'dealer_mobile_number': _dealerMobileNumber,
         'reason_portion_not_seen': _reasonPortionNotSeen,
         'any_other_information': _anyOtherInformation,
+        'filled_fields_count': _filledFieldsCount,
       }.withoutNulls;
 
   @override
@@ -996,6 +1010,10 @@ class InspectionFormDataStruct extends BaseStruct {
           _anyOtherInformation,
           ParamType.String,
           isList: true,
+        ),
+        'filled_fields_count': serializeParam(
+          _filledFieldsCount,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -1322,6 +1340,11 @@ class InspectionFormDataStruct extends BaseStruct {
           ParamType.String,
           true,
         ),
+        filledFieldsCount: deserializeParam(
+          data['filled_fields_count'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -1394,7 +1417,8 @@ class InspectionFormDataStruct extends BaseStruct {
         dealerName == other.dealerName &&
         dealerMobileNumber == other.dealerMobileNumber &&
         reasonPortionNotSeen == other.reasonPortionNotSeen &&
-        listEquality.equals(anyOtherInformation, other.anyOtherInformation);
+        listEquality.equals(anyOtherInformation, other.anyOtherInformation) &&
+        filledFieldsCount == other.filledFieldsCount;
   }
 
   @override
@@ -1462,7 +1486,8 @@ class InspectionFormDataStruct extends BaseStruct {
         dealerName,
         dealerMobileNumber,
         reasonPortionNotSeen,
-        anyOtherInformation
+        anyOtherInformation,
+        filledFieldsCount
       ]);
 }
 
@@ -1529,6 +1554,7 @@ InspectionFormDataStruct createInspectionFormDataStruct({
   String? dealerName,
   String? dealerMobileNumber,
   String? reasonPortionNotSeen,
+  int? filledFieldsCount,
 }) =>
     InspectionFormDataStruct(
       refNo: refNo,
@@ -1593,4 +1619,5 @@ InspectionFormDataStruct createInspectionFormDataStruct({
       dealerName: dealerName,
       dealerMobileNumber: dealerMobileNumber,
       reasonPortionNotSeen: reasonPortionNotSeen,
+      filledFieldsCount: filledFieldsCount,
     );

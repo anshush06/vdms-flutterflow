@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -24,6 +26,21 @@ class FFAppState extends ChangeNotifier {
     });
     _safeInit(() {
       _password = prefs.getString('ff_password') ?? _password;
+    });
+    _safeInit(() {
+      _caseDetails = prefs
+              .getStringList('ff_caseDetails')
+              ?.map((x) {
+                try {
+                  return ResponseStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _caseDetails;
     });
   }
 
@@ -53,6 +70,47 @@ class FFAppState extends ChangeNotifier {
   set password(String value) {
     _password = value;
     prefs.setString('ff_password', value);
+  }
+
+  List<ResponseStruct> _caseDetails = [];
+  List<ResponseStruct> get caseDetails => _caseDetails;
+  set caseDetails(List<ResponseStruct> value) {
+    _caseDetails = value;
+    prefs.setStringList(
+        'ff_caseDetails', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToCaseDetails(ResponseStruct value) {
+    caseDetails.add(value);
+    prefs.setStringList(
+        'ff_caseDetails', _caseDetails.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromCaseDetails(ResponseStruct value) {
+    caseDetails.remove(value);
+    prefs.setStringList(
+        'ff_caseDetails', _caseDetails.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromCaseDetails(int index) {
+    caseDetails.removeAt(index);
+    prefs.setStringList(
+        'ff_caseDetails', _caseDetails.map((x) => x.serialize()).toList());
+  }
+
+  void updateCaseDetailsAtIndex(
+    int index,
+    ResponseStruct Function(ResponseStruct) updateFn,
+  ) {
+    caseDetails[index] = updateFn(_caseDetails[index]);
+    prefs.setStringList(
+        'ff_caseDetails', _caseDetails.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInCaseDetails(int index, ResponseStruct value) {
+    caseDetails.insert(index, value);
+    prefs.setStringList(
+        'ff_caseDetails', _caseDetails.map((x) => x.serialize()).toList());
   }
 }
 

@@ -17,6 +17,10 @@ class VdmsApiCallsGroup {
   static ValidateLoginAPICall validateLoginAPICall = ValidateLoginAPICall();
   static GetAreasAPICall getAreasAPICall = GetAreasAPICall();
   static GetCaseAPICall getCaseAPICall = GetCaseAPICall();
+  static GetNotificationsAPICall getNotificationsAPICall =
+      GetNotificationsAPICall();
+  static GetCaseHistoryAPICall getCaseHistoryAPICall = GetCaseHistoryAPICall();
+  static SaveRemarkAPICall saveRemarkAPICall = SaveRemarkAPICall();
 }
 
 class ValidateLoginAPICall {
@@ -138,7 +142,7 @@ class GetAreasAPICall {
 
 class GetCaseAPICall {
   Future<ApiCallResponse> call({
-    String? filters = '{\"caseStatus\":\"1\"}',
+    String? filters = '{\"caseStatus\":\"2\"}',
     int? userId,
     int? limit = 10,
     int? page = 1,
@@ -159,7 +163,7 @@ class GetCaseAPICall {
       },
       params: {
         'filters': filters,
-        'userId': 103,
+        'userId': userId,
         'limit': limit,
         'page': page,
       },
@@ -172,6 +176,134 @@ class GetCaseAPICall {
       alwaysAllowBody: false,
     );
   }
+}
+
+class GetNotificationsAPICall {
+  Future<ApiCallResponse> call({
+    int? page = 1,
+    int? limit = 10,
+    int? userId,
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getNotificationsAPI',
+      apiUrl: '$baseUrl/getNotificationsAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'page': page,
+        'limit': limit,
+        'userId': userId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List? getNotificationAPIRESPONSE(dynamic response) => getJsonField(
+        response,
+        r'''$.response''',
+        true,
+      ) as List?;
+}
+
+class GetCaseHistoryAPICall {
+  Future<ApiCallResponse> call({
+    int? page = 1,
+    int? limit = 10,
+    int? userId,
+    int? caseId,
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getCaseHistoryAPI',
+      apiUrl: '$baseUrl/getCaseHistoryAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'page': page,
+        'limit': limit,
+        'userId': userId,
+        'caseId': caseId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List? getCaseHistoryResponse(dynamic response) => getJsonField(
+        response,
+        r'''$.response''',
+        true,
+      ) as List?;
+}
+
+class SaveRemarkAPICall {
+  Future<ApiCallResponse> call({
+    String? remark = '',
+    int? userId,
+    int? caseId,
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'saveRemarkAPI',
+      apiUrl: '$baseUrl/saveRemark',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'remark': remark,
+        'userId': userId,
+        'caseId': caseId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? saveRemarkResponseMessage(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.response.message''',
+      ));
 }
 
 /// End VDMS API CALLS Group Code

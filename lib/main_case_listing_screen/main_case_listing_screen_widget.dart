@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/case_card_widget/case_card_widget_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'main_case_listing_screen_model.dart';
@@ -65,7 +67,7 @@ class _MainCaseListingScreenWidgetState
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 0.3,
                   decoration: const BoxDecoration(
-                    color: Color(0xEB31843A),
+                    color: Color(0xFF0F61AB),
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -101,7 +103,7 @@ class _MainCaseListingScreenWidgetState
                           'VDMS v2.8',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Roboto',
                                     color: Colors.white,
                                     fontSize: 25.0,
                                     letterSpacing: 0.0,
@@ -124,7 +126,7 @@ class _MainCaseListingScreenWidgetState
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Roboto',
                                       color: Colors.white,
                                       fontSize: 17.0,
                                       letterSpacing: 0.0,
@@ -135,7 +137,7 @@ class _MainCaseListingScreenWidgetState
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Roboto',
                                       color: Colors.white,
                                       letterSpacing: 0.0,
                                     ),
@@ -192,7 +194,7 @@ class _MainCaseListingScreenWidgetState
                                           ),
                                         ),
                                         duration: Duration(milliseconds: 2000),
-                                        backgroundColor: Color(0xFFDE9213),
+                                        backgroundColor: Color(0xFFFF8C25),
                                       ),
                                     );
 
@@ -212,7 +214,7 @@ class _MainCaseListingScreenWidgetState
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Roboto',
                                           letterSpacing: 0.0,
                                         ),
                                   ),
@@ -241,7 +243,7 @@ class _MainCaseListingScreenWidgetState
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -269,7 +271,7 @@ class _MainCaseListingScreenWidgetState
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -306,17 +308,14 @@ class _MainCaseListingScreenWidgetState
               },
             ),
           ),
-          title: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 150.0, 0.0),
-            child: Text(
-              'VDMS',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Inter',
-                    color: const Color(0xFF4AAD6A),
-                    fontSize: 22.0,
-                    letterSpacing: 0.0,
-                  ),
-            ),
+          title: Text(
+            'VDMS',
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: 'Roboto',
+                  color: const Color(0xFF0F61AB),
+                  fontSize: 22.0,
+                  letterSpacing: 0.0,
+                ),
           ),
           actions: [
             FlutterFlowIconButton(
@@ -330,8 +329,9 @@ class _MainCaseListingScreenWidgetState
                 color: FlutterFlowTheme.of(context).primaryText,
                 size: 24.0,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                setState(() => _model.apiRequestCompleter = null);
+                await _model.waitForApiRequestCompleted(maxWait: 30000);
               },
             ),
             FlutterFlowIconButton(
@@ -345,25 +345,35 @@ class _MainCaseListingScreenWidgetState
                 color: FlutterFlowTheme.of(context).primaryText,
                 size: 24.0,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                context.pushNamed(
+                  'notification_screen',
+                  extra: <String, dynamic>{
+                    kTransitionInfoKey: const TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
+                    ),
+                  },
+                );
               },
             ),
           ],
-          centerTitle: true,
+          centerTitle: false,
           elevation: 4.0,
         ),
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: const BoxDecoration(),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Color(0xEB31843A),
+                  color: Color(0xFF0F61AB),
                 ),
                 child: Column(
                   children: [
@@ -375,10 +385,10 @@ class _MainCaseListingScreenWidgetState
                         unselectedLabelColor: Colors.white,
                         labelStyle:
                             FlutterFlowTheme.of(context).titleMedium.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Roboto',
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w500,
                                 ),
                         unselectedLabelStyle: const TextStyle(),
                         indicatorColor: Colors.white,
@@ -403,7 +413,33 @@ class _MainCaseListingScreenWidgetState
                           [
                             () async {},
                             () async {},
-                            () async {},
+                            () async {
+                              _model.apiResult17h =
+                                  await VdmsApiCallsGroup.getCaseAPICall.call(
+                                filters: '{\"caseStatus\":\"2\"}',
+                                userId: functions.convertStringtoInteger(
+                                    FFAppState().userId),
+                              );
+
+                              if ((_model.apiResult17h?.succeeded ?? true)) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'ok',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: const Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              }
+
+                              setState(() {});
+                            },
                             () async {}
                           ][i]();
                         },
@@ -414,17 +450,26 @@ class _MainCaseListingScreenWidgetState
                         controller: _model.tabBarController,
                         children: [
                           FutureBuilder<ApiCallResponse>(
-                            future: VdmsApiCallsGroup.getCaseAPICall.call(),
+                            future: (_model.apiRequestCompleter ??=
+                                    Completer<ApiCallResponse>()
+                                      ..complete(
+                                          VdmsApiCallsGroup.getCaseAPICall.call(
+                                        filters: '{\"caseStatus\":\"1\"}',
+                                        userId:
+                                            functions.convertStringtoInteger(
+                                                FFAppState().userId),
+                                      )))
+                                .future,
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return Center(
+                                return const Center(
                                   child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
+                                    width: 40.0,
+                                    height: 40.0,
                                     child: CircularProgressIndicator(
                                       valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
+                                        Colors.white,
                                       ),
                                     ),
                                   ),
@@ -437,55 +482,120 @@ class _MainCaseListingScreenWidgetState
                                 width: 100.0,
                                 height: 100.0,
                                 decoration: const BoxDecoration(
-                                  color: Color(0xE8FFFFFF),
+                                  color: Colors.white,
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final cases =
-                                          GetCasesApiStruct.maybeFromMap(
-                                                      containerGetCaseAPIResponse
-                                                          .jsonBody)
-                                                  ?.response
-                                                  .toList() ??
-                                              [];
+                                child: Builder(
+                                  builder: (context) {
+                                    final case1 =
+                                        GetCasesApiStruct.maybeFromMap(
+                                                    containerGetCaseAPIResponse
+                                                        .jsonBody)
+                                                ?.response
+                                                .toList() ??
+                                            [];
 
-                                      return SingleChildScrollView(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: List.generate(cases.length,
-                                              (casesIndex) {
-                                            final casesItem = cases[casesIndex];
-                                            return CaseCardWidgetWidget(
-                                              key: Key(
-                                                  'Keysz7_${casesIndex}_of_${cases.length}'),
-                                              case1: casesItem,
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: case1.length,
+                                      itemBuilder: (context, case1Index) {
+                                        final case1Item = case1[case1Index];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            FFAppState().caseDetails =
+                                                GetCasesApiStruct.maybeFromMap(
+                                                        containerGetCaseAPIResponse
+                                                            .jsonBody)!
+                                                    .response
+                                                    .toList()
+                                                    .cast<ResponseStruct>();
+                                            setState(() {});
+
+                                            context.pushNamed(
+                                              'case_details_screen',
+                                              queryParameters: {
+                                                'selectedCaseDetails':
+                                                    serializeParam(
+                                                  case1Item,
+                                                  ParamType.DataStruct,
+                                                ),
+                                                'currentCaseIndex':
+                                                    serializeParam(
+                                                  case1Index,
+                                                  ParamType.int,
+                                                ),
+                                                'inspectionform':
+                                                    serializeParam(
+                                                  InspectionFormDataStruct(),
+                                                  ParamType.DataStruct,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType
+                                                          .rightToLeft,
+                                                ),
+                                              },
                                             );
-                                          }),
-                                        ),
-                                      );
-                                    },
-                                  ),
+                                          },
+                                          child: CaseCardWidgetWidget(
+                                            key: Key(
+                                                'Keysz7_${case1Index}_of_${case1.length}'),
+                                            case1: case1Item,
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                               );
                             },
                           ),
+                          Container(
+                            width: 100.0,
+                            height: 100.0,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                            ),
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                wrapWithModel(
+                                  model: _model.caseCardWidgetModel2,
+                                  updateCallback: () => setState(() {}),
+                                  updateOnChange: true,
+                                  child: CaseCardWidgetWidget(
+                                    case1: ResponseStruct(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                           FutureBuilder<ApiCallResponse>(
                             future: VdmsApiCallsGroup.getCaseAPICall.call(
                               filters: '{\"caseStatus\":\"2\"}',
+                              userId: functions
+                                  .convertStringtoInteger(FFAppState().userId),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return Center(
+                                return const Center(
                                   child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
+                                    width: 40.0,
+                                    height: 40.0,
                                     child: CircularProgressIndicator(
                                       valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
+                                        Colors.white,
                                       ),
                                     ),
                                   ),
@@ -494,71 +604,74 @@ class _MainCaseListingScreenWidgetState
                               final containerGetCaseAPIResponse =
                                   snapshot.data!;
 
-                              return InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (GetCasesApiStruct.maybeFromMap(
-                                              containerGetCaseAPIResponse
-                                                  .jsonBody)
-                                          ?.response.isEmpty) {
-                                    ScaffoldMessenger.of(context)
-                                        .clearSnackBars();
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'No case found in last 7 days',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 3000),
-                                        backgroundColor: Color(0xFFB00E1E),
-                                      ),
-                                    );
-                                  }
-                                },
-                                child: Container(
-                                  width: 100.0,
-                                  height: 100.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xE8FFFFFF),
-                                  ),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final eachCase2 =
-                                          GetCasesApiStruct.maybeFromMap(
-                                                      containerGetCaseAPIResponse
-                                                          .jsonBody)
-                                                  ?.response
-                                                  .toList() ??
-                                              [];
-                                      if (eachCase2.isEmpty) {
-                                        return Center(
-                                          child: Image.asset(
-                                            'assets/images/app_icon.png',
+                              return Container(
+                                width: 100.0,
+                                height: 100.0,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child: Builder(
+                                  builder: (context) {
+                                    final case1 =
+                                        GetCasesApiStruct.maybeFromMap(
+                                                    containerGetCaseAPIResponse
+                                                        .jsonBody)
+                                                ?.response
+                                                .toList() ??
+                                            [];
+
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: case1.length,
+                                      itemBuilder: (context, case1Index) {
+                                        final case1Item = case1[case1Index];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'case_details_screen',
+                                              queryParameters: {
+                                                'selectedCaseDetails':
+                                                    serializeParam(
+                                                  case1Item,
+                                                  ParamType.DataStruct,
+                                                ),
+                                                'currentCaseIndex':
+                                                    serializeParam(
+                                                  case1Index,
+                                                  ParamType.int,
+                                                ),
+                                                'inspectionform':
+                                                    serializeParam(
+                                                  InspectionFormDataStruct(),
+                                                  ParamType.DataStruct,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType
+                                                          .rightToLeft,
+                                                ),
+                                              },
+                                            );
+                                          },
+                                          child: CaseCardWidgetWidget(
+                                            key: Key(
+                                                'Key1nr_${case1Index}_of_${case1.length}'),
+                                            case1: case1Item,
                                           ),
                                         );
-                                      }
-
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: eachCase2.length,
-                                        itemBuilder: (context, eachCase2Index) {
-                                          final eachCase2Item =
-                                              eachCase2[eachCase2Index];
-                                          return CaseCardWidgetWidget(
-                                            key: Key(
-                                                'Keywwu_${eachCase2Index}_of_${eachCase2.length}'),
-                                            case1: eachCase2Item,
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
+                                      },
+                                    );
+                                  },
                                 ),
                               );
                             },
@@ -570,13 +683,13 @@ class _MainCaseListingScreenWidgetState
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return Center(
+                                return const Center(
                                   child: SizedBox(
                                     width: 40.0,
                                     height: 40.0,
                                     child: CircularProgressIndicator(
                                       valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
+                                        Colors.white,
                                       ),
                                     ),
                                   ),
@@ -588,99 +701,35 @@ class _MainCaseListingScreenWidgetState
                               return Container(
                                 width: 100.0,
                                 height: 100.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final eachCase3 =
-                                          GetCasesApiStruct.maybeFromMap(
-                                                      containerGetCaseAPIResponse
-                                                          .jsonBody)
-                                                  ?.response
-                                                  .toList() ??
-                                              [];
+                                child: Builder(
+                                  builder: (context) {
+                                    final eachCase4 =
+                                        GetCasesApiStruct.maybeFromMap(
+                                                    containerGetCaseAPIResponse
+                                                        .jsonBody)
+                                                ?.response
+                                                .toList() ??
+                                            [];
 
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: List.generate(
-                                            eachCase3.length, (eachCase3Index) {
-                                          final eachCase3Item =
-                                              eachCase3[eachCase3Index];
-                                          return CaseCardWidgetWidget(
-                                            key: Key(
-                                                'Keyug2_${eachCase3Index}_of_${eachCase3.length}'),
-                                            case1: eachCase3Item,
-                                          );
-                                        }),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                          FutureBuilder<ApiCallResponse>(
-                            future: VdmsApiCallsGroup.getCaseAPICall.call(
-                              filters: '{\"caseStatus\":\"4\"}',
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }
-                              final containerGetCaseAPIResponse =
-                                  snapshot.data!;
-
-                              return Container(
-                                width: 100.0,
-                                height: 100.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final eachCase4 =
-                                          GetCasesApiStruct.maybeFromMap(
-                                                      containerGetCaseAPIResponse
-                                                          .jsonBody)
-                                                  ?.response
-                                                  .toList() ??
-                                              [];
-
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: List.generate(
-                                            eachCase4.length, (eachCase4Index) {
-                                          final eachCase4Item =
-                                              eachCase4[eachCase4Index];
-                                          return CaseCardWidgetWidget(
-                                            key: Key(
-                                                'Keyq8c_${eachCase4Index}_of_${eachCase4.length}'),
-                                            case1: eachCase4Item,
-                                          );
-                                        }),
-                                      );
-                                    },
-                                  ),
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: eachCase4.length,
+                                      itemBuilder: (context, eachCase4Index) {
+                                        final eachCase4Item =
+                                            eachCase4[eachCase4Index];
+                                        return CaseCardWidgetWidget(
+                                          key: Key(
+                                              'Keyq8c_${eachCase4Index}_of_${eachCase4.length}'),
+                                          case1: eachCase4Item,
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                               );
                             },

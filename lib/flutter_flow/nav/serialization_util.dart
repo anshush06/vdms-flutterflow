@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import '/backend/schema/structs/index.dart';
 
-import '/backend/sqlite/queries/sqlite_row.dart';
-import '/backend/sqlite/queries/read.dart';
 import '../../flutter_flow/lat_lng.dart';
 import '../../flutter_flow/place.dart';
 import '../../flutter_flow/uploaded_file.dart';
@@ -75,9 +73,6 @@ String? serializeParam(
 
       case ParamType.DataStruct:
         data = param is BaseStruct ? param.serialize() : null;
-
-      case ParamType.SqliteRow:
-        return json.encode((param as SqliteRow).data);
 
       default:
         data = null;
@@ -156,8 +151,6 @@ enum ParamType {
   JSON,
 
   DataStruct,
-
-  SqliteRow,
 }
 
 dynamic deserializeParam<T>(
@@ -218,15 +211,6 @@ dynamic deserializeParam<T>(
       case ParamType.DataStruct:
         final data = json.decode(param) as Map<String, dynamic>? ?? {};
         return structBuilder != null ? structBuilder(data) : null;
-
-      case ParamType.SqliteRow:
-        final data = json.decode(param) as Map<String, dynamic>;
-        switch (T) {
-          case GetTaskEntryStstusQueryRow:
-            return GetTaskEntryStstusQueryRow(data);
-          default:
-            return null;
-        }
 
       default:
         return null;
