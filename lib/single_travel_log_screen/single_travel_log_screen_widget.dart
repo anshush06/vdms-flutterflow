@@ -352,15 +352,11 @@ class _SingleTravelLogScreenWidgetState
                                           ),
                                     ),
                                     Text(
-                                      functions
-                                          .calculateTravelledDistance(
-                                              functions.convertStringtoInteger(
-                                                  widget.travelDetail!
-                                                      .startDayReading),
-                                              functions.convertStringtoInteger(
-                                                  widget.travelDetail!
-                                                      .endDayReading))
-                                          .toString(),
+                                      valueOrDefault<String>(
+                                        widget.travelDetail?.totalTravel
+                                            .toString(),
+                                        '0',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

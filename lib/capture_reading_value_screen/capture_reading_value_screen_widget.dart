@@ -634,10 +634,29 @@ class _CaptureReadingValueScreenWidgetState
                                   _model.readingTextController.text,
                                 );
                                 if (_model.uploadReadingImageResponse!) {
+                                  FFAppState().update(() {});
+
+                                  context.goNamed(
+                                    'main_case_listing_screen',
+                                    queryParameters: {
+                                      'notificationCount': serializeParam(
+                                        0,
+                                        ParamType.int,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: const TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType:
+                                            PageTransitionType.leftToRight,
+                                      ),
+                                    },
+                                  );
+
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Success',
+                                        'Reading Captured Successfully',
                                         style: TextStyle(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
