@@ -2,7 +2,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'travel_log_widget_model.dart';
 export 'travel_log_widget_model.dart';
@@ -127,7 +126,7 @@ class _TravelLogWidgetWidgetState extends State<TravelLogWidgetWidget> {
                                                 ),
                                           ),
                                           Text(
-                                            'Total Distance: ${functions.calculateTravelledDistance(functions.convertStringtoInteger(widget.travelLogDetails!.startDayReading), functions.convertStringtoInteger(widget.travelLogDetails!.endDayReading)).toString()} Km',
+                                            'Total Distance: ${widget.travelLogDetails?.totalTravel.toString()} Km',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
