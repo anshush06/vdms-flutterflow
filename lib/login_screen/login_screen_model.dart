@@ -40,6 +40,10 @@ class LoginScreenModel extends FlutterFlowModel<LoginScreenWidget> {
 
   // Stores action output result for [Backend Call - API (validateLoginAPI)] action in loginbutton widget.
   ApiCallResponse? loginapiresponse;
+  // Stores action output result for [Backend Call - API (checkFieldEngineerTravelStatus)] action in loginbutton widget.
+  ApiCallResponse? checkTravelStatusAPIResponse2;
+  // Stores action output result for [Backend Call - API (getNotificationsCountAPI)] action in loginbutton widget.
+  ApiCallResponse? notificationCountAPIResponse;
 
   @override
   void initState(BuildContext context) {

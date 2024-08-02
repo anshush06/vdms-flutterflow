@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,12 +16,12 @@ export 'report_widget_model.dart';
 class ReportWidgetWidget extends StatefulWidget {
   const ReportWidgetWidget({
     super.key,
-    required this.reportCaseIndex,
     required this.reportDetails,
+    required this.caseIndexInList,
   });
 
-  final int? reportCaseIndex;
   final ResponseStruct? reportDetails;
+  final int? caseIndexInList;
 
   @override
   State<ReportWidgetWidget> createState() => _ReportWidgetWidgetState();
@@ -189,13 +190,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails?.inspectionFormData.salableArea);
     _model.superAreaFocusNode ??= FocusNode();
 
-    _model.lengthInSqftTextController ??= TextEditingController(
+    _model.plotLengthTextController ??= TextEditingController(
         text: widget.reportDetails?.inspectionFormData.plotLength);
-    _model.lengthInSqftFocusNode ??= FocusNode();
+    _model.plotLengthFocusNode ??= FocusNode();
 
-    _model.widthInSqftTextController ??= TextEditingController(
+    _model.plotWidthTextController ??= TextEditingController(
         text: widget.reportDetails?.inspectionFormData.plotWidth);
-    _model.widthInSqftFocusNode ??= FocusNode();
+    _model.plotWidthFocusNode ??= FocusNode();
 
     _model.plotAreaTextController ??= TextEditingController(
         text: widget.reportDetails?.inspectionFormData.plotArea);
@@ -223,8 +224,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
 
     _model.expandableExpandableController8 =
         ExpandableController(initialExpanded: false);
-    _model.remarkNo1TextController ??= TextEditingController(
-        text: FFAppState().caseDetails[widget.reportCaseIndex!].remark);
+    _model.remarkNo1TextController ??=
+        TextEditingController(text: widget.reportDetails?.remark);
     _model.remarkNo1FocusNode ??= FocusNode();
 
     _model.aadditionalRemarkTextController ??= TextEditingController();
@@ -258,18 +259,27 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                 color: Colors.white,
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 1.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 50.0,
+                              color: Color(0x0F000000),
+                            )
+                          ],
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
                         ),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
@@ -287,7 +297,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                     child: ExpandablePanel(
                                       header: Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 0.0, 0.0, 0.0),
+                                            8.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'General Details',
                                           style: FlutterFlowTheme.of(context)
@@ -334,7 +344,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .refNoTextController,
@@ -441,7 +451,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .banknameTextController,
@@ -547,7 +557,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .enginerrnameTextController,
@@ -653,7 +663,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller:
                                                       _model.dateTextController,
@@ -759,7 +769,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .applicantNameTextController,
@@ -865,13 +875,20 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .addressline1TextController,
                                                   focusNode: _model
                                                       .addressline1FocusNode,
                                                   autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelStyle: FlutterFlowTheme
@@ -970,13 +987,20 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .addressline2TextController,
                                                   focusNode: _model
                                                       .addressline2FocusNode,
                                                   autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelStyle: FlutterFlowTheme
@@ -1143,26 +1167,6 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               val),
                                                       width: 326.0,
                                                       height: 56.0,
-                                                      searchHintTextStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      searchTextStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1174,8 +1178,6 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                     0.0,
                                                               ),
                                                       hintText: 'Select State',
-                                                      searchHintText:
-                                                          'Search State',
                                                       icon: Icon(
                                                         Icons
                                                             .keyboard_arrow_down_rounded,
@@ -1183,7 +1185,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
-                                                        size: 24.0,
+                                                        size: 0.0,
                                                       ),
                                                       fillColor:
                                                           const Color(0xFFF5F5F5),
@@ -1200,8 +1202,15 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                   16.0,
                                                                   4.0),
                                                       hidesUnderline: true,
+                                                      disabled: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       isOverButton: true,
-                                                      isSearchable: true,
+                                                      isSearchable: false,
                                                       isMultiSelect: false,
                                                     );
                                                   },
@@ -1220,13 +1229,20 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .localityTextController,
                                                   focusNode:
                                                       _model.localityFocusNode,
                                                   autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelStyle: FlutterFlowTheme
@@ -1325,13 +1341,20 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .pincodeTextController,
                                                   focusNode:
                                                       _model.pincodeFocusNode,
                                                   autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelStyle: FlutterFlowTheme
@@ -1430,13 +1453,20 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .personMetAndContactTextController,
                                                   focusNode: _model
                                                       .personMetAndContactFocusNode,
                                                   autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelStyle: FlutterFlowTheme
@@ -1536,13 +1566,20 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 5.0, 10.0, 0.0),
+                                                        0.0, 0.0, 10.0, 0.0),
                                                 child: TextFormField(
                                                   controller: _model
                                                       .relationWithOwnerTextController,
                                                   focusNode: _model
                                                       .relationWithOwnerFocusNode,
                                                   autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelStyle: FlutterFlowTheme
@@ -1708,12 +1745,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .fromSTEB(
                                                           16.0, 4.0, 16.0, 4.0),
                                                   hidesUnderline: true,
+                                                  disabled: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
                                                   isOverButton: true,
                                                   isSearchable: false,
                                                   isMultiSelect: false,
                                                 ),
                                               ),
-                                            ],
+                                            ].divide(const SizedBox(height: 5.0)),
                                           ),
                                         ),
                                       ),
@@ -1736,12 +1780,25 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                           ),
                         ),
                       ),
-                      Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 1.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 50.0,
+                              color: Color(0x0F000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -1756,7 +1813,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                   child: ExpandablePanel(
                                     header: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 0.0, 0.0),
+                                          8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Surrounding Locality Details',
                                         style: FlutterFlowTheme.of(context)
@@ -1804,13 +1861,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .landmarkTextController,
                                                 focusNode:
                                                     _model.landmarkFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -1960,6 +2023,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
@@ -1987,8 +2056,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   child: FlutterFlowRadioButton(
                                                     options:
                                                         ['Yes', 'No'].toList(),
-                                                    onChanged: (val) =>
-                                                        setState(() {}),
+                                                    onChanged: ((widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'))
+                                                        ? null
+                                                        : (val) =>
+                                                            setState(() {}),
                                                     controller: _model
                                                             .nameplateValueController ??=
                                                         FormFieldController<
@@ -2059,8 +2136,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 FlutterFlowRadioButton(
                                                   options:
                                                       ['Yes', 'No'].toList(),
-                                                  onChanged: (val) =>
-                                                      setState(() {}),
+                                                  onChanged: ((widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'))
+                                                      ? null
+                                                      : (val) =>
+                                                          setState(() {}),
                                                   controller: _model
                                                           .plotDemarcatedValueController ??=
                                                       FormFieldController<
@@ -2116,13 +2201,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .roadWidthTextController,
                                                 focusNode:
                                                     _model.roadWidthFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -2279,6 +2370,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: true,
@@ -2301,13 +2398,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .distanceFromCityTextController,
                                                 focusNode: _model
                                                     .distanceFromCityFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -2404,13 +2507,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .distanceFromStationTextController,
                                                 focusNode: _model
                                                     .distanceFromStationFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -2507,13 +2616,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .distanceFromBusTextController,
                                                 focusNode: _model
                                                     .distanceFromBusFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -2609,13 +2724,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .distanceFromHospitalTextController,
                                                 focusNode: _model
                                                     .distanceFromHospitalFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -2729,13 +2850,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller:
                                                     _model.northTextController,
                                                 focusNode:
                                                     _model.northFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -2831,13 +2958,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller:
                                                     _model.southTextController,
                                                 focusNode:
                                                     _model.southFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -2933,12 +3066,18 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller:
                                                     _model.eastTextController,
                                                 focusNode: _model.eastFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -3034,12 +3173,18 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller:
                                                     _model.westTextController,
                                                 focusNode: _model.westFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -3122,7 +3267,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .asValidator(context),
                                               ),
                                             ),
-                                          ],
+                                          ].divide(const SizedBox(height: 5.0)),
                                         ),
                                       ),
                                     ),
@@ -3143,12 +3288,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                           ),
                         ),
                       ),
-                      Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 1.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 50.0,
+                              color: Color(0x0F000000),
+                              offset: Offset(0.0, 0.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -3163,7 +3318,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                   child: ExpandablePanel(
                                     header: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 0.0, 0.0),
+                                          8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Property Details',
                                         style: FlutterFlowTheme.of(context)
@@ -3216,7 +3371,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         .typeOfPropertyValueController ??=
                                                     FormFieldController<String>(
                                                   _model.typeOfPropertyValue ??=
-                                                      '1',
+                                                      widget
+                                                          .reportDetails
+                                                          ?.inspectionFormData
+                                                          .propertyType,
                                                 ),
                                                 options: List<String>.from([
                                                   '1',
@@ -3320,6 +3478,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
@@ -3345,7 +3509,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         .permittedUsePropertyValueController ??=
                                                     FormFieldController<String>(
                                                   _model.permittedUsePropertyValue ??=
-                                                      '1',
+                                                      widget
+                                                          .reportDetails
+                                                          ?.inspectionFormData
+                                                          .permittedUseOfProperty,
                                                 ),
                                                 options: List<String>.from([
                                                   '1',
@@ -3407,12 +3574,18 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
                                               ),
                                             ),
-                                          ],
+                                          ].divide(const SizedBox(height: 5.0)),
                                         ),
                                       ),
                                     ),
@@ -3433,12 +3606,20 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                           ),
                         ),
                       ),
-                      Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 1.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                      Container(
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 50.0,
+                              color: Color(0x0F000000),
+                            )
+                          ],
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -3453,7 +3634,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                   child: ExpandablePanel(
                                     header: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 0.0, 0.0),
+                                          8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Property Structure with Specification',
                                         style: FlutterFlowTheme.of(context)
@@ -3506,7 +3687,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         .typeOfStructureValueController ??=
                                                     FormFieldController<String>(
                                                   _model.typeOfStructureValue ??=
-                                                      '1',
+                                                      widget
+                                                          .reportDetails
+                                                          ?.inspectionFormData
+                                                          .structureType,
                                                 ),
                                                 options: List<String>.from([
                                                   '1',
@@ -3563,6 +3747,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
@@ -3581,13 +3771,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .totalFloorsTextController,
                                                 focusNode:
                                                     _model.totalFloorsFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -3683,13 +3879,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .totalUnitsTextController,
                                                 focusNode:
                                                     _model.totalUnitsFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -3785,13 +3987,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .floorLocationTextController,
                                                 focusNode: _model
                                                     .floorLocationFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -3887,13 +4095,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .noofliftsTextController,
                                                 focusNode:
                                                     _model.noofliftsFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -3989,13 +4203,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .buildingAgeTextController,
                                                 focusNode:
                                                     _model.buildingAgeFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -4078,7 +4298,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .asValidator(context),
                                               ),
                                             ),
-                                          ],
+                                          ].divide(const SizedBox(height: 5.0)),
                                         ),
                                       ),
                                     ),
@@ -4099,12 +4319,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                           ),
                         ),
                       ),
-                      Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 1.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                      Container(
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 50.0,
+                              color: Color(0x0F000000),
+                              offset: Offset(0.0, 0.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -4119,7 +4348,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                   child: ExpandablePanel(
                                     header: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 0.0, 0.0),
+                                          8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Accommodation details - Floorwise',
                                         style: FlutterFlowTheme.of(context)
@@ -4171,7 +4400,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -4179,6 +4408,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .nameOfFloorFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -4294,7 +4530,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -4302,6 +4538,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .occupiedByFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -4416,7 +4659,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -4424,6 +4667,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode:
                                                           _model.usageFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -4538,7 +4788,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -4546,6 +4796,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .accommodationFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -4661,7 +4918,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -4669,6 +4926,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .actualAreaMeasuredFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -4771,7 +5035,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           .asValidator(context),
                                                     ),
                                                   ),
-                                                ],
+                                                ].divide(const SizedBox(height: 5.0)),
                                               ),
                                             ),
                                           ),
@@ -4795,12 +5059,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                           ),
                         ),
                       ),
-                      Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 1.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                      Container(
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 50.0,
+                              color: Color(0x0F000000),
+                              offset: Offset(0.0, 0.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -4815,7 +5088,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                   child: ExpandablePanel(
                                     header: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 0.0, 0.0),
+                                          8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Quality of Construction',
                                         style: FlutterFlowTheme.of(context)
@@ -4919,6 +5192,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
@@ -4937,13 +5216,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .completionStageTextController,
                                                 focusNode: _model
                                                     .completionStageFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -5103,6 +5388,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
@@ -5127,7 +5418,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 multiSelectController: _model
                                                         .wallsDropdownValueController ??=
                                                     FormListFieldController<
-                                                        String>(null),
+                                                        String>(_model
+                                                            .wallsDropdownValue ??=
+                                                        List<String>.from(
+                                                  functions.convertStringToListForDropdowns(
+                                                          widget
+                                                              .reportDetails
+                                                              ?.inspectionFormData
+                                                              .wallPlasterPainting) ??
+                                                      [],
+                                                )),
                                                 options: List<String>.from([
                                                   '1',
                                                   '2',
@@ -5205,6 +5505,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: true,
                                                 isMultiSelect: true,
@@ -5233,7 +5539,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 multiSelectController: _model
                                                         .doorsWindowsDropdownValueController ??=
                                                     FormListFieldController<
-                                                        String>(null),
+                                                        String>(_model
+                                                            .doorsWindowsDropdownValue ??=
+                                                        List<String>.from(
+                                                  functions.convertStringToListForDropdowns(
+                                                          widget
+                                                              .reportDetails
+                                                              ?.inspectionFormData
+                                                              .doorsWindows) ??
+                                                      [],
+                                                )),
                                                 options: List<String>.from([
                                                   '1',
                                                   '2',
@@ -5285,6 +5600,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: true,
@@ -5313,7 +5634,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 multiSelectController: _model
                                                         .floorTypeValueController ??=
                                                     FormListFieldController<
-                                                        String>(null),
+                                                        String>(_model
+                                                            .floorTypeValue ??=
+                                                        List<String>.from(
+                                                  functions.convertStringToListForDropdowns(
+                                                          widget
+                                                              .reportDetails
+                                                              ?.inspectionFormData
+                                                              .flooringType) ??
+                                                      [],
+                                                )),
                                                 options: List<String>.from([
                                                   '1',
                                                   '2',
@@ -5369,6 +5699,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: true,
@@ -5438,6 +5774,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
@@ -5504,12 +5846,18 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
                                               ),
                                             ),
-                                          ],
+                                          ].divide(const SizedBox(height: 5.0)),
                                         ),
                                       ),
                                     ),
@@ -5530,12 +5878,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                           ),
                         ),
                       ),
-                      Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 1.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                      Container(
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 50.0,
+                              color: Color(0x0F000000),
+                              offset: Offset(0.0, 0.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -5550,7 +5907,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                   child: ExpandablePanel(
                                     header: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 0.0, 0.0),
+                                          8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Valuation',
                                         style: FlutterFlowTheme.of(context)
@@ -5645,6 +6002,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
+                                                disabled: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
@@ -5667,7 +6030,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -5675,6 +6038,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .carpetAreaFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -5852,6 +6222,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .fromSTEB(16.0, 4.0,
                                                                 16.0, 4.0),
                                                     hidesUnderline: true,
+                                                    disabled: (widget
+                                                                .reportDetails
+                                                                ?.statusId !=
+                                                            '1') ||
+                                                        (widget.reportDetails
+                                                                ?.statusId !=
+                                                            '4'),
                                                     isOverButton: true,
                                                     isSearchable: false,
                                                     isMultiSelect: false,
@@ -5866,7 +6243,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -5874,6 +6251,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .balconyAreaFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -6051,6 +6435,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .fromSTEB(16.0, 4.0,
                                                                 16.0, 4.0),
                                                     hidesUnderline: true,
+                                                    disabled: (widget
+                                                                .reportDetails
+                                                                ?.statusId !=
+                                                            '1') ||
+                                                        (widget.reportDetails
+                                                                ?.statusId !=
+                                                            '4'),
                                                     isOverButton: true,
                                                     isSearchable: false,
                                                     isMultiSelect: false,
@@ -6075,7 +6466,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -6083,6 +6474,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .superAreaFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -6260,6 +6658,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .fromSTEB(16.0, 4.0,
                                                                 16.0, 4.0),
                                                     hidesUnderline: true,
+                                                    disabled: (widget
+                                                                .reportDetails
+                                                                ?.statusId !=
+                                                            '1') ||
+                                                        (widget.reportDetails
+                                                                ?.statusId !=
+                                                            '4'),
                                                     isOverButton: true,
                                                     isSearchable: false,
                                                     isMultiSelect: false,
@@ -6303,13 +6708,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
-                                                    .lengthInSqftTextController,
-                                                focusNode: _model
-                                                    .lengthInSqftFocusNode,
+                                                    .plotLengthTextController,
+                                                focusNode:
+                                                    _model.plotLengthFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -6388,7 +6799,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               FontWeight.normal,
                                                         ),
                                                 validator: _model
-                                                    .lengthInSqftTextControllerValidator
+                                                    .plotLengthTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -6405,13 +6816,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
-                                                    .widthInSqftTextController,
+                                                    .plotWidthTextController,
                                                 focusNode:
-                                                    _model.widthInSqftFocusNode,
+                                                    _model.plotWidthFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -6490,7 +6907,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               FontWeight.normal,
                                                         ),
                                                 validator: _model
-                                                    .widthInSqftTextControllerValidator
+                                                    .plotWidthTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -6511,7 +6928,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -6519,6 +6936,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .plotAreaFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -6630,8 +7054,34 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     controller: _model
                                                             .plotAreaDropdownValueController ??=
                                                         FormFieldController<
-                                                            String>(null),
-                                                    options: const ['Option 1'],
+                                                            String>(
+                                                      _model.plotAreaDropdownValue ??=
+                                                          '1',
+                                                    ),
+                                                    options: List<String>.from([
+                                                      '1',
+                                                      '2',
+                                                      '3',
+                                                      '4',
+                                                      '5',
+                                                      '6',
+                                                      '7',
+                                                      '8',
+                                                      '9',
+                                                      '10'
+                                                    ]),
+                                                    optionLabels: const [
+                                                      'Sq.Ft.',
+                                                      'Sq.Mtr.',
+                                                      'Sq.Yds.',
+                                                      'Acre',
+                                                      'Hectare',
+                                                      'Bigha',
+                                                      'Biswa',
+                                                      'Biswani',
+                                                      'Kanal',
+                                                      'Marla'
+                                                    ],
                                                     onChanged: (val) =>
                                                         setState(() => _model
                                                                 .plotAreaDropdownValue =
@@ -6648,7 +7098,6 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    hintText: 'Sq.Ft.',
                                                     icon: Icon(
                                                       Icons
                                                           .keyboard_arrow_down_rounded,
@@ -6670,6 +7119,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .fromSTEB(16.0, 4.0,
                                                                 16.0, 4.0),
                                                     hidesUnderline: true,
+                                                    disabled: (widget
+                                                                .reportDetails
+                                                                ?.statusId !=
+                                                            '1') ||
+                                                        (widget.reportDetails
+                                                                ?.statusId !=
+                                                            '4'),
                                                     isOverButton: true,
                                                     isSearchable: false,
                                                     isMultiSelect: false,
@@ -6694,7 +7150,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -6702,6 +7158,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .rentalValueFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -6814,8 +7277,34 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     controller: _model
                                                             .rentalDropdownValueController ??=
                                                         FormFieldController<
-                                                            String>(null),
-                                                    options: const ['Option 1'],
+                                                            String>(
+                                                      _model.rentalDropdownValue ??=
+                                                          '1',
+                                                    ),
+                                                    options: List<String>.from([
+                                                      '1',
+                                                      '2',
+                                                      '3',
+                                                      '4',
+                                                      '5',
+                                                      '6',
+                                                      '7',
+                                                      '8',
+                                                      '9',
+                                                      '10'
+                                                    ]),
+                                                    optionLabels: const [
+                                                      'Sq.Ft.',
+                                                      'Sq.Mtr.',
+                                                      'Sq.Yds.',
+                                                      'Acre',
+                                                      'Hectare',
+                                                      'Bigha',
+                                                      'Biswa',
+                                                      'Biswani',
+                                                      'Kanal',
+                                                      'Marla'
+                                                    ],
                                                     onChanged: (val) =>
                                                         setState(() => _model
                                                                 .rentalDropdownValue =
@@ -6832,7 +7321,6 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    hintText: 'Sq.Ft.',
                                                     icon: Icon(
                                                       Icons
                                                           .keyboard_arrow_down_rounded,
@@ -6854,6 +7342,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .fromSTEB(16.0, 4.0,
                                                                 16.0, 4.0),
                                                     hidesUnderline: true,
+                                                    disabled: (widget
+                                                                .reportDetails
+                                                                ?.statusId !=
+                                                            '1') ||
+                                                        (widget.reportDetails
+                                                                ?.statusId !=
+                                                            '4'),
                                                     isOverButton: true,
                                                     isSearchable: false,
                                                     isMultiSelect: false,
@@ -6878,7 +7373,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -6886,6 +7381,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .marketRatesMinimumFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -6998,8 +7500,34 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     controller: _model
                                                             .marketMinimumDropdownValueController ??=
                                                         FormFieldController<
-                                                            String>(null),
-                                                    options: const ['Option 1'],
+                                                            String>(
+                                                      _model.marketMinimumDropdownValue ??=
+                                                          '1',
+                                                    ),
+                                                    options: List<String>.from([
+                                                      '1',
+                                                      '2',
+                                                      '3',
+                                                      '4',
+                                                      '5',
+                                                      '6',
+                                                      '7',
+                                                      '8',
+                                                      '9',
+                                                      '10'
+                                                    ]),
+                                                    optionLabels: const [
+                                                      'Sq.Ft.',
+                                                      'Sq.Mtr.',
+                                                      'Sq.Yds.',
+                                                      'Acre',
+                                                      'Hectare',
+                                                      'Bigha',
+                                                      'Biswa',
+                                                      'Biswani',
+                                                      'Kanal',
+                                                      'Marla'
+                                                    ],
                                                     onChanged: (val) =>
                                                         setState(() => _model
                                                                 .marketMinimumDropdownValue =
@@ -7016,7 +7544,6 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    hintText: 'Sq.Ft.',
                                                     icon: Icon(
                                                       Icons
                                                           .keyboard_arrow_down_rounded,
@@ -7038,6 +7565,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .fromSTEB(16.0, 4.0,
                                                                 16.0, 4.0),
                                                     hidesUnderline: true,
+                                                    disabled: (widget
+                                                                .reportDetails
+                                                                ?.statusId !=
+                                                            '1') ||
+                                                        (widget.reportDetails
+                                                                ?.statusId !=
+                                                            '4'),
                                                     isOverButton: true,
                                                     isSearchable: false,
                                                     isMultiSelect: false,
@@ -7062,7 +7596,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
+                                                            .fromSTEB(0.0, 0.0,
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
@@ -7070,6 +7604,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       focusNode: _model
                                                           .marketRatesMaximumFocusNode,
                                                       autofocus: true,
+                                                      readOnly: (widget
+                                                                  .reportDetails
+                                                                  ?.statusId ==
+                                                              '2') ||
+                                                          (widget.reportDetails
+                                                                  ?.statusId ==
+                                                              '3'),
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -7182,8 +7723,34 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     controller: _model
                                                             .marketMaximumDropdownValueController ??=
                                                         FormFieldController<
-                                                            String>(null),
-                                                    options: const ['Option 1'],
+                                                            String>(
+                                                      _model.marketMaximumDropdownValue ??=
+                                                          '1',
+                                                    ),
+                                                    options: List<String>.from([
+                                                      '1',
+                                                      '2',
+                                                      '3',
+                                                      '4',
+                                                      '5',
+                                                      '6',
+                                                      '7',
+                                                      '8',
+                                                      '9',
+                                                      '10'
+                                                    ]),
+                                                    optionLabels: const [
+                                                      'Sq.Ft.',
+                                                      'Sq.Mtr.',
+                                                      'Sq.Yds.',
+                                                      'Acre',
+                                                      'Hectare',
+                                                      'Bigha',
+                                                      'Biswa',
+                                                      'Biswani',
+                                                      'Kanal',
+                                                      'Marla'
+                                                    ],
                                                     onChanged: (val) =>
                                                         setState(() => _model
                                                                 .marketMaximumDropdownValue =
@@ -7200,7 +7767,6 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    hintText: 'Sq.Ft.',
                                                     icon: Icon(
                                                       Icons
                                                           .keyboard_arrow_down_rounded,
@@ -7222,6 +7788,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .fromSTEB(16.0, 4.0,
                                                                 16.0, 4.0),
                                                     hidesUnderline: true,
+                                                    disabled: (widget
+                                                                .reportDetails
+                                                                ?.statusId !=
+                                                            '1') ||
+                                                        (widget.reportDetails
+                                                                ?.statusId !=
+                                                            '4'),
                                                     isOverButton: true,
                                                     isSearchable: false,
                                                     isMultiSelect: false,
@@ -7242,13 +7815,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .dealerNameTextController,
                                                 focusNode:
                                                     _model.dealerNameFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -7344,13 +7923,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .dealerContactTextController,
                                                 focusNode: _model
                                                     .dealerContactFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -7433,7 +8018,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .asValidator(context),
                                               ),
                                             ),
-                                          ],
+                                          ].divide(const SizedBox(height: 5.0)),
                                         ),
                                       ),
                                     ),
@@ -7454,12 +8039,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                           ),
                         ),
                       ),
-                      Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 1.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 50.0,
+                              color: Color(0x0F000000),
+                              offset: Offset(0.0, 0.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                          ),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -7474,7 +8069,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                   child: ExpandablePanel(
                                     header: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 0.0, 0.0),
+                                          8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Brief Description of the Property',
                                         style: FlutterFlowTheme.of(context)
@@ -7520,13 +8115,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .remarkNo1TextController,
                                                 focusNode:
                                                     _model.remarkNo1FocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -7612,13 +8213,19 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 5.0, 10.0, 0.0),
+                                                      0.0, 0.0, 10.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
                                                     .aadditionalRemarkTextController,
                                                 focusNode: _model
                                                     .aadditionalRemarkFocusNode,
                                                 autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -7701,7 +8308,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .asValidator(context),
                                               ),
                                             ),
-                                          ],
+                                          ].divide(const SizedBox(height: 5.0)),
                                         ),
                                       ),
                                     ),
@@ -7725,48 +8332,393 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  '${widget.reportCaseIndex?.toString()}${_model.refNoTextController.text}',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if ((widget.reportDetails?.statusId == '1') ||
+                                (widget.reportDetails?.statusId == '4'))
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  if (FFAppState().caseDetails.length >
+                                      widget.caseIndexInList!) {
+                                    FFAppState().updateCaseDetailsAtIndex(
+                                      functions.getDraftCaseIndexInList(
+                                          FFAppState().caseDetails.toList())!,
+                                      (e) => e
+                                        ..updateInspectionFormData(
+                                          (e) => e
+                                            ..personMet = _model
+                                                .personMetAndContactTextController
+                                                .text
+                                            ..propertyLocatedIn = _model
+                                                .propertylocationdropdownValue,
+                                        )
+                                        ..statusId = '4'
+                                        ..statusName = 'Draft Report',
+                                    );
+                                    FFAppState().update(() {});
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          'Draft Updated Successfully',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 3000),
+                                        backgroundColor: Color(0xFFFF8C25),
+                                      ),
+                                    );
+                                  } else {
+                                    FFAppState().addToCaseDetails(
+                                        widget.reportDetails!);
+                                    setState(() {});
+                                    FFAppState().updateCaseDetailsAtIndex(
+                                      functions.getDraftCaseIndexInList(
+                                          FFAppState().caseDetails.toList())!,
+                                      (e) => e
+                                        ..updateInspectionFormData(
+                                          (e) => e
+                                            ..personMet = _model
+                                                .personMetAndContactTextController
+                                                .text
+                                            ..propertyLocatedIn = _model
+                                                .propertylocationdropdownValue,
+                                        )
+                                        ..statusId = '4'
+                                        ..statusName = 'Draft Report',
+                                    );
+                                    FFAppState().update(() {});
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          'Draft Added Successfully',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 3000),
+                                        backgroundColor: Color(0xFFFF8C25),
+                                      ),
+                                    );
+                                  }
+
+                                  context.safePop();
+                                },
+                                text: 'SAVE DRAFT',
+                                options: FFButtonOptions(
+                                  width: MediaQuery.sizeOf(context).width * 0.4,
+                                  height: 40.0,
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: const Color(0xFF0F61AB),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: const BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
                                   ),
+                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                duration: const Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).secondary,
                               ),
-                            );
-                          },
-                          text: 'SAVE',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFFFF8C25),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Roboto',
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
+                            if ((widget.reportDetails?.statusId == '1') ||
+                                (widget.reportDetails?.statusId == '4'))
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  if (_model.formKey.currentState == null ||
+                                      !_model.formKey.currentState!
+                                          .validate()) {
+                                    return;
+                                  }
+                                  if (_model.statedropdownValue == null) {
+                                    return;
+                                  }
+                                  if (_model.propertylocationdropdownValue ==
+                                      null) {
+                                    return;
+                                  }
+                                  if (_model.classificationLocalityValue ==
+                                      null) {
+                                    return;
+                                  }
+                                  if (_model.nameplateValue == null) {
+                                    return;
+                                  }
+                                  if (_model.plotDemarcatedValue == null) {
+                                    return;
+                                  }
+                                  if (_model.typeOfPropertyValue == null) {
+                                    return;
+                                  }
+                                  if (_model.permittedUsePropertyValue ==
+                                      null) {
+                                    return;
+                                  }
+                                  if (_model.typeOfStructureValue == null) {
+                                    return;
+                                  }
+                                  if (_model.constructionStatusValue == null) {
+                                    return;
+                                  }
+                                  if (_model.roofTerraceValue == null) {
+                                    return;
+                                  }
+                                  if (_model.wallsDropdownValue == null) {
+                                    return;
+                                  }
+                                  if (_model.doorsWindowsDropdownValue ==
+                                      null) {
+                                    return;
+                                  }
+                                  if (_model.floorTypeValue == null) {
+                                    return;
+                                  }
+                                  if (_model.interiorConstructionQualityValue ==
+                                      null) {
+                                    return;
+                                  }
+                                  if (_model.exteriorConstructionQualityValue ==
+                                      null) {
+                                    return;
+                                  }
+                                  if (_model.valuationTypeValue == null) {
+                                    return;
+                                  }
+                                  if (_model.carpetAreaDropdownValue == null) {
+                                    return;
+                                  }
+                                  if (_model.balconyAreaDropdownValue == null) {
+                                    return;
+                                  }
+                                  if (_model.superAreaDropdownValue == null) {
+                                    return;
+                                  }
+                                  var confirmDialogResponse =
+                                      await showDialog<bool>(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: const Text('Confirmation'),
+                                                content: const Text(
+                                                    'Are you want to submit the form ?'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            false),
+                                                    child: const Text('Cancel'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            true),
+                                                    child: const Text('Confirm'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          ) ??
+                                          false;
+                                  if (confirmDialogResponse) {
+                                    _model.submitSurveyAPIResponse =
+                                        await VdmsApiCallsGroup
+                                            .submitSurveyAPICall
+                                            .call(
+                                      userId: functions.convertStringtoInteger(
+                                          FFAppState().userId),
+                                      caseId: functions.convertStringtoInteger(
+                                          widget.reportDetails!.id),
+                                      timestamp:
+                                          functions.getCurrentTimeStamp(),
+                                      inspectionFormData: functions.convertDataToJson(
+                                          widget.reportDetails?.refNo,
+                                          _model.banknameTextController.text,
+                                          FFAppState().username,
+                                          functions.getCurrentTimeStamp(),
+                                          _model
+                                              .applicantNameTextController.text,
+                                          _model
+                                              .addressline1TextController.text,
+                                          _model.statedropdownValue,
+                                          _model.localityTextController.text,
+                                          _model.pincodeTextController.text,
+                                          _model.propertylocationdropdownValue,
+                                          _model.classificationLocalityValue,
+                                          _model.nameplateValue,
+                                          _model.plotDemarcatedValue,
+                                          _model.typeOfPropertyValue,
+                                          _model.permittedUsePropertyValue,
+                                          _model.typeOfStructureValue,
+                                          _model.constructionStatusValue,
+                                          _model.roofTerraceValue,
+                                          _model
+                                              .interiorConstructionQualityValue,
+                                          _model
+                                              .exteriorConstructionQualityValue,
+                                          _model.valuationTypeValue,
+                                          '${_model.carpetAreaTextController.text}##${_model.carpetAreaDropdownValue}',
+                                          '${_model.balconyAreaTextController.text}##${_model.balconyAreaDropdownValue}',
+                                          '${_model.superAreaTextController.text}##${_model.superAreaDropdownValue}',
+                                          '${_model.plotAreaTextController.text}##${_model.plotAreaDropdownValue}',
+                                          '${_model.rentalValueTextController.text}##${_model.rentalDropdownValue}',
+                                          '${_model.marketRatesMinimumTextController.text}##${_model.marketMinimumDropdownValue}',
+                                          '${_model.marketRatesMaximumTextController.text}##${_model.marketMaximumDropdownValue}',
+                                          widget.reportDetails?.city,
+                                          _model
+                                              .addressline2TextController.text,
+                                          _model
+                                              .personMetAndContactTextController
+                                              .text,
+                                          _model.relationWithOwnerTextController
+                                              .text,
+                                          _model.landmarkTextController.text,
+                                          _model.roadWidthTextController.text,
+                                          functions.createCommaSeparatedStringFromList(
+                                              _model.propertyIdentifiedDropdownValue!
+                                                  .toList()),
+                                          _model.distanceFromCityTextController
+                                              .text,
+                                          _model
+                                              .distanceFromStationTextController
+                                              .text,
+                                          _model.distanceFromBusTextController
+                                              .text,
+                                          _model
+                                              .distanceFromHospitalTextController
+                                              .text,
+                                          _model.northTextController.text,
+                                          _model.southTextController.text,
+                                          _model.eastTextController.text,
+                                          _model.westTextController.text,
+                                          _model.permittedUsePropertyValue,
+                                          _model.totalFloorsTextController.text,
+                                          _model.totalUnitsTextController.text,
+                                          _model.noofliftsTextController.text,
+                                          _model
+                                              .floorLocationTextController.text,
+                                          _model.buildingAgeTextController.text,
+                                          _model.completionStageTextController
+                                              .text,
+                                          _model.roofTerraceValue,
+                                          functions.createCommaSeparatedStringFromList(_model.wallsDropdownValue!
+                                              .toList()),
+                                          functions.createCommaSeparatedStringFromList(
+                                              _model.doorsWindowsDropdownValue!
+                                                  .toList()),
+                                          functions.createCommaSeparatedStringFromList(
+                                              _model.floorTypeValue!.toList()),
+                                          _model.plotLengthTextController.text,
+                                          _model.plotWidthTextController.text,
+                                          _model.remarkNo1TextController.text,
+                                          widget.reportDetails?.inspectionFormData.anyOtherInformation.toList()),
+                                    );
+
+                                    if ((_model.submitSurveyAPIResponse
+                                            ?.succeeded ??
+                                        true)) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Report Submit Successfully',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor: Color(0xFFFF8C25),
+                                        ),
+                                      );
+                                      if (widget.reportDetails?.statusId ==
+                                          '4') {
+                                        FFAppState()
+                                            .removeAtIndexFromCaseDetails(
+                                                widget.caseIndexInList!);
+                                        FFAppState().update(() {});
+                                      } else {
+                                        FFAppState().update(() {});
+                                      }
+
+                                      context.pushNamed(
+                                        'main_case_listing_screen',
+                                        queryParameters: {
+                                          'notificationCount': serializeParam(
+                                            0,
+                                            ParamType.int,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.leftToRight,
+                                          ),
+                                        },
+                                      );
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Something went wrong. Try again!',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor: Color(0xFFFF0000),
+                                        ),
+                                      );
+                                    }
+                                  }
+
+                                  setState(() {});
+                                },
+                                text: 'SUBMIT',
+                                options: FFButtonOptions(
+                                  width: MediaQuery.sizeOf(context).width * 0.4,
+                                  height: 40.0,
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: const Color(0xFFFF8C25),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: const BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                            elevation: 3.0,
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
+                                showLoadingIndicator: false,
+                              ),
+                          ].divide(const SizedBox(width: 10.0)),
                         ),
                       ),
-                    ],
+                    ]
+                        .divide(const SizedBox(height: 10.0))
+                        .addToStart(const SizedBox(height: 10.0))
+                        .addToEnd(const SizedBox(height: 20.0)),
                   ),
                 ),
               ),

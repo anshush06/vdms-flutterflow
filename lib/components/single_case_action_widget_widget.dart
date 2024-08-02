@@ -76,10 +76,17 @@ class _SingleCaseActionWidgetWidgetState
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            const Icon(
-                              Icons.circle_outlined,
-                              color: Color(0xFFFF8C25),
-                              size: 24.0,
+                            Container(
+                              width: 22.0,
+                              height: 22.0,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: const Color(0xFFFF8C25),
+                                  width: 5.0,
+                                ),
+                              ),
                             ),
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.005,

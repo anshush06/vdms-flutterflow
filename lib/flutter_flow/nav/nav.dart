@@ -46,7 +46,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'main_case_listing_screen',
           path: '/mainCaseListingScreen',
-          builder: (context, params) => const MainCaseListingScreenWidget(),
+          builder: (context, params) => MainCaseListingScreenWidget(
+            notificationCount: params.getParam(
+              'notificationCount',
+              ParamType.int,
+            ),
+          ),
         ),
         FFRoute(
           name: 'splash_screen',
@@ -89,15 +94,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'report_screen',
           path: '/reportScreen',
           builder: (context, params) => ReportScreenWidget(
-            caseIndex: params.getParam(
-              'caseIndex',
-              ParamType.int,
-            ),
             caseDetailsForReport: params.getParam(
               'caseDetailsForReport',
               ParamType.DataStruct,
               isList: false,
               structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+            caseIndex: params.getParam(
+              'caseIndex',
+              ParamType.int,
             ),
           ),
         ),
@@ -115,6 +120,43 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.DataStruct,
               isList: false,
               structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'selfie_screen',
+          path: '/selfieScreen',
+          builder: (context, params) => const SelfieScreenWidget(),
+        ),
+        FFRoute(
+          name: 'travel_logs_screen',
+          path: '/travelLogsScreen',
+          builder: (context, params) => const TravelLogsScreenWidget(),
+        ),
+        FFRoute(
+          name: 'single_travel_log_screen',
+          path: '/singleTravelLogScreen',
+          builder: (context, params) => SingleTravelLogScreenWidget(
+            travelDetail: params.getParam(
+              'travelDetail',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: TravelLogResponseStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'capture_reading_screen',
+          path: '/captureReadingScreen',
+          builder: (context, params) => const CaptureReadingScreenWidget(),
+        ),
+        FFRoute(
+          name: 'capture_reading_value_screen',
+          path: '/captureReadingValueScreen',
+          builder: (context, params) => CaptureReadingValueScreenWidget(
+            image: params.getParam(
+              'image',
+              ParamType.FFUploadedFile,
             ),
           ),
         )

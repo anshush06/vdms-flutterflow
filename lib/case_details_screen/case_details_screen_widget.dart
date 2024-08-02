@@ -164,6 +164,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 wrapWithModel(
@@ -174,76 +175,36 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                     case1: widget.selectedCaseDetails!,
                   ),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 10.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        'Remark',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Roboto',
-                              color: const Color(0xFF0F61AB),
-                              fontSize: 16.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ),
-                    ],
+                wrapWithModel(
+                  model: _model.remarkWidgetModel,
+                  updateCallback: () => setState(() {}),
+                  updateOnChange: true,
+                  child: RemarkWidgetWidget(
+                    caseIdForRemark: functions.convertStringtoInteger(
+                        widget.selectedCaseDetails!.id),
+                    caseIndexForRemark: widget.currentCaseIndex!,
+                    caseStatus: widget.selectedCaseDetails!.statusId,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-                  child: wrapWithModel(
-                    model: _model.remarkWidgetModel,
-                    updateCallback: () => setState(() {}),
-                    updateOnChange: true,
-                    child: RemarkWidgetWidget(
-                      caseIdForRemark: functions.convertStringtoInteger(
-                          widget.selectedCaseDetails!.id),
-                      caseIndexForRemark: widget.currentCaseIndex!,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 10.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        'Documentation',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Roboto',
-                              color: const Color(0xFF0F61AB),
-                              fontSize: 16.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
-                  child: wrapWithModel(
-                    model: _model.documentationWidgetModel,
-                    updateCallback: () => setState(() {}),
-                    child: DocumentationWidgetWidget(
-                      index: widget.currentCaseIndex!,
-                      caseDetailsForDocumentation: widget.selectedCaseDetails!,
-                      inspectionData: InspectionFormDataStruct(),
-                    ),
+                wrapWithModel(
+                  model: _model.documentationWidgetModel,
+                  updateCallback: () => setState(() {}),
+                  child: DocumentationWidgetWidget(
+                    caseDetailsForDocumentation: widget.selectedCaseDetails!,
+                    caseIndex: widget.currentCaseIndex!,
                   ),
                 ),
                 Padding(
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
+                    onPressed:
+                        ((widget.selectedCaseDetails?.statusId == '2') ||
+                                (widget.selectedCaseDetails?.statusId == '3'))
+                            ? null
+                            : () {
+                                print('Button pressed ...');
+                              },
                     text: 'SUBMIT',
                     options: FFButtonOptions(
                       height: 40.0,

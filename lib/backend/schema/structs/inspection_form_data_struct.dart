@@ -1,6 +1,5 @@
 // ignore_for_file: unnecessary_getters_setters
 
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -45,7 +44,6 @@ class InspectionFormDataStruct extends BaseStruct {
     String? structureType,
     String? otherStructureType,
     String? ageBuilding,
-    List<String>? floorwiseDetails,
     String? constructionStatus,
     String? otherConstructionStatus,
     String? completionState,
@@ -72,6 +70,7 @@ class InspectionFormDataStruct extends BaseStruct {
     String? reasonPortionNotSeen,
     List<String>? anyOtherInformation,
     int? filledFieldsCount,
+    List<FloorWiseDetailsStruct>? floorwiseDetails,
   })  : _refNo = refNo,
         _bank = bank,
         _engrName = engrName,
@@ -110,7 +109,6 @@ class InspectionFormDataStruct extends BaseStruct {
         _structureType = structureType,
         _otherStructureType = otherStructureType,
         _ageBuilding = ageBuilding,
-        _floorwiseDetails = floorwiseDetails,
         _constructionStatus = constructionStatus,
         _otherConstructionStatus = otherConstructionStatus,
         _completionState = completionState,
@@ -136,7 +134,8 @@ class InspectionFormDataStruct extends BaseStruct {
         _dealerMobileNumber = dealerMobileNumber,
         _reasonPortionNotSeen = reasonPortionNotSeen,
         _anyOtherInformation = anyOtherInformation,
-        _filledFieldsCount = filledFieldsCount;
+        _filledFieldsCount = filledFieldsCount,
+        _floorwiseDetails = floorwiseDetails;
 
   // "ref_no" field.
   String? _refNo;
@@ -405,17 +404,6 @@ class InspectionFormDataStruct extends BaseStruct {
 
   bool hasAgeBuilding() => _ageBuilding != null;
 
-  // "floorwise_details" field.
-  List<String>? _floorwiseDetails;
-  List<String> get floorwiseDetails => _floorwiseDetails ?? const [];
-  set floorwiseDetails(List<String>? val) => _floorwiseDetails = val;
-
-  void updateFloorwiseDetails(Function(List<String>) updateFn) {
-    updateFn(_floorwiseDetails ??= []);
-  }
-
-  bool hasFloorwiseDetails() => _floorwiseDetails != null;
-
   // "construction_status" field.
   String? _constructionStatus;
   String get constructionStatus => _constructionStatus ?? '';
@@ -607,6 +595,19 @@ class InspectionFormDataStruct extends BaseStruct {
 
   bool hasFilledFieldsCount() => _filledFieldsCount != null;
 
+  // "floorwise_details" field.
+  List<FloorWiseDetailsStruct>? _floorwiseDetails;
+  List<FloorWiseDetailsStruct> get floorwiseDetails =>
+      _floorwiseDetails ?? const [];
+  set floorwiseDetails(List<FloorWiseDetailsStruct>? val) =>
+      _floorwiseDetails = val;
+
+  void updateFloorwiseDetails(Function(List<FloorWiseDetailsStruct>) updateFn) {
+    updateFn(_floorwiseDetails ??= []);
+  }
+
+  bool hasFloorwiseDetails() => _floorwiseDetails != null;
+
   static InspectionFormDataStruct fromMap(Map<String, dynamic> data) =>
       InspectionFormDataStruct(
         refNo: data['ref_no'] as String?,
@@ -648,7 +649,6 @@ class InspectionFormDataStruct extends BaseStruct {
         structureType: data['structure_type'] as String?,
         otherStructureType: data['other_structure_type'] as String?,
         ageBuilding: data['age_building'] as String?,
-        floorwiseDetails: getDataList(data['floorwise_details']),
         constructionStatus: data['construction_status'] as String?,
         otherConstructionStatus: data['other_construction_status'] as String?,
         completionState: data['completion_state'] as String?,
@@ -677,6 +677,10 @@ class InspectionFormDataStruct extends BaseStruct {
         reasonPortionNotSeen: data['reason_portion_not_seen'] as String?,
         anyOtherInformation: getDataList(data['any_other_information']),
         filledFieldsCount: castToType<int>(data['filled_fields_count']),
+        floorwiseDetails: getStructList(
+          data['floorwise_details'],
+          FloorWiseDetailsStruct.fromMap,
+        ),
       );
 
   static InspectionFormDataStruct? maybeFromMap(dynamic data) => data is Map
@@ -722,7 +726,6 @@ class InspectionFormDataStruct extends BaseStruct {
         'structure_type': _structureType,
         'other_structure_type': _otherStructureType,
         'age_building': _ageBuilding,
-        'floorwise_details': _floorwiseDetails,
         'construction_status': _constructionStatus,
         'other_construction_status': _otherConstructionStatus,
         'completion_state': _completionState,
@@ -749,6 +752,7 @@ class InspectionFormDataStruct extends BaseStruct {
         'reason_portion_not_seen': _reasonPortionNotSeen,
         'any_other_information': _anyOtherInformation,
         'filled_fields_count': _filledFieldsCount,
+        'floorwise_details': _floorwiseDetails?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -905,11 +909,6 @@ class InspectionFormDataStruct extends BaseStruct {
           _ageBuilding,
           ParamType.String,
         ),
-        'floorwise_details': serializeParam(
-          _floorwiseDetails,
-          ParamType.String,
-          isList: true,
-        ),
         'construction_status': serializeParam(
           _constructionStatus,
           ParamType.String,
@@ -1014,6 +1013,11 @@ class InspectionFormDataStruct extends BaseStruct {
         'filled_fields_count': serializeParam(
           _filledFieldsCount,
           ParamType.int,
+        ),
+        'floorwise_details': serializeParam(
+          _floorwiseDetails,
+          ParamType.DataStruct,
+          isList: true,
         ),
       }.withoutNulls;
 
@@ -1210,11 +1214,6 @@ class InspectionFormDataStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        floorwiseDetails: deserializeParam<String>(
-          data['floorwise_details'],
-          ParamType.String,
-          true,
-        ),
         constructionStatus: deserializeParam(
           data['construction_status'],
           ParamType.String,
@@ -1345,6 +1344,12 @@ class InspectionFormDataStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        floorwiseDetails: deserializeStructParam<FloorWiseDetailsStruct>(
+          data['floorwise_details'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: FloorWiseDetailsStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -1392,7 +1397,6 @@ class InspectionFormDataStruct extends BaseStruct {
         structureType == other.structureType &&
         otherStructureType == other.otherStructureType &&
         ageBuilding == other.ageBuilding &&
-        listEquality.equals(floorwiseDetails, other.floorwiseDetails) &&
         constructionStatus == other.constructionStatus &&
         otherConstructionStatus == other.otherConstructionStatus &&
         completionState == other.completionState &&
@@ -1418,7 +1422,8 @@ class InspectionFormDataStruct extends BaseStruct {
         dealerMobileNumber == other.dealerMobileNumber &&
         reasonPortionNotSeen == other.reasonPortionNotSeen &&
         listEquality.equals(anyOtherInformation, other.anyOtherInformation) &&
-        filledFieldsCount == other.filledFieldsCount;
+        filledFieldsCount == other.filledFieldsCount &&
+        listEquality.equals(floorwiseDetails, other.floorwiseDetails);
   }
 
   @override
@@ -1461,7 +1466,6 @@ class InspectionFormDataStruct extends BaseStruct {
         structureType,
         otherStructureType,
         ageBuilding,
-        floorwiseDetails,
         constructionStatus,
         otherConstructionStatus,
         completionState,
@@ -1487,7 +1491,8 @@ class InspectionFormDataStruct extends BaseStruct {
         dealerMobileNumber,
         reasonPortionNotSeen,
         anyOtherInformation,
-        filledFieldsCount
+        filledFieldsCount,
+        floorwiseDetails
       ]);
 }
 

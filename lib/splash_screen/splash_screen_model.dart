@@ -9,6 +9,10 @@ class SplashScreenModel extends FlutterFlowModel<SplashScreenWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (getAreasAPI)] action in splash_screen widget.
   ApiCallResponse? getAreasAPIResponse;
+  // Stores action output result for [Backend Call - API (checkFieldEngineerTravelStatus)] action in splash_screen widget.
+  ApiCallResponse? checkTravelStatusAPIResponse2;
+  // Stores action output result for [Backend Call - API (getNotificationsCountAPI)] action in splash_screen widget.
+  ApiCallResponse? notificationCountAPIResponse;
 
   @override
   void initState(BuildContext context) {}

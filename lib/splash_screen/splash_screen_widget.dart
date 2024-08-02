@@ -1,6 +1,8 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -35,8 +37,37 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
           ) ==
           null) {
         if (FFAppState().userId != '') {
+          _model.checkTravelStatusAPIResponse2 =
+              await VdmsApiCallsGroup.checkFieldEngineerTravelStatusCall.call(
+            fieldEngineerId:
+                functions.convertStringtoInteger(FFAppState().userId),
+          );
+
+          FFAppState().travelStatus = TravelReadingStruct.maybeFromMap(
+                  (_model.checkTravelStatusAPIResponse2?.jsonBody ?? ''))!
+              .response
+              .message;
+          FFAppState().startReading = TravelReadingStruct.maybeFromMap(
+                  (_model.checkTravelStatusAPIResponse2?.jsonBody ?? ''))!
+              .response
+              .startDayReading;
+          setState(() {});
+          _model.notificationCountAPIResponse =
+              await VdmsApiCallsGroup.getNotificationsCountAPICall.call(
+            userId: functions.convertStringtoInteger(FFAppState().userId),
+          );
+
           context.goNamed(
             'main_case_listing_screen',
+            queryParameters: {
+              'notificationCount': serializeParam(
+                GetNotificationCountAPIStruct.maybeFromMap(
+                        (_model.notificationCountAPIResponse?.jsonBody ?? ''))
+                    ?.response
+                    .count,
+                ParamType.int,
+              ),
+            }.withoutNulls,
             extra: <String, dynamic>{
               kTransitionInfoKey: const TransitionInfo(
                 hasTransition: true,

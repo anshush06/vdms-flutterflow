@@ -1,18 +1,25 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/no_cases_widget_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/case_card_widget/case_card_widget_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'main_case_listing_screen_model.dart';
 export 'main_case_listing_screen_model.dart';
 
 class MainCaseListingScreenWidget extends StatefulWidget {
-  const MainCaseListingScreenWidget({super.key});
+  const MainCaseListingScreenWidget({
+    super.key,
+    required this.notificationCount,
+  });
+
+  final int? notificationCount;
 
   @override
   State<MainCaseListingScreenWidget> createState() =>
@@ -183,7 +190,8 @@ class _MainCaseListingScreenWidgetState
                                   onTap: () async {
                                     FFAppState().username = '';
                                     FFAppState().userId = '';
-                                    FFAppState().password = '';
+                                    FFAppState().travelStatus = '';
+                                    FFAppState().startReading = '';
                                     setState(() {});
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
@@ -258,6 +266,101 @@ class _MainCaseListingScreenWidgetState
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Icon(
+                                Icons.not_started_sharp,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 0.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'capture_reading_screen',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      FFAppState().travelStatus,
+                                      'Start Your Day',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 20.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.travel_explore_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 0.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'travel_logs_screen',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  child: Text(
+                                    'Travel Log',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 20.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
                                 Icons.info,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
@@ -291,7 +394,7 @@ class _MainCaseListingScreenWidgetState
           backgroundColor: Colors.white,
           automaticallyImplyLeading: true,
           leading: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
               borderColor: Colors.white,
               borderRadius: 20.0,
@@ -308,54 +411,83 @@ class _MainCaseListingScreenWidgetState
               },
             ),
           ),
-          title: Text(
-            'VDMS',
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Roboto',
-                  color: const Color(0xFF0F61AB),
-                  fontSize: 22.0,
-                  letterSpacing: 0.0,
-                ),
+          title: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+            child: Text(
+              'VDMS',
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Roboto',
+                    color: const Color(0xFF0F61AB),
+                    fontSize: 22.0,
+                    letterSpacing: 0.0,
+                  ),
+            ),
           ),
           actions: [
-            FlutterFlowIconButton(
-              borderColor: Colors.white,
-              borderRadius: 20.0,
-              borderWidth: 1.0,
-              buttonSize: 40.0,
-              fillColor: const Color(0x4CFFFFFF),
-              icon: Icon(
-                Icons.restart_alt,
-                color: FlutterFlowTheme.of(context).primaryText,
-                size: 24.0,
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderColor: Colors.white,
+                borderRadius: 20.0,
+                borderWidth: 1.0,
+                buttonSize: 40.0,
+                fillColor: const Color(0x4CFFFFFF),
+                icon: Icon(
+                  Icons.restart_alt,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
+                ),
+                onPressed: () async {
+                  setState(() => _model.apiRequestCompleter = null);
+                  await _model.waitForApiRequestCompleted(maxWait: 30000);
+                },
               ),
-              onPressed: () async {
-                setState(() => _model.apiRequestCompleter = null);
-                await _model.waitForApiRequestCompleted(maxWait: 30000);
-              },
             ),
-            FlutterFlowIconButton(
-              borderColor: Colors.white,
-              borderRadius: 20.0,
-              borderWidth: 1.0,
-              buttonSize: 40.0,
-              fillColor: const Color(0x4CFFFFFF),
-              icon: Icon(
-                Icons.notification_add,
-                color: FlutterFlowTheme.of(context).primaryText,
-                size: 24.0,
-              ),
-              onPressed: () async {
-                context.pushNamed(
-                  'notification_screen',
-                  extra: <String, dynamic>{
-                    kTransitionInfoKey: const TransitionInfo(
-                      hasTransition: true,
-                      transitionType: PageTransitionType.rightToLeft,
-                    ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 15.0, 10.0),
+              child: badges.Badge(
+                badgeContent: Text(
+                  widget.notificationCount!.toString(),
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Roboto',
+                        color: Colors.white,
+                        fontSize: 10.0,
+                        letterSpacing: 0.0,
+                      ),
+                ),
+                showBadge: true,
+                shape: badges.BadgeShape.circle,
+                badgeColor: const Color(0xFF0F61AB),
+                elevation: 4.0,
+                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                position: badges.BadgePosition.topEnd(),
+                animationType: badges.BadgeAnimationType.scale,
+                toAnimate: true,
+                child: FlutterFlowIconButton(
+                  borderColor: Colors.white,
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  buttonSize: 30.0,
+                  fillColor: const Color(0x4CFFFFFF),
+                  icon: Icon(
+                    Icons.notifications_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 20.0,
+                  ),
+                  onPressed: () async {
+                    context.pushNamed(
+                      'notification_screen',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: const TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.rightToLeft,
+                        ),
+                      },
+                    );
                   },
-                );
-              },
+                ),
+              ),
             ),
           ],
           centerTitle: false,
@@ -411,36 +543,18 @@ class _MainCaseListingScreenWidgetState
                         controller: _model.tabBarController,
                         onTap: (i) async {
                           [
-                            () async {},
-                            () async {},
                             () async {
-                              _model.apiResult17h =
-                                  await VdmsApiCallsGroup.getCaseAPICall.call(
-                                filters: '{\"caseStatus\":\"2\"}',
-                                userId: functions.convertStringtoInteger(
-                                    FFAppState().userId),
-                              );
-
-                              if ((_model.apiResult17h?.succeeded ?? true)) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'ok',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                );
-                              }
-
                               setState(() {});
                             },
-                            () async {}
+                            () async {
+                              setState(() {});
+                            },
+                            () async {
+                              setState(() {});
+                            },
+                            () async {
+                              setState(() {});
+                            }
                           ][i]();
                         },
                       ),
@@ -491,8 +605,18 @@ class _MainCaseListingScreenWidgetState
                                                     containerGetCaseAPIResponse
                                                         .jsonBody)
                                                 ?.response
+                                                .where((e) =>
+                                                    functions.filterCases(
+                                                        FFAppState()
+                                                            .caseDetails
+                                                            .toList(),
+                                                        e))
+                                                .toList()
                                                 .toList() ??
                                             [];
+                                    if (case1.isEmpty) {
+                                      return const NoCasesWidgetWidget();
+                                    }
 
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
@@ -507,15 +631,6 @@ class _MainCaseListingScreenWidgetState
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            FFAppState().caseDetails =
-                                                GetCasesApiStruct.maybeFromMap(
-                                                        containerGetCaseAPIResponse
-                                                            .jsonBody)!
-                                                    .response
-                                                    .toList()
-                                                    .cast<ResponseStruct>();
-                                            setState(() {});
-
                                             context.pushNamed(
                                               'case_details_screen',
                                               queryParameters: {
@@ -565,19 +680,57 @@ class _MainCaseListingScreenWidgetState
                             decoration: const BoxDecoration(
                               color: Colors.white,
                             ),
-                            child: ListView(
-                              padding: EdgeInsets.zero,
-                              scrollDirection: Axis.vertical,
-                              children: [
-                                wrapWithModel(
-                                  model: _model.caseCardWidgetModel2,
-                                  updateCallback: () => setState(() {}),
-                                  updateOnChange: true,
-                                  child: CaseCardWidgetWidget(
-                                    case1: ResponseStruct(),
-                                  ),
-                                ),
-                              ],
+                            child: Builder(
+                              builder: (context) {
+                                final eachCase2 =
+                                    FFAppState().caseDetails.toList();
+                                if (eachCase2.isEmpty) {
+                                  return const Center(
+                                    child: NoCasesWidgetWidget(),
+                                  );
+                                }
+
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: eachCase2.length,
+                                  itemBuilder: (context, eachCase2Index) {
+                                    final eachCase2Item =
+                                        eachCase2[eachCase2Index];
+                                    return InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          'case_details_screen',
+                                          queryParameters: {
+                                            'selectedCaseDetails':
+                                                serializeParam(
+                                              eachCase2Item,
+                                              ParamType.DataStruct,
+                                            ),
+                                            'currentCaseIndex': serializeParam(
+                                              eachCase2Index,
+                                              ParamType.int,
+                                            ),
+                                            'inspectionform': serializeParam(
+                                              InspectionFormDataStruct(),
+                                              ParamType.DataStruct,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: CaseCardWidgetWidget(
+                                        key: Key(
+                                            'Keywwu_${eachCase2Index}_of_${eachCase2.length}'),
+                                        case1: eachCase2Item,
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
                             ),
                           ),
                           FutureBuilder<ApiCallResponse>(
@@ -619,6 +772,9 @@ class _MainCaseListingScreenWidgetState
                                                 ?.response
                                                 .toList() ??
                                             [];
+                                    if (case1.isEmpty) {
+                                      return const NoCasesWidgetWidget();
+                                    }
 
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
@@ -713,6 +869,9 @@ class _MainCaseListingScreenWidgetState
                                                 ?.response
                                                 .toList() ??
                                             [];
+                                    if (eachCase4.isEmpty) {
+                                      return const NoCasesWidgetWidget();
+                                    }
 
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
@@ -722,10 +881,47 @@ class _MainCaseListingScreenWidgetState
                                       itemBuilder: (context, eachCase4Index) {
                                         final eachCase4Item =
                                             eachCase4[eachCase4Index];
-                                        return CaseCardWidgetWidget(
-                                          key: Key(
-                                              'Keyq8c_${eachCase4Index}_of_${eachCase4.length}'),
-                                          case1: eachCase4Item,
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'case_details_screen',
+                                              queryParameters: {
+                                                'selectedCaseDetails':
+                                                    serializeParam(
+                                                  eachCase4Item,
+                                                  ParamType.DataStruct,
+                                                ),
+                                                'currentCaseIndex':
+                                                    serializeParam(
+                                                  eachCase4Index,
+                                                  ParamType.int,
+                                                ),
+                                                'inspectionform':
+                                                    serializeParam(
+                                                  InspectionFormDataStruct(),
+                                                  ParamType.DataStruct,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType
+                                                          .rightToLeft,
+                                                ),
+                                              },
+                                            );
+                                          },
+                                          child: CaseCardWidgetWidget(
+                                            key: Key(
+                                                'Keyq8c_${eachCase4Index}_of_${eachCase4.length}'),
+                                            case1: eachCase4Item,
+                                          ),
                                         );
                                       },
                                     );

@@ -13,10 +13,12 @@ class RemarkWidgetWidget extends StatefulWidget {
     super.key,
     required this.caseIdForRemark,
     required this.caseIndexForRemark,
+    required this.caseStatus,
   });
 
   final int? caseIdForRemark;
   final int? caseIndexForRemark;
+  final String? caseStatus;
 
   @override
   State<RemarkWidgetWidget> createState() => _RemarkWidgetWidgetState();
@@ -77,17 +79,37 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      'Remark',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Roboto',
+                            color: const Color(0xFF0F61AB),
+                            fontSize: 16.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 20.0, 8.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 0.0),
                       child: TextFormField(
                         controller: _model.remarksTextController,
                         focusNode: _model.remarksFocusNode,
                         autofocus: false,
+                        readOnly: !((widget.caseStatus == '1') ||
+                            (widget.caseStatus == '4')),
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Enter your remark here.',
@@ -95,16 +117,41 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
                                   ),
                           hintStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                   ),
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          focusedErrorBorder: InputBorder.none,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Color(0xFFF5F5F5),
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Color(0xFFF5F5F5),
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           filled: true,
                           fillColor: const Color(0xFFF5F5F5),
                         ),
@@ -112,6 +159,8 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                               fontFamily: 'Roboto',
                               letterSpacing: 0.0,
                             ),
+                        textAlign: TextAlign.start,
+                        maxLines: 4,
                         validator: _model.remarksTextControllerValidator
                             .asValidator(context),
                       ),
@@ -120,7 +169,7 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -129,54 +178,62 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                       child: FFButtonWidget(
-                        onPressed: () async {
-                          if (_model.formKey.currentState == null ||
-                              !_model.formKey.currentState!.validate()) {
-                            return;
-                          }
-                          _model.saveRemarkAPIResponse =
-                              await VdmsApiCallsGroup.saveRemarkAPICall.call(
-                            remark: _model.remarksTextController.text,
-                            userId: functions
-                                .convertStringtoInteger(FFAppState().userId),
-                            caseId: widget.caseIdForRemark,
-                          );
+                        onPressed: !((widget.caseStatus == '1') ||
+                                (widget.caseStatus == '4'))
+                            ? null
+                            : () async {
+                                if (_model.formKey.currentState == null ||
+                                    !_model.formKey.currentState!.validate()) {
+                                  return;
+                                }
+                                _model.saveRemarkAPIResponse =
+                                    await VdmsApiCallsGroup.saveRemarkAPICall
+                                        .call(
+                                  remark: _model.remarksTextController.text,
+                                  userId: functions.convertStringtoInteger(
+                                      FFAppState().userId),
+                                  caseId: widget.caseIdForRemark,
+                                );
 
-                          if (getJsonField(
-                                (_model.saveRemarkAPIResponse?.jsonBody ?? ''),
-                                r'''$.response''',
-                              ) !=
-                              null) {
-                            FFAppState().updateCaseDetailsAtIndex(
-                              widget.caseIndexForRemark!,
-                              (e) => e
-                                ..remark = _model.remarksTextController.text
-                                ..remarkDate = functions.getTimeStampOfRemark(),
-                            );
-                            FFAppState().update(() {});
-                            setState(() {
-                              _model.remarksTextController?.clear();
-                            });
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: const Text(
-                                  'Remark Saved Successfully',
-                                  style: TextStyle(
-                                    color: Color(0xFFFF8C25),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                duration: const Duration(milliseconds: 2500),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).secondary,
-                              ),
-                            );
+                                if (getJsonField(
+                                      (_model.saveRemarkAPIResponse?.jsonBody ??
+                                          ''),
+                                      r'''$.response''',
+                                    ) !=
+                                    null) {
+                                  FFAppState().updateCaseDetailsAtIndex(
+                                    widget.caseIndexForRemark!,
+                                    (e) => e
+                                      ..remark =
+                                          _model.remarksTextController.text
+                                      ..remarkDate =
+                                          functions.getTimeStampOfRemark(),
+                                  );
+                                  FFAppState().update(() {});
+                                  setState(() {
+                                    _model.remarksTextController?.clear();
+                                  });
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: const Text(
+                                        'Remark Saved Successfully',
+                                        style: TextStyle(
+                                          color: Color(0xFFFF8C25),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      duration: const Duration(milliseconds: 2500),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
 
-                            FFAppState().update(() {});
-                          }
+                                  FFAppState().update(() {});
+                                }
 
-                          setState(() {});
-                        },
+                                setState(() {});
+                              },
                         text: 'SEND STATUS',
                         options: FFButtonOptions(
                           height: 40.0,

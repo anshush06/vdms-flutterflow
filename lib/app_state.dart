@@ -42,6 +42,27 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _caseDetails;
     });
+    _safeInit(() {
+      _selfieImages = prefs
+              .getStringList('ff_selfieImages')
+              ?.map((x) {
+                try {
+                  return SelfieImagesStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _selfieImages;
+    });
+    _safeInit(() {
+      _travelStatus = prefs.getString('ff_travelStatus') ?? _travelStatus;
+    });
+    _safeInit(() {
+      _startReading = prefs.getString('ff_startReading') ?? _startReading;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -111,6 +132,61 @@ class FFAppState extends ChangeNotifier {
     caseDetails.insert(index, value);
     prefs.setStringList(
         'ff_caseDetails', _caseDetails.map((x) => x.serialize()).toList());
+  }
+
+  List<SelfieImagesStruct> _selfieImages = [];
+  List<SelfieImagesStruct> get selfieImages => _selfieImages;
+  set selfieImages(List<SelfieImagesStruct> value) {
+    _selfieImages = value;
+    prefs.setStringList(
+        'ff_selfieImages', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToSelfieImages(SelfieImagesStruct value) {
+    selfieImages.add(value);
+    prefs.setStringList(
+        'ff_selfieImages', _selfieImages.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromSelfieImages(SelfieImagesStruct value) {
+    selfieImages.remove(value);
+    prefs.setStringList(
+        'ff_selfieImages', _selfieImages.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromSelfieImages(int index) {
+    selfieImages.removeAt(index);
+    prefs.setStringList(
+        'ff_selfieImages', _selfieImages.map((x) => x.serialize()).toList());
+  }
+
+  void updateSelfieImagesAtIndex(
+    int index,
+    SelfieImagesStruct Function(SelfieImagesStruct) updateFn,
+  ) {
+    selfieImages[index] = updateFn(_selfieImages[index]);
+    prefs.setStringList(
+        'ff_selfieImages', _selfieImages.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInSelfieImages(int index, SelfieImagesStruct value) {
+    selfieImages.insert(index, value);
+    prefs.setStringList(
+        'ff_selfieImages', _selfieImages.map((x) => x.serialize()).toList());
+  }
+
+  String _travelStatus = '';
+  String get travelStatus => _travelStatus;
+  set travelStatus(String value) {
+    _travelStatus = value;
+    prefs.setString('ff_travelStatus', value);
+  }
+
+  String _startReading = '';
+  String get startReading => _startReading;
+  set startReading(String value) {
+    _startReading = value;
+    prefs.setString('ff_startReading', value);
   }
 }
 

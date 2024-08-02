@@ -13,3 +13,12 @@ export '/notification_screen/notification_screen_widget.dart'
     show NotificationScreenWidget;
 export '/case_actions_screen/case_actions_screen_widget.dart'
     show CaseActionsScreenWidget;
+export '/selfie_screen/selfie_screen_widget.dart' show SelfieScreenWidget;
+export '/travel_logs_screen/travel_logs_screen_widget.dart'
+    show TravelLogsScreenWidget;
+export '/single_travel_log_screen/single_travel_log_screen_widget.dart'
+    show SingleTravelLogScreenWidget;
+export '/capture_reading_screen/capture_reading_screen_widget.dart'
+    show CaptureReadingScreenWidget;
+export '/capture_reading_value_screen/capture_reading_value_screen_widget.dart'
+    show CaptureReadingValueScreenWidget;

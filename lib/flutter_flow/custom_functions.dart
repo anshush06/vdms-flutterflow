@@ -163,3 +163,208 @@ String getStateValueForStateDropdown(
   }
   return "1";
 }
+
+int? getDraftCaseIndexInList(List<ResponseStruct> cases) {
+  return cases.length - 1 < 0 ? null : cases.length - 1;
+}
+
+bool filterCases(
+  List<ResponseStruct>? draftCases,
+  ResponseStruct? currentCase,
+) {
+  if (draftCases == null || currentCase == null) {
+    return true;
+  }
+
+  // Check if the currentCase is present in draftCases
+  for (final caseItem in draftCases) {
+    if (caseItem.id == currentCase.id) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+int calculateTravelledDistance(
+  int startReading,
+  int endReading,
+) {
+  return endReading - startReading;
+}
+
+String? getImageUrl(String? imgUrl) {
+  return imgUrl;
+}
+
+bool validateReading(
+  String? startReading,
+  String? endReading,
+) {
+  // Check if startReading or endReading is null
+  if (startReading == null || endReading == null) {
+    return false;
+  }
+
+  // Parse the String inputs to integers
+  int? start = int.tryParse(startReading);
+  int? end = int.tryParse(endReading);
+
+  // Check if the parsing was successful
+  if (start == null || end == null) {
+    return false;
+  }
+
+  // Compare the readings
+  return end - start > 0 ? false : true;
+}
+
+String? getCurrentTimeStamp() {
+  return DateTime.now().toString();
+}
+
+String? convertDataToJson(
+  String? refNo,
+  String? bank,
+  String? engrName,
+  String? currentDate,
+  String? applicantName,
+  String? address1,
+  String? state,
+  String? locality,
+  String? pin,
+  String? propertyLocatedIn,
+  String? classificationOfLocality,
+  String? namePlateFixed,
+  String? propertyDemarcated,
+  String? propertyType,
+  String? permittedUseOfProperty,
+  String? structureType,
+  String? constructionStatus,
+  String? roof,
+  String? interiorConstructionQuality,
+  String? exteriorConstructionQuality,
+  String? valuationType,
+  String? carpet,
+  String? balcony,
+  String? salableArea,
+  String? plotArea,
+  String? rentalValue,
+  String? minimumMarketRates,
+  String? maximumMarketRates,
+  String? city,
+  String? address2,
+  String? personMet,
+  String? relationWithOwner,
+  String? landMark,
+  String? roadWidth,
+  String? propertyIdentified,
+  String? cityCenter,
+  String? railwayStation,
+  String? busStop,
+  String? hospital,
+  String? north,
+  String? south,
+  String? east,
+  String? west,
+  String? otherPermittedUseOfProperty,
+  String? noOfFloors,
+  String? unitsPerFloor,
+  String? noOfLifts,
+  String? floorLocation,
+  String? ageBuilding,
+  String? completionState,
+  String? otherRoof,
+  String? wallPlasterPainting,
+  String? doorsWindows,
+  String? flooringType,
+  String? plotLength,
+  String? plotWidth,
+  String? reasonPortionNotSeen,
+  List<String>? anyOtherInformation,
+) {
+  Map<String, dynamic> dataMap = {
+    'ref_no': refNo,
+    'bank': bank,
+    'engr_name': engrName,
+    'current_date': currentDate,
+    'applicant_name': applicantName,
+    'address_1': address1,
+    'state': state,
+    'locality': locality,
+    'pin': pin,
+    'property_located_in': propertyLocatedIn,
+    'classification_of_locality': classificationOfLocality,
+    'name_plate_fixed': namePlateFixed,
+    'property_demarcated': propertyDemarcated,
+    'property_type': propertyType,
+    'permitted_use_of_property': permittedUseOfProperty,
+    'structure_type': structureType,
+    'construction_status': constructionStatus,
+    'roof': roof,
+    'interior_construction_quality': interiorConstructionQuality,
+    'exterior_construction_quality': exteriorConstructionQuality,
+    'valuation_type': valuationType,
+    'carpet': carpet,
+    'balcony': balcony,
+    'salable_area': salableArea,
+    'plot_area': plotArea,
+    'rental_value': rentalValue,
+    'minimum_market_rates': minimumMarketRates,
+    'maximum_market_rates': maximumMarketRates,
+    'city': city,
+    'address_2': address2,
+    'person_met': personMet,
+    'relation_with_owner': relationWithOwner,
+    'land_mark': landMark,
+    'road_width': roadWidth,
+    'property_identified': propertyIdentified,
+    'city_center': cityCenter,
+    'railway_station': railwayStation,
+    'bus_stop': busStop,
+    'hospital': hospital,
+    'north': north,
+    'south': south,
+    'east': east,
+    'west': west,
+    'other_permitted_use_of_property': otherPermittedUseOfProperty,
+    'no_of_floors': noOfFloors,
+    'units_per_floor': unitsPerFloor,
+    'no_of_lifts': noOfLifts,
+    'floor_location': floorLocation,
+    'age_building': ageBuilding,
+    'completion_state': completionState,
+    'other_roof': otherRoof,
+    'wall_plaster_painting': wallPlasterPainting,
+    'doors_windows': doorsWindows,
+    'flooring_type': flooringType,
+    'plot_length': plotLength,
+    'plot_width': plotWidth,
+    'reason_portion_not_seen': reasonPortionNotSeen,
+    'any_other_information': anyOtherInformation,
+  };
+
+  // Convert the Map to a JSON string
+  return jsonEncode(dataMap);
+}
+
+String? createCommaSeparatedStringFromList(List<String> list) {
+  return list!.join(',');
+}
+
+List<String> convertStringToListForDropdowns(String? input) {
+  List<String> parts = input!.split(RegExp(r'[,##]'));
+
+  // Filter out empty strings
+  List<String> numericValues = parts.where((part) => part.isNotEmpty).toList();
+
+  return numericValues;
+}
+
+String? getImageName(FFUploadedFile image) {
+  return image.name!;
+}
+
+List<int> getImageByteArray(FFUploadedFile image) {
+  return image.bytes!;
+}

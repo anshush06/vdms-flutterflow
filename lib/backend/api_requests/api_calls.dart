@@ -21,6 +21,15 @@ class VdmsApiCallsGroup {
       GetNotificationsAPICall();
   static GetCaseHistoryAPICall getCaseHistoryAPICall = GetCaseHistoryAPICall();
   static SaveRemarkAPICall saveRemarkAPICall = SaveRemarkAPICall();
+  static GetFieldEngineerTravelLogsCall getFieldEngineerTravelLogsCall =
+      GetFieldEngineerTravelLogsCall();
+  static CheckFieldEngineerTravelStatusCall checkFieldEngineerTravelStatusCall =
+      CheckFieldEngineerTravelStatusCall();
+  static SaveStartEndDayReadingAPICall saveStartEndDayReadingAPICall =
+      SaveStartEndDayReadingAPICall();
+  static SubmitSurveyAPICall submitSurveyAPICall = SubmitSurveyAPICall();
+  static GetNotificationsCountAPICall getNotificationsCountAPICall =
+      GetNotificationsCountAPICall();
 }
 
 class ValidateLoginAPICall {
@@ -304,6 +313,180 @@ class SaveRemarkAPICall {
         response,
         r'''$.response.message''',
       ));
+}
+
+class GetFieldEngineerTravelLogsCall {
+  Future<ApiCallResponse> call({
+    int? fieldEngineerId,
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getFieldEngineerTravelLogs',
+      apiUrl: '$baseUrl/getFieldEngineerTravelLogs',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'field_engineer_id': fieldEngineerId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class CheckFieldEngineerTravelStatusCall {
+  Future<ApiCallResponse> call({
+    int? fieldEngineerId,
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'checkFieldEngineerTravelStatus',
+      apiUrl: '$baseUrl/checkFieldEngineerTravelStatus',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'field_engineer_id': fieldEngineerId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SaveStartEndDayReadingAPICall {
+  Future<ApiCallResponse> call({
+    String? type = '',
+    int? fieldEngineerId,
+    int? meterReading,
+    FFUploadedFile? meterReadingImage,
+    String? datetime = '',
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'saveStartEndDayReadingAPI',
+      apiUrl: '$baseUrl/saveStartEndDayReading',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'multipart/form-data',
+      },
+      params: {
+        'type': type,
+        'field_engineer_id': fieldEngineerId,
+        'meter_reading': meterReading,
+        'meter_reading_image': meterReadingImage,
+        'datetime': datetime,
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SubmitSurveyAPICall {
+  Future<ApiCallResponse> call({
+    int? userId,
+    int? caseId,
+    String? timestamp = '',
+    String? inspectionFormData = '',
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'submitSurveyAPI',
+      apiUrl: '$baseUrl/submitSurveyAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'userId': userId,
+        'caseId': caseId,
+        'timestamp': timestamp,
+        'inspectionFormData': inspectionFormData,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetNotificationsCountAPICall {
+  Future<ApiCallResponse> call({
+    int? userId,
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getNotificationsCountAPI',
+      apiUrl: '$baseUrl/getNotificationsCountAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'userId': userId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 /// End VDMS API CALLS Group Code

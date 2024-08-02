@@ -1,22 +1,20 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'documentation_widget_model.dart';
 export 'documentation_widget_model.dart';
 
 class DocumentationWidgetWidget extends StatefulWidget {
   const DocumentationWidgetWidget({
     super.key,
-    required this.index,
     required this.caseDetailsForDocumentation,
-    required this.inspectionData,
+    required this.caseIndex,
   });
 
-  final int? index;
   final ResponseStruct? caseDetailsForDocumentation;
-  final InspectionFormDataStruct? inspectionData;
+  final int? caseIndex;
 
   @override
   State<DocumentationWidgetWidget> createState() =>
@@ -49,10 +47,8 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(15.0, 8.0, 15.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -73,53 +69,91 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Site Pictures',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Roboto',
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w500,
-                        ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 5.0, 0.0),
-                          child: Text(
-                            'No images',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Roboto',
-                                  letterSpacing: 0.0,
-                                ),
+                  Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                    child: Text(
+                      'Documentation',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Roboto',
+                            color: const Color(0xFF0F61AB),
+                            fontSize: 16.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w600,
                           ),
-                        ),
-                        const Icon(
-                          Icons.check_circle,
-                          color: Color(0xFF43A047),
-                          size: 24.0,
-                        ),
-                      ],
                     ),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed(
+                    'site_pictures_screen',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: const TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.rightToLeft,
+                      ),
+                    },
+                  );
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Site Pictures',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Roboto',
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w500,
+                          ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 5.0, 0.0),
+                            child: Text(
+                              'No images',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                          const Icon(
+                            Icons.check_circle,
+                            color: Color(0xFF43A047),
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 10.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -129,13 +163,13 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
                   context.pushNamed(
                     'report_screen',
                     queryParameters: {
-                      'caseIndex': serializeParam(
-                        widget.index,
-                        ParamType.int,
-                      ),
                       'caseDetailsForReport': serializeParam(
                         widget.caseDetailsForDocumentation,
                         ParamType.DataStruct,
+                      ),
+                      'caseIndex': serializeParam(
+                        widget.caseIndex,
+                        ParamType.int,
                       ),
                     }.withoutNulls,
                     extra: <String, dynamic>{
@@ -170,13 +204,7 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 5.0, 0.0),
                             child: Text(
-                              '${valueOrDefault<String>(
-                                FFAppState()
-                                    .caseDetails[widget.index!]
-                                    .totalFilledCount
-                                    .toString(),
-                                '0',
-                              )} fields filled',
+                              '${functions.getFilledFieldsCount(widget.caseDetailsForDocumentation?.inspectionFormData, widget.caseDetailsForDocumentation).toString()} fields filled',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -195,13 +223,6 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
                     ),
                   ],
                 ),
-              ),
-            ),
-            Container(
-              width: 100.0,
-              height: MediaQuery.sizeOf(context).height * 0.01,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
             ),
           ],

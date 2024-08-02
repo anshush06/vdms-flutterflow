@@ -2,8 +2,10 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'login_screen_model.dart';
 export 'login_screen_model.dart';
 
@@ -42,6 +44,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -331,22 +335,6 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                               ''),
                                                         ) !=
                                                         '') {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                        'Login Successfully',
-                                                        style: TextStyle(
-                                                          color:
-                                                              Color(0xFFF5FBFF),
-                                                        ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 2500),
-                                                      backgroundColor:
-                                                          Color(0xFF0F61AB),
-                                                    ),
-                                                  );
                                                   FFAppState().username =
                                                       VdmsApiCallsGroup
                                                           .validateLoginAPICall
@@ -364,9 +352,58 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                         ''),
                                                   )!;
                                                   setState(() {});
+                                                  _model.checkTravelStatusAPIResponse2 =
+                                                      await VdmsApiCallsGroup
+                                                          .checkFieldEngineerTravelStatusCall
+                                                          .call(
+                                                    fieldEngineerId: functions
+                                                        .convertStringtoInteger(
+                                                            FFAppState()
+                                                                .userId),
+                                                  );
+
+                                                  FFAppState()
+                                                      .travelStatus = TravelReadingStruct
+                                                          .maybeFromMap((_model
+                                                                  .checkTravelStatusAPIResponse2
+                                                                  ?.jsonBody ??
+                                                              ''))!
+                                                      .response
+                                                      .message;
+                                                  FFAppState()
+                                                      .startReading = TravelReadingStruct
+                                                          .maybeFromMap((_model
+                                                                  .checkTravelStatusAPIResponse2
+                                                                  ?.jsonBody ??
+                                                              ''))!
+                                                      .response
+                                                      .startDayReading;
+                                                  setState(() {});
+                                                  _model.notificationCountAPIResponse =
+                                                      await VdmsApiCallsGroup
+                                                          .getNotificationsCountAPICall
+                                                          .call(
+                                                    userId: functions
+                                                        .convertStringtoInteger(
+                                                            FFAppState()
+                                                                .userId),
+                                                  );
 
                                                   context.goNamed(
                                                     'main_case_listing_screen',
+                                                    queryParameters: {
+                                                      'notificationCount':
+                                                          serializeParam(
+                                                        GetNotificationCountAPIStruct
+                                                                .maybeFromMap((_model
+                                                                        .notificationCountAPIResponse
+                                                                        ?.jsonBody ??
+                                                                    ''))
+                                                            ?.response
+                                                            .count,
+                                                        ParamType.int,
+                                                      ),
+                                                    }.withoutNulls,
                                                     extra: <String, dynamic>{
                                                       kTransitionInfoKey:
                                                           const TransitionInfo(
@@ -378,6 +415,23 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                             milliseconds: 1000),
                                                       ),
                                                     },
+                                                  );
+
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                        'Login Successfully',
+                                                        style: TextStyle(
+                                                          color:
+                                                              Color(0xFFF5FBFF),
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 2500),
+                                                      backgroundColor:
+                                                          Color(0xFF0F61AB),
+                                                    ),
                                                   );
                                                 } else {
                                                   ScaffoldMessenger.of(context)

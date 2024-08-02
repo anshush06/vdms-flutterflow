@@ -42,13 +42,12 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-
+	<key>NSCameraUsageDescription</key>
+    <string>Allow Camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow Photo Library</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>Allow Location</string>
-	<key>NSCameraUsageDescription</key>
-    <string>Camera</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-    <string>Photo Library</string>
 
 
 	<key>UILaunchStoryboardName</key>

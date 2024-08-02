@@ -1,35 +1,27 @@
-import '/backend/schema/structs/index.dart';
-import '/components/report_widget_widget.dart';
+import '/components/selfie_widget_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'report_screen_model.dart';
-export 'report_screen_model.dart';
+import 'selfie_screen_model.dart';
+export 'selfie_screen_model.dart';
 
-class ReportScreenWidget extends StatefulWidget {
-  const ReportScreenWidget({
-    super.key,
-    required this.caseDetailsForReport,
-    required this.caseIndex,
-  });
-
-  final ResponseStruct? caseDetailsForReport;
-  final int? caseIndex;
+class SelfieScreenWidget extends StatefulWidget {
+  const SelfieScreenWidget({super.key});
 
   @override
-  State<ReportScreenWidget> createState() => _ReportScreenWidgetState();
+  State<SelfieScreenWidget> createState() => _SelfieScreenWidgetState();
 }
 
-class _ReportScreenWidgetState extends State<ReportScreenWidget> {
-  late ReportScreenModel _model;
+class _SelfieScreenWidgetState extends State<SelfieScreenWidget> {
+  late SelfieScreenModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ReportScreenModel());
+    _model = createModel(context, () => SelfieScreenModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -80,10 +72,7 @@ class _ReportScreenWidgetState extends State<ReportScreenWidget> {
                     ),
               ),
               Text(
-                valueOrDefault<String>(
-                  widget.caseDetailsForReport?.refNo,
-                  '-',
-                ),
+                'S_2024_JULY_24',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Roboto',
                       color: Colors.white,
@@ -93,35 +82,6 @@ class _ReportScreenWidgetState extends State<ReportScreenWidget> {
             ],
           ),
           actions: [
-            FlutterFlowIconButton(
-              borderColor: const Color(0xFF0F61AB),
-              borderRadius: 20.0,
-              borderWidth: 1.0,
-              buttonSize: 40.0,
-              fillColor: const Color(0xFF0F61AB),
-              icon: const Icon(
-                Icons.remove_red_eye,
-                color: Colors.white,
-                size: 24.0,
-              ),
-              onPressed: () async {
-                context.pushNamed(
-                  'case_actions_screen',
-                  queryParameters: {
-                    'caseDetailsForActionScreen': serializeParam(
-                      widget.caseDetailsForReport,
-                      ParamType.DataStruct,
-                    ),
-                  }.withoutNulls,
-                  extra: <String, dynamic>{
-                    kTransitionInfoKey: const TransitionInfo(
-                      hasTransition: true,
-                      transitionType: PageTransitionType.rightToLeft,
-                    ),
-                  },
-                );
-              },
-            ),
             FlutterFlowIconButton(
               borderColor: const Color(0xFF0F61AB),
               borderRadius: 20.0,
@@ -151,29 +111,17 @@ class _ReportScreenWidgetState extends State<ReportScreenWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
-                  child: Container(
-                    height: MediaQuery.sizeOf(context).height * 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: wrapWithModel(
-                      model: _model.reportWidgetModel,
-                      updateCallback: () => setState(() {}),
-                      child: ReportWidgetWidget(
-                        reportDetails: widget.caseDetailsForReport!,
-                        caseIndexInList: widget.caseIndex!,
-                      ),
-                    ),
-                  ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: wrapWithModel(
+                  model: _model.selfieWidgetModel,
+                  updateCallback: () => setState(() {}),
+                  child: const SelfieWidgetWidget(),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

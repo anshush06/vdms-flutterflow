@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'report_widget_widget.dart' show ReportWidgetWidget;
@@ -418,6 +419,15 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   FocusNode? carpetAreaFocusNode;
   TextEditingController? carpetAreaTextController;
   String? Function(BuildContext, String?)? carpetAreaTextControllerValidator;
+  String? _carpetAreaTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for carpet_area_dropdown widget.
   String? carpetAreaDropdownValue;
   FormFieldController<String>? carpetAreaDropdownValueController;
@@ -425,6 +435,15 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   FocusNode? balconyAreaFocusNode;
   TextEditingController? balconyAreaTextController;
   String? Function(BuildContext, String?)? balconyAreaTextControllerValidator;
+  String? _balconyAreaTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for balcony_area_dropdown widget.
   String? balconyAreaDropdownValue;
   FormFieldController<String>? balconyAreaDropdownValueController;
@@ -432,21 +451,54 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   FocusNode? superAreaFocusNode;
   TextEditingController? superAreaTextController;
   String? Function(BuildContext, String?)? superAreaTextControllerValidator;
+  String? _superAreaTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for super_area_dropdown widget.
   String? superAreaDropdownValue;
   FormFieldController<String>? superAreaDropdownValueController;
-  // State field(s) for length_in_sqft widget.
-  FocusNode? lengthInSqftFocusNode;
-  TextEditingController? lengthInSqftTextController;
-  String? Function(BuildContext, String?)? lengthInSqftTextControllerValidator;
-  // State field(s) for width_in_sqft widget.
-  FocusNode? widthInSqftFocusNode;
-  TextEditingController? widthInSqftTextController;
-  String? Function(BuildContext, String?)? widthInSqftTextControllerValidator;
+  // State field(s) for plot_length widget.
+  FocusNode? plotLengthFocusNode;
+  TextEditingController? plotLengthTextController;
+  String? Function(BuildContext, String?)? plotLengthTextControllerValidator;
+  String? _plotLengthTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
+  // State field(s) for plot_width widget.
+  FocusNode? plotWidthFocusNode;
+  TextEditingController? plotWidthTextController;
+  String? Function(BuildContext, String?)? plotWidthTextControllerValidator;
+  String? _plotWidthTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for plot_area widget.
   FocusNode? plotAreaFocusNode;
   TextEditingController? plotAreaTextController;
   String? Function(BuildContext, String?)? plotAreaTextControllerValidator;
+  String? _plotAreaTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for plot_area_dropdown widget.
   String? plotAreaDropdownValue;
   FormFieldController<String>? plotAreaDropdownValueController;
@@ -454,6 +506,15 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   FocusNode? rentalValueFocusNode;
   TextEditingController? rentalValueTextController;
   String? Function(BuildContext, String?)? rentalValueTextControllerValidator;
+  String? _rentalValueTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for rental_dropdown widget.
   String? rentalDropdownValue;
   FormFieldController<String>? rentalDropdownValueController;
@@ -462,6 +523,15 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   TextEditingController? marketRatesMinimumTextController;
   String? Function(BuildContext, String?)?
       marketRatesMinimumTextControllerValidator;
+  String? _marketRatesMinimumTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for market_minimum_dropdown widget.
   String? marketMinimumDropdownValue;
   FormFieldController<String>? marketMinimumDropdownValueController;
@@ -470,6 +540,15 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   TextEditingController? marketRatesMaximumTextController;
   String? Function(BuildContext, String?)?
       marketRatesMaximumTextControllerValidator;
+  String? _marketRatesMaximumTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for market_maximum_dropdown widget.
   String? marketMaximumDropdownValue;
   FormFieldController<String>? marketMaximumDropdownValueController;
@@ -501,6 +580,8 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   TextEditingController? aadditionalRemarkTextController;
   String? Function(BuildContext, String?)?
       aadditionalRemarkTextControllerValidator;
+  // Stores action output result for [Backend Call - API (submitSurveyAPI)] action in Button widget.
+  ApiCallResponse? submitSurveyAPIResponse;
 
   @override
   void initState(BuildContext context) {
@@ -534,6 +615,17 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
     buildingAgeTextControllerValidator = _buildingAgeTextControllerValidator;
     completionStageTextControllerValidator =
         _completionStageTextControllerValidator;
+    carpetAreaTextControllerValidator = _carpetAreaTextControllerValidator;
+    balconyAreaTextControllerValidator = _balconyAreaTextControllerValidator;
+    superAreaTextControllerValidator = _superAreaTextControllerValidator;
+    plotLengthTextControllerValidator = _plotLengthTextControllerValidator;
+    plotWidthTextControllerValidator = _plotWidthTextControllerValidator;
+    plotAreaTextControllerValidator = _plotAreaTextControllerValidator;
+    rentalValueTextControllerValidator = _rentalValueTextControllerValidator;
+    marketRatesMinimumTextControllerValidator =
+        _marketRatesMinimumTextControllerValidator;
+    marketRatesMaximumTextControllerValidator =
+        _marketRatesMaximumTextControllerValidator;
     remarkNo1TextControllerValidator = _remarkNo1TextControllerValidator;
   }
 
@@ -651,11 +743,11 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
     superAreaFocusNode?.dispose();
     superAreaTextController?.dispose();
 
-    lengthInSqftFocusNode?.dispose();
-    lengthInSqftTextController?.dispose();
+    plotLengthFocusNode?.dispose();
+    plotLengthTextController?.dispose();
 
-    widthInSqftFocusNode?.dispose();
-    widthInSqftTextController?.dispose();
+    plotWidthFocusNode?.dispose();
+    plotWidthTextController?.dispose();
 
     plotAreaFocusNode?.dispose();
     plotAreaTextController?.dispose();

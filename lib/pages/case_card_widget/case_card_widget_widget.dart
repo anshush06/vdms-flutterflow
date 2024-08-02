@@ -46,7 +46,7 @@ class _CaseCardWidgetWidgetState extends State<CaseCardWidgetWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
         decoration: const BoxDecoration(
@@ -65,7 +65,7 @@ class _CaseCardWidgetWidgetState extends State<CaseCardWidgetWidget> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
