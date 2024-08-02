@@ -156,14 +156,12 @@ class _MainCaseListingScreenWidgetState
                     ],
                   ),
                 ),
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                Expanded(
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -386,7 +384,7 @@ class _MainCaseListingScreenWidgetState
                     ),
                   ),
                 ),
-              ],
+              ].divide(const SizedBox(height: 20.0)),
             ),
           ),
         ),
