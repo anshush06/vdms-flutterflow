@@ -390,3 +390,14 @@ String? convertListDropdownsToHashSeparateStringForDraftReport(
     List<String>? list) {
   return list!.join('##');
 }
+
+double? getCoordinate(
+  LatLng? coordinates,
+  bool isLatitude,
+) {
+  if (isLatitude) {
+    return coordinates?.latitude ?? 0.0;
+  }
+
+  return coordinates?.longitude ?? 0.0;
+}

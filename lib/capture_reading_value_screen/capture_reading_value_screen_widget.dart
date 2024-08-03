@@ -653,6 +653,11 @@ class _CaptureReadingValueScreenWidgetState
                                     FFAppState().userId,
                                   );
                                   if (_model.uploadReadingImageResponse!) {
+                                    FFAppState().travelStatus =
+                                        FFAppState().travelStatus ==
+                                                'End your previous day'
+                                            ? 'Start your day'
+                                            : 'End your day';
                                     FFAppState().update(() {});
 
                                     context.goNamed(

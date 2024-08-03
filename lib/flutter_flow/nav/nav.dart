@@ -173,6 +173,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'take_pictures_screen',
           path: '/takePicturesScreen',
           builder: (context, params) => const TakePicturesScreenWidget(),
+        ),
+        FFRoute(
+          name: 'capture_location_screen',
+          path: '/captureLocationScreen',
+          builder: (context, params) => const CaptureLocationScreenWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
