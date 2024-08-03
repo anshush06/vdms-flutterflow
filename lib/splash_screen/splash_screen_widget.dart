@@ -73,6 +73,10 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                       .message,
                   ParamType.String,
                 ),
+                'type': serializeParam(
+                  'end',
+                  ParamType.String,
+                ),
               }.withoutNulls,
               extra: <String, dynamic>{
                 kTransitionInfoKey: const TransitionInfo(

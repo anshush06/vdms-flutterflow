@@ -153,6 +153,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'enableDrawer',
               ParamType.String,
             ),
+            type: params.getParam(
+              'type',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(

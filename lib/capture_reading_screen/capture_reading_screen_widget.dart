@@ -11,9 +11,11 @@ class CaptureReadingScreenWidget extends StatefulWidget {
   const CaptureReadingScreenWidget({
     super.key,
     required this.enableDrawer,
+    required this.type,
   });
 
   final String? enableDrawer;
+  final String? type;
 
   @override
   State<CaptureReadingScreenWidget> createState() =>
@@ -274,6 +276,10 @@ class _CaptureReadingScreenWidgetState
                                       queryParameters: {
                                         'enableDrawer': serializeParam(
                                           'ok',
+                                          ParamType.String,
+                                        ),
+                                        'type': serializeParam(
+                                          '',
                                           ParamType.String,
                                         ),
                                       }.withoutNulls,

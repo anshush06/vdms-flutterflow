@@ -285,6 +285,10 @@ class _MainCaseListingScreenWidgetState
                                           'ok',
                                           ParamType.String,
                                         ),
+                                        'type': serializeParam(
+                                          '',
+                                          ParamType.String,
+                                        ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(

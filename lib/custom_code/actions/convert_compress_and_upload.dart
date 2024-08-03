@@ -21,11 +21,12 @@ String base64ConvertedString(String str) {
 }
 
 Future<bool> convertCompressAndUpload(
-  String fileName, // Directly receive the file name
-  List<int> byteArray, // Directly receive the byte array
-  String outputFileName,
-  String reading,
-) async {
+    String fileName, // Directly receive the file name
+    List<int> byteArray, // Directly receive the byte array
+    String outputFileName,
+    String reading,
+    String message,
+    String fieldengineerid) async {
   try {
     // Convert the byte array to Uint8List
     Uint8List uint8List = Uint8List.fromList(byteArray);
@@ -36,6 +37,7 @@ Future<bool> convertCompressAndUpload(
 
     // Create a file in the temporary directory
     File file = File('$tempPath/$fileName');
+    print('FILE HERE =============== $file');
 
     // Write the byte array to the file
     await file.writeAsBytes(uint8List);
@@ -58,12 +60,11 @@ Future<bool> convertCompressAndUpload(
     // Upload the image
     double timeStamp = DateTime.now().millisecondsSinceEpoch / 1000;
     String stringTimeStamp = timeStamp.toInt().toString();
-
+    String type = (message == 'Start your day') ? 'start' : 'end';
     var params = {
       'meter_reading': reading,
-      'type': 'some_type', // Replace with the actual type
-      'field_engineer_id':
-          'some_id', // Replace with the actual field engineer id
+      'type': type, // Replace with the actual type
+      'field_engineer_id': fieldengineerid,
       'datetime': DateTime.now().toUtc().toString(),
     };
 
@@ -86,11 +87,11 @@ Future<bool> convertCompressAndUpload(
     }
 
     var request = http.MultipartRequest('POST', Uri.parse(url));
-
+    print('COMPRESSED FILE HERE =============== $compressedFile');
     request.files.add(await http.MultipartFile.fromPath(
       'meter_reading_image',
-      compressedFile.path,
-      contentType: MediaType('image', compressedFile.path.split('.').last),
+      file.path,
+      contentType: MediaType('image', file.path.split('.').last),
     ));
     headers.forEach((key, value) {
       request.headers[key] = value;

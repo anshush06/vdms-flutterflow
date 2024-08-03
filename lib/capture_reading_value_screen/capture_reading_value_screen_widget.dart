@@ -281,6 +281,10 @@ class _CaptureReadingValueScreenWidgetState
                                           'ok',
                                           ParamType.String,
                                         ),
+                                        'type': serializeParam(
+                                          '',
+                                          ParamType.String,
+                                        ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(
@@ -645,6 +649,8 @@ class _CaptureReadingValueScreenWidgetState
                                         .toList(),
                                     'meter_reading_image',
                                     _model.readingTextController.text,
+                                    FFAppState().travelStatus,
+                                    FFAppState().userId,
                                   );
                                   if (_model.uploadReadingImageResponse!) {
                                     FFAppState().update(() {});
