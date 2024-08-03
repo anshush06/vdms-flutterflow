@@ -160,7 +160,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  'take_pictures_screen',
+                                  'capture_location_screen',
                                   extra: <String, dynamic>{
                                     kTransitionInfoKey: const TransitionInfo(
                                       hasTransition: true,
