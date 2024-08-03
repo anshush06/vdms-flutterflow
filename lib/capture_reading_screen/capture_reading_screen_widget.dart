@@ -8,7 +8,12 @@ import 'capture_reading_screen_model.dart';
 export 'capture_reading_screen_model.dart';
 
 class CaptureReadingScreenWidget extends StatefulWidget {
-  const CaptureReadingScreenWidget({super.key});
+  const CaptureReadingScreenWidget({
+    super.key,
+    required this.enableDrawer,
+  });
+
+  final String? enableDrawer;
 
   @override
   State<CaptureReadingScreenWidget> createState() =>
@@ -266,6 +271,12 @@ class _CaptureReadingScreenWidgetState
                                   onTap: () async {
                                     context.pushNamed(
                                       'capture_reading_screen',
+                                      queryParameters: {
+                                        'enableDrawer': serializeParam(
+                                          'ok',
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(
                                           hasTransition: true,
@@ -390,9 +401,11 @@ class _CaptureReadingScreenWidgetState
                 color: FlutterFlowTheme.of(context).primaryText,
                 size: 24.0,
               ),
-              onPressed: () async {
-                scaffoldKey.currentState!.openDrawer();
-              },
+              onPressed: (widget.enableDrawer == 'End your previous day')
+                  ? null
+                  : () async {
+                      scaffoldKey.currentState!.openDrawer();
+                    },
             ),
           ),
           title: Text(

@@ -214,18 +214,16 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                                     _model.remarksTextController?.clear();
                                   });
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: const Text(
+                                    const SnackBar(
+                                      content: Text(
                                         'Remark Saved Successfully',
                                         style: TextStyle(
-                                          color: Color(0xFFFF8C25),
+                                          color: Colors.white,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 2500),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
+                                      duration: Duration(milliseconds: 2500),
+                                      backgroundColor: Color(0xFFFF8C25),
                                     ),
                                   );
 

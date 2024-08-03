@@ -2315,7 +2315,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 multiSelectController: _model
                                                         .propertyIdentifiedDropdownValueController ??=
                                                     FormListFieldController<
-                                                        String>(null),
+                                                        String>(_model
+                                                            .propertyIdentifiedDropdownValue ??=
+                                                        List<String>.from(
+                                                  functions.convertStringToListForDropdowns(
+                                                          widget
+                                                              .reportDetails
+                                                              ?.inspectionFormData
+                                                              .propertyIdentified) ??
+                                                      [],
+                                                )),
                                                 options: List<String>.from([
                                                   '1',
                                                   '2',
@@ -8340,71 +8349,375 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                 (widget.reportDetails?.statusId == '4'))
                               FFButtonWidget(
                                 onPressed: () async {
-                                  if (FFAppState().caseDetails.length >
-                                      widget.caseIndexInList!) {
-                                    FFAppState().updateCaseDetailsAtIndex(
-                                      functions.getDraftCaseIndexInList(
-                                          FFAppState().caseDetails.toList())!,
-                                      (e) => e
-                                        ..updateInspectionFormData(
-                                          (e) => e
-                                            ..personMet = _model
-                                                .personMetAndContactTextController
-                                                .text
-                                            ..propertyLocatedIn = _model
-                                                .propertylocationdropdownValue,
-                                        )
-                                        ..statusId = '4'
-                                        ..statusName = 'Draft Report',
-                                    );
-                                    FFAppState().update(() {});
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Draft Updated Successfully',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 3000),
-                                        backgroundColor: Color(0xFFFF8C25),
-                                      ),
-                                    );
-                                  } else {
+                                  if (widget.reportDetails?.statusId == '1') {
                                     FFAppState().addToCaseDetails(
                                         widget.reportDetails!);
-                                    setState(() {});
-                                    FFAppState().updateCaseDetailsAtIndex(
-                                      functions.getDraftCaseIndexInList(
-                                          FFAppState().caseDetails.toList())!,
-                                      (e) => e
-                                        ..updateInspectionFormData(
-                                          (e) => e
-                                            ..personMet = _model
-                                                .personMetAndContactTextController
-                                                .text
-                                            ..propertyLocatedIn = _model
-                                                .propertylocationdropdownValue,
-                                        )
-                                        ..statusId = '4'
-                                        ..statusName = 'Draft Report',
-                                    );
-                                    FFAppState().update(() {});
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Draft Added Successfully',
-                                          style: TextStyle(
-                                            color: Colors.white,
+                                    if (functions.getDraftCaseIndexInList(
+                                            FFAppState().caseDetails.toList(),
+                                            widget.reportDetails) !=
+                                        -1) {
+                                      FFAppState().updateCaseDetailsAtIndex(
+                                        functions.getDraftCaseIndexInList(
+                                            FFAppState().caseDetails.toList(),
+                                            widget.reportDetails)!,
+                                        (e) => e
+                                          ..updateInspectionFormData(
+                                            (e) => e
+                                              ..personMet = _model
+                                                  .personMetAndContactTextController
+                                                  .text
+                                              ..propertyLocatedIn = _model
+                                                  .propertylocationdropdownValue
+                                              ..address1 = _model
+                                                  .addressline1TextController
+                                                  .text
+                                              ..address2 = _model
+                                                  .addressline2TextController
+                                                  .text
+                                              ..state =
+                                                  _model.statedropdownValue
+                                              ..city =
+                                                  widget.reportDetails?.city
+                                              ..locality = _model
+                                                  .localityTextController.text
+                                              ..pin = _model
+                                                  .pincodeTextController.text
+                                              ..relationWithOwner = _model
+                                                  .relationWithOwnerTextController
+                                                  .text
+                                              ..roadWidth = _model
+                                                  .roadWidthTextController.text
+                                              ..landMark = _model
+                                                  .landmarkTextController.text
+                                              ..classificationOfLocality = _model
+                                                  .classificationLocalityValue
+                                              ..namePlateFixed =
+                                                  _model.nameplateValue
+                                              ..propertyDemarcated =
+                                                  _model.plotDemarcatedValue
+                                              ..propertyIdentified = functions
+                                                  .createCommaSeparatedStringFromList(
+                                                      _model
+                                                          .propertyIdentifiedDropdownValue!
+                                                          .toList())
+                                              ..cityCenter = _model
+                                                  .distanceFromCityTextController
+                                                  .text
+                                              ..railwayStation = _model
+                                                  .distanceFromStationTextController
+                                                  .text
+                                              ..busStop = _model
+                                                  .distanceFromBusTextController
+                                                  .text
+                                              ..hospital = _model
+                                                  .distanceFromHospitalTextController
+                                                  .text
+                                              ..permittedUseOfProperty = _model
+                                                  .permittedUsePropertyValue
+                                              ..propertyType =
+                                                  _model.typeOfPropertyValue
+                                              ..north = _model
+                                                  .northTextController.text
+                                              ..east =
+                                                  _model.eastTextController.text
+                                              ..south = _model
+                                                  .southTextController.text
+                                              ..west =
+                                                  _model.westTextController.text
+                                              ..noOfFloors = _model
+                                                  .totalFloorsTextController
+                                                  .text
+                                              ..noOfLifts = _model
+                                                  .noofliftsTextController.text
+                                              ..floorLocation = _model
+                                                  .floorLocationTextController
+                                                  .text
+                                              ..structureType =
+                                                  _model.typeOfStructureValue
+                                              ..ageBuilding = _model
+                                                  .buildingAgeTextController
+                                                  .text
+                                              ..constructionStatus =
+                                                  _model.constructionStatusValue
+                                              ..completionState = _model
+                                                  .completionStageTextController
+                                                  .text
+                                              ..roof = _model.roofTerraceValue
+                                              ..unitsPerFloor = _model
+                                                  .totalUnitsTextController.text
+                                              ..wallPlasterPainting = functions
+                                                  .convertListDropdownsToHashSeparateStringForDraftReport(
+                                                      _model.wallsDropdownValue
+                                                          ?.toList())
+                                              ..doorsWindows = functions
+                                                  .convertListDropdownsToHashSeparateStringForDraftReport(
+                                                      _model
+                                                          .doorsWindowsDropdownValue
+                                                          ?.toList())
+                                              ..flooringType = functions
+                                                  .convertListDropdownsToHashSeparateStringForDraftReport(
+                                                      _model.floorTypeValue
+                                                          ?.toList())
+                                              ..interiorConstructionQuality = _model
+                                                  .interiorConstructionQualityValue
+                                              ..exteriorConstructionQuality = _model
+                                                  .exteriorConstructionQualityValue
+                                              ..valuationType =
+                                                  _model.valuationTypeValue
+                                              ..carpet = _model
+                                                  .carpetAreaTextController.text
+                                              ..balcony = _model
+                                                  .balconyAreaTextController
+                                                  .text
+                                              ..salableArea = _model
+                                                  .superAreaTextController.text
+                                              ..plotLength = _model
+                                                  .plotLengthTextController.text
+                                              ..plotWidth = _model
+                                                  .plotWidthTextController.text
+                                              ..plotArea = _model
+                                                  .plotAreaTextController.text
+                                              ..rentalValue = _model
+                                                  .rentalValueTextController
+                                                  .text
+                                              ..minimumMarketRates = _model
+                                                  .marketRatesMinimumTextController
+                                                  .text
+                                              ..maximumMarketRates = _model
+                                                  .marketRatesMaximumTextController
+                                                  .text
+                                              ..dealerName = _model
+                                                  .dealerNameTextController.text
+                                              ..dealerMobileNumber = _model
+                                                  .dealerContactTextController
+                                                  .text
+                                              ..updateFloorwiseDetails(
+                                                (e) => e[0]
+                                                  ..floor = _model
+                                                      .nameOfFloorTextController
+                                                      .text
+                                                  ..usage = _model
+                                                      .usageTextController.text
+                                                  ..occupied = _model
+                                                      .occupiedByTextController
+                                                      .text
+                                                  ..accomodation = _model
+                                                      .accommodationTextController
+                                                      .text
+                                                  ..actualMeasuredArea = _model
+                                                      .actualAreaMeasuredTextController
+                                                      .text,
+                                              ),
+                                          )
+                                          ..statusId = '4'
+                                          ..statusName = 'Draft Report',
+                                      );
+                                      FFAppState().update(() {});
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Draft Added Successfully',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
                                           ),
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor: Color(0xFFFF8C25),
                                         ),
-                                        duration: Duration(milliseconds: 3000),
-                                        backgroundColor: Color(0xFFFF8C25),
-                                      ),
-                                    );
+                                      );
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Something went wrong. Try Again!',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor: Color(0xFFB42E30),
+                                        ),
+                                      );
+                                    }
+                                  } else {
+                                    if (functions.getDraftCaseIndexInList(
+                                            FFAppState().caseDetails.toList(),
+                                            widget.reportDetails) !=
+                                        -1) {
+                                      FFAppState().updateCaseDetailsAtIndex(
+                                        functions.getDraftCaseIndexInList(
+                                            FFAppState().caseDetails.toList(),
+                                            widget.reportDetails)!,
+                                        (e) => e
+                                          ..updateInspectionFormData(
+                                            (e) => e
+                                              ..personMet = _model
+                                                  .personMetAndContactTextController
+                                                  .text
+                                              ..propertyLocatedIn = _model
+                                                  .propertylocationdropdownValue
+                                              ..address1 = _model
+                                                  .addressline1TextController
+                                                  .text
+                                              ..address2 = _model
+                                                  .addressline2TextController
+                                                  .text
+                                              ..state =
+                                                  _model.statedropdownValue
+                                              ..city =
+                                                  widget.reportDetails?.city
+                                              ..locality = _model
+                                                  .localityTextController.text
+                                              ..pin = _model
+                                                  .pincodeTextController.text
+                                              ..relationWithOwner = _model
+                                                  .relationWithOwnerTextController
+                                                  .text
+                                              ..roadWidth = _model
+                                                  .roadWidthTextController.text
+                                              ..landMark = _model
+                                                  .landmarkTextController.text
+                                              ..classificationOfLocality = _model
+                                                  .classificationLocalityValue
+                                              ..namePlateFixed =
+                                                  _model.nameplateValue
+                                              ..propertyDemarcated =
+                                                  _model.plotDemarcatedValue
+                                              ..propertyIdentified = functions
+                                                  .createCommaSeparatedStringFromList(
+                                                      _model
+                                                          .propertyIdentifiedDropdownValue!
+                                                          .toList())
+                                              ..cityCenter = _model
+                                                  .distanceFromCityTextController
+                                                  .text
+                                              ..railwayStation = _model
+                                                  .distanceFromStationTextController
+                                                  .text
+                                              ..busStop = _model
+                                                  .distanceFromBusTextController
+                                                  .text
+                                              ..hospital = _model
+                                                  .distanceFromHospitalTextController
+                                                  .text
+                                              ..permittedUseOfProperty = _model
+                                                  .permittedUsePropertyValue
+                                              ..propertyType =
+                                                  _model.typeOfPropertyValue
+                                              ..north = _model
+                                                  .northTextController.text
+                                              ..east =
+                                                  _model.eastTextController.text
+                                              ..south = _model
+                                                  .southTextController.text
+                                              ..west =
+                                                  _model.westTextController.text
+                                              ..noOfFloors = _model
+                                                  .totalFloorsTextController
+                                                  .text
+                                              ..noOfLifts = _model
+                                                  .noofliftsTextController.text
+                                              ..floorLocation = _model
+                                                  .floorLocationTextController
+                                                  .text
+                                              ..structureType =
+                                                  _model.typeOfStructureValue
+                                              ..ageBuilding = _model
+                                                  .buildingAgeTextController
+                                                  .text
+                                              ..constructionStatus =
+                                                  _model.constructionStatusValue
+                                              ..completionState = _model
+                                                  .completionStageTextController
+                                                  .text
+                                              ..roof = _model.roofTerraceValue
+                                              ..unitsPerFloor = _model
+                                                  .totalUnitsTextController.text
+                                              ..wallPlasterPainting = functions
+                                                  .convertListDropdownsToHashSeparateStringForDraftReport(
+                                                      _model.wallsDropdownValue
+                                                          ?.toList())
+                                              ..doorsWindows = functions
+                                                  .convertListDropdownsToHashSeparateStringForDraftReport(
+                                                      _model
+                                                          .doorsWindowsDropdownValue
+                                                          ?.toList())
+                                              ..flooringType = functions
+                                                  .convertListDropdownsToHashSeparateStringForDraftReport(
+                                                      _model.floorTypeValue
+                                                          ?.toList())
+                                              ..interiorConstructionQuality = _model
+                                                  .interiorConstructionQualityValue
+                                              ..exteriorConstructionQuality = _model
+                                                  .exteriorConstructionQualityValue
+                                              ..valuationType =
+                                                  _model.valuationTypeValue
+                                              ..carpet = _model
+                                                  .carpetAreaTextController.text
+                                              ..balcony = _model
+                                                  .balconyAreaTextController
+                                                  .text
+                                              ..salableArea = _model
+                                                  .superAreaTextController.text
+                                              ..plotLength = _model
+                                                  .plotLengthTextController.text
+                                              ..plotWidth = _model
+                                                  .plotWidthTextController.text
+                                              ..plotArea = _model
+                                                  .plotAreaTextController.text
+                                              ..rentalValue = _model
+                                                  .rentalValueTextController
+                                                  .text
+                                              ..minimumMarketRates = _model
+                                                  .marketRatesMinimumTextController
+                                                  .text
+                                              ..maximumMarketRates = _model
+                                                  .marketRatesMaximumTextController
+                                                  .text
+                                              ..dealerName = _model
+                                                  .dealerNameTextController.text
+                                              ..dealerMobileNumber = _model
+                                                  .dealerContactTextController
+                                                  .text,
+                                          )
+                                          ..statusName = 'Draft Report',
+                                      );
+                                      FFAppState().update(() {});
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Draft Updated Successfully',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor: Color(0xFFFF8C25),
+                                        ),
+                                      );
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Something went wrong. Try Again!',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor: Color(0xFFB42E30),
+                                        ),
+                                      );
+                                    }
                                   }
-
-                                  context.safePop();
                                 },
                                 text: 'SAVE DRAFT',
                                 options: FFButtonOptions(

@@ -57,24 +57,50 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
             userId: functions.convertStringtoInteger(FFAppState().userId),
           );
 
-          context.goNamed(
-            'main_case_listing_screen',
-            queryParameters: {
-              'notificationCount': serializeParam(
-                GetNotificationCountAPIStruct.maybeFromMap(
-                        (_model.notificationCountAPIResponse?.jsonBody ?? ''))
-                    ?.response
-                    .count,
-                ParamType.int,
-              ),
-            }.withoutNulls,
-            extra: <String, dynamic>{
-              kTransitionInfoKey: const TransitionInfo(
-                hasTransition: true,
-                transitionType: PageTransitionType.rightToLeft,
-              ),
-            },
-          );
+          if (TravelReadingStruct.maybeFromMap(
+                      (_model.checkTravelStatusAPIResponse2?.jsonBody ?? ''))
+                  ?.response
+                  .message ==
+              'End your previous day') {
+            context.goNamed(
+              'capture_reading_screen',
+              queryParameters: {
+                'enableDrawer': serializeParam(
+                  TravelReadingStruct.maybeFromMap(
+                          (_model.checkTravelStatusAPIResponse2?.jsonBody ??
+                              ''))
+                      ?.response
+                      .message,
+                  ParamType.String,
+                ),
+              }.withoutNulls,
+              extra: <String, dynamic>{
+                kTransitionInfoKey: const TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.rightToLeft,
+                ),
+              },
+            );
+          } else {
+            context.goNamed(
+              'main_case_listing_screen',
+              queryParameters: {
+                'notificationCount': serializeParam(
+                  GetNotificationCountAPIStruct.maybeFromMap(
+                          (_model.notificationCountAPIResponse?.jsonBody ?? ''))
+                      ?.response
+                      .count,
+                  ParamType.int,
+                ),
+              }.withoutNulls,
+              extra: <String, dynamic>{
+                kTransitionInfoKey: const TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.rightToLeft,
+                ),
+              },
+            );
+          }
         } else {
           context.goNamed(
             'login_screen',

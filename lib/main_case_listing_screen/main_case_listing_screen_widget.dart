@@ -280,6 +280,12 @@ class _MainCaseListingScreenWidgetState
                                   onTap: () async {
                                     context.pushNamed(
                                       'capture_reading_screen',
+                                      queryParameters: {
+                                        'enableDrawer': serializeParam(
+                                          'ok',
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(
                                           hasTransition: true,

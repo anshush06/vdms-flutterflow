@@ -82,98 +82,59 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 5.0, 0.0, 0.0),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 50.0,
-                                    color: Color(0x0F000000),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(10.0),
-                                  bottomRight: Radius.circular(10.0),
-                                  topLeft: Radius.circular(10.0),
-                                  topRight: Radius.circular(10.0),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 14.0, 10.0, 14.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
-                                      child: Icon(
-                                        Icons.camera_alt,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 24.0,
-                                      ),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  'take_pictures_screen',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: const TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
                                     ),
-                                    Expanded(
-                                      child: Text(
-                                        'Selfie',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
+                                  },
+                                );
+                              },
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 50.0,
+                                      color: Color(0x0F000000),
+                                    )
                                   ],
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(10.0),
+                                    bottomRight: Radius.circular(10.0),
+                                    topLeft: Radius.circular(10.0),
+                                    topRight: Radius.circular(10.0),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 0.0),
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 0.0,
-                                    color: Color(0x0F000000),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(10.0),
-                                  bottomRight: Radius.circular(10.0),
-                                  topLeft: Radius.circular(10.0),
-                                  topRight: Radius.circular(10.0),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 14.0, 5.0, 14.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
-                                      child: Icon(
-                                        Icons.camera_alt,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Padding(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 14.0, 10.0, 14.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 0.0, 0.0),
+                                            20.0, 0.0, 0.0, 0.0),
+                                        child: Icon(
+                                          Icons.camera_alt,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                      Expanded(
                                         child: Text(
-                                          'Longitude and Latitude (1)',
+                                          'Selfie',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -183,8 +144,84 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ),
                                         ),
                                       ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  'take_pictures_screen',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: const TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
                                     ),
+                                  },
+                                );
+                              },
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 0.0,
+                                      color: Color(0x0F000000),
+                                    )
                                   ],
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(10.0),
+                                    bottomRight: Radius.circular(10.0),
+                                    topLeft: Radius.circular(10.0),
+                                    topRight: Radius.circular(10.0),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 14.0, 5.0, 14.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 0.0, 0.0, 0.0),
+                                        child: Icon(
+                                          Icons.camera_alt,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Longitude and Latitude (1)',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -210,61 +247,80 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Expanded(
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 50.0,
-                                        color: Color(0x0F000000),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(10.0),
-                                      bottomRight: Radius.circular(10.0),
-                                      topLeft: Radius.circular(10.0),
-                                      topRight: Radius.circular(10.0),
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 14.0, 5.0, 14.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 0.0, 0.0, 0.0),
-                                          child: Icon(
-                                            Icons.camera_alt,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'take_pictures_screen',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
                                         ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
+                                      },
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 50.0,
+                                          color: Color(0x0F000000),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(10.0),
+                                        bottomRight: Radius.circular(10.0),
+                                        topLeft: Radius.circular(10.0),
+                                        topRight: Radius.circular(10.0),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 14.0, 5.0, 14.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 20.0, 0.0),
-                                            child: Text(
-                                              'Front',
-                                              style:
+                                                    20.0, 0.0, 0.0, 0.0),
+                                            child: Icon(
+                                              Icons.camera_alt,
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                                      .secondaryText,
+                                              size: 24.0,
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 20.0, 0.0),
+                                              child: Text(
+                                                'Front',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -273,62 +329,80 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
                                           ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      10.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                'Back',
-                                                style:
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                        .secondaryText,
+                                                size: 24.0,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 20.0, 0.0),
+                                                child: Text(
+                                                  'Back',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -344,62 +418,80 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
                                           ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      10.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                'Left',
-                                                style:
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                        .secondaryText,
+                                                size: 24.0,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 20.0, 0.0),
+                                                child: Text(
+                                                  'Left',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -409,62 +501,80 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
                                           ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      10.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                'Right',
-                                                style:
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                        .secondaryText,
+                                                size: 24.0,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 20.0, 0.0),
+                                                child: Text(
+                                                  'Right',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -480,62 +590,80 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
                                           ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      10.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                'Approach Road',
-                                                style:
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                        .secondaryText,
+                                                size: 24.0,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 20.0, 0.0),
+                                                child: Text(
+                                                  'Approach Road',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -545,62 +673,80 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
                                           ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      10.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                'Projection',
-                                                style:
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                        .secondaryText,
+                                                size: 24.0,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 20.0, 0.0),
+                                                child: Text(
+                                                  'Projection',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -632,121 +778,68 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
                                           ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      10.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                'Room',
-                                                style:
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                        .secondaryText,
+                                                size: 24.0,
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.32,
-                                              decoration: const BoxDecoration(),
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'DD/Living Room',
+                                                  'Room',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -757,79 +850,8 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                'Room',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -839,7 +861,23 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 10.0, 0.0, 0.0),
-                                  child: SafeArea(
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
+                                          ),
+                                        },
+                                      );
+                                    },
                                     child: Container(
                                       decoration: const BoxDecoration(
                                         color: Colors.white,
@@ -890,7 +928,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                       .fromSTEB(
                                                           10.0, 0.0, 20.0, 0.0),
                                                   child: Text(
-                                                    'Shop/Office (0)',
+                                                    'DD/Living Room',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -919,58 +957,175 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.9,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
                                           ),
-                                          Expanded(
-                                            child: Text(
-                                              'Other Photos/Documents (0)',
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 20.0, 0.0),
+                                                child: Text(
+                                                  'Room',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
                                                       ),
+                                                ),
+                                              ),
                                             ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 10.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
                                           ),
-                                        ],
+                                        },
+                                      );
+                                    },
+                                    child: SafeArea(
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 50.0,
+                                              color: Color(0x0F000000),
+                                            )
+                                          ],
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(10.0),
+                                            bottomRight: Radius.circular(10.0),
+                                            topLeft: Radius.circular(10.0),
+                                            topRight: Radius.circular(10.0),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 14.0, 5.0, 14.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 0.0, 0.0),
+                                                child: Icon(
+                                                  Icons.camera_alt,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Container(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.32,
+                                                  decoration: const BoxDecoration(),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                20.0, 0.0),
+                                                    child: Text(
+                                                      'Shop/Office (0)',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -986,58 +1141,161 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.9,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.9,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                'Other Photos/Documents (0)',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'take_pictures_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
                                           ),
-                                          Expanded(
-                                            child: Text(
-                                              'Draft Report Form (0)',
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                          ),
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.9,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
                                         ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                'Draft Report Form (0)',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

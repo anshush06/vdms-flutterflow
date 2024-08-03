@@ -148,7 +148,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'capture_reading_screen',
           path: '/captureReadingScreen',
-          builder: (context, params) => const CaptureReadingScreenWidget(),
+          builder: (context, params) => CaptureReadingScreenWidget(
+            enableDrawer: params.getParam(
+              'enableDrawer',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'capture_reading_value_screen',
@@ -159,6 +164,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.FFUploadedFile,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'take_pictures_screen',
+          path: '/takePicturesScreen',
+          builder: (context, params) => const TakePicturesScreenWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -22,3 +22,5 @@ export '/capture_reading_screen/capture_reading_screen_widget.dart'
     show CaptureReadingScreenWidget;
 export '/capture_reading_value_screen/capture_reading_value_screen_widget.dart'
     show CaptureReadingValueScreenWidget;
+export '/take_pictures_screen/take_pictures_screen_widget.dart'
+    show TakePicturesScreenWidget;

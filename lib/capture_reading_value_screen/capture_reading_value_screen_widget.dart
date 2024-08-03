@@ -276,6 +276,12 @@ class _CaptureReadingValueScreenWidgetState
                                   onTap: () async {
                                     context.pushNamed(
                                       'capture_reading_screen',
+                                      queryParameters: {
+                                        'enableDrawer': serializeParam(
+                                          'ok',
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(
                                           hasTransition: true,
@@ -599,104 +605,112 @@ class _CaptureReadingValueScreenWidgetState
                                   !_model.formKey.currentState!.validate()) {
                                 return;
                               }
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: const Text('Confirmation'),
-                                            content: const Text(
-                                                'Are you sure you want to submit the reading?'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: const Text('Cancel'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: const Text('Confirm'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                              if (confirmDialogResponse) {
-                                _model.uploadReadingImageResponse =
-                                    await actions.convertCompressAndUpload(
-                                  functions.getImageName(widget.image!)!,
-                                  functions
-                                      .getImageByteArray(widget.image!)
-                                      .toList(),
-                                  'meter_reading_image',
-                                  _model.readingTextController.text,
-                                );
-                                if (_model.uploadReadingImageResponse!) {
-                                  FFAppState().update(() {});
-
-                                  context.goNamed(
-                                    'main_case_listing_screen',
-                                    queryParameters: {
-                                      'notificationCount': serializeParam(
-                                        0,
-                                        ParamType.int,
-                                      ),
-                                    }.withoutNulls,
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.leftToRight,
-                                      ),
-                                    },
+                              if (!functions.validateReading(
+                                  FFAppState().startReading,
+                                  _model.readingTextController.text)) {
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: const Text('Confirmation'),
+                                              content: const Text(
+                                                  'Are you sure you want to submit the reading?'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: const Text('Cancel'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: const Text('Confirm'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  _model.uploadReadingImageResponse =
+                                      await actions.convertCompressAndUpload(
+                                    functions.getImageName(widget.image!)!,
+                                    functions
+                                        .getImageByteArray(widget.image!)
+                                        .toList(),
+                                    'meter_reading_image',
+                                    _model.readingTextController.text,
                                   );
+                                  if (_model.uploadReadingImageResponse!) {
+                                    FFAppState().update(() {});
 
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Reading Captured Successfully',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                    context.goNamed(
+                                      'main_case_listing_screen',
+                                      queryParameters: {
+                                        'notificationCount': serializeParam(
+                                          0,
+                                          ParamType.int,
                                         ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.leftToRight,
+                                        ),
+                                      },
+                                    );
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Reading Captured Successfully',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: const Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
-                                  );
+                                    );
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Not Success',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: const Duration(milliseconds: 4000),
+                                        backgroundColor: const Color(0xFFC72022),
+                                      ),
+                                    );
+                                  }
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Not Success',
+                                        'Cancel',
                                         style: TextStyle(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                         ),
                                       ),
                                       duration: const Duration(milliseconds: 4000),
-                                      backgroundColor: const Color(0xFFC72022),
+                                      backgroundColor: const Color(0xFFC10032),
                                     ),
                                   );
                                 }
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Cancel',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor: const Color(0xFFC10032),
-                                  ),
-                                );
                               }
 
                               setState(() {});

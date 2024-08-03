@@ -164,8 +164,25 @@ String getStateValueForStateDropdown(
   return "1";
 }
 
-int? getDraftCaseIndexInList(List<ResponseStruct> cases) {
-  return cases.length - 1 < 0 ? null : cases.length - 1;
+int? getDraftCaseIndexInList(
+  List<ResponseStruct> draftCases,
+  ResponseStruct? currentCase,
+) {
+  if (draftCases == null || currentCase == null) {
+    return -1;
+  }
+  if (currentCase.id == '1') {
+    return draftCases.length - 1 < 0 ? 0 : draftCases.length - 1;
+  }
+  // Check if the currentCase is present in draftCases
+  int index = 0;
+  for (final caseItem in draftCases) {
+    if (caseItem.id == currentCase.id) {
+      return index;
+    }
+    index++;
+  }
+  return -1;
 }
 
 bool filterCases(
@@ -367,4 +384,9 @@ String? getImageName(FFUploadedFile image) {
 
 List<int> getImageByteArray(FFUploadedFile image) {
   return image.bytes!;
+}
+
+String? convertListDropdownsToHashSeparateStringForDraftReport(
+    List<String>? list) {
+  return list!.join('##');
 }
