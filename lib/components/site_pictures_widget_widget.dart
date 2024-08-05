@@ -2071,26 +2071,37 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       decoration: const BoxDecoration(),
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          ScaffoldMessenger.of(context)
+                                              .clearSnackBars();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Uploading Images....',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  const Duration(milliseconds: 10000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
                                           _model.submitSurveyAPIResponse =
                                               await actions
                                                   .submitSurveyDocuments(
                                             widget.caseDetails!.id,
                                             FFAppState().userId,
-                                            'Site Visit Images',
-                                            'image',
-                                            FFAppState()
-                                                .sitePictures
-                                                .first
-                                                .name,
-                                            functions
-                                                .getImageByteArrayFromSelfieList(
-                                                    FFAppState()
-                                                        .sitePictures
-                                                        .toList())
-                                                .toList(),
+                                            FFAppState().sitePictures.toList(),
                                           );
                                           if (_model.submitSurveyAPIResponse ==
                                               true) {
+                                            ScaffoldMessenger.of(context)
+                                                .clearSnackBars();
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
                                               SnackBar(
