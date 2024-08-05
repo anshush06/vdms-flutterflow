@@ -113,7 +113,7 @@ class _NotificationScreenWidgetState extends State<NotificationScreenWidget> {
                             userId: functions
                                 .convertStringtoInteger(FFAppState().userId),
                             limit: 10,
-                            page: (nextPageMarker.nextPageNumber + 1) * 10,
+                            page: (nextPageMarker.nextPageNumber + 1),
                           ),
                         ),
                         padding: EdgeInsets.zero,

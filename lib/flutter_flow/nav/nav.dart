@@ -51,6 +51,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'notificationCount',
               ParamType.int,
             ),
+            tabIndex: params.getParam(
+              'tabIndex',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(

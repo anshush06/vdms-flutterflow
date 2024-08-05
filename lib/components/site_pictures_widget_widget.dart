@@ -2075,20 +2075,18 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               .clearSnackBars();
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            SnackBar(
+                                            const SnackBar(
                                               content: Text(
                                                 'Uploading Images....',
                                                 style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w500,
                                                 ),
                                               ),
                                               duration:
-                                                  const Duration(milliseconds: 10000),
+                                                  Duration(milliseconds: 10000),
                                               backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
+                                                  Color(0xFFFF8C25),
                                             ),
                                           );
                                           _model.submitSurveyAPIResponse =
@@ -2104,20 +2102,18 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                 .clearSnackBars();
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
-                                              SnackBar(
+                                              const SnackBar(
                                                 content: Text(
-                                                  'Uploaded',
+                                                  'Images Uploaded Successfully',
                                                   style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
                                                   ),
                                                 ),
-                                                duration: const Duration(
+                                                duration: Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
+                                                    Color(0xFFFF8C25),
                                               ),
                                             );
                                           } else {
@@ -2125,7 +2121,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                 .showSnackBar(
                                               SnackBar(
                                                 content: Text(
-                                                  'Not Uploaded',
+                                                  'Not Uploaded. Something went wrong!',
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)

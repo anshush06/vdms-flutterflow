@@ -77,6 +77,9 @@ Future<bool> submitSurveyDocuments(
         'developer': 'velocity',
       };
 
+      // Generate the timestamp
+      double timeStamp = DateTime.now().millisecondsSinceEpoch / 1000;
+      String stringTimeStamp = timeStamp.toInt().toString();
       // Generate the URL (replace with your actual method to generate the URL)
       var url =
           'http://vdmsstaging.pvplglobal.com/api/uploadSurveyDocumentsAPI'; // Replace with the actual URL

@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/case_card_widget/case_card_widget_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'dart:async';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,9 +16,11 @@ class MainCaseListingScreenWidget extends StatefulWidget {
   const MainCaseListingScreenWidget({
     super.key,
     required this.notificationCount,
-  });
+    int? tabIndex,
+  }) : tabIndex = tabIndex ?? 0;
 
   final int? notificationCount;
+  final int tabIndex;
 
   @override
   State<MainCaseListingScreenWidget> createState() =>
@@ -40,7 +41,12 @@ class _MainCaseListingScreenWidgetState
     _model.tabBarController = TabController(
       vsync: this,
       length: 4,
-      initialIndex: 0,
+      initialIndex: min(
+          valueOrDefault<int>(
+            widget.tabIndex,
+            0,
+          ),
+          3),
     )..addListener(() => setState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -447,8 +453,29 @@ class _MainCaseListingScreenWidgetState
                   size: 24.0,
                 ),
                 onPressed: () async {
-                  setState(() => _model.apiRequestCompleter = null);
-                  await _model.waitForApiRequestCompleted(maxWait: 30000);
+                  if (Navigator.of(context).canPop()) {
+                    context.pop();
+                  }
+                  context.pushNamed(
+                    'main_case_listing_screen',
+                    queryParameters: {
+                      'notificationCount': serializeParam(
+                        widget.notificationCount,
+                        ParamType.int,
+                      ),
+                      'tabIndex': serializeParam(
+                        _model.tabBarCurrentIndex,
+                        ParamType.int,
+                      ),
+                    }.withoutNulls,
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: const TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
                 },
               ),
             ),
@@ -573,16 +600,11 @@ class _MainCaseListingScreenWidgetState
                         controller: _model.tabBarController,
                         children: [
                           FutureBuilder<ApiCallResponse>(
-                            future: (_model.apiRequestCompleter ??=
-                                    Completer<ApiCallResponse>()
-                                      ..complete(
-                                          VdmsApiCallsGroup.getCaseAPICall.call(
-                                        filters: '{\"caseStatus\":\"1\"}',
-                                        userId:
-                                            functions.convertStringtoInteger(
-                                                FFAppState().userId),
-                                      )))
-                                .future,
+                            future: VdmsApiCallsGroup.getCaseAPICall.call(
+                              filters: '{\"caseStatus\":\"1\"}',
+                              userId: functions
+                                  .convertStringtoInteger(FFAppState().userId),
+                            ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
