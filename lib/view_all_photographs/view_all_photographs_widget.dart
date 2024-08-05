@@ -4,13 +4,15 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'take_pictures_screen_model.dart';
-export 'take_pictures_screen_model.dart';
+import 'package:provider/provider.dart';
+import 'view_all_photographs_model.dart';
+export 'view_all_photographs_model.dart';
 
-class TakePicturesScreenWidget extends StatefulWidget {
-  const TakePicturesScreenWidget({
+class ViewAllPhotographsWidget extends StatefulWidget {
+  const ViewAllPhotographsWidget({
     super.key,
     required this.imageType,
     required this.section,
@@ -22,19 +24,19 @@ class TakePicturesScreenWidget extends StatefulWidget {
   final ResponseStruct? caseDetails;
 
   @override
-  State<TakePicturesScreenWidget> createState() =>
-      _TakePicturesScreenWidgetState();
+  State<ViewAllPhotographsWidget> createState() =>
+      _ViewAllPhotographsWidgetState();
 }
 
-class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
-  late TakePicturesScreenModel _model;
+class _ViewAllPhotographsWidgetState extends State<ViewAllPhotographsWidget> {
+  late ViewAllPhotographsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TakePicturesScreenModel());
+    _model = createModel(context, () => ViewAllPhotographsModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -48,6 +50,8 @@ class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -77,18 +81,51 @@ class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Select Selfie',
+                'Case Detail',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Roboto',
                       color: const Color(0xFFF3F6F8),
-                      fontSize: 18.0,
                       letterSpacing: 0.0,
-                      fontWeight: FontWeight.w500,
+                    ),
+              ),
+              Text(
+                valueOrDefault<String>(
+                  widget.caseDetails?.refNo,
+                  '-',
+                ),
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Roboto',
+                      color: Colors.white,
+                      letterSpacing: 0.0,
                     ),
               ),
             ],
           ),
-          actions: const [],
+          actions: [
+            FlutterFlowIconButton(
+              borderColor: const Color(0xFF0F61AB),
+              borderRadius: 20.0,
+              borderWidth: 1.0,
+              buttonSize: 40.0,
+              fillColor: const Color(0xFF0F61AB),
+              icon: const Icon(
+                Icons.notification_add_outlined,
+                color: Colors.white,
+                size: 24.0,
+              ),
+              onPressed: () async {
+                context.pushNamed(
+                  'notification_screen',
+                  extra: <String, dynamic>{
+                    kTransitionInfoKey: const TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
+                    ),
+                  },
+                );
+              },
+            ),
+          ],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -107,36 +144,103 @@ class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 20.0, 0.0, 0.0),
-                            child: Container(
-                              width: 100.0,
-                              height: MediaQuery.sizeOf(context).height * 0.2,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFEFF7FF),
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(5.0),
-                                  bottomRight: Radius.circular(5.0),
-                                  topLeft: Radius.circular(5.0),
-                                  topRight: Radius.circular(5.0),
+                          Builder(
+                            builder: (context) {
+                              final eachImage = functions
+                                      .filterImagesBySection(
+                                          widget.imageType!,
+                                          FFAppState().sitePictures.toList(),
+                                          widget.caseDetails!.id)
+                                      ?.toList() ??
+                                  [];
+
+                              return ListView.separated(
+                                padding: const EdgeInsets.fromLTRB(
+                                  0,
+                                  10.0,
+                                  0,
+                                  0,
                                 ),
-                                border: Border.all(
-                                  color: const Color(0xFF0F61AB),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: eachImage.length,
+                                separatorBuilder: (_, __) =>
+                                    const SizedBox(height: 10.0),
+                                itemBuilder: (context, eachImageIndex) {
+                                  final eachImageItem =
+                                      eachImage[eachImageIndex];
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        child: SizedBox(
+                                          width: 100.0,
+                                          height: 100.0,
+                                          child: custom_widgets.ImageWidget(
+                                            width: 100.0,
+                                            height: 100.0,
+                                            fileName: eachImageItem.name,
+                                            text: eachImageItem.timestamp,
+                                            byteArray: eachImageItem.bytes,
+                                          ),
+                                        ),
+                                      ),
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.white,
+                                        borderRadius: 20.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        fillColor: Colors.white,
+                                        icon: const Icon(
+                                          Icons.delete_sharp,
+                                          color: Color(0xFF0F61AB),
+                                          size: 25.0,
+                                        ),
+                                        onPressed: () async {
+                                          FFAppState()
+                                              .removeAtIndexFromSitePictures(
+                                                  functions
+                                                      .getCurrentImageIndexByID(
+                                                          eachImageItem.name,
+                                                          FFAppState()
+                                                              .sitePictures
+                                                              .toList()));
+                                          setState(() {});
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              FlutterFlowIconButton(
+                                borderColor: const Color(0xFF33B5E5),
+                                borderRadius: 20.0,
+                                borderWidth: 1.0,
+                                buttonSize: 40.0,
+                                fillColor: const Color(0xFF33B5E5),
+                                icon: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 24.0,
                                 ),
-                              ),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
+                                onPressed: () async {
                                   final selectedMedia =
                                       await selectMediaWithSourceBottomSheet(
                                     context: context,
@@ -207,80 +311,10 @@ class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
                                         backgroundColor: Color(0xFFFF8C25),
                                       ),
                                     );
-                                    if (Navigator.of(context).canPop()) {
-                                      context.pop();
-                                    }
-                                    context.pushNamed(
-                                      'view_all_photographs',
-                                      queryParameters: {
-                                        'imageType': serializeParam(
-                                          widget.imageType,
-                                          ParamType.String,
-                                        ),
-                                        'section': serializeParam(
-                                          widget.section,
-                                          ParamType.int,
-                                        ),
-                                        'caseDetails': serializeParam(
-                                          widget.caseDetails,
-                                          ParamType.DataStruct,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.rightToLeft,
-                                        ),
-                                      },
-                                    );
                                   }
                                 },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.white,
-                                      borderRadius: 20.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      fillColor: const Color(0xFFEFF7FF),
-                                      icon: const Icon(
-                                        Icons.camera_enhance,
-                                        color: Color(0xFF0F61AB),
-                                        size: 34.0,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
-                                    ),
-                                  ],
-                                ),
                               ),
-                            ),
-                          ),
-                          Text(
-                            'Hi,',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Roboto',
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Text(
-                            'You have not uploaded the images yet',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Roboto',
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                            ],
                           ),
                           FFButtonWidget(
                             onPressed: () async {
@@ -306,10 +340,12 @@ class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
-                        ].divide(const SizedBox(height: 20.0)),
+                        ]
+                            .divide(const SizedBox(height: 15.0))
+                            .addToEnd(const SizedBox(height: 10.0)),
                       ),
                     ),
                   ),

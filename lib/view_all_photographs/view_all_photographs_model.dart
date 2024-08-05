@@ -1,9 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'take_pictures_screen_widget.dart' show TakePicturesScreenWidget;
+import 'view_all_photographs_widget.dart' show ViewAllPhotographsWidget;
 import 'package:flutter/material.dart';
 
-class TakePicturesScreenModel
-    extends FlutterFlowModel<TakePicturesScreenWidget> {
+class ViewAllPhotographsModel
+    extends FlutterFlowModel<ViewAllPhotographsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'documentation_widget_model.dart';
 export 'documentation_widget_model.dart';
 
@@ -47,6 +48,8 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
       child: Container(
@@ -99,6 +102,12 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
                 onTap: () async {
                   context.pushNamed(
                     'site_pictures_screen',
+                    queryParameters: {
+                      'caseDetails': serializeParam(
+                        widget.caseDetailsForDocumentation,
+                        ParamType.DataStruct,
+                      ),
+                    }.withoutNulls,
                     extra: <String, dynamic>{
                       kTransitionInfoKey: const TransitionInfo(
                         hasTransition: true,
@@ -131,7 +140,7 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 5.0, 0.0),
                             child: Text(
-                              'No images',
+                              '${functions.filterImagesByCaseID(FFAppState().sitePictures.toList(), widget.caseDetailsForDocumentation!.id)?.length.toString()} images',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

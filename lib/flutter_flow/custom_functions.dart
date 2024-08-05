@@ -401,3 +401,66 @@ double? getCoordinate(
 
   return coordinates?.longitude ?? 0.0;
 }
+
+List<SitePictureListResponseStruct>? filterImagesBySection(
+  String fieldName,
+  List<SitePictureListResponseStruct>? imageList,
+  String caseId,
+) {
+  if (imageList == null) {
+    return null;
+  }
+
+  List<SitePictureListResponseStruct> filteredImages = imageList
+      .where((image) => image.fieldName == fieldName && image.caseId == caseId)
+      .toList();
+
+  return filteredImages;
+}
+
+int getImageID(List<SitePictureListResponseStruct>? images) {
+  if (images == null) {
+    return 0;
+  }
+
+  return images.length;
+}
+
+int getCurrentImageIndexByID(
+  String name,
+  List<SitePictureListResponseStruct>? images,
+) {
+  if (images == null) {
+    return -1; // Return -1 if the list is null
+  }
+
+  for (int index = 0; index < images.length; index++) {
+    if (images[index].name == name) {
+      return index; // Return the index if the id matches
+    }
+  }
+  return -1; // Return -1 if no match is found
+}
+
+List<SitePictureListResponseStruct>? filterImagesByCaseID(
+  List<SitePictureListResponseStruct>? imageList,
+  String caseId,
+) {
+  if (imageList == null) {
+    return null;
+  }
+
+  List<SitePictureListResponseStruct> filteredImages =
+      imageList.where((image) => image.caseId == caseId).toList();
+
+  return filteredImages;
+}
+
+bool checkEmptyFields(ResponseStruct caseDetails) {
+  return true;
+}
+
+List<int> getImageByteArrayFromSelfieList(
+    List<SitePictureListResponseStruct>? sitePictures) {
+  return sitePictures![0].bytes;
+}

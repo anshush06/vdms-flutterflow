@@ -190,6 +190,7 @@ class _MainCaseListingScreenWidgetState
                                     FFAppState().userId = '';
                                     FFAppState().travelStatus = '';
                                     FFAppState().startReading = '';
+                                    FFAppState().caseDetails = [];
                                     setState(() {});
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
@@ -728,6 +729,13 @@ class _MainCaseListingScreenWidgetState
                                               ParamType.DataStruct,
                                             ),
                                           }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
+                                            ),
+                                          },
                                         );
                                       },
                                       child: CaseCardWidgetWidget(

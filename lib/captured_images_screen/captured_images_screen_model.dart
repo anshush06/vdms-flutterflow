@@ -1,15 +1,12 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'take_pictures_screen_widget.dart' show TakePicturesScreenWidget;
+import 'captured_images_screen_widget.dart' show CapturedImagesScreenWidget;
 import 'package:flutter/material.dart';
 
-class TakePicturesScreenModel
-    extends FlutterFlowModel<TakePicturesScreenWidget> {
+class CapturedImagesScreenModel
+    extends FlutterFlowModel<CapturedImagesScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
 
   @override
   void initState(BuildContext context) {}

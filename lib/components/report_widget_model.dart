@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'report_widget_widget.dart' show ReportWidgetWidget;
@@ -580,8 +579,6 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   TextEditingController? aadditionalRemarkTextController;
   String? Function(BuildContext, String?)?
       aadditionalRemarkTextControllerValidator;
-  // Stores action output result for [Backend Call - API (submitSurveyAPI)] action in Button widget.
-  ApiCallResponse? submitSurveyAPIResponse;
 
   @override
   void initState(BuildContext context) {

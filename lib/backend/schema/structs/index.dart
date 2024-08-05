@@ -11,6 +11,8 @@ export 'inspection_form_data_struct.dart';
 export 'notification_response_data_struct.dart';
 export 'response_struct.dart';
 export 'selfie_images_struct.dart';
+export 'site_picture_list_response_struct.dart';
+export 'site_pictures_list_struct.dart';
 export 'submit_survey_a_p_i_struct.dart';
 export 'travel_log_struct.dart';
 export 'travel_log_response_struct.dart';

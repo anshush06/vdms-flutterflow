@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/documentation_widget_widget.dart';
 import '/components/remark_widget_widget.dart';
@@ -8,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/case_card_widget/case_card_widget_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'case_details_screen_model.dart';
 export 'case_details_screen_model.dart';
 
@@ -50,6 +52,8 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -194,40 +198,424 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                     caseIndex: widget.currentCaseIndex!,
                   ),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed:
-                        ((widget.selectedCaseDetails?.statusId == '2') ||
-                                (widget.selectedCaseDetails?.statusId == '3'))
-                            ? null
-                            : () {
-                                print('Button pressed ...');
-                              },
-                    text: 'SUBMIT',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFFFF8C25),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Roboto',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 3.0,
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
+                if (!((widget.selectedCaseDetails?.statusId == '2') ||
+                    (widget.selectedCaseDetails?.statusId == '3')))
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: ((widget.selectedCaseDetails?.statusId ==
+                                  '2') ||
+                              (widget.selectedCaseDetails?.statusId == '3'))
+                          ? null
+                          : () async {
+                              if (widget.selectedCaseDetails?.statusId ==
+                                  '1') {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Please fill the report form fields',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 2500),
+                                    backgroundColor: Color(0xFFFF0000),
+                                  ),
+                                );
+
+                                context.pushNamed(
+                                  'report_screen',
+                                  queryParameters: {
+                                    'caseDetailsForReport': serializeParam(
+                                      widget.selectedCaseDetails,
+                                      ParamType.DataStruct,
+                                    ),
+                                    'caseIndex': serializeParam(
+                                      widget.currentCaseIndex,
+                                      ParamType.int,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              } else {
+                                FFAppState().submitCaseDetails =
+                                    FFAppState().caseDetails[
+                                        functions.getDraftCaseIndexInList(
+                                            FFAppState().caseDetails.toList(),
+                                            widget.selectedCaseDetails)!];
+                                setState(() {});
+                                if (functions.checkEmptyFields(
+                                    FFAppState().submitCaseDetails)) {
+                                  var confirmDialogResponse =
+                                      await showDialog<bool>(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: const Text('Confirmation'),
+                                                content: const Text(
+                                                    'Are you want to submit the form ?'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            false),
+                                                    child: const Text('Cancel'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            true),
+                                                    child: const Text('Confirm'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          ) ??
+                                          false;
+                                  if (confirmDialogResponse) {
+                                    _model.submitSurveyAPIResponse =
+                                        await VdmsApiCallsGroup
+                                            .submitSurveyAPICall
+                                            .call(
+                                      userId: functions.convertStringtoInteger(
+                                          FFAppState().userId),
+                                      caseId: functions.convertStringtoInteger(
+                                          FFAppState().submitCaseDetails.id),
+                                      timestamp:
+                                          functions.getCurrentTimeStamp(),
+                                      inspectionFormData:
+                                          functions.convertDataToJson(
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .refNo,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .bank,
+                                              FFAppState().username,
+                                              functions.getCurrentTimeStamp(),
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .applicantName,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .address1,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .state,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .locality,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .pin,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .propertyLocatedIn,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .classificationOfLocality,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .namePlateFixed,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .propertyDemarcated,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .propertyType,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .permittedUseOfProperty,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .structureType,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .constructionStatus,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .roof,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .interiorConstructionQuality,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .exteriorConstructionQuality,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .valuationType,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .carpet,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .balcony,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .salableArea,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .plotArea,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .rentalValue,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .minimumMarketRates,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .maximumMarketRates,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .city,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .address2,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .personMet,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .relationWithOwner,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .landMark,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .roadWidth,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .propertyIdentified,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .cityCenter,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .railwayStation,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .busStop,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .hospital,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .north,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .south,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .east,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .west,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .otherPermittedUseOfProperty,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .noOfFloors,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .unitsPerFloor,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .noOfLifts,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .floorLocation,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .ageBuilding,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .completionState,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .otherRoof,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .wallPlasterPainting,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .doorsWindows,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .flooringType,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .plotLength,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .plotWidth,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .reasonPortionNotSeen,
+                                              FFAppState()
+                                                  .submitCaseDetails
+                                                  .inspectionFormData
+                                                  .anyOtherInformation
+                                                  .toList()),
+                                    );
+
+                                    if ((_model.submitSurveyAPIResponse
+                                            ?.succeeded ??
+                                        true)) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Report Submit Successfully',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor: Color(0xFFFF8C25),
+                                        ),
+                                      );
+                                      if (widget
+                                              .selectedCaseDetails?.statusId ==
+                                          '4') {
+                                        FFAppState()
+                                            .removeAtIndexFromCaseDetails(
+                                                widget.currentCaseIndex!);
+                                        FFAppState().update(() {});
+                                        context.safePop();
+                                      } else {
+                                        FFAppState().update(() {});
+                                      }
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Something went wrong. Try again!',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor: Color(0xFFFF0000),
+                                        ),
+                                      );
+                                    }
+                                  }
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        'Please fill the report form fields',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 2500),
+                                      backgroundColor: Color(0xFFFF0000),
+                                    ),
+                                  );
+
+                                  context.pushNamed(
+                                    'report_screen',
+                                    queryParameters: {
+                                      'caseDetailsForReport': serializeParam(
+                                        FFAppState().submitCaseDetails,
+                                        ParamType.DataStruct,
+                                      ),
+                                      'caseIndex': serializeParam(
+                                        widget.currentCaseIndex,
+                                        ParamType.int,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                }
+                              }
+
+                              setState(() {});
+                            },
+                      text: 'SUBMIT',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFFFF8C25),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 3.0,
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
-                      borderRadius: BorderRadius.circular(12.0),
                     ),
                   ),
-                ),
               ],
             ),
           ),

@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/components/site_pictures_widget_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -7,7 +8,12 @@ import 'site_pictures_screen_model.dart';
 export 'site_pictures_screen_model.dart';
 
 class SitePicturesScreenWidget extends StatefulWidget {
-  const SitePicturesScreenWidget({super.key});
+  const SitePicturesScreenWidget({
+    super.key,
+    required this.caseDetails,
+  });
+
+  final ResponseStruct? caseDetails;
 
   @override
   State<SitePicturesScreenWidget> createState() =>
@@ -73,7 +79,10 @@ class _SitePicturesScreenWidgetState extends State<SitePicturesScreenWidget> {
                     ),
               ),
               Text(
-                'S_2024_JULY_24',
+                valueOrDefault<String>(
+                  widget.caseDetails?.refNo,
+                  '-',
+                ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Roboto',
                       color: Colors.white,
@@ -121,7 +130,9 @@ class _SitePicturesScreenWidgetState extends State<SitePicturesScreenWidget> {
                   child: wrapWithModel(
                     model: _model.sitePicturesWidgetModel,
                     updateCallback: () => setState(() {}),
-                    child: const SitePicturesWidgetWidget(),
+                    child: SitePicturesWidgetWidget(
+                      caseDetails: widget.caseDetails!,
+                    ),
                   ),
                 ),
               ),

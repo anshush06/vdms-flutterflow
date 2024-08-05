@@ -63,6 +63,34 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _startReading = prefs.getString('ff_startReading') ?? _startReading;
     });
+    _safeInit(() {
+      _sitePictures = prefs
+              .getStringList('ff_sitePictures')
+              ?.map((x) {
+                try {
+                  return SitePictureListResponseStruct.fromSerializableMap(
+                      jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _sitePictures;
+    });
+    _safeInit(() {
+      if (prefs.containsKey('ff_submitCaseDetails')) {
+        try {
+          final serializedData =
+              prefs.getString('ff_submitCaseDetails') ?? '{}';
+          _submitCaseDetails =
+              ResponseStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -187,6 +215,61 @@ class FFAppState extends ChangeNotifier {
   set startReading(String value) {
     _startReading = value;
     prefs.setString('ff_startReading', value);
+  }
+
+  List<SitePictureListResponseStruct> _sitePictures = [];
+  List<SitePictureListResponseStruct> get sitePictures => _sitePictures;
+  set sitePictures(List<SitePictureListResponseStruct> value) {
+    _sitePictures = value;
+    prefs.setStringList(
+        'ff_sitePictures', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToSitePictures(SitePictureListResponseStruct value) {
+    sitePictures.add(value);
+    prefs.setStringList(
+        'ff_sitePictures', _sitePictures.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromSitePictures(SitePictureListResponseStruct value) {
+    sitePictures.remove(value);
+    prefs.setStringList(
+        'ff_sitePictures', _sitePictures.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromSitePictures(int index) {
+    sitePictures.removeAt(index);
+    prefs.setStringList(
+        'ff_sitePictures', _sitePictures.map((x) => x.serialize()).toList());
+  }
+
+  void updateSitePicturesAtIndex(
+    int index,
+    SitePictureListResponseStruct Function(SitePictureListResponseStruct)
+        updateFn,
+  ) {
+    sitePictures[index] = updateFn(_sitePictures[index]);
+    prefs.setStringList(
+        'ff_sitePictures', _sitePictures.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInSitePictures(
+      int index, SitePictureListResponseStruct value) {
+    sitePictures.insert(index, value);
+    prefs.setStringList(
+        'ff_sitePictures', _sitePictures.map((x) => x.serialize()).toList());
+  }
+
+  ResponseStruct _submitCaseDetails = ResponseStruct();
+  ResponseStruct get submitCaseDetails => _submitCaseDetails;
+  set submitCaseDetails(ResponseStruct value) {
+    _submitCaseDetails = value;
+    prefs.setString('ff_submitCaseDetails', value.serialize());
+  }
+
+  void updateSubmitCaseDetailsStruct(Function(ResponseStruct) updateFn) {
+    updateFn(_submitCaseDetails);
+    prefs.setString('ff_submitCaseDetails', _submitCaseDetails.serialize());
   }
 }
 

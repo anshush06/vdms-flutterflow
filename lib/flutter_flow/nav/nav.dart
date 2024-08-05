@@ -88,7 +88,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'site_pictures_screen',
           path: '/sitePicturesScreen',
-          builder: (context, params) => const SitePicturesScreenWidget(),
+          builder: (context, params) => SitePicturesScreenWidget(
+            caseDetails: params.getParam(
+              'caseDetails',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+          ),
         ),
         FFRoute(
           name: 'report_screen',
@@ -172,12 +179,52 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'take_pictures_screen',
           path: '/takePicturesScreen',
-          builder: (context, params) => const TakePicturesScreenWidget(),
+          builder: (context, params) => TakePicturesScreenWidget(
+            imageType: params.getParam(
+              'imageType',
+              ParamType.String,
+            ),
+            section: params.getParam(
+              'section',
+              ParamType.int,
+            ),
+            caseDetails: params.getParam(
+              'caseDetails',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+          ),
         ),
         FFRoute(
           name: 'capture_location_screen',
           path: '/captureLocationScreen',
           builder: (context, params) => const CaptureLocationScreenWidget(),
+        ),
+        FFRoute(
+          name: 'captured_images_screen',
+          path: '/capturedImagesScreen',
+          builder: (context, params) => const CapturedImagesScreenWidget(),
+        ),
+        FFRoute(
+          name: 'view_all_photographs',
+          path: '/viewAllPhotographs',
+          builder: (context, params) => ViewAllPhotographsWidget(
+            imageType: params.getParam(
+              'imageType',
+              ParamType.String,
+            ),
+            section: params.getParam(
+              'section',
+              ParamType.int,
+            ),
+            caseDetails: params.getParam(
+              'caseDetails',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

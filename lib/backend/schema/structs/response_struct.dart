@@ -34,7 +34,6 @@ class ResponseStruct extends BaseStruct {
     String? officeName,
     String? partyName,
     String? isUrgent,
-    int? totalFilledCount,
     InspectionFormDataStruct? inspectionFormData,
   })  : _id = id,
         _refNo = refNo,
@@ -64,7 +63,6 @@ class ResponseStruct extends BaseStruct {
         _officeName = officeName,
         _partyName = partyName,
         _isUrgent = isUrgent,
-        _totalFilledCount = totalFilledCount,
         _inspectionFormData = inspectionFormData;
 
   // "id" field.
@@ -269,16 +267,6 @@ class ResponseStruct extends BaseStruct {
 
   bool hasIsUrgent() => _isUrgent != null;
 
-  // "total_filled_count" field.
-  int? _totalFilledCount;
-  int get totalFilledCount => _totalFilledCount ?? 0;
-  set totalFilledCount(int? val) => _totalFilledCount = val;
-
-  void incrementTotalFilledCount(int amount) =>
-      totalFilledCount = totalFilledCount + amount;
-
-  bool hasTotalFilledCount() => _totalFilledCount != null;
-
   // "inspectionFormData" field.
   InspectionFormDataStruct? _inspectionFormData;
   InspectionFormDataStruct get inspectionFormData =>
@@ -321,7 +309,6 @@ class ResponseStruct extends BaseStruct {
         officeName: data['officeName'] as String?,
         partyName: data['partyName'] as String?,
         isUrgent: data['isUrgent'] as String?,
-        totalFilledCount: castToType<int>(data['total_filled_count']),
         inspectionFormData:
             InspectionFormDataStruct.maybeFromMap(data['inspectionFormData']),
       );
@@ -358,7 +345,6 @@ class ResponseStruct extends BaseStruct {
         'officeName': _officeName,
         'partyName': _partyName,
         'isUrgent': _isUrgent,
-        'total_filled_count': _totalFilledCount,
         'inspectionFormData': _inspectionFormData?.toMap(),
       }.withoutNulls;
 
@@ -475,10 +461,6 @@ class ResponseStruct extends BaseStruct {
         'isUrgent': serializeParam(
           _isUrgent,
           ParamType.String,
-        ),
-        'total_filled_count': serializeParam(
-          _totalFilledCount,
-          ParamType.int,
         ),
         'inspectionFormData': serializeParam(
           _inspectionFormData,
@@ -628,11 +610,6 @@ class ResponseStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        totalFilledCount: deserializeParam(
-          data['total_filled_count'],
-          ParamType.int,
-          false,
-        ),
         inspectionFormData: deserializeStructParam(
           data['inspectionFormData'],
           ParamType.DataStruct,
@@ -675,7 +652,6 @@ class ResponseStruct extends BaseStruct {
         officeName == other.officeName &&
         partyName == other.partyName &&
         isUrgent == other.isUrgent &&
-        totalFilledCount == other.totalFilledCount &&
         inspectionFormData == other.inspectionFormData;
   }
 
@@ -709,7 +685,6 @@ class ResponseStruct extends BaseStruct {
         officeName,
         partyName,
         isUrgent,
-        totalFilledCount,
         inspectionFormData
       ]);
 }
@@ -743,7 +718,6 @@ ResponseStruct createResponseStruct({
   String? officeName,
   String? partyName,
   String? isUrgent,
-  int? totalFilledCount,
   InspectionFormDataStruct? inspectionFormData,
 }) =>
     ResponseStruct(
@@ -775,6 +749,5 @@ ResponseStruct createResponseStruct({
       officeName: officeName,
       partyName: partyName,
       isUrgent: isUrgent,
-      totalFilledCount: totalFilledCount,
       inspectionFormData: inspectionFormData ?? InspectionFormDataStruct(),
     );
