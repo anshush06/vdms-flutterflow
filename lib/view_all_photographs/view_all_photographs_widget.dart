@@ -139,8 +139,8 @@ class _ViewAllPhotographsWidgetState extends State<ViewAllPhotographsWidget> {
                 child: Container(
                   width: 100.0,
                   height: 100.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
                   ),
                   child: Padding(
                     padding:

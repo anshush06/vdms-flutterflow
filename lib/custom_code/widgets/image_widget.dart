@@ -48,11 +48,19 @@ class _ImageWidgetState extends State<ImageWidget> {
           width: widget.width,
           height: widget.height,
           decoration: BoxDecoration(
+            color: Color(0xFFFFFFFF), // Fill color set to #FFFFFF
             shape: BoxShape.circle,
             image: DecorationImage(
               image: MemoryImage(uint8List),
               fit: BoxFit.cover,
             ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.08), // 8% opacity
+                blurRadius: 50,
+                offset: Offset(8, 0), // X-axis offset of 8, Y-axis offset of 0
+              ),
+            ],
           ),
         ),
         SizedBox(width: 10),
