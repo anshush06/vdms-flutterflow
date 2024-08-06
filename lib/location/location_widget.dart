@@ -134,6 +134,22 @@ class _LocationWidgetState extends State<LocationWidget> {
                                 ),
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            valueOrDefault<String>(
+                              _model.currentLocation,
+                              '-',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Roboto',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                        ),
                       ].addToStart(const SizedBox(height: 30.0)),
                     ),
                   ),
