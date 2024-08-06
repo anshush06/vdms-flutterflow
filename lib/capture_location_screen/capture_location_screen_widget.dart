@@ -31,11 +31,13 @@ class _CaptureLocationScreenWidgetState
     getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     _model.latitudeTextController ??= TextEditingController(
-        text: functions.getCoordinate(currentUserLocationValue, true));
+        text: functions.getCoordinate(true,
+            functions.convertLocationToString(currentUserLocationValue)!));
     _model.latitudeFocusNode ??= FocusNode();
 
     _model.longitudeTextController ??= TextEditingController(
-        text: functions.getCoordinate(currentUserLocationValue, false));
+        text: functions.getCoordinate(false,
+            functions.convertLocationToString(currentUserLocationValue)!));
     _model.longitudeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));

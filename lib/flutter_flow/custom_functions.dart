@@ -392,10 +392,10 @@ String? convertListDropdownsToHashSeparateStringForDraftReport(
 }
 
 String? getCoordinate(
-  LatLng? coordinates,
   bool isLatitude,
+  String location,
 ) {
-  String input = coordinates.toString();
+  String input = location;
   RegExp regExp = RegExp(r'lat:\s*([0-9.-]+)\s*,\s*lng:\s*([0-9.-]+)');
 
   // Match the regular expression against the input string
