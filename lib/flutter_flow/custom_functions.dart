@@ -407,6 +407,9 @@ List<SitePictureListResponseStruct>? filterImagesBySection(
   List<SitePictureListResponseStruct>? imageList,
   String caseId,
 ) {
+  if (fieldName == 'all') {
+    return imageList;
+  }
   if (imageList == null) {
     return null;
   }

@@ -229,6 +229,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               structBuilder: ResponseStruct.fromSerializableMap,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'view_all_captured_images_screen',
+          path: '/viewAllCapturedImagesScreen',
+          builder: (context, params) => ViewAllCapturedImagesScreenWidget(
+            caseDetails: params.getParam(
+              'caseDetails',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

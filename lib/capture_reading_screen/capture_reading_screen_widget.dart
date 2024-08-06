@@ -524,8 +524,7 @@ class _CaptureReadingScreenWidgetState
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   const Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -538,6 +537,7 @@ class _CaptureReadingScreenWidgetState
                                   ),
                                   Text(
                                     FFAppState().travelStatus,
+                                    textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -548,7 +548,7 @@ class _CaptureReadingScreenWidgetState
                                           fontWeight: FontWeight.w600,
                                         ),
                                   ),
-                                ].divide(const SizedBox(width: 10.0)),
+                                ].divide(const SizedBox(width: 15.0)),
                               ),
                             ),
                           ),

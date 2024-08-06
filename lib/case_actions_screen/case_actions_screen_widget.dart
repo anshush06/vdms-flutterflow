@@ -168,46 +168,46 @@ class _CaseActionsScreenWidgetState extends State<CaseActionsScreenWidget> {
                           ).toList();
 
                           return ListView.builder(
-                            padding: EdgeInsets.zero,
+                            padding: const EdgeInsets.fromLTRB(
+                              0,
+                              10.0,
+                              0,
+                              20.0,
+                            ),
                             scrollDirection: Axis.vertical,
                             itemCount: eachCaseHistory.length,
                             itemBuilder: (context, eachCaseHistoryIndex) {
                               final eachCaseHistoryItem =
                                   eachCaseHistory[eachCaseHistoryIndex];
-                              return Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 0.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: SingleCaseActionWidgetWidget(
-                                        key: Key(
-                                            'Keyjt2_${eachCaseHistoryIndex}_of_${eachCaseHistory.length}'),
-                                        statusName: getJsonField(
-                                          eachCaseHistoryItem,
-                                          r'''$.statusName''',
-                                        ).toString(),
-                                        username: getJsonField(
-                                          eachCaseHistoryItem,
-                                          r'''$.username''',
-                                        ).toString(),
-                                        comment: getJsonField(
-                                          eachCaseHistoryItem,
-                                          r'''$.comment''',
-                                        ).toString(),
-                                        dateAdded: getJsonField(
-                                          eachCaseHistoryItem,
-                                          r'''$.dateAdded''',
-                                        ).toString(),
-                                      ),
-                                    ),
+                              return Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                   ),
-                                ],
+                                  child: SingleCaseActionWidgetWidget(
+                                    key: Key(
+                                        'Keyjt2_${eachCaseHistoryIndex}_of_${eachCaseHistory.length}'),
+                                    statusName: getJsonField(
+                                      eachCaseHistoryItem,
+                                      r'''$.statusName''',
+                                    ).toString(),
+                                    username: getJsonField(
+                                      eachCaseHistoryItem,
+                                      r'''$.username''',
+                                    ).toString(),
+                                    comment: getJsonField(
+                                      eachCaseHistoryItem,
+                                      r'''$.comment''',
+                                    ).toString(),
+                                    dateAdded: getJsonField(
+                                      eachCaseHistoryItem,
+                                      r'''$.dateAdded''',
+                                    ).toString(),
+                                  ),
+                                ),
                               );
                             },
                           );

@@ -606,6 +606,9 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                             FFAppState()
                                                 .removeAtIndexFromCaseDetails(
                                                     widget.currentCaseIndex!);
+                                            FFAppState().sitePictures = [];
+                                            FFAppState().submitCaseDetails =
+                                                ResponseStruct();
                                             FFAppState().update(() {});
                                             context.safePop();
                                           } else {
@@ -705,7 +708,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                         ),
                       ),
                     ),
-                ].addToEnd(const SizedBox(height: 20.0)),
+                ].addToEnd(const SizedBox(height: 10.0)),
               ),
             ),
           ),

@@ -2,7 +2,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -2029,8 +2028,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                         0.05,
                                     decoration: const BoxDecoration(),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        context.pushNamed(
+                                          'view_all_captured_images_screen',
+                                          queryParameters: {
+                                            'caseDetails': serializeParam(
+                                              widget.caseDetails,
+                                              ParamType.DataStruct,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                            ),
+                                          },
+                                        );
                                       },
                                       text: 'View All photos',
                                       options: FFButtonOptions(
@@ -2071,73 +2087,30 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       decoration: const BoxDecoration(),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          ScaffoldMessenger.of(context)
-                                              .clearSnackBars();
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                'Uploading Images....',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          context.pushNamed(
+                                            'case_details_screen',
+                                            queryParameters: {
+                                              'selectedCaseDetails':
+                                                  serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
                                               ),
-                                              duration:
-                                                  Duration(milliseconds: 10000),
-                                              backgroundColor:
-                                                  Color(0xFFFF8C25),
-                                            ),
+                                              'currentCaseIndex':
+                                                  serializeParam(
+                                                functions
+                                                    .getDraftCaseIndexInList(
+                                                        FFAppState()
+                                                            .caseDetails
+                                                            .toList(),
+                                                        widget.caseDetails),
+                                                ParamType.int,
+                                              ),
+                                              'inspectionform': serializeParam(
+                                                InspectionFormDataStruct(),
+                                                ParamType.DataStruct,
+                                              ),
+                                            }.withoutNulls,
                                           );
-                                          _model.submitSurveyAPIResponse =
-                                              await actions
-                                                  .submitSurveyDocuments(
-                                            widget.caseDetails!.id,
-                                            FFAppState().userId,
-                                            FFAppState().sitePictures.toList(),
-                                          );
-                                          if (_model.submitSurveyAPIResponse ==
-                                              true) {
-                                            ScaffoldMessenger.of(context)
-                                                .clearSnackBars();
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              const SnackBar(
-                                                content: Text(
-                                                  'Images Uploaded Successfully',
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    Color(0xFFFF8C25),
-                                              ),
-                                            );
-                                          } else {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Not Uploaded. Something went wrong!',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
-                                                ),
-                                                duration: const Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                              ),
-                                            );
-                                          }
-
-                                          setState(() {});
                                         },
                                         text: 'Save',
                                         options: FFButtonOptions(

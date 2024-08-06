@@ -128,7 +128,12 @@ class _TravelLogsScreenWidgetState extends State<TravelLogsScreenWidget> {
                               [];
 
                           return ListView.separated(
-                            padding: EdgeInsets.zero,
+                            padding: const EdgeInsets.fromLTRB(
+                              0,
+                              0,
+                              0,
+                              15.0,
+                            ),
                             scrollDirection: Axis.vertical,
                             itemCount: eachTravelLog.length,
                             separatorBuilder: (_, __) => const SizedBox(height: 10.0),

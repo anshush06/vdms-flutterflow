@@ -30,3 +30,5 @@ export '/captured_images_screen/captured_images_screen_widget.dart'
     show CapturedImagesScreenWidget;
 export '/view_all_photographs/view_all_photographs_widget.dart'
     show ViewAllPhotographsWidget;
+export '/view_all_captured_images_screen/view_all_captured_images_screen_widget.dart'
+    show ViewAllCapturedImagesScreenWidget;
