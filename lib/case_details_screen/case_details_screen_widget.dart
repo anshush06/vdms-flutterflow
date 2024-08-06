@@ -606,7 +606,6 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                             FFAppState()
                                                 .removeAtIndexFromCaseDetails(
                                                     widget.currentCaseIndex!);
-                                            FFAppState().sitePictures = [];
                                             FFAppState().submitCaseDetails =
                                                 ResponseStruct();
                                             FFAppState().update(() {});
