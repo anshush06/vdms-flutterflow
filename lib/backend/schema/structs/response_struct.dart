@@ -35,6 +35,8 @@ class ResponseStruct extends BaseStruct {
     String? partyName,
     String? isUrgent,
     InspectionFormDataStruct? inspectionFormData,
+    String? latitude,
+    String? longitude,
   })  : _id = id,
         _refNo = refNo,
         _addressLine1 = addressLine1,
@@ -63,7 +65,9 @@ class ResponseStruct extends BaseStruct {
         _officeName = officeName,
         _partyName = partyName,
         _isUrgent = isUrgent,
-        _inspectionFormData = inspectionFormData;
+        _inspectionFormData = inspectionFormData,
+        _latitude = latitude,
+        _longitude = longitude;
 
   // "id" field.
   String? _id;
@@ -280,6 +284,20 @@ class ResponseStruct extends BaseStruct {
 
   bool hasInspectionFormData() => _inspectionFormData != null;
 
+  // "latitude" field.
+  String? _latitude;
+  String get latitude => _latitude ?? '';
+  set latitude(String? val) => _latitude = val;
+
+  bool hasLatitude() => _latitude != null;
+
+  // "longitude" field.
+  String? _longitude;
+  String get longitude => _longitude ?? '';
+  set longitude(String? val) => _longitude = val;
+
+  bool hasLongitude() => _longitude != null;
+
   static ResponseStruct fromMap(Map<String, dynamic> data) => ResponseStruct(
         id: data['id'] as String?,
         refNo: data['refNo'] as String?,
@@ -311,6 +329,8 @@ class ResponseStruct extends BaseStruct {
         isUrgent: data['isUrgent'] as String?,
         inspectionFormData:
             InspectionFormDataStruct.maybeFromMap(data['inspectionFormData']),
+        latitude: data['latitude'] as String?,
+        longitude: data['longitude'] as String?,
       );
 
   static ResponseStruct? maybeFromMap(dynamic data) =>
@@ -346,6 +366,8 @@ class ResponseStruct extends BaseStruct {
         'partyName': _partyName,
         'isUrgent': _isUrgent,
         'inspectionFormData': _inspectionFormData?.toMap(),
+        'latitude': _latitude,
+        'longitude': _longitude,
       }.withoutNulls;
 
   @override
@@ -465,6 +487,14 @@ class ResponseStruct extends BaseStruct {
         'inspectionFormData': serializeParam(
           _inspectionFormData,
           ParamType.DataStruct,
+        ),
+        'latitude': serializeParam(
+          _latitude,
+          ParamType.String,
+        ),
+        'longitude': serializeParam(
+          _longitude,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -616,6 +646,16 @@ class ResponseStruct extends BaseStruct {
           false,
           structBuilder: InspectionFormDataStruct.fromSerializableMap,
         ),
+        latitude: deserializeParam(
+          data['latitude'],
+          ParamType.String,
+          false,
+        ),
+        longitude: deserializeParam(
+          data['longitude'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -652,7 +692,9 @@ class ResponseStruct extends BaseStruct {
         officeName == other.officeName &&
         partyName == other.partyName &&
         isUrgent == other.isUrgent &&
-        inspectionFormData == other.inspectionFormData;
+        inspectionFormData == other.inspectionFormData &&
+        latitude == other.latitude &&
+        longitude == other.longitude;
   }
 
   @override
@@ -685,7 +727,9 @@ class ResponseStruct extends BaseStruct {
         officeName,
         partyName,
         isUrgent,
-        inspectionFormData
+        inspectionFormData,
+        latitude,
+        longitude
       ]);
 }
 
@@ -719,6 +763,8 @@ ResponseStruct createResponseStruct({
   String? partyName,
   String? isUrgent,
   InspectionFormDataStruct? inspectionFormData,
+  String? latitude,
+  String? longitude,
 }) =>
     ResponseStruct(
       id: id,
@@ -750,4 +796,6 @@ ResponseStruct createResponseStruct({
       partyName: partyName,
       isUrgent: isUrgent,
       inspectionFormData: inspectionFormData ?? InspectionFormDataStruct(),
+      latitude: latitude,
+      longitude: longitude,
     );

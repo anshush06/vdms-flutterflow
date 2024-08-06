@@ -7,7 +7,6 @@ class CaptureLocationScreenModel
     extends FlutterFlowModel<CaptureLocationScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
@@ -26,7 +25,6 @@ class CaptureLocationScreenModel
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     latitudeFocusNode?.dispose();
     latitudeTextController?.dispose();
 

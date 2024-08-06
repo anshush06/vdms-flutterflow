@@ -9,7 +9,6 @@ class NotificationScreenModel
     extends FlutterFlowModel<NotificationScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for ListView widget.
 
   PagingController<ApiPagingParams, dynamic>? listViewPagingController;
@@ -20,7 +19,6 @@ class NotificationScreenModel
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     listViewPagingController?.dispose();
   }
 

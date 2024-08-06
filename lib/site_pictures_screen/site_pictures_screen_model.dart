@@ -7,7 +7,6 @@ class SitePicturesScreenModel
     extends FlutterFlowModel<SitePicturesScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for site_pictures_widget component.
   late SitePicturesWidgetModel sitePicturesWidgetModel;
 
@@ -19,7 +18,6 @@ class SitePicturesScreenModel
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     sitePicturesWidgetModel.dispose();
   }
 }

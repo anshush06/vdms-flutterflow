@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class SelfieScreenModel extends FlutterFlowModel<SelfieScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for selfie_widget component.
   late SelfieWidgetModel selfieWidgetModel;
 
@@ -17,7 +16,6 @@ class SelfieScreenModel extends FlutterFlowModel<SelfieScreenWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     selfieWidgetModel.dispose();
   }
 }

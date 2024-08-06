@@ -7,7 +7,6 @@ class CaptureReadingValueScreenModel
     extends FlutterFlowModel<CaptureReadingValueScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for reading widget.
   FocusNode? readingFocusNode;
@@ -34,7 +33,6 @@ class CaptureReadingValueScreenModel
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     readingFocusNode?.dispose();
     readingTextController?.dispose();
   }

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class SplashScreenModel extends FlutterFlowModel<SplashScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (getAreasAPI)] action in splash_screen widget.
   ApiCallResponse? getAreasAPIResponse;
   // Stores action output result for [Backend Call - API (checkFieldEngineerTravelStatus)] action in splash_screen widget.
@@ -18,7 +17,5 @@ class SplashScreenModel extends FlutterFlowModel<SplashScreenWidget> {
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 }

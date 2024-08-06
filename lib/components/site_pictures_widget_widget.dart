@@ -221,6 +221,12 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                               onTap: () async {
                                 context.pushNamed(
                                   'capture_location_screen',
+                                  queryParameters: {
+                                    'caseDetails': serializeParam(
+                                      widget.caseDetails,
+                                      ParamType.DataStruct,
+                                    ),
+                                  }.withoutNulls,
                                   extra: <String, dynamic>{
                                     kTransitionInfoKey: const TransitionInfo(
                                       hasTransition: true,

@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -6,11 +7,17 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import 'capture_location_screen_model.dart';
 export 'capture_location_screen_model.dart';
 
 class CaptureLocationScreenWidget extends StatefulWidget {
-  const CaptureLocationScreenWidget({super.key});
+  const CaptureLocationScreenWidget({
+    super.key,
+    required this.caseDetails,
+  });
+
+  final ResponseStruct? caseDetails;
 
   @override
   State<CaptureLocationScreenWidget> createState() =>
@@ -67,6 +74,7 @@ class _CaptureLocationScreenWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
     if (currentUserLocationValue == null) {
       return Container(
         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -85,9 +93,7 @@ class _CaptureLocationScreenWidgetState
     }
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         resizeToAvoidBottomInset: false,
@@ -387,8 +393,27 @@ class _CaptureLocationScreenWidgetState
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    if (Navigator.of(context).canPop()) {
+                                      context.pop();
+                                    }
+                                    context.pushNamed(
+                                      'capture_location_screen',
+                                      queryParameters: {
+                                        'caseDetails': serializeParam(
+                                          widget.caseDetails,
+                                          ParamType.DataStruct,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
                                   },
                                   text: 'REFRESH',
                                   options: FFButtonOptions(
@@ -415,7 +440,44 @@ class _CaptureLocationScreenWidgetState
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    context.pushNamed('location');
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          'Saving Location...',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 2000),
+                                        backgroundColor: Color(0xFFFF8C25),
+                                      ),
+                                    );
+                                    FFAppState().updateCaseDetailsAtIndex(
+                                      functions.getDraftCaseIndexInList(
+                                          FFAppState().caseDetails.toList(),
+                                          widget.caseDetails)!,
+                                      (e) => e
+                                        ..latitude =
+                                            _model.latitudeTextController.text
+                                        ..longitude =
+                                            _model.longitudeTextController.text,
+                                    );
+                                    setState(() {});
+                                    ScaffoldMessenger.of(context)
+                                        .clearSnackBars();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          'Location Saved.',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 1500),
+                                        backgroundColor: Color(0xFFFF8C25),
+                                      ),
+                                    );
+                                    context.safePop();
                                   },
                                   text: 'SAVE',
                                   options: FFButtonOptions(
@@ -442,24 +504,6 @@ class _CaptureLocationScreenWidgetState
                                 ),
                               ],
                             ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                valueOrDefault<String>(
-                                  functions.convertLocationToString(
-                                      currentUserLocationValue),
-                                  '-',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                            ],
                           ),
                         ]
                             .divide(const SizedBox(height: 15.0))

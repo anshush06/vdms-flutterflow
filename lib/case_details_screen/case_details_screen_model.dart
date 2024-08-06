@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 class CaseDetailsScreenModel extends FlutterFlowModel<CaseDetailsScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for case_card_widget component.
   late CaseCardWidgetModel caseCardWidgetModel;
   // Model for remark_widget component.
@@ -28,7 +27,6 @@ class CaseDetailsScreenModel extends FlutterFlowModel<CaseDetailsScreenWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     caseCardWidgetModel.dispose();
     remarkWidgetModel.dispose();
     documentationWidgetModel.dispose();

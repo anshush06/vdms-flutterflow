@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class ReportScreenModel extends FlutterFlowModel<ReportScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for report_widget component.
   late ReportWidgetModel reportWidgetModel;
 
@@ -17,7 +16,6 @@ class ReportScreenModel extends FlutterFlowModel<ReportScreenWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     reportWidgetModel.dispose();
   }
 }

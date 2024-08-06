@@ -203,7 +203,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'capture_location_screen',
           path: '/captureLocationScreen',
-          builder: (context, params) => const CaptureLocationScreenWidget(),
+          builder: (context, params) => CaptureLocationScreenWidget(
+            caseDetails: params.getParam(
+              'caseDetails',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+          ),
         ),
         FFRoute(
           name: 'captured_images_screen',
@@ -241,11 +248,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               structBuilder: ResponseStruct.fromSerializableMap,
             ),
           ),
-        ),
-        FFRoute(
-          name: 'location',
-          path: '/location',
-          builder: (context, params) => const LocationWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
