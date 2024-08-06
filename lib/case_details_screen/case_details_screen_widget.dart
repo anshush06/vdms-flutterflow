@@ -705,7 +705,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                         ),
                       ),
                     ),
-                ],
+                ].addToEnd(const SizedBox(height: 20.0)),
               ),
             ),
           ),

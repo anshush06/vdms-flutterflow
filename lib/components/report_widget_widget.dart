@@ -8679,6 +8679,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                           ),
                                         );
                                         context.safePop();
+                                        context.safePop();
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(

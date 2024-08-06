@@ -650,7 +650,12 @@ class _MainCaseListingScreenWidgetState
                                     }
 
                                     return ListView.builder(
-                                      padding: EdgeInsets.zero,
+                                      padding: const EdgeInsets.fromLTRB(
+                                        0,
+                                        0,
+                                        0,
+                                        15.0,
+                                      ),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount: case1.length,
@@ -722,7 +727,12 @@ class _MainCaseListingScreenWidgetState
                                 }
 
                                 return ListView.builder(
-                                  padding: EdgeInsets.zero,
+                                  padding: const EdgeInsets.fromLTRB(
+                                    0,
+                                    0,
+                                    0,
+                                    15.0,
+                                  ),
                                   scrollDirection: Axis.vertical,
                                   itemCount: eachCase2.length,
                                   itemBuilder: (context, eachCase2Index) {
@@ -815,7 +825,12 @@ class _MainCaseListingScreenWidgetState
                                     }
 
                                     return ListView.builder(
-                                      padding: EdgeInsets.zero,
+                                      padding: const EdgeInsets.fromLTRB(
+                                        0,
+                                        0,
+                                        0,
+                                        15.0,
+                                      ),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount: case1.length,
@@ -912,7 +927,12 @@ class _MainCaseListingScreenWidgetState
                                     }
 
                                     return ListView.builder(
-                                      padding: EdgeInsets.zero,
+                                      padding: const EdgeInsets.fromLTRB(
+                                        0,
+                                        0,
+                                        0,
+                                        15.0,
+                                      ),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount: eachCase4.length,
