@@ -425,29 +425,29 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                               widget.selectedCaseDetails?.inspectionFormData.landMark,
                                               widget.selectedCaseDetails?.inspectionFormData.roadWidth,
                                               widget.selectedCaseDetails?.inspectionFormData.propertyIdentified,
-                                              FFAppState().submitCaseDetails.inspectionFormData.cityCenter,
-                                              FFAppState().submitCaseDetails.inspectionFormData.railwayStation,
-                                              FFAppState().submitCaseDetails.inspectionFormData.busStop,
-                                              FFAppState().submitCaseDetails.inspectionFormData.hospital,
-                                              FFAppState().submitCaseDetails.inspectionFormData.north,
-                                              FFAppState().submitCaseDetails.inspectionFormData.south,
-                                              FFAppState().submitCaseDetails.inspectionFormData.east,
-                                              FFAppState().submitCaseDetails.inspectionFormData.west,
-                                              FFAppState().submitCaseDetails.inspectionFormData.otherPermittedUseOfProperty,
-                                              FFAppState().submitCaseDetails.inspectionFormData.noOfFloors,
-                                              FFAppState().submitCaseDetails.inspectionFormData.unitsPerFloor,
-                                              FFAppState().submitCaseDetails.inspectionFormData.noOfLifts,
-                                              FFAppState().submitCaseDetails.inspectionFormData.floorLocation,
-                                              FFAppState().submitCaseDetails.inspectionFormData.ageBuilding,
-                                              FFAppState().submitCaseDetails.inspectionFormData.completionState,
-                                              FFAppState().submitCaseDetails.inspectionFormData.otherRoof,
-                                              FFAppState().submitCaseDetails.inspectionFormData.wallPlasterPainting,
-                                              FFAppState().submitCaseDetails.inspectionFormData.doorsWindows,
-                                              FFAppState().submitCaseDetails.inspectionFormData.flooringType,
-                                              FFAppState().submitCaseDetails.inspectionFormData.plotLength,
-                                              FFAppState().submitCaseDetails.inspectionFormData.plotWidth,
-                                              FFAppState().submitCaseDetails.inspectionFormData.reasonPortionNotSeen,
-                                              FFAppState().submitCaseDetails.inspectionFormData.anyOtherInformation.toList()),
+                                              widget.selectedCaseDetails?.inspectionFormData.cityCenter,
+                                              widget.selectedCaseDetails?.inspectionFormData.railwayStation,
+                                              widget.selectedCaseDetails?.inspectionFormData.busStop,
+                                              widget.selectedCaseDetails?.inspectionFormData.hospital,
+                                              widget.selectedCaseDetails?.inspectionFormData.north,
+                                              widget.selectedCaseDetails?.inspectionFormData.south,
+                                              widget.selectedCaseDetails?.inspectionFormData.east,
+                                              widget.selectedCaseDetails?.inspectionFormData.west,
+                                              widget.selectedCaseDetails?.inspectionFormData.otherPermittedUseOfProperty,
+                                              widget.selectedCaseDetails?.inspectionFormData.noOfFloors,
+                                              widget.selectedCaseDetails?.inspectionFormData.unitsPerFloor,
+                                              widget.selectedCaseDetails?.inspectionFormData.noOfLifts,
+                                              widget.selectedCaseDetails?.inspectionFormData.floorLocation,
+                                              widget.selectedCaseDetails?.inspectionFormData.ageBuilding,
+                                              widget.selectedCaseDetails?.inspectionFormData.completionState,
+                                              widget.selectedCaseDetails?.inspectionFormData.otherRoof,
+                                              widget.selectedCaseDetails?.inspectionFormData.wallPlasterPainting,
+                                              widget.selectedCaseDetails?.inspectionFormData.doorsWindows,
+                                              widget.selectedCaseDetails?.inspectionFormData.flooringType,
+                                              widget.selectedCaseDetails?.inspectionFormData.plotLength,
+                                              widget.selectedCaseDetails?.inspectionFormData.plotWidth,
+                                              widget.selectedCaseDetails?.inspectionFormData.reasonPortionNotSeen,
+                                              widget.selectedCaseDetails?.inspectionFormData.anyOtherInformation.toList()),
                                         );
 
                                         if ((_model.submitSurveyAPIResponse
@@ -477,8 +477,6 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                             FFAppState().submitCaseDetails =
                                                 ResponseStruct();
                                             FFAppState().update(() {});
-                                            ScaffoldMessenger.of(context)
-                                                .clearSnackBars();
                                             context.safePop();
                                           } else {
                                             FFAppState().update(() {});
