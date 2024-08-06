@@ -170,7 +170,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   wrapWithModel(
@@ -356,11 +356,9 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                           userId:
                                               functions.convertStringtoInteger(
                                                   FFAppState().userId),
-                                          caseId:
-                                              functions.convertStringtoInteger(
-                                                  FFAppState()
-                                                      .submitCaseDetails
-                                                      .id),
+                                          caseId: functions
+                                              .convertStringtoInteger(widget
+                                                  .selectedCaseDetails!.id),
                                           timestamp:
                                               functions.getCurrentTimeStamp(),
                                           inspectionFormData: functions.convertDataToJson(
@@ -580,7 +578,9 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                         showLoadingIndicator: false,
                       ),
                     ),
-                ].addToEnd(const SizedBox(height: 10.0)),
+                ]
+                    .divide(const SizedBox(height: 15.0))
+                    .addToEnd(const SizedBox(height: 10.0)),
               ),
             ),
           ),
