@@ -8508,8 +8508,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                           backgroundColor: Color(0xFFFF8C25),
                                         ),
                                       );
-                                      context.safePop();
-                                      context.safePop();
+
+                                      context.pushNamed(
+                                        'main_case_listing_screen',
+                                        queryParameters: {
+                                          'notificationCount': serializeParam(
+                                            0,
+                                            ParamType.int,
+                                          ),
+                                        }.withoutNulls,
+                                      );
                                     } else {
                                       if (functions.getDraftCaseIndexInList(
                                               FFAppState().caseDetails.toList(),
@@ -8678,8 +8686,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             backgroundColor: Color(0xFFFF8C25),
                                           ),
                                         );
-                                        context.safePop();
-                                        context.safePop();
+
+                                        context.pushNamed(
+                                          'main_case_listing_screen',
+                                          queryParameters: {
+                                            'notificationCount': serializeParam(
+                                              0,
+                                              ParamType.int,
+                                            ),
+                                          }.withoutNulls,
+                                        );
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(

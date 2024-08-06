@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/documentation_widget_widget.dart';
 import '/components/remark_widget_widget.dart';
@@ -314,278 +313,24 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                           ),
                                         );
                                         ScaffoldMessenger.of(context)
-                                            .clearSnackBars();
-                                        ScaffoldMessenger.of(context)
                                             .showSnackBar(
-                                          const SnackBar(
+                                          SnackBar(
                                             content: Text(
-                                              'Saving Report Form...',
+                                              widget.selectedCaseDetails!
+                                                  .inspectionFormData.personMet,
                                               style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w500,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                               ),
                                             ),
                                             duration:
-                                                Duration(milliseconds: 10000),
-                                            backgroundColor: Color(0xFFFF8C25),
+                                                const Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
                                           ),
                                         );
-                                        _model.submitSurveyAPIResponse =
-                                            await VdmsApiCallsGroup
-                                                .submitSurveyAPICall
-                                                .call(
-                                          userId:
-                                              functions.convertStringtoInteger(
-                                                  FFAppState().userId),
-                                          caseId:
-                                              functions.convertStringtoInteger(
-                                                  FFAppState()
-                                                      .submitCaseDetails
-                                                      .id),
-                                          timestamp:
-                                              functions.getCurrentTimeStamp(),
-                                          inspectionFormData: functions.convertDataToJson(
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .refNo,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .bank,
-                                              FFAppState().username,
-                                              functions.getCurrentTimeStamp(),
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .applicantName,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .address1,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .state,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .locality,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .pin,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .propertyLocatedIn,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .classificationOfLocality,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .namePlateFixed,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .propertyDemarcated,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .propertyType,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .permittedUseOfProperty,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .structureType,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .constructionStatus,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .roof,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .interiorConstructionQuality,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .exteriorConstructionQuality,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .valuationType,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .carpet,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .balcony,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .salableArea,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .plotArea,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .rentalValue,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .minimumMarketRates,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .maximumMarketRates,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .city,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .address2,
-                                              widget
-                                                  .selectedCaseDetails
-                                                  ?.inspectionFormData
-                                                  .personMet,
-                                              widget
-                                                  .selectedCaseDetails
-                                                  ?.inspectionFormData
-                                                  .relationWithOwner,
-                                              widget
-                                                  .selectedCaseDetails
-                                                  ?.inspectionFormData
-                                                  .landMark,
-                                              widget
-                                                  .selectedCaseDetails
-                                                  ?.inspectionFormData
-                                                  .roadWidth,
-                                              widget
-                                                  .selectedCaseDetails
-                                                  ?.inspectionFormData
-                                                  .propertyIdentified,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .cityCenter,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .railwayStation,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .busStop,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .hospital,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .north,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .south,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .east,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .west,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .otherPermittedUseOfProperty,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .noOfFloors,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
-                                                  .unitsPerFloor,
-                                              FFAppState().submitCaseDetails.inspectionFormData.noOfLifts,
-                                              FFAppState().submitCaseDetails.inspectionFormData.floorLocation,
-                                              FFAppState().submitCaseDetails.inspectionFormData.ageBuilding,
-                                              FFAppState().submitCaseDetails.inspectionFormData.completionState,
-                                              FFAppState().submitCaseDetails.inspectionFormData.otherRoof,
-                                              FFAppState().submitCaseDetails.inspectionFormData.wallPlasterPainting,
-                                              FFAppState().submitCaseDetails.inspectionFormData.doorsWindows,
-                                              FFAppState().submitCaseDetails.inspectionFormData.flooringType,
-                                              FFAppState().submitCaseDetails.inspectionFormData.plotLength,
-                                              FFAppState().submitCaseDetails.inspectionFormData.plotWidth,
-                                              FFAppState().submitCaseDetails.inspectionFormData.reasonPortionNotSeen,
-                                              FFAppState().submitCaseDetails.inspectionFormData.anyOtherInformation.toList()),
-                                        );
-
-                                        if ((_model.submitSurveyAPIResponse
-                                                ?.succeeded ??
-                                            true)) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                'Report Submit Successfully',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 3000),
-                                              backgroundColor:
-                                                  Color(0xFFFF8C25),
-                                            ),
-                                          );
-                                          if (widget.selectedCaseDetails
-                                                  ?.statusId ==
-                                              '4') {
-                                            FFAppState()
-                                                .removeAtIndexFromCaseDetails(
-                                                    widget.currentCaseIndex!);
-                                            FFAppState().submitCaseDetails =
-                                                ResponseStruct();
-                                            FFAppState().update(() {});
-                                            context.safePop();
-                                          } else {
-                                            FFAppState().update(() {});
-                                            context.safePop();
-                                          }
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                'Something went wrong. Try again!',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  Color(0xFFFF0000),
-                                            ),
-                                          );
-                                        }
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
@@ -660,6 +405,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                           ),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
+                        showLoadingIndicator: false,
                       ),
                     ),
                 ].addToEnd(const SizedBox(height: 10.0)),
