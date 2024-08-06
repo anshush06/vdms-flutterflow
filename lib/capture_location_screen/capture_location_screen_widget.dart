@@ -35,8 +35,10 @@ class _CaptureLocationScreenWidgetState
             functions.getCoordinate(currentUserLocationValue, true).toString());
     _model.latitudeFocusNode ??= FocusNode();
 
-    _model.longitudeTextController ??=
-        TextEditingController(text: currentUserLocationValue?.toString());
+    _model.longitudeTextController ??= TextEditingController(
+        text: functions
+            .getCoordinate(currentUserLocationValue, false)
+            .toString());
     _model.longitudeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -398,8 +400,8 @@ class _CaptureLocationScreenWidgetState
                                   ),
                                 ),
                                 FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    context.pushNamed('location');
                                   },
                                   text: 'SAVE',
                                   options: FFButtonOptions(
