@@ -391,15 +391,28 @@ String? convertListDropdownsToHashSeparateStringForDraftReport(
   return list!.join('##');
 }
 
-double? getCoordinate(
+String? getCoordinate(
   LatLng? coordinates,
   bool isLatitude,
 ) {
-  if (isLatitude) {
-    return coordinates?.latitude ?? 0.0;
-  }
+  String input = coordinates.toString();
+  RegExp regExp = RegExp(r'lat:\s*([0-9.-]+)\s*,\s*lng:\s*([0-9.-]+)');
 
-  return coordinates?.longitude ?? 0.0;
+  // Match the regular expression against the input string
+  Match? match = regExp.firstMatch(input);
+
+  if (match != null) {
+    // Extract latitude and longitude from the match
+    String latitude = match.group(1)!;
+    String longitude = match.group(2)!;
+
+    if (isLatitude) {
+      return latitude;
+    } else {
+      return longitude;
+    }
+  }
+  return '';
 }
 
 List<SitePictureListResponseStruct>? filterImagesBySection(
