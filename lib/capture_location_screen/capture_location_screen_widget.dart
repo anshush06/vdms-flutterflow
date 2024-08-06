@@ -429,6 +429,24 @@ class _CaptureLocationScreenWidgetState
                               ],
                             ),
                           ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                valueOrDefault<String>(
+                                  functions.convertLocationToString(
+                                      currentUserLocationValue),
+                                  '-',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ],
+                          ),
                         ]
                             .divide(const SizedBox(height: 15.0))
                             .addToStart(const SizedBox(height: 25.0))

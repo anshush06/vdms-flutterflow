@@ -467,3 +467,7 @@ List<int> getImageByteArrayFromSelfieList(
     List<SitePictureListResponseStruct>? sitePictures) {
   return sitePictures![0].bytes;
 }
+
+String? convertLocationToString(LatLng? latLng) {
+  return latLng.toString() ?? '';
+}
