@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'capture_location_screen_model.dart';
 export 'capture_location_screen_model.dart';
 
@@ -28,16 +29,30 @@ class _CaptureLocationScreenWidgetState
     super.initState();
     _model = createModel(context, () => CaptureLocationScreenModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      currentUserLocationValue =
+          await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
+      setState(() {
+        _model.latitudeTextController?.text = functions.getCoordinate(true,
+            functions.convertLocationToString(currentUserLocationValue)!)!;
+        _model.latitudeTextController?.selection = TextSelection.collapsed(
+            offset: _model.latitudeTextController!.text.length);
+      });
+      setState(() {
+        _model.longitudeTextController?.text = functions.getCoordinate(false,
+            functions.convertLocationToString(currentUserLocationValue)!)!;
+        _model.longitudeTextController?.selection = TextSelection.collapsed(
+            offset: _model.longitudeTextController!.text.length);
+      });
+    });
+
     getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
-    _model.latitudeTextController ??= TextEditingController(
-        text: functions.getCoordinate(true,
-            functions.convertLocationToString(currentUserLocationValue)!));
+    _model.latitudeTextController ??= TextEditingController(text: '0.0');
     _model.latitudeFocusNode ??= FocusNode();
 
-    _model.longitudeTextController ??= TextEditingController(
-        text: functions.getCoordinate(false,
-            functions.convertLocationToString(currentUserLocationValue)!));
+    _model.longitudeTextController ??= TextEditingController(text: '0.0');
     _model.longitudeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
