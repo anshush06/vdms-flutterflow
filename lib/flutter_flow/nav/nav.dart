@@ -31,12 +31,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => const SplashScreenWidget(),
+      errorBuilder: (context, state) => const LocationWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const SplashScreenWidget(),
+          builder: (context, _) => const LocationWidget(),
         ),
         FFRoute(
           name: 'login_screen',
@@ -241,6 +241,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               structBuilder: ResponseStruct.fromSerializableMap,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'location',
+          path: '/location',
+          builder: (context, params) => const LocationWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

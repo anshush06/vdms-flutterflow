@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/components/documentation_widget_widget.dart';
 import '/components/remark_widget_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -18,8 +17,6 @@ class CaseDetailsScreenModel extends FlutterFlowModel<CaseDetailsScreenWidget> {
   late DocumentationWidgetModel documentationWidgetModel;
   // Stores action output result for [Custom Action - submitSurveyDocuments] action in Button widget.
   bool? submitSurveyAPIResponse1;
-  // Stores action output result for [Backend Call - API (submitSurveyAPI)] action in Button widget.
-  ApiCallResponse? submitSurveyAPIResponse;
 
   @override
   void initState(BuildContext context) {
