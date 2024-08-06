@@ -21,20 +21,22 @@ class _CaptureLocationScreenWidgetState
   late CaptureLocationScreenModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CaptureLocationScreenModel());
 
+    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
+        .then((loc) => setState(() => currentUserLocationValue = loc));
     _model.latitudeTextController ??= TextEditingController(
         text:
-            functions.getCoordinate(_model.googleMapsCenter, true).toString());
+            functions.getCoordinate(currentUserLocationValue, true).toString());
     _model.latitudeFocusNode ??= FocusNode();
 
-    _model.longitudeTextController ??= TextEditingController(
-        text:
-            functions.getCoordinate(_model.googleMapsCenter, false).toString());
+    _model.longitudeTextController ??=
+        TextEditingController(text: currentUserLocationValue?.toString());
     _model.longitudeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -49,6 +51,23 @@ class _CaptureLocationScreenWidgetState
 
   @override
   Widget build(BuildContext context) {
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -143,7 +162,7 @@ class _CaptureLocationScreenWidgetState
                                 onCameraIdle: (latLng) =>
                                     _model.googleMapsCenter = latLng,
                                 initialLocation: _model.googleMapsCenter ??=
-                                    const LatLng(13.106061, -59.613158),
+                                    currentUserLocationValue!,
                                 markerColor: GoogleMarkerColor.violet,
                                 mapType: MapType.normal,
                                 style: GoogleMapStyle.standard,
