@@ -6,8 +6,6 @@ class LocationModel extends FlutterFlowModel<LocationWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Custom Action - getCurrentLocation] action in location widget.
-  String? currentLocation;
 
   @override
   void initState(BuildContext context) {}

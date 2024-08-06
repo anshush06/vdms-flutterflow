@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'location_model.dart';
@@ -26,9 +25,7 @@ class _LocationWidgetState extends State<LocationWidget> {
     _model = createModel(context, () => LocationModel());
 
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.currentLocation = await actions.getCurrentLocation();
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
@@ -138,10 +135,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            valueOrDefault<String>(
-                              _model.currentLocation,
-                              '-',
-                            ),
+                            'Hello World',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
