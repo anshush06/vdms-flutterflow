@@ -396,30 +396,30 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                   .selectedCaseDetails
                                                   ?.inspectionFormData
                                                   .namePlateFixed,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
+                                              widget
+                                                  .selectedCaseDetails
+                                                  ?.inspectionFormData
                                                   .propertyDemarcated,
-                                              FFAppState()
-                                                  .submitCaseDetails
-                                                  .inspectionFormData
+                                              widget
+                                                  .selectedCaseDetails
+                                                  ?.inspectionFormData
                                                   .propertyType,
-                                              FFAppState().submitCaseDetails.inspectionFormData.permittedUseOfProperty,
-                                              FFAppState().submitCaseDetails.inspectionFormData.structureType,
-                                              FFAppState().submitCaseDetails.inspectionFormData.constructionStatus,
-                                              FFAppState().submitCaseDetails.inspectionFormData.roof,
-                                              FFAppState().submitCaseDetails.inspectionFormData.interiorConstructionQuality,
-                                              FFAppState().submitCaseDetails.inspectionFormData.exteriorConstructionQuality,
-                                              FFAppState().submitCaseDetails.inspectionFormData.valuationType,
-                                              FFAppState().submitCaseDetails.inspectionFormData.carpet,
-                                              FFAppState().submitCaseDetails.inspectionFormData.balcony,
-                                              FFAppState().submitCaseDetails.inspectionFormData.salableArea,
-                                              FFAppState().submitCaseDetails.inspectionFormData.plotArea,
-                                              FFAppState().submitCaseDetails.inspectionFormData.rentalValue,
-                                              FFAppState().submitCaseDetails.inspectionFormData.minimumMarketRates,
-                                              FFAppState().submitCaseDetails.inspectionFormData.maximumMarketRates,
-                                              FFAppState().submitCaseDetails.inspectionFormData.city,
-                                              FFAppState().submitCaseDetails.inspectionFormData.address2,
+                                              widget.selectedCaseDetails?.inspectionFormData.permittedUseOfProperty,
+                                              widget.selectedCaseDetails?.inspectionFormData.structureType,
+                                              widget.selectedCaseDetails?.inspectionFormData.constructionStatus,
+                                              widget.selectedCaseDetails?.inspectionFormData.roof,
+                                              widget.selectedCaseDetails?.inspectionFormData.interiorConstructionQuality,
+                                              widget.selectedCaseDetails?.inspectionFormData.exteriorConstructionQuality,
+                                              widget.selectedCaseDetails?.inspectionFormData.valuationType,
+                                              widget.selectedCaseDetails?.inspectionFormData.carpet,
+                                              widget.selectedCaseDetails?.inspectionFormData.balcony,
+                                              widget.selectedCaseDetails?.inspectionFormData.salableArea,
+                                              widget.selectedCaseDetails?.inspectionFormData.plotArea,
+                                              widget.selectedCaseDetails?.inspectionFormData.rentalValue,
+                                              widget.selectedCaseDetails?.inspectionFormData.minimumMarketRates,
+                                              widget.selectedCaseDetails?.inspectionFormData.maximumMarketRates,
+                                              widget.selectedCaseDetails?.inspectionFormData.city,
+                                              widget.selectedCaseDetails?.inspectionFormData.address2,
                                               widget.selectedCaseDetails?.inspectionFormData.personMet,
                                               widget.selectedCaseDetails?.inspectionFormData.relationWithOwner,
                                               widget.selectedCaseDetails?.inspectionFormData.landMark,
