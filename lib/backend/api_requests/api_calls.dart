@@ -30,6 +30,8 @@ class VdmsApiCallsGroup {
   static SubmitSurveyAPICall submitSurveyAPICall = SubmitSurveyAPICall();
   static GetNotificationsCountAPICall getNotificationsCountAPICall =
       GetNotificationsCountAPICall();
+  static SaveSurveyLocationAPICall saveSurveyLocationAPICall =
+      SaveSurveyLocationAPICall();
 }
 
 class ValidateLoginAPICall {
@@ -438,7 +440,7 @@ class SubmitSurveyAPICall {
         'api_version': '2.1',
         'app_version_code': '1',
         'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'multipart/form-data',
       },
       params: {
         'userId': userId,
@@ -446,7 +448,7 @@ class SubmitSurveyAPICall {
         'timestamp': timestamp,
         'inspectionFormData': inspectionFormData,
       },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      bodyType: BodyType.MULTIPART,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -487,6 +489,52 @@ class GetNotificationsCountAPICall {
       alwaysAllowBody: false,
     );
   }
+}
+
+class SaveSurveyLocationAPICall {
+  Future<ApiCallResponse> call({
+    String? userId = '',
+    String? caseId = '',
+    String? longitude = '',
+    String? latitude = '',
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'saveSurveyLocationAPI',
+      apiUrl: '$baseUrl/saveSurveyLocationAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'userId': userId,
+        'caseId': caseId,
+        'longitude': longitude,
+        'latitude': latitude,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic response(dynamic response) => getJsonField(
+        response,
+        r'''$.response''',
+      );
+  String? responseMessage(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.response.message''',
+      ));
 }
 
 /// End VDMS API CALLS Group Code

@@ -77,6 +77,23 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
+                            functions
+                                        .getDraftCaseIndexInList(
+                                            FFAppState().caseDetails.toList(),
+                                            widget.caseDetails)
+                                        .toString() !=
+                                    '-1'
+                                ? '${FFAppState().caseDetails[functions.getDraftCaseIndexInList(FFAppState().caseDetails.toList(), widget.caseDetails)!].latitude} -- ${FFAppState().caseDetails[functions.getDraftCaseIndexInList(FFAppState().caseDetails.toList(), widget.caseDetails)!].longitude}'
+                                : 'no',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Roboto',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Text(
                             'Select and click/upload photographs',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
