@@ -12,9 +12,11 @@ class SitePicturesWidgetWidget extends StatefulWidget {
   const SitePicturesWidgetWidget({
     super.key,
     required this.caseDetails,
+    required this.caseIndex,
   });
 
   final ResponseStruct? caseDetails;
+  final int? caseIndex;
 
   @override
   State<SitePicturesWidgetWidget> createState() =>
@@ -77,23 +79,6 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
-                            functions
-                                        .getDraftCaseIndexInList(
-                                            FFAppState().caseDetails.toList(),
-                                            widget.caseDetails)
-                                        .toString() !=
-                                    '-1'
-                                ? '${FFAppState().caseDetails[functions.getDraftCaseIndexInList(FFAppState().caseDetails.toList(), widget.caseDetails)!].latitude} -- ${FFAppState().caseDetails[functions.getDraftCaseIndexInList(FFAppState().caseDetails.toList(), widget.caseDetails)!].longitude}'
-                                : 'no',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Roboto',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Text(
                             'Select and click/upload photographs',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
@@ -115,40 +100,92 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                if (functions.filterImagesBySection(
-                                            'selfie',
-                                            FFAppState().sitePictures.toList(),
-                                            widget.caseDetails!.id) !=
-                                        null &&
-                                    (functions.filterImagesBySection(
-                                            'selfie',
-                                            FFAppState().sitePictures.toList(),
-                                            widget.caseDetails!.id))!
-                                        .isNotEmpty) {
-                                  context.pushNamed(
-                                    'view_all_photographs',
-                                    queryParameters: {
-                                      'imageType': serializeParam(
-                                        'selfie',
-                                        ParamType.String,
-                                      ),
-                                      'section': serializeParam(
-                                        1,
-                                        ParamType.int,
-                                      ),
-                                      'caseDetails': serializeParam(
-                                        widget.caseDetails,
-                                        ParamType.DataStruct,
-                                      ),
-                                    }.withoutNulls,
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.rightToLeft,
-                                      ),
-                                    },
-                                  );
+                                if (functions
+                                            .getDraftCaseIndexInList(
+                                                FFAppState()
+                                                    .caseDetails
+                                                    .toList(),
+                                                widget.caseDetails)
+                                            .toString() !=
+                                        '-1'
+                                    ? true
+                                    : false) {
+                                  if (functions.filterImagesBySection(
+                                              'selfie',
+                                              FFAppState()
+                                                  .caseDetails[
+                                                      widget.caseIndex!]
+                                                  .sitePictures
+                                                  .toList(),
+                                              widget.caseDetails!.id) !=
+                                          null &&
+                                      (functions.filterImagesBySection(
+                                              'selfie',
+                                              FFAppState()
+                                                  .caseDetails[
+                                                      widget.caseIndex!]
+                                                  .sitePictures
+                                                  .toList(),
+                                              widget.caseDetails!.id))!
+                                          .isNotEmpty) {
+                                    context.pushNamed(
+                                      'view_all_photographs',
+                                      queryParameters: {
+                                        'imageType': serializeParam(
+                                          'selfie',
+                                          ParamType.String,
+                                        ),
+                                        'section': serializeParam(
+                                          1,
+                                          ParamType.int,
+                                        ),
+                                        'caseDetails': serializeParam(
+                                          widget.caseDetails,
+                                          ParamType.DataStruct,
+                                        ),
+                                        'caseIndex': serializeParam(
+                                          widget.caseIndex,
+                                          ParamType.int,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
+                                        ),
+                                      },
+                                    );
+                                  } else {
+                                    context.pushNamed(
+                                      'take_pictures_screen',
+                                      queryParameters: {
+                                        'imageType': serializeParam(
+                                          'selfie',
+                                          ParamType.String,
+                                        ),
+                                        'section': serializeParam(
+                                          1,
+                                          ParamType.int,
+                                        ),
+                                        'caseDetails': serializeParam(
+                                          widget.caseDetails,
+                                          ParamType.DataStruct,
+                                        ),
+                                        'caseIndex': serializeParam(
+                                          widget.caseIndex,
+                                          ParamType.int,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
+                                        ),
+                                      },
+                                    );
+                                  }
                                 } else {
                                   context.pushNamed(
                                     'take_pictures_screen',
@@ -164,6 +201,10 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       'caseDetails': serializeParam(
                                         widget.caseDetails,
                                         ParamType.DataStruct,
+                                      ),
+                                      'caseIndex': serializeParam(
+                                        widget.caseIndex,
+                                        ParamType.int,
                                       ),
                                     }.withoutNulls,
                                     extra: <String, dynamic>{
@@ -211,7 +252,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       ),
                                       Expanded(
                                         child: Text(
-                                          'Selfie (${functions.filterImagesBySection('selfie', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                          functions
+                                                      .getDraftCaseIndexInList(
+                                                          FFAppState()
+                                                              .caseDetails
+                                                              .toList(),
+                                                          widget.caseDetails)
+                                                      .toString() !=
+                                                  '-1'
+                                              ? 'Selfie (${functions.filterImagesBySection('selfie', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                              : 'Selfie (0)',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -242,6 +292,10 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     'caseDetails': serializeParam(
                                       widget.caseDetails,
                                       ParamType.DataStruct,
+                                    ),
+                                    'caseIndex': serializeParam(
+                                      widget.caseIndex,
+                                      ParamType.int,
                                     ),
                                   }.withoutNulls,
                                   extra: <String, dynamic>{
@@ -336,44 +390,92 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    if (functions.filterImagesBySection(
-                                                'front',
-                                                FFAppState()
-                                                    .sitePictures
-                                                    .toList(),
-                                                widget.caseDetails!.id) !=
-                                            null &&
-                                        (functions.filterImagesBySection(
-                                                'front',
-                                                FFAppState()
-                                                    .sitePictures
-                                                    .toList(),
-                                                widget.caseDetails!.id))!
-                                            .isNotEmpty) {
-                                      context.pushNamed(
-                                        'view_all_photographs',
-                                        queryParameters: {
-                                          'imageType': serializeParam(
-                                            'front',
-                                            ParamType.String,
-                                          ),
-                                          'section': serializeParam(
-                                            2,
-                                            ParamType.int,
-                                          ),
-                                          'caseDetails': serializeParam(
-                                            widget.caseDetails,
-                                            ParamType.DataStruct,
-                                          ),
-                                        }.withoutNulls,
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: const TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.rightToLeft,
-                                          ),
-                                        },
-                                      );
+                                    if (functions
+                                                .getDraftCaseIndexInList(
+                                                    FFAppState()
+                                                        .caseDetails
+                                                        .toList(),
+                                                    widget.caseDetails)
+                                                .toString() !=
+                                            '-1'
+                                        ? true
+                                        : false) {
+                                      if (functions.filterImagesBySection(
+                                                  'front',
+                                                  FFAppState()
+                                                      .caseDetails[
+                                                          widget.caseIndex!]
+                                                      .sitePictures
+                                                      .toList(),
+                                                  widget.caseDetails!.id) !=
+                                              null &&
+                                          (functions.filterImagesBySection(
+                                                  'front',
+                                                  FFAppState()
+                                                      .caseDetails[
+                                                          widget.caseIndex!]
+                                                      .sitePictures
+                                                      .toList(),
+                                                  widget.caseDetails!.id))!
+                                              .isNotEmpty) {
+                                        context.pushNamed(
+                                          'view_all_photographs',
+                                          queryParameters: {
+                                            'imageType': serializeParam(
+                                              'front',
+                                              ParamType.String,
+                                            ),
+                                            'section': serializeParam(
+                                              1,
+                                              ParamType.int,
+                                            ),
+                                            'caseDetails': serializeParam(
+                                              widget.caseDetails,
+                                              ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
+                                            ),
+                                          },
+                                        );
+                                      } else {
+                                        context.pushNamed(
+                                          'take_pictures_screen',
+                                          queryParameters: {
+                                            'imageType': serializeParam(
+                                              'front',
+                                              ParamType.String,
+                                            ),
+                                            'section': serializeParam(
+                                              1,
+                                              ParamType.int,
+                                            ),
+                                            'caseDetails': serializeParam(
+                                              widget.caseDetails,
+                                              ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
+                                            ),
+                                          },
+                                        );
+                                      }
                                     } else {
                                       context.pushNamed(
                                         'take_pictures_screen',
@@ -383,12 +485,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                             ParamType.String,
                                           ),
                                           'section': serializeParam(
-                                            2,
+                                            1,
                                             ParamType.int,
                                           ),
                                           'caseDetails': serializeParam(
                                             widget.caseDetails,
                                             ParamType.DataStruct,
+                                          ),
+                                          'caseIndex': serializeParam(
+                                            widget.caseIndex,
+                                            ParamType.int,
                                           ),
                                         }.withoutNulls,
                                         extra: <String, dynamic>{
@@ -445,7 +551,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                   .fromSTEB(
                                                       10.0, 0.0, 20.0, 0.0),
                                               child: Text(
-                                                'Front (${functions.filterImagesBySection('front', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                functions
+                                                            .getDraftCaseIndexInList(
+                                                                FFAppState()
+                                                                    .caseDetails
+                                                                    .toList(),
+                                                                widget
+                                                                    .caseDetails)
+                                                            .toString() !=
+                                                        '-1'
+                                                    ? 'Front (${functions.filterImagesBySection('front', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                    : 'Front (0)',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -472,44 +588,96 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'back',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'back',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'back',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              2,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'back',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'back',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'back',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'back',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
@@ -519,12 +687,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              2,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -581,7 +753,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'Back (${functions.filterImagesBySection('back', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                  functions
+                                                              .getDraftCaseIndexInList(
+                                                                  FFAppState()
+                                                                      .caseDetails
+                                                                      .toList(),
+                                                                  widget
+                                                                      .caseDetails)
+                                                              .toString() !=
+                                                          '-1'
+                                                      ? 'Back (${functions.filterImagesBySection('back', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                      : 'Back (0)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -615,44 +797,96 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'left',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'left',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'left',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              2,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'left',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'left',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'left',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'left',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
@@ -662,12 +896,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              2,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -724,7 +962,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'Left (${functions.filterImagesBySection('left', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                  functions
+                                                              .getDraftCaseIndexInList(
+                                                                  FFAppState()
+                                                                      .caseDetails
+                                                                      .toList(),
+                                                                  widget
+                                                                      .caseDetails)
+                                                              .toString() !=
+                                                          '-1'
+                                                      ? 'Left ( ${functions.filterImagesBySection('left', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()} )'
+                                                      : 'Left (0)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -752,59 +1000,115 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'right',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'right',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'front',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              2,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'right',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'right',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'right',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'right',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
                                           queryParameters: {
                                             'imageType': serializeParam(
-                                              'front',
+                                              'right',
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              2,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -861,7 +1165,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'Right (${functions.filterImagesBySection('right', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                  functions
+                                                              .getDraftCaseIndexInList(
+                                                                  FFAppState()
+                                                                      .caseDetails
+                                                                      .toList(),
+                                                                  widget
+                                                                      .caseDetails)
+                                                              .toString() !=
+                                                          '-1'
+                                                      ? 'Right (${functions.filterImagesBySection('right', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                      : 'Right (0)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -895,44 +1209,96 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'approach',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'approach',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'approach',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              2,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'approach',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'approach',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'approach',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'approach',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
@@ -942,12 +1308,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              2,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -1004,7 +1374,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                     .fromSTEB(
                                                         4.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'Approach Road (${functions.filterImagesBySection('approach', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                  functions
+                                                              .getDraftCaseIndexInList(
+                                                                  FFAppState()
+                                                                      .caseDetails
+                                                                      .toList(),
+                                                                  widget
+                                                                      .caseDetails)
+                                                              .toString() !=
+                                                          '-1'
+                                                      ? 'Approach Road (${functions.filterImagesBySection('approach', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                      : 'Approach Road (0)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1032,44 +1412,96 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'projection',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'projection',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'projection',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              2,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'projection',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'projection',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'projection',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'projection',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
@@ -1079,12 +1511,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              2,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -1141,7 +1577,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'Projection (${functions.filterImagesBySection('projection', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                  functions
+                                                              .getDraftCaseIndexInList(
+                                                                  FFAppState()
+                                                                      .caseDetails
+                                                                      .toList(),
+                                                                  widget
+                                                                      .caseDetails)
+                                                              .toString() !=
+                                                          '-1'
+                                                      ? 'Projection (${functions.filterImagesBySection('projection', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                      : 'Projection (0)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1191,59 +1637,115 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'room',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'room',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'room',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'room',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'room',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'room',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
+                                      } else {
                                         context.pushNamed(
-                                          'view_all_photographs',
+                                          'take_pictures_screen',
                                           queryParameters: {
                                             'imageType': serializeParam(
                                               'room',
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              3,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
                                             ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
-                                      } else {
-                                        context.pushNamed(
-                                          'take_pictures_screen',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'front',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              2,
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
                                               ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -1300,7 +1802,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'Room (${functions.filterImagesBySection('room', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                  functions
+                                                              .getDraftCaseIndexInList(
+                                                                  FFAppState()
+                                                                      .caseDetails
+                                                                      .toList(),
+                                                                  widget
+                                                                      .caseDetails)
+                                                              .toString() !=
+                                                          '-1'
+                                                      ? 'Room (${functions.filterImagesBySection('room', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                      : 'Room (0)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1328,44 +1840,96 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'living',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'living',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'living',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              3,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'living',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'living',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'living',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'living',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
@@ -1375,12 +1939,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              3,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -1443,7 +2011,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                       .fromSTEB(
                                                           10.0, 0.0, 20.0, 0.0),
                                                   child: Text(
-                                                    'DD/Living Room (${functions.filterImagesBySection('living', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                    functions
+                                                                .getDraftCaseIndexInList(
+                                                                    FFAppState()
+                                                                        .caseDetails
+                                                                        .toList(),
+                                                                    widget
+                                                                        .caseDetails)
+                                                                .toString() !=
+                                                            '-1'
+                                                        ? 'DD/Living Room (${functions.filterImagesBySection('living', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                        : 'DD/Living Room (0)',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1478,44 +2056,96 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'kitchen',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'kitchen',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'kitchen',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              3,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'kitchen',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'kitchen',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'kitchen',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'kitchen',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
@@ -1525,12 +2155,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              3,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -1587,7 +2221,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                     .fromSTEB(
                                                         10.0, 0.0, 20.0, 0.0),
                                                 child: Text(
-                                                  'Kitchen (${functions.filterImagesBySection('kitchen', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                  functions
+                                                              .getDraftCaseIndexInList(
+                                                                  FFAppState()
+                                                                      .caseDetails
+                                                                      .toList(),
+                                                                  widget
+                                                                      .caseDetails)
+                                                              .toString() !=
+                                                          '-1'
+                                                      ? 'Kitchen (${functions.filterImagesBySection('kitchen', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                      : 'Kitchen (0)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1615,44 +2259,96 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'shop',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'shop',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'shop',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              3,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'shop',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'shop',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'shop',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'shop',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
@@ -1662,12 +2358,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              3,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -1733,7 +2433,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                             .fromSTEB(10.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Text(
-                                                      'Shop/Office (${functions.filterImagesBySection('shop', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                      functions
+                                                                  .getDraftCaseIndexInList(
+                                                                      FFAppState()
+                                                                          .caseDetails
+                                                                          .toList(),
+                                                                      widget
+                                                                          .caseDetails)
+                                                                  .toString() !=
+                                                              '-1'
+                                                          ? 'Shop/Office (${functions.filterImagesBySection('shop', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                          : 'Shop/Office (0)',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -1770,44 +2480,96 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'other',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'other',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'other',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              3,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'other',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'other',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'other',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'other',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
@@ -1817,12 +2579,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              3,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -1875,7 +2641,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                             ),
                                             Expanded(
                                               child: Text(
-                                                'Other Photos/Documents (${functions.filterImagesBySection('other', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                functions
+                                                            .getDraftCaseIndexInList(
+                                                                FFAppState()
+                                                                    .caseDetails
+                                                                    .toList(),
+                                                                widget
+                                                                    .caseDetails)
+                                                            .toString() !=
+                                                        '-1'
+                                                    ? 'Other Photos/Documents (${functions.filterImagesBySection('other', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                    : 'Other Photos/Documents (0)',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -1909,44 +2685,96 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (functions.filterImagesBySection(
-                                                  'draft',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id) !=
-                                              null &&
-                                          (functions.filterImagesBySection(
-                                                  'draft',
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget.caseDetails!.id))!
-                                              .isNotEmpty) {
-                                        context.pushNamed(
-                                          'view_all_photographs',
-                                          queryParameters: {
-                                            'imageType': serializeParam(
-                                              'draft',
-                                              ParamType.String,
-                                            ),
-                                            'section': serializeParam(
-                                              3,
-                                              ParamType.int,
-                                            ),
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                      if (functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.caseDetails)
+                                                  .toString() !=
+                                              '-1'
+                                          ? true
+                                          : false) {
+                                        if (functions.filterImagesBySection(
+                                                    'draft',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id) !=
+                                                null &&
+                                            (functions.filterImagesBySection(
+                                                    'draft',
+                                                    FFAppState()
+                                                        .caseDetails[
+                                                            widget.caseIndex!]
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.caseDetails!.id))!
+                                                .isNotEmpty) {
+                                          context.pushNamed(
+                                            'view_all_photographs',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'draft',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'take_pictures_screen',
+                                            queryParameters: {
+                                              'imageType': serializeParam(
+                                                'draft',
+                                                ParamType.String,
+                                              ),
+                                              'section': serializeParam(
+                                                1,
+                                                ParamType.int,
+                                              ),
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'caseIndex': serializeParam(
+                                                widget.caseIndex,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        }
                                       } else {
                                         context.pushNamed(
                                           'take_pictures_screen',
@@ -1956,12 +2784,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
-                                              3,
+                                              1,
                                               ParamType.int,
                                             ),
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -2014,7 +2846,17 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                             ),
                                             Expanded(
                                               child: Text(
-                                                'Draft Report Form (${functions.filterImagesBySection('draft', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                functions
+                                                            .getDraftCaseIndexInList(
+                                                                FFAppState()
+                                                                    .caseDetails
+                                                                    .toList(),
+                                                                widget
+                                                                    .caseDetails)
+                                                            .toString() !=
+                                                        '-1'
+                                                    ? 'Draft Report Form (${functions.filterImagesBySection('draft', FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})'
+                                                    : 'Draft Report Form (0)',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2058,6 +2900,10 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                             'caseDetails': serializeParam(
                                               widget.caseDetails,
                                               ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.caseIndex,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{

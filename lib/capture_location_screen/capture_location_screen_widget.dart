@@ -15,9 +15,11 @@ class CaptureLocationScreenWidget extends StatefulWidget {
   const CaptureLocationScreenWidget({
     super.key,
     required this.caseDetails,
+    required this.caseIndex,
   });
 
   final ResponseStruct? caseDetails;
+  final int? caseIndex;
 
   @override
   State<CaptureLocationScreenWidget> createState() =>
@@ -404,6 +406,10 @@ class _CaptureLocationScreenWidgetState
                                           widget.caseDetails,
                                           ParamType.DataStruct,
                                         ),
+                                        'caseIndex': serializeParam(
+                                          widget.caseIndex,
+                                          ParamType.int,
+                                        ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(
@@ -441,15 +447,16 @@ class _CaptureLocationScreenWidgetState
                                 FFButtonWidget(
                                   onPressed: () async {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
+                                      SnackBar(
                                         content: Text(
                                           'Saving Location...',
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
                                         ),
-                                        duration: Duration(milliseconds: 2000),
-                                        backgroundColor: Color(0xFFFF8C25),
+                                        duration: const Duration(milliseconds: 2000),
+                                        backgroundColor: const Color(0xFFFF8C25),
                                       ),
                                     );
                                     FFAppState().updateCaseDetailsAtIndex(
@@ -464,19 +471,7 @@ class _CaptureLocationScreenWidgetState
                                     );
                                     setState(() {});
                                     ScaffoldMessenger.of(context)
-                                        .clearSnackBars();
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Location Saved.',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 1500),
-                                        backgroundColor: Color(0xFFFF8C25),
-                                      ),
-                                    );
+                                        .hideCurrentSnackBar();
                                     context.safePop();
                                   },
                                   text: 'SAVE',

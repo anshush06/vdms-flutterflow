@@ -99,6 +99,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               structBuilder: ResponseStruct.fromSerializableMap,
             ),
+            caseIndex: params.getParam(
+              'caseIndex',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(
@@ -198,6 +202,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               structBuilder: ResponseStruct.fromSerializableMap,
             ),
+            caseIndex: params.getParam(
+              'caseIndex',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(
@@ -209,6 +217,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.DataStruct,
               isList: false,
               structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+            caseIndex: params.getParam(
+              'caseIndex',
+              ParamType.int,
             ),
           ),
         ),
@@ -235,6 +247,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               structBuilder: ResponseStruct.fromSerializableMap,
             ),
+            caseIndex: params.getParam(
+              'caseIndex',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(
@@ -246,6 +262,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.DataStruct,
               isList: false,
               structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+            caseIndex: params.getParam(
+              'caseIndex',
+              ParamType.int,
             ),
           ),
         )

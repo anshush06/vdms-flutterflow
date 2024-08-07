@@ -15,11 +15,13 @@ class TakePicturesScreenWidget extends StatefulWidget {
     required this.imageType,
     required this.section,
     required this.caseDetails,
+    required this.caseIndex,
   });
 
   final String? imageType;
   final int? section;
   final ResponseStruct? caseDetails;
+  final int? caseIndex;
 
   @override
   State<TakePicturesScreenWidget> createState() =>
@@ -192,6 +194,24 @@ class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
                                           functions.getCurrentTimeStamp(),
                                       caseId: widget.caseDetails?.id,
                                     ));
+                                    FFAppState().updateCaseDetailsAtIndex(
+                                      widget.caseIndex!,
+                                      (e) => e
+                                        ..updateSitePictures(
+                                          (e) => e.add(
+                                              SitePictureListResponseStruct(
+                                            name: functions.getImageName(
+                                                _model.uploadedLocalFile),
+                                            bytes: functions.getImageByteArray(
+                                                _model.uploadedLocalFile),
+                                            section: widget.section,
+                                            fieldName: widget.imageType,
+                                            timestamp:
+                                                functions.getCurrentTimeStamp(),
+                                            caseId: widget.caseDetails?.id,
+                                          )),
+                                        ),
+                                    );
                                     FFAppState().update(() {});
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
@@ -222,6 +242,10 @@ class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
                                         'caseDetails': serializeParam(
                                           widget.caseDetails,
                                           ParamType.DataStruct,
+                                        ),
+                                        'caseIndex': serializeParam(
+                                          widget.caseIndex,
+                                          ParamType.int,
                                         ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{

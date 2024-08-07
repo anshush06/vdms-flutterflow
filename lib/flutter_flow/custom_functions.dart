@@ -427,9 +427,8 @@ List<SitePictureListResponseStruct>? filterImagesBySection(
     return null;
   }
 
-  List<SitePictureListResponseStruct> filteredImages = imageList
-      .where((image) => image.fieldName == fieldName && image.caseId == caseId)
-      .toList();
+  List<SitePictureListResponseStruct> filteredImages =
+      imageList.where((image) => image.fieldName == fieldName).toList();
 
   return filteredImages;
 }
@@ -459,17 +458,8 @@ int getCurrentImageIndexByID(
 }
 
 List<SitePictureListResponseStruct>? filterImagesByCaseID(
-  List<SitePictureListResponseStruct>? imageList,
-  String caseId,
-) {
-  if (imageList == null) {
-    return null;
-  }
-
-  List<SitePictureListResponseStruct> filteredImages =
-      imageList.where((image) => image.caseId == caseId).toList();
-
-  return filteredImages;
+    List<SitePictureListResponseStruct>? imageList) {
+  return imageList;
 }
 
 bool checkEmptyFields(ResponseStruct caseDetails) {

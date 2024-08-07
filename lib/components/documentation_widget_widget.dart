@@ -107,6 +107,10 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
                         widget.caseDetailsForDocumentation,
                         ParamType.DataStruct,
                       ),
+                      'caseIndex': serializeParam(
+                        widget.caseIndex,
+                        ParamType.int,
+                      ),
                     }.withoutNulls,
                     extra: <String, dynamic>{
                       kTransitionInfoKey: const TransitionInfo(
@@ -140,7 +144,10 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 5.0, 0.0),
                             child: Text(
-                              '${functions.filterImagesByCaseID(FFAppState().sitePictures.toList(), widget.caseDetailsForDocumentation!.id)?.length.toString()} images',
+                              FFAppState().caseDetails.length >
+                                      widget.caseIndex!
+                                  ? '${functions.filterImagesByCaseID(FFAppState().caseDetails[widget.caseIndex!].sitePictures.toList())?.length.toString()} images'
+                                  : '0 images',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

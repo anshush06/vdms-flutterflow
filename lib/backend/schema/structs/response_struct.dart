@@ -37,6 +37,7 @@ class ResponseStruct extends BaseStruct {
     InspectionFormDataStruct? inspectionFormData,
     String? latitude,
     String? longitude,
+    List<SitePictureListResponseStruct>? sitePictures,
   })  : _id = id,
         _refNo = refNo,
         _addressLine1 = addressLine1,
@@ -67,7 +68,8 @@ class ResponseStruct extends BaseStruct {
         _isUrgent = isUrgent,
         _inspectionFormData = inspectionFormData,
         _latitude = latitude,
-        _longitude = longitude;
+        _longitude = longitude,
+        _sitePictures = sitePictures;
 
   // "id" field.
   String? _id;
@@ -298,6 +300,20 @@ class ResponseStruct extends BaseStruct {
 
   bool hasLongitude() => _longitude != null;
 
+  // "sitePictures" field.
+  List<SitePictureListResponseStruct>? _sitePictures;
+  List<SitePictureListResponseStruct> get sitePictures =>
+      _sitePictures ?? const [];
+  set sitePictures(List<SitePictureListResponseStruct>? val) =>
+      _sitePictures = val;
+
+  void updateSitePictures(
+      Function(List<SitePictureListResponseStruct>) updateFn) {
+    updateFn(_sitePictures ??= []);
+  }
+
+  bool hasSitePictures() => _sitePictures != null;
+
   static ResponseStruct fromMap(Map<String, dynamic> data) => ResponseStruct(
         id: data['id'] as String?,
         refNo: data['refNo'] as String?,
@@ -331,6 +347,10 @@ class ResponseStruct extends BaseStruct {
             InspectionFormDataStruct.maybeFromMap(data['inspectionFormData']),
         latitude: data['latitude'] as String?,
         longitude: data['longitude'] as String?,
+        sitePictures: getStructList(
+          data['sitePictures'],
+          SitePictureListResponseStruct.fromMap,
+        ),
       );
 
   static ResponseStruct? maybeFromMap(dynamic data) =>
@@ -368,6 +388,7 @@ class ResponseStruct extends BaseStruct {
         'inspectionFormData': _inspectionFormData?.toMap(),
         'latitude': _latitude,
         'longitude': _longitude,
+        'sitePictures': _sitePictures?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -495,6 +516,11 @@ class ResponseStruct extends BaseStruct {
         'longitude': serializeParam(
           _longitude,
           ParamType.String,
+        ),
+        'sitePictures': serializeParam(
+          _sitePictures,
+          ParamType.DataStruct,
+          isList: true,
         ),
       }.withoutNulls;
 
@@ -656,6 +682,12 @@ class ResponseStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        sitePictures: deserializeStructParam<SitePictureListResponseStruct>(
+          data['sitePictures'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: SitePictureListResponseStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -663,6 +695,7 @@ class ResponseStruct extends BaseStruct {
 
   @override
   bool operator ==(Object other) {
+    const listEquality = ListEquality();
     return other is ResponseStruct &&
         id == other.id &&
         refNo == other.refNo &&
@@ -694,7 +727,8 @@ class ResponseStruct extends BaseStruct {
         isUrgent == other.isUrgent &&
         inspectionFormData == other.inspectionFormData &&
         latitude == other.latitude &&
-        longitude == other.longitude;
+        longitude == other.longitude &&
+        listEquality.equals(sitePictures, other.sitePictures);
   }
 
   @override
@@ -729,7 +763,8 @@ class ResponseStruct extends BaseStruct {
         isUrgent,
         inspectionFormData,
         latitude,
-        longitude
+        longitude,
+        sitePictures
       ]);
 }
 

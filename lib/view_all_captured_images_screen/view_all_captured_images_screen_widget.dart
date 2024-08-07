@@ -13,9 +13,11 @@ class ViewAllCapturedImagesScreenWidget extends StatefulWidget {
   const ViewAllCapturedImagesScreenWidget({
     super.key,
     required this.caseDetails,
+    required this.caseIndex,
   });
 
   final ResponseStruct? caseDetails;
+  final int? caseIndex;
 
   @override
   State<ViewAllCapturedImagesScreenWidget> createState() =>

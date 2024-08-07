@@ -239,7 +239,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                   );
                                 } else {
                                   if (functions.checkEmptyFields(
-                                      FFAppState().submitCaseDetails)) {
+                                      widget.selectedCaseDetails!)) {
                                     var confirmDialogResponse =
                                         await showDialog<bool>(
                                               context: context,
@@ -290,121 +290,11 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                           await actions.submitSurveyDocuments(
                                         widget.selectedCaseDetails!.id,
                                         FFAppState().userId,
-                                        FFAppState().sitePictures.toList(),
-                                      );
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            functions.convertDataToJson(
-                                                widget.selectedCaseDetails
-                                                    ?.inspectionFormData.refNo,
-                                                widget.selectedCaseDetails
-                                                    ?.inspectionFormData.bank,
-                                                FFAppState().username,
-                                                functions.getCurrentTimeStamp(),
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .applicantName,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .address1,
-                                                widget.selectedCaseDetails
-                                                    ?.inspectionFormData.state,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .locality,
-                                                widget.selectedCaseDetails
-                                                    ?.inspectionFormData.pin,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .propertyLocatedIn,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .classificationOfLocality,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .namePlateFixed,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .propertyDemarcated,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .propertyType,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .permittedUseOfProperty,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .structureType,
-                                                widget
-                                                    .selectedCaseDetails
-                                                    ?.inspectionFormData
-                                                    .constructionStatus,
-                                                widget.selectedCaseDetails
-                                                    ?.inspectionFormData.roof,
-                                                widget.selectedCaseDetails?.inspectionFormData.interiorConstructionQuality,
-                                                widget.selectedCaseDetails?.inspectionFormData.exteriorConstructionQuality,
-                                                widget.selectedCaseDetails?.inspectionFormData.valuationType,
-                                                widget.selectedCaseDetails?.inspectionFormData.carpet,
-                                                widget.selectedCaseDetails?.inspectionFormData.balcony,
-                                                widget.selectedCaseDetails?.inspectionFormData.salableArea,
-                                                widget.selectedCaseDetails?.inspectionFormData.plotArea,
-                                                widget.selectedCaseDetails?.inspectionFormData.rentalValue,
-                                                widget.selectedCaseDetails?.inspectionFormData.minimumMarketRates,
-                                                widget.selectedCaseDetails?.inspectionFormData.maximumMarketRates,
-                                                widget.selectedCaseDetails?.inspectionFormData.city,
-                                                widget.selectedCaseDetails?.inspectionFormData.address2,
-                                                widget.selectedCaseDetails?.inspectionFormData.personMet,
-                                                widget.selectedCaseDetails?.inspectionFormData.relationWithOwner,
-                                                widget.selectedCaseDetails?.inspectionFormData.landMark,
-                                                widget.selectedCaseDetails?.inspectionFormData.roadWidth,
-                                                widget.selectedCaseDetails?.inspectionFormData.propertyIdentified,
-                                                widget.selectedCaseDetails?.inspectionFormData.cityCenter,
-                                                widget.selectedCaseDetails?.inspectionFormData.railwayStation,
-                                                widget.selectedCaseDetails?.inspectionFormData.busStop,
-                                                widget.selectedCaseDetails?.inspectionFormData.hospital,
-                                                widget.selectedCaseDetails?.inspectionFormData.north,
-                                                widget.selectedCaseDetails?.inspectionFormData.south,
-                                                widget.selectedCaseDetails?.inspectionFormData.east,
-                                                widget.selectedCaseDetails?.inspectionFormData.west,
-                                                widget.selectedCaseDetails?.inspectionFormData.otherPermittedUseOfProperty,
-                                                widget.selectedCaseDetails?.inspectionFormData.noOfFloors,
-                                                widget.selectedCaseDetails?.inspectionFormData.unitsPerFloor,
-                                                widget.selectedCaseDetails?.inspectionFormData.noOfLifts,
-                                                widget.selectedCaseDetails?.inspectionFormData.floorLocation,
-                                                widget.selectedCaseDetails?.inspectionFormData.ageBuilding,
-                                                widget.selectedCaseDetails?.inspectionFormData.completionState,
-                                                widget.selectedCaseDetails?.inspectionFormData.otherRoof,
-                                                widget.selectedCaseDetails?.inspectionFormData.wallPlasterPainting,
-                                                widget.selectedCaseDetails?.inspectionFormData.doorsWindows,
-                                                widget.selectedCaseDetails?.inspectionFormData.flooringType,
-                                                widget.selectedCaseDetails?.inspectionFormData.plotLength,
-                                                widget.selectedCaseDetails?.inspectionFormData.plotWidth,
-                                                widget.selectedCaseDetails?.inspectionFormData.reasonPortionNotSeen,
-                                                widget.selectedCaseDetails?.inspectionFormData.anyOtherInformation.toList())!,
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              const Duration(milliseconds: 10000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
+                                        FFAppState()
+                                            .caseDetails[
+                                                widget.currentCaseIndex!]
+                                            .sitePictures
+                                            .toList(),
                                       );
                                       if (_model.submitSurveyAPIResponse1 ==
                                           true) {
@@ -567,8 +457,6 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                             FFAppState()
                                                 .removeAtIndexFromCaseDetails(
                                                     widget.currentCaseIndex!);
-                                            FFAppState().submitCaseDetails =
-                                                ResponseStruct();
                                             FFAppState().update(() {});
                                             context.safePop();
                                           } else {
@@ -669,9 +557,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                         showLoadingIndicator: false,
                       ),
                     ),
-                ]
-                    .divide(const SizedBox(height: 15.0))
-                    .addToEnd(const SizedBox(height: 10.0)),
+                ].divide(const SizedBox(height: 10.0)),
               ),
             ),
           ),
