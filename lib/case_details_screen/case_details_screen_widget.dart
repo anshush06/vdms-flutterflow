@@ -381,6 +381,23 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                       Color(0xFFFF8C25),
                                                 ),
                                               );
+                                              ScaffoldMessenger.of(context)
+                                                  .clearSnackBars();
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                    'Saving Location...',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      Color(0xFFFF8C25),
+                                                ),
+                                              );
                                               _model.saveLocationAPIResponse =
                                                   await VdmsApiCallsGroup
                                                       .saveSurveyLocationAPICall
@@ -403,6 +420,8 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                     r'''$.error.message''',
                                                   ) ==
                                                   null) {
+                                                ScaffoldMessenger.of(context)
+                                                    .clearSnackBars();
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   SnackBar(
@@ -555,6 +574,8 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                         .submitSurveyAPIResponse
                                                         ?.succeeded ??
                                                     true)) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .clearSnackBars();
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
                                                     const SnackBar(
