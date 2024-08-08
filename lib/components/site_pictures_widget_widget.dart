@@ -2093,6 +2093,9 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       decoration: const BoxDecoration(),
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          if (Navigator.of(context).canPop()) {
+                                            context.pop();
+                                          }
                                           context.pushNamed(
                                             'case_details_screen',
                                             queryParameters: {
@@ -2112,6 +2115,16 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                 ParamType.int,
                                               ),
                                             }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
                                           );
                                         },
                                         text: 'Save',
