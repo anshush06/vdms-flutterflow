@@ -17,11 +17,8 @@ String? hashPassword(String? userPassword) {
   return base64String;
 }
 
-int getFilledFieldsCount(
-  InspectionFormDataStruct? inspectionFormData,
-  ResponseStruct? caseDetails,
-) {
-  if (inspectionFormData == null || caseDetails == null) {
+int getFilledFieldsCount(InspectionFormDataStruct? inspectionFormData) {
+  if (inspectionFormData == null) {
     return 0;
   }
 
@@ -97,25 +94,6 @@ int getFilledFieldsCount(
   if (inspectionFormData.reasonPortionNotSeen?.isNotEmpty ?? false) count++;
   if (inspectionFormData.anyOtherInformation != null &&
       inspectionFormData.anyOtherInformation!.isNotEmpty) count++;
-
-  if (caseDetails.refNo?.isNotEmpty ?? false) count++;
-  //if (caseDetails.address_line1?.isNotEmpty ?? false) count++;
-  //if (caseDetails.address_line2?.isNotEmpty ?? false) count++;
-  if (caseDetails.city?.isNotEmpty ?? false) count++;
-  if (caseDetails.pincode?.isNotEmpty ?? false) count++;
-  if (caseDetails.zone?.isNotEmpty ?? false) count++;
-  if (caseDetails.state?.isNotEmpty ?? false) count++;
-  if (caseDetails.country?.isNotEmpty ?? false) count++;
-  if (caseDetails.contactperson1?.isNotEmpty ?? false) count++;
-  if (caseDetails.contact1?.isNotEmpty ?? false) count++;
-  if (caseDetails.contactperson2?.isNotEmpty ?? false) count++;
-  if (caseDetails.contact2?.isNotEmpty ?? false) count++;
-  if (caseDetails.dateAssigned?.isNotEmpty ?? false) count++;
-  if (caseDetails.description?.isNotEmpty ?? false) count++;
-  if (caseDetails.remark?.isNotEmpty ?? false) count++;
-  if (caseDetails.clientName?.isNotEmpty ?? false) count++;
-  if (caseDetails.officeName?.isNotEmpty ?? false) count++;
-  if (caseDetails.partyName?.isNotEmpty ?? false) count++;
 
   return count;
 }
@@ -195,7 +173,7 @@ bool filterCases(
 
   // Check if the currentCase is present in draftCases
   for (final caseItem in draftCases) {
-    if (caseItem.id == currentCase.id) {
+    if (caseItem.id == currentCase.id && caseItem.statusId == '4') {
       return false;
     }
   }
@@ -427,8 +405,9 @@ List<SitePictureListResponseStruct>? filterImagesBySection(
     return null;
   }
 
-  List<SitePictureListResponseStruct> filteredImages =
-      imageList.where((image) => image.fieldName == fieldName).toList();
+  List<SitePictureListResponseStruct> filteredImages = imageList
+      .where((image) => image.fieldName == fieldName && image.caseId == caseId)
+      .toList();
 
   return filteredImages;
 }
@@ -458,8 +437,17 @@ int getCurrentImageIndexByID(
 }
 
 List<SitePictureListResponseStruct>? filterImagesByCaseID(
-    List<SitePictureListResponseStruct>? imageList) {
-  return imageList;
+  List<SitePictureListResponseStruct>? imageList,
+  String caseId,
+) {
+  if (imageList == null) {
+    return null;
+  }
+
+  List<SitePictureListResponseStruct> filteredImages =
+      imageList.where((image) => image.caseId == caseId).toList();
+
+  return filteredImages;
 }
 
 bool checkEmptyFields(ResponseStruct caseDetails) {

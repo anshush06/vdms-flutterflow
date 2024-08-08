@@ -11,11 +11,9 @@ class SitePicturesScreenWidget extends StatefulWidget {
   const SitePicturesScreenWidget({
     super.key,
     required this.caseDetails,
-    required this.caseIndex,
   });
 
   final ResponseStruct? caseDetails;
-  final int? caseIndex;
 
   @override
   State<SitePicturesScreenWidget> createState() =>
@@ -132,7 +130,6 @@ class _SitePicturesScreenWidgetState extends State<SitePicturesScreenWidget> {
                     updateCallback: () => setState(() {}),
                     child: SitePicturesWidgetWidget(
                       caseDetails: widget.caseDetails!,
-                      caseIndex: widget.caseIndex!,
                     ),
                   ),
                 ),

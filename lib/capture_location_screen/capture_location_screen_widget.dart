@@ -15,11 +15,9 @@ class CaptureLocationScreenWidget extends StatefulWidget {
   const CaptureLocationScreenWidget({
     super.key,
     required this.caseDetails,
-    required this.caseIndex,
   });
 
   final ResponseStruct? caseDetails;
-  final int? caseIndex;
 
   @override
   State<CaptureLocationScreenWidget> createState() =>
@@ -406,10 +404,6 @@ class _CaptureLocationScreenWidgetState
                                           widget.caseDetails,
                                           ParamType.DataStruct,
                                         ),
-                                        'caseIndex': serializeParam(
-                                          widget.caseIndex,
-                                          ParamType.int,
-                                        ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(
@@ -470,8 +464,6 @@ class _CaptureLocationScreenWidgetState
                                             _model.longitudeTextController.text,
                                     );
                                     setState(() {});
-                                    ScaffoldMessenger.of(context)
-                                        .hideCurrentSnackBar();
                                     context.safePop();
                                   },
                                   text: 'SAVE',

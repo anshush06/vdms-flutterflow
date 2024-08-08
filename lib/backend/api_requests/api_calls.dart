@@ -30,6 +30,8 @@ class VdmsApiCallsGroup {
   static SubmitSurveyAPICall submitSurveyAPICall = SubmitSurveyAPICall();
   static GetNotificationsCountAPICall getNotificationsCountAPICall =
       GetNotificationsCountAPICall();
+  static SaveSurveyLocationAPICall saveSurveyLocationAPICall =
+      SaveSurveyLocationAPICall();
 }
 
 class ValidateLoginAPICall {
@@ -476,6 +478,44 @@ class GetNotificationsCountAPICall {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       params: {
+        'userId': userId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SaveSurveyLocationAPICall {
+  Future<ApiCallResponse> call({
+    String? longitude = '',
+    String? latitude = '',
+    String? caseId = '',
+    String? userId = '',
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'saveSurveyLocationAPI',
+      apiUrl: '$baseUrl/saveSurveyLocationAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'longitude': longitude,
+        'latitude': latitude,
+        'caseId': caseId,
         'userId': userId,
       },
       bodyType: BodyType.X_WWW_FORM_URL_ENCODED,

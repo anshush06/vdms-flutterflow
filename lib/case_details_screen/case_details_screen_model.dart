@@ -17,6 +17,8 @@ class CaseDetailsScreenModel extends FlutterFlowModel<CaseDetailsScreenWidget> {
   late DocumentationWidgetModel documentationWidgetModel;
   // Stores action output result for [Custom Action - submitSurveyDocuments] action in Button widget.
   bool? submitSurveyAPIResponse1;
+  // Stores action output result for [Backend Call - API (saveSurveyLocationAPI)] action in Button widget.
+  ApiCallResponse? saveLocationAPIResponse;
   // Stores action output result for [Backend Call - API (submitSurveyAPI)] action in Button widget.
   ApiCallResponse? submitSurveyAPIResponse;
 

@@ -670,18 +670,32 @@ class _MainCaseListingScreenWidgetState
                                               queryParameters: {
                                                 'selectedCaseDetails':
                                                     serializeParam(
-                                                  case1Item,
+                                                  functions
+                                                              .getDraftCaseIndexInList(
+                                                                  FFAppState()
+                                                                      .caseDetails
+                                                                      .toList(),
+                                                                  case1Item)
+                                                              .toString() !=
+                                                          functions
+                                                              .convertStringtoInteger(
+                                                                  '-1')
+                                                              .toString()
+                                                      ? FFAppState()
+                                                              .caseDetails[
+                                                          functions
+                                                              .getDraftCaseIndexInList(
+                                                                  FFAppState()
+                                                                      .caseDetails
+                                                                      .toList(),
+                                                                  case1Item)!]
+                                                      : case1Item,
                                                   ParamType.DataStruct,
                                                 ),
                                                 'currentCaseIndex':
                                                     serializeParam(
                                                   case1Index,
                                                   ParamType.int,
-                                                ),
-                                                'inspectionform':
-                                                    serializeParam(
-                                                  InspectionFormDataStruct(),
-                                                  ParamType.DataStruct,
                                                 ),
                                               }.withoutNulls,
                                               extra: <String, dynamic>{
@@ -716,8 +730,10 @@ class _MainCaseListingScreenWidgetState
                             ),
                             child: Builder(
                               builder: (context) {
-                                final eachCase2 =
-                                    FFAppState().caseDetails.toList();
+                                final eachCase2 = FFAppState()
+                                    .caseDetails
+                                    .where((e) => e.statusId == '4')
+                                    .toList();
                                 if (eachCase2.isEmpty) {
                                   return const Center(
                                     child: NoCasesWidgetWidget(),
@@ -753,10 +769,6 @@ class _MainCaseListingScreenWidgetState
                                             'currentCaseIndex': serializeParam(
                                               eachCase2Index,
                                               ParamType.int,
-                                            ),
-                                            'inspectionform': serializeParam(
-                                              InspectionFormDataStruct(),
-                                              ParamType.DataStruct,
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
@@ -852,11 +864,6 @@ class _MainCaseListingScreenWidgetState
                                                     serializeParam(
                                                   case1Index,
                                                   ParamType.int,
-                                                ),
-                                                'inspectionform':
-                                                    serializeParam(
-                                                  InspectionFormDataStruct(),
-                                                  ParamType.DataStruct,
                                                 ),
                                               }.withoutNulls,
                                               extra: <String, dynamic>{
@@ -955,11 +962,6 @@ class _MainCaseListingScreenWidgetState
                                                     serializeParam(
                                                   eachCase4Index,
                                                   ParamType.int,
-                                                ),
-                                                'inspectionform':
-                                                    serializeParam(
-                                                  InspectionFormDataStruct(),
-                                                  ParamType.DataStruct,
                                                 ),
                                               }.withoutNulls,
                                               extra: <String, dynamic>{
