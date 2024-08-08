@@ -56,10 +56,10 @@ class _CaptureLocationScreenWidgetState
 
     getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
-    _model.latitudeTextController ??= TextEditingController(text: '0.0');
+    _model.latitudeTextController ??= TextEditingController(text: '1.0');
     _model.latitudeFocusNode ??= FocusNode();
 
-    _model.longitudeTextController ??= TextEditingController(text: '0.0');
+    _model.longitudeTextController ??= TextEditingController(text: '1.0');
     _model.longitudeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -165,6 +165,15 @@ class _CaptureLocationScreenWidgetState
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
+                            '${widget.caseDetails?.latitude}-${widget.caseDetails?.longitude}',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Roboto',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Text(
                             'Latitude and Longitude',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
@@ -204,25 +213,29 @@ class _CaptureLocationScreenWidgetState
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
-                                'Latitude',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                              Flexible(
+                                child: Text(
+                                  'Latitude',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
                               ),
-                              Text(
-                                'Longitude',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                              Flexible(
+                                child: Text(
+                                  'Longitude',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
                               ),
                             ],
                           ),
@@ -392,104 +405,173 @@ class _CaptureLocationScreenWidgetState
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    if (Navigator.of(context).canPop()) {
-                                      context.pop();
-                                    }
-                                    context.pushNamed(
-                                      'capture_location_screen',
-                                      queryParameters: {
-                                        'caseDetails': serializeParam(
-                                          widget.caseDetails,
-                                          ParamType.DataStruct,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
-                                  },
-                                  text: 'REFRESH',
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0xFF33B5E6),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                ),
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Saving Location...',
-                                          style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                Expanded(
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
+                                      context.pushNamed(
+                                        'capture_location_screen',
+                                        queryParameters: {
+                                          'caseDetails': serializeParam(
+                                            widget.caseDetails,
+                                            ParamType.DataStruct,
                                           ),
-                                        ),
-                                        duration: const Duration(milliseconds: 2000),
-                                        backgroundColor: const Color(0xFFFF8C25),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    text: 'REFRESH',
+                                    options: FFButtonOptions(
+                                      height: 40.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: const Color(0xFF33B5E6),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: Colors.white,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
                                       ),
-                                    );
-                                    FFAppState().updateCaseDetailsAtIndex(
-                                      functions.getDraftCaseIndexInList(
-                                          FFAppState().caseDetails.toList(),
-                                          widget.caseDetails)!,
-                                      (e) => e
-                                        ..latitude =
-                                            _model.latitudeTextController.text
-                                        ..longitude =
-                                            _model.longitudeTextController.text,
-                                    );
-                                    setState(() {});
-                                    context.safePop();
-                                  },
-                                  text: 'SAVE',
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0xFFFF8C25),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                 ),
-                              ],
+                                Expanded(
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (widget.caseDetails?.statusId ==
+                                          '1') {
+                                        FFAppState().addToCaseDetails(
+                                            widget.caseDetails!);
+                                        FFAppState().updateCaseDetailsAtIndex(
+                                          functions.getDraftCaseIndexInList(
+                                              FFAppState().caseDetails.toList(),
+                                              widget.caseDetails)!,
+                                          (e) => e
+                                            ..statusId = '5'
+                                            ..statusName =
+                                                'Ready For Draft Report'
+                                            ..latitude = _model
+                                                .latitudeTextController.text
+                                            ..longitude = _model
+                                                .longitudeTextController.text,
+                                        );
+                                        FFAppState().update(() {});
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Location Saved Successfully.',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 3000),
+                                            backgroundColor: Color(0xFFFF8C25),
+                                          ),
+                                        );
+                                      } else {
+                                        FFAppState().updateCaseDetailsAtIndex(
+                                          functions.getDraftCaseIndexInList(
+                                              FFAppState().caseDetails.toList(),
+                                              widget.caseDetails)!,
+                                          (e) => e
+                                            ..statusId = '5'
+                                            ..statusName =
+                                                'Ready For Draft Report'
+                                            ..latitude = _model
+                                                .latitudeTextController.text
+                                            ..longitude = _model
+                                                .longitudeTextController.text,
+                                        );
+                                        FFAppState().update(() {});
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Location Saved Successfully.',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 3000),
+                                            backgroundColor: Color(0xFFFF8C25),
+                                          ),
+                                        );
+                                      }
+
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
+                                      context.pushNamed(
+                                        'site_pictures_screen',
+                                        queryParameters: {
+                                          'caseDetails': serializeParam(
+                                            FFAppState().caseDetails[functions
+                                                .getDraftCaseIndexInList(
+                                                    FFAppState()
+                                                        .caseDetails
+                                                        .toList(),
+                                                    widget.caseDetails)!],
+                                            ParamType.DataStruct,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    text: 'SAVE',
+                                    options: FFButtonOptions(
+                                      height: 40.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: const Color(0xFFFF8C25),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: Colors.white,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                  ),
+                                ),
+                              ].divide(const SizedBox(width: 15.0)),
                             ),
                           ),
                         ]
