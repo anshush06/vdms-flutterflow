@@ -128,7 +128,10 @@ class _CaptureLocationScreenWidgetState
                     ),
               ),
               Text(
-                'S_2024_JULY_24',
+                valueOrDefault<String>(
+                  widget.caseDetails?.refNo,
+                  '-',
+                ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Roboto',
                       color: Colors.white,
