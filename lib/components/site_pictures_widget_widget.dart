@@ -160,19 +160,27 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 }
                               },
                               child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 50.0,
                                       color: Color(0x0F000000),
                                     )
                                   ],
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     bottomLeft: Radius.circular(10.0),
                                     bottomRight: Radius.circular(10.0),
                                     topLeft: Radius.circular(10.0),
                                     topRight: Radius.circular(10.0),
+                                  ),
+                                  border: Border.all(
+                                    color: !_model.isSelfieNotFilled
+                                        ? const Color(0xFFCC3F3F)
+                                        : FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                    width: 5.0,
                                   ),
                                 ),
                                 child: Padding(
@@ -212,7 +220,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 0.0),
+                                0.0, 3.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -237,19 +245,27 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 );
                               },
                               child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 0.0,
                                       color: Color(0x0F000000),
                                     )
                                   ],
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     bottomLeft: Radius.circular(10.0),
                                     bottomRight: Radius.circular(10.0),
                                     topLeft: Radius.circular(10.0),
                                     topRight: Radius.circular(10.0),
+                                  ),
+                                  border: Border.all(
+                                    color: !_model.isLocationNotFilled
+                                        ? const Color(0xFFCC3F3F)
+                                        : FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                    width: 5.0,
                                   ),
                                 ),
                                 child: Padding(
@@ -313,133 +329,143 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Expanded(
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (functions.filterImagesBySection(
-                                                'front',
-                                                FFAppState()
-                                                    .sitePictures
-                                                    .toList(),
-                                                widget.caseDetails!.id) !=
-                                            null &&
-                                        (functions.filterImagesBySection(
-                                                'front',
-                                                FFAppState()
-                                                    .sitePictures
-                                                    .toList(),
-                                                widget.caseDetails!.id))!
-                                            .isNotEmpty) {
-                                      context.pushNamed(
-                                        'view_all_photographs',
-                                        queryParameters: {
-                                          'imageType': serializeParam(
-                                            'front',
-                                            ParamType.String,
-                                          ),
-                                          'section': serializeParam(
-                                            2,
-                                            ParamType.int,
-                                          ),
-                                          'caseDetails': serializeParam(
-                                            widget.caseDetails,
-                                            ParamType.DataStruct,
-                                          ),
-                                        }.withoutNulls,
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: const TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.rightToLeft,
-                                          ),
-                                        },
-                                      );
-                                    } else {
-                                      context.pushNamed(
-                                        'take_pictures_screen',
-                                        queryParameters: {
-                                          'imageType': serializeParam(
-                                            'front',
-                                            ParamType.String,
-                                          ),
-                                          'section': serializeParam(
-                                            2,
-                                            ParamType.int,
-                                          ),
-                                          'caseDetails': serializeParam(
-                                            widget.caseDetails,
-                                            ParamType.DataStruct,
-                                          ),
-                                        }.withoutNulls,
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: const TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.rightToLeft,
-                                          ),
-                                        },
-                                      );
-                                    }
-                                  },
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 50.0,
-                                          color: Color(0x0F000000),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        bottomRight: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 14.0, 5.0, 14.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Icon(
-                                              Icons.camera_alt,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      if (functions.filterImagesBySection(
+                                                  'front',
+                                                  FFAppState()
+                                                      .sitePictures
+                                                      .toList(),
+                                                  widget.caseDetails!.id) !=
+                                              null &&
+                                          (functions.filterImagesBySection(
+                                                  'front',
+                                                  FFAppState()
+                                                      .sitePictures
+                                                      .toList(),
+                                                  widget.caseDetails!.id))!
+                                              .isNotEmpty) {
+                                        context.pushNamed(
+                                          'view_all_photographs',
+                                          queryParameters: {
+                                            'imageType': serializeParam(
+                                              'front',
+                                              ParamType.String,
                                             ),
-                                          ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
+                                            'section': serializeParam(
+                                              2,
+                                              ParamType.int,
+                                            ),
+                                            'caseDetails': serializeParam(
+                                              widget.caseDetails,
+                                              ParamType.DataStruct,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
+                                            ),
+                                          },
+                                        );
+                                      } else {
+                                        context.pushNamed(
+                                          'take_pictures_screen',
+                                          queryParameters: {
+                                            'imageType': serializeParam(
+                                              'front',
+                                              ParamType.String,
+                                            ),
+                                            'section': serializeParam(
+                                              2,
+                                              ParamType.int,
+                                            ),
+                                            'caseDetails': serializeParam(
+                                              widget.caseDetails,
+                                              ParamType.DataStruct,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
+                                            ),
+                                          },
+                                        );
+                                      }
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            blurRadius: 50.0,
+                                            color: Color(0x0F000000),
+                                          )
+                                        ],
+                                        borderRadius: const BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0),
+                                          topLeft: Radius.circular(10.0),
+                                          topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 5.0, 14.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      10.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                'Front (${functions.filterImagesBySection('front', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
-                                                style:
+                                                      20.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.camera_alt,
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                        .secondaryText,
+                                                size: 24.0,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 20.0, 0.0),
+                                                child: Text(
+                                                  'Front (${functions.filterImagesBySection('front', FFAppState().sitePictures.toList(), widget.caseDetails!.id)?.length.toString()})',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -448,7 +474,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
+                                      10.0, 10.0, 0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -521,19 +547,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       }
                                     },
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -664,19 +696,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       }
                                     },
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -801,19 +839,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       }
                                     },
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -944,19 +988,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       }
                                     },
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -1081,19 +1131,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       }
                                     },
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -1240,19 +1296,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       }
                                     },
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -1377,19 +1439,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       }
                                     },
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -1527,19 +1595,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       }
                                     },
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -1665,19 +1739,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     },
                                     child: SafeArea(
                                       child: Container(
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                          boxShadow: [
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 50.0,
                                               color: Color(0x0F000000),
                                             )
                                           ],
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(10.0),
                                             bottomRight: Radius.circular(10.0),
                                             topLeft: Radius.circular(10.0),
                                             topRight: Radius.circular(10.0),
+                                          ),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBackground,
+                                            width: 0.0,
                                           ),
                                         ),
                                         child: Padding(
@@ -1821,19 +1901,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -1960,19 +2046,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 50.0,
                                             color: Color(0x0F000000),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(10.0),
                                           bottomRight: Radius.circular(10.0),
                                           topLeft: Radius.circular(10.0),
                                           topRight: Radius.circular(10.0),
+                                        ),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          width: 0.0,
                                         ),
                                       ),
                                       child: Padding(
@@ -2093,39 +2185,58 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                       decoration: const BoxDecoration(),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          if (Navigator.of(context).canPop()) {
-                                            context.pop();
+                                          _model.isSelfieNotFilled = functions
+                                              .filterImagesByCaseIDAndImageType(
+                                                  FFAppState()
+                                                      .sitePictures
+                                                      .toList(),
+                                                  widget.caseDetails!.id,
+                                                  'selfie');
+                                          _model.isLocationNotFilled = (widget
+                                                      .caseDetails?.latitude !=
+                                                  '0') &&
+                                              (widget.caseDetails?.longitude !=
+                                                  '0');
+                                          _model.updatePage(() {});
+                                          if ((_model.isSelfieNotFilled ==
+                                                  true) &&
+                                              (_model.isSelfieNotFilled ==
+                                                  true)) {
+                                            if (Navigator.of(context)
+                                                .canPop()) {
+                                              context.pop();
+                                            }
+                                            context.pushNamed(
+                                              'case_details_screen',
+                                              queryParameters: {
+                                                'selectedCaseDetails':
+                                                    serializeParam(
+                                                  widget.caseDetails,
+                                                  ParamType.DataStruct,
+                                                ),
+                                                'currentCaseIndex':
+                                                    serializeParam(
+                                                  functions
+                                                      .getDraftCaseIndexInList(
+                                                          FFAppState()
+                                                              .caseDetails
+                                                              .toList(),
+                                                          widget.caseDetails),
+                                                  ParamType.int,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
                                           }
-                                          context.pushNamed(
-                                            'case_details_screen',
-                                            queryParameters: {
-                                              'selectedCaseDetails':
-                                                  serializeParam(
-                                                widget.caseDetails,
-                                                ParamType.DataStruct,
-                                              ),
-                                              'currentCaseIndex':
-                                                  serializeParam(
-                                                functions
-                                                    .getDraftCaseIndexInList(
-                                                        FFAppState()
-                                                            .caseDetails
-                                                            .toList(),
-                                                        widget.caseDetails),
-                                                ParamType.int,
-                                              ),
-                                            }.withoutNulls,
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  const TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType.fade,
-                                                duration:
-                                                    Duration(milliseconds: 0),
-                                              ),
-                                            },
-                                          );
                                         },
                                         text: 'Save',
                                         options: FFButtonOptions(

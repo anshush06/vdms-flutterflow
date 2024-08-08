@@ -48,7 +48,7 @@ class _NotificationScreenWidgetState extends State<NotificationScreenWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF0F61AB),
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -86,13 +86,13 @@ class _NotificationScreenWidgetState extends State<NotificationScreenWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                  child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 1.0,
                     decoration: BoxDecoration(
@@ -114,7 +114,12 @@ class _NotificationScreenWidgetState extends State<NotificationScreenWidget> {
                             page: (nextPageMarker.nextPageNumber + 1),
                           ),
                         ),
-                        padding: EdgeInsets.zero,
+                        padding: const EdgeInsets.fromLTRB(
+                          0,
+                          10.0,
+                          0,
+                          0,
+                        ),
                         shrinkWrap: true,
                         reverse: false,
                         scrollDirection: Axis.vertical,
@@ -154,9 +159,10 @@ class _NotificationScreenWidgetState extends State<NotificationScreenWidget> {
                                   0.0, 1.0, 0.0, 0.0),
                               child: SafeArea(
                                 child: Container(
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 50.0,
                                         color: Color(0x0F000000),
@@ -166,7 +172,7 @@ class _NotificationScreenWidgetState extends State<NotificationScreenWidget> {
                                         ),
                                       )
                                     ],
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(10.0),
                                       bottomRight: Radius.circular(10.0),
                                       topLeft: Radius.circular(10.0),
@@ -193,8 +199,8 @@ class _NotificationScreenWidgetState extends State<NotificationScreenWidget> {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

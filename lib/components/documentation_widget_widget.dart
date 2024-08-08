@@ -53,15 +53,15 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
       child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).primaryBackground,
+          boxShadow: const [
             BoxShadow(
               blurRadius: 50.0,
               color: Color(0x0F000000),
             )
           ],
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(10.0),
             bottomRight: Radius.circular(10.0),
             topLeft: Radius.circular(10.0),

@@ -48,7 +48,7 @@ class _SitePicturesScreenWidgetState extends State<SitePicturesScreenWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF0F61AB),
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -124,7 +124,9 @@ class _SitePicturesScreenWidgetState extends State<SitePicturesScreenWidget> {
             children: [
               Expanded(
                 child: Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
                   child: wrapWithModel(
                     model: _model.sitePicturesWidgetModel,
                     updateCallback: () => setState(() {}),

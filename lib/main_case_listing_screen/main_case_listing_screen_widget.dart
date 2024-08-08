@@ -48,6 +48,7 @@ class _MainCaseListingScreenWidgetState
           ),
           3),
     )..addListener(() => setState(() {}));
+    _model.switchValue = true;
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -166,195 +167,96 @@ class _MainCaseListingScreenWidgetState
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.logout_sharp,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 0.0, 0.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    FFAppState().username = '';
-                                    FFAppState().userId = '';
-                                    FFAppState().travelStatus = '';
-                                    FFAppState().startReading = '';
-                                    FFAppState().caseDetails = [];
-                                    setState(() {});
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Logout Successfully',
-                                          style: TextStyle(
-                                            color: Colors.white,
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.logout_sharp,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      FFAppState().username = '';
+                                      FFAppState().userId = '';
+                                      FFAppState().travelStatus = '';
+                                      FFAppState().startReading = '';
+                                      FFAppState().caseDetails = [];
+                                      setState(() {});
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Logout Successfully',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
                                           ),
+                                          duration:
+                                              Duration(milliseconds: 2000),
+                                          backgroundColor: Color(0xFFFF8C25),
                                         ),
-                                        duration: Duration(milliseconds: 2000),
-                                        backgroundColor: Color(0xFFFF8C25),
-                                      ),
-                                    );
+                                      );
 
-                                    context.goNamed(
-                                      'login_screen',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.leftToRight,
-                                        ),
-                                      },
-                                    );
-                                  },
-                                  child: Text(
-                                    'Log Out',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              20.0, 20.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.share_sharp,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Share Log',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              20.0, 20.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.not_started_sharp,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 0.0, 0.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed(
-                                      'capture_reading_screen',
-                                      queryParameters: {
-                                        'enableDrawer': serializeParam(
-                                          'ok',
-                                          ParamType.String,
-                                        ),
-                                        'type': serializeParam(
-                                          '',
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.rightToLeft,
-                                        ),
-                                      },
-                                    );
-                                  },
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      FFAppState().travelStatus,
-                                      'Start Your Day',
+                                      context.goNamed(
+                                        'login_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.leftToRight,
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    child: Text(
+                                      'Log Out',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          letterSpacing: 0.0,
-                                        ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              20.0, 20.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.travel_explore_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 0.0, 0.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed(
-                                      'travel_logs_screen',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.rightToLeft,
-                                        ),
-                                      },
-                                    );
-                                  },
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 20.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.share_sharp,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 0.0, 0.0),
                                   child: Text(
-                                    'Travel Log',
+                                    'Share Log',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -363,57 +265,217 @@ class _MainCaseListingScreenWidgetState
                                         ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              20.0, 20.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.info,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Version',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        letterSpacing: 0.0,
-                                      ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 20.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.not_started_sharp,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'capture_reading_screen',
+                                        queryParameters: {
+                                          'enableDrawer': serializeParam(
+                                            'ok',
+                                            ParamType.String,
+                                          ),
+                                          'type': serializeParam(
+                                            '',
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        FFAppState().travelStatus,
+                                        'Start Your Day',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 20.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.travel_explore_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'travel_logs_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    child: Text(
+                                      'Travel Log',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 20.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.info,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'version_screen',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    child: Text(
+                                      'Version',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 20.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.light_mode,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                                Switch.adaptive(
+                                  value: _model.switchValue!,
+                                  onChanged: (newValue) async {
+                                    setState(
+                                        () => _model.switchValue = newValue);
+                                    if (newValue) {
+                                      setDarkModeSetting(
+                                          context, ThemeMode.dark);
+                                    } else {
+                                      setDarkModeSetting(
+                                          context, ThemeMode.light);
+                                    }
+                                  },
+                                  activeColor: const Color(0xFF0F61AB),
+                                  activeTrackColor: const Color(0xFF0F61AB),
+                                  inactiveTrackColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                  inactiveThumbColor:
+                                      FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(height: 20.0)),
+              ],
             ),
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: true,
           leading: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
-              borderColor: Colors.white,
+              borderColor: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: 20.0,
               borderWidth: 1.0,
               buttonSize: 40.0,
-              fillColor: const Color(0x4CFFFFFF),
+              fillColor: FlutterFlowTheme.of(context).secondaryBackground,
               icon: Icon(
                 Icons.dehaze,
                 color: FlutterFlowTheme.of(context).primaryText,
@@ -430,7 +492,7 @@ class _MainCaseListingScreenWidgetState
               'VDMS',
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Roboto',
-                    color: const Color(0xFF0F61AB),
+                    color: FlutterFlowTheme.of(context).secondaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                   ),
@@ -440,11 +502,11 @@ class _MainCaseListingScreenWidgetState
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
               child: FlutterFlowIconButton(
-                borderColor: Colors.white,
+                borderColor: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: 20.0,
                 borderWidth: 1.0,
                 buttonSize: 40.0,
-                fillColor: const Color(0x4CFFFFFF),
+                fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                 icon: Icon(
                   Icons.restart_alt,
                   color: FlutterFlowTheme.of(context).primaryText,
@@ -499,11 +561,11 @@ class _MainCaseListingScreenWidgetState
                 animationType: badges.BadgeAnimationType.scale,
                 toAnimate: true,
                 child: FlutterFlowIconButton(
-                  borderColor: Colors.white,
+                  borderColor: FlutterFlowTheme.of(context).secondaryBackground,
                   borderRadius: 20.0,
                   borderWidth: 1.0,
                   buttonSize: 30.0,
-                  fillColor: const Color(0x4CFFFFFF),
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   icon: Icon(
                     Icons.notifications_rounded,
                     color: FlutterFlowTheme.of(context).primaryText,
@@ -530,9 +592,7 @@ class _MainCaseListingScreenWidgetState
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-            ),
+            decoration: const BoxDecoration(),
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -624,8 +684,9 @@ class _MainCaseListingScreenWidgetState
                               return Container(
                                 width: 100.0,
                                 height: 100.0,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                 ),
                                 child: Builder(
                                   builder: (context) {
@@ -647,16 +708,18 @@ class _MainCaseListingScreenWidgetState
                                       return const NoCasesWidgetWidget();
                                     }
 
-                                    return ListView.builder(
+                                    return ListView.separated(
                                       padding: const EdgeInsets.fromLTRB(
                                         0,
-                                        0,
+                                        10.0,
                                         0,
                                         15.0,
                                       ),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount: case1.length,
+                                      separatorBuilder: (_, __) =>
+                                          const SizedBox(height: 12.0),
                                       itemBuilder: (context, case1Index) {
                                         final case1Item = case1[case1Index];
                                         return InkWell(
@@ -725,8 +788,9 @@ class _MainCaseListingScreenWidgetState
                           Container(
                             width: 100.0,
                             height: 100.0,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                             ),
                             child: Builder(
                               builder: (context) {
@@ -740,15 +804,17 @@ class _MainCaseListingScreenWidgetState
                                   );
                                 }
 
-                                return ListView.builder(
+                                return ListView.separated(
                                   padding: const EdgeInsets.fromLTRB(
                                     0,
-                                    0,
+                                    10.0,
                                     0,
                                     15.0,
                                   ),
                                   scrollDirection: Axis.vertical,
                                   itemCount: eachCase2.length,
+                                  separatorBuilder: (_, __) =>
+                                      const SizedBox(height: 12.0),
                                   itemBuilder: (context, eachCase2Index) {
                                     final eachCase2Item =
                                         eachCase2[eachCase2Index];
@@ -818,8 +884,9 @@ class _MainCaseListingScreenWidgetState
                               return Container(
                                 width: 100.0,
                                 height: 100.0,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                 ),
                                 child: Builder(
                                   builder: (context) {
@@ -834,16 +901,18 @@ class _MainCaseListingScreenWidgetState
                                       return const NoCasesWidgetWidget();
                                     }
 
-                                    return ListView.builder(
+                                    return ListView.separated(
                                       padding: const EdgeInsets.fromLTRB(
                                         0,
-                                        0,
+                                        10.0,
                                         0,
                                         15.0,
                                       ),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount: case1.length,
+                                      separatorBuilder: (_, __) =>
+                                          const SizedBox(height: 12.0),
                                       itemBuilder: (context, case1Index) {
                                         final case1Item = case1[case1Index];
                                         return InkWell(
@@ -915,8 +984,9 @@ class _MainCaseListingScreenWidgetState
                               return Container(
                                 width: 100.0,
                                 height: 100.0,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                 ),
                                 child: Builder(
                                   builder: (context) {
@@ -931,16 +1001,18 @@ class _MainCaseListingScreenWidgetState
                                       return const NoCasesWidgetWidget();
                                     }
 
-                                    return ListView.builder(
+                                    return ListView.separated(
                                       padding: const EdgeInsets.fromLTRB(
                                         0,
-                                        0,
+                                        10.0,
                                         0,
                                         15.0,
                                       ),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
                                       itemCount: eachCase4.length,
+                                      separatorBuilder: (_, __) =>
+                                          const SizedBox(height: 12.0),
                                       itemBuilder: (context, eachCase4Index) {
                                         final eachCase4Item =
                                             eachCase4[eachCase4Index];

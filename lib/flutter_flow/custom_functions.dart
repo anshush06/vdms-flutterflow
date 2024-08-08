@@ -462,3 +462,20 @@ List<int> getImageByteArrayFromSelfieList(
 String? convertLocationToString(LatLng? latLng) {
   return latLng.toString() ?? '';
 }
+
+bool filterImagesByCaseIDAndImageType(
+  List<SitePictureListResponseStruct>? imageList,
+  String caseId,
+  String imageType,
+) {
+  if (imageList == null) {
+    return false;
+  }
+
+  for (var image in imageList) {
+    if (image.caseId == caseId && image.fieldName == imageType) {
+      return true;
+    }
+  }
+  return false;
+}

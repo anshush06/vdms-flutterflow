@@ -207,11 +207,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'captured_images_screen',
-          path: '/capturedImagesScreen',
-          builder: (context, params) => const CapturedImagesScreenWidget(),
-        ),
-        FFRoute(
           name: 'view_all_photographs',
           path: '/viewAllPhotographs',
           builder: (context, params) => ViewAllPhotographsWidget(
@@ -242,6 +237,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               structBuilder: ResponseStruct.fromSerializableMap,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'version_screen',
+          path: '/versionScreen',
+          builder: (context, params) => const VersionScreenWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

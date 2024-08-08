@@ -59,7 +59,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF0F61AB),
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -102,11 +102,9 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
           ),
           actions: [
             FlutterFlowIconButton(
-              borderColor: const Color(0xFF0F61AB),
-              borderRadius: 20.0,
-              borderWidth: 1.0,
+              borderColor: FlutterFlowTheme.of(context).secondary,
               buttonSize: 40.0,
-              fillColor: const Color(0xFF0F61AB),
+              fillColor: FlutterFlowTheme.of(context).secondary,
               icon: const Icon(
                 Icons.remove_red_eye,
                 color: Colors.white,
@@ -131,11 +129,11 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
               },
             ),
             FlutterFlowIconButton(
-              borderColor: const Color(0xFF0F61AB),
+              borderColor: FlutterFlowTheme.of(context).secondary,
               borderRadius: 20.0,
               borderWidth: 1.0,
               buttonSize: 40.0,
-              fillColor: const Color(0xFF0F61AB),
+              fillColor: FlutterFlowTheme.of(context).secondary,
               icon: const Icon(
                 Icons.notification_add_outlined,
                 color: Colors.white,
@@ -160,8 +158,8 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -595,6 +593,9 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                       .removeAtIndexFromCaseDetails(
                                                           widget
                                                               .currentCaseIndex!);
+                                                  FFAppState()
+                                                      .removeAtIndexFromSitePictures(
+                                                          0);
                                                   FFAppState().update(() {});
                                                   if (Navigator.of(context)
                                                       .canPop()) {
@@ -763,7 +764,8 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                     ),
                   ),
                 ]
-                    .divide(const SizedBox(height: 15.0))
+                    .divide(const SizedBox(height: 12.0))
+                    .addToStart(const SizedBox(height: 10.0))
                     .addToEnd(const SizedBox(height: 10.0)),
               ),
             ),

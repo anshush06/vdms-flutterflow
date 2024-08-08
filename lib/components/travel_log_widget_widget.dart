@@ -56,19 +56,19 @@ class _TravelLogWidgetWidgetState extends State<TravelLogWidgetWidget> {
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 0.0),
                   child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 50.0,
                           color: Color(0x0F000000),
                         )
                       ],
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(10.0),
-                        bottomRight: Radius.circular(0.0),
+                        bottomRight: Radius.circular(10.0),
                         topLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(0.0),
+                        topRight: Radius.circular(10.0),
                       ),
                     ),
                     child: Padding(
@@ -142,11 +142,13 @@ class _TravelLogWidgetWidgetState extends State<TravelLogWidgetWidget> {
                                   ],
                                 ),
                                 FlutterFlowIconButton(
-                                  borderColor: Colors.white,
+                                  borderColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   borderRadius: 20.0,
                                   borderWidth: 1.0,
                                   buttonSize: 40.0,
-                                  fillColor: Colors.white,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   icon: Icon(
                                     Icons.arrow_forward,
                                     color: FlutterFlowTheme.of(context)

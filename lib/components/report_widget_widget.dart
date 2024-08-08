@@ -255,8 +255,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
             child: Container(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: MediaQuery.sizeOf(context).height * 1.0,
-              decoration: const BoxDecoration(
-                color: Colors.white,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
@@ -290,7 +290,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                               children: [
                                 Container(
                                   width: double.infinity,
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
                                   child: ExpandableNotifier(
                                     controller:
                                         _model.expandableExpandableController1,
@@ -304,7 +305,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               .displaySmall
                                               .override(
                                                 fontFamily: 'Roboto',
-                                                color: const Color(0xFF0F61AB),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
                                                 fontSize: 17.0,
                                                 letterSpacing: 0.0,
                                               ),
@@ -1781,9 +1784,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 50.0,
                               color: Color(0x0F000000),
@@ -1793,7 +1796,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                               ),
                             )
                           ],
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0),
                             topLeft: Radius.circular(10.0),
@@ -1806,7 +1809,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                             children: [
                               Container(
                                 width: double.infinity,
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 child: ExpandableNotifier(
                                   controller:
                                       _model.expandableExpandableController2,
@@ -1820,7 +1824,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             .displaySmall
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF0F61AB),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                               fontSize: 17.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -3298,16 +3304,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 50.0,
                               color: Color(0x0F000000),
                               offset: Offset(0.0, 0.0),
                             )
                           ],
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0),
                             topLeft: Radius.circular(10.0),
@@ -3320,7 +3326,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                             children: [
                               Container(
                                 width: double.infinity,
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 child: ExpandableNotifier(
                                   controller:
                                       _model.expandableExpandableController3,
@@ -3334,7 +3341,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             .displaySmall
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF0F61AB),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -3616,14 +3625,15 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                          boxShadow: [
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 50.0,
                               color: Color(0x0F000000),
                             )
                           ],
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0),
                             topLeft: Radius.circular(10.0),
@@ -3636,7 +3646,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                             children: [
                               Container(
                                 width: double.infinity,
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 child: ExpandableNotifier(
                                   controller:
                                       _model.expandableExpandableController4,
@@ -3650,7 +3661,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             .displaySmall
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF0F61AB),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -4329,15 +4342,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                          boxShadow: [
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 50.0,
                               color: Color(0x0F000000),
                               offset: Offset(0.0, 0.0),
                             )
                           ],
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0),
                             topLeft: Radius.circular(10.0),
@@ -4350,7 +4364,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                             children: [
                               Container(
                                 width: double.infinity,
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 child: ExpandableNotifier(
                                   controller:
                                       _model.expandableExpandableController5,
@@ -4364,7 +4379,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             .displaySmall
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF0F61AB),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -5069,15 +5086,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                          boxShadow: [
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 50.0,
                               color: Color(0x0F000000),
                               offset: Offset(0.0, 0.0),
                             )
                           ],
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0),
                             topLeft: Radius.circular(10.0),
@@ -5090,7 +5108,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                             children: [
                               Container(
                                 width: double.infinity,
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 child: ExpandableNotifier(
                                   controller:
                                       _model.expandableExpandableController6,
@@ -5104,7 +5123,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             .displaySmall
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF0F61AB),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -5888,15 +5909,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                          boxShadow: [
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 50.0,
                               color: Color(0x0F000000),
                               offset: Offset(0.0, 0.0),
                             )
                           ],
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0),
                             topLeft: Radius.circular(10.0),
@@ -5909,7 +5931,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                             children: [
                               Container(
                                 width: double.infinity,
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 child: ExpandableNotifier(
                                   controller:
                                       _model.expandableExpandableController7,
@@ -5923,7 +5946,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             .displaySmall
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF0F61AB),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -8049,16 +8074,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 50.0,
                               color: Color(0x0F000000),
                               offset: Offset(0.0, 0.0),
                             )
                           ],
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0),
                             topLeft: Radius.circular(10.0),
@@ -8071,7 +8096,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                             children: [
                               Container(
                                 width: double.infinity,
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 child: ExpandableNotifier(
                                   controller:
                                       _model.expandableExpandableController8,
@@ -8085,7 +8111,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             .displaySmall
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF0F61AB),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),

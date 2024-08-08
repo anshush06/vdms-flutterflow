@@ -47,7 +47,7 @@ class _TravelLogsScreenWidgetState extends State<TravelLogsScreenWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF0F61AB),
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -113,8 +113,8 @@ class _TravelLogsScreenWidgetState extends State<TravelLogsScreenWidget> {
                         snapshot.data!;
 
                     return Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Builder(
                         builder: (context) {

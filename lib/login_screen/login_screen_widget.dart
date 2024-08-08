@@ -60,8 +60,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 1.0,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF0F61AB),
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondary,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -73,7 +73,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           width: MediaQuery.sizeOf(context).width * 0.6,
                           height: MediaQuery.sizeOf(context).height * 0.25,
                           decoration: BoxDecoration(
-                            color: const Color(0xFF0F61AB),
+                            color: FlutterFlowTheme.of(context).secondary,
                             image: DecorationImage(
                               fit: BoxFit.contain,
                               image: Image.asset(
@@ -94,7 +94,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                             child: Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                                  .primaryBackground,
                               elevation: 4.0,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
@@ -162,6 +162,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                         .labelMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
+                                                          color:
+                                                              const Color(0xFF817777),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w300,
@@ -171,6 +173,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                         .labelMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
+                                                          color:
+                                                              const Color(0xFF0F61AB),
                                                           letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder: InputBorder.none,
@@ -234,6 +238,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                         .labelMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
+                                                          color:
+                                                              const Color(0xFF817777),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w300,

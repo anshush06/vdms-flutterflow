@@ -58,15 +58,15 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
       child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).primaryBackground,
+          boxShadow: const [
             BoxShadow(
               blurRadius: 50.0,
               color: Color(0x0F000000),
             )
           ],
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(10.0),
             bottomRight: Radius.circular(10.0),
             topLeft: Radius.circular(10.0),
@@ -109,15 +109,15 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                         focusNode: _model.remarksFocusNode,
                         autofocus: false,
                         readOnly: !((widget.caseStatus == '1') ||
-                            (widget.caseStatus == '4')),
+                            (widget.caseStatus == '4') ||
+                            (widget.caseStatus == '5')),
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Enter your remark here.',
                           labelStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
+                              FlutterFlowTheme.of(context).bodyLarge.override(
                                     fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
                                   ),
                           hintStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
@@ -176,10 +176,11 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 10.0),
                       child: FFButtonWidget(
                         onPressed: !((widget.caseStatus == '1') ||
-                                (widget.caseStatus == '4'))
+                                (widget.caseStatus == '4') ||
+                                (widget.caseStatus == '5'))
                             ? null
                             : () async {
                                 if (_model.formKey.currentState == null ||
@@ -256,16 +257,6 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                       ),
                     ),
                   ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                child: Container(
-                  width: 100.0,
-                  height: MediaQuery.sizeOf(context).height * 0.01,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
                 ),
               ),
             ],

@@ -58,8 +58,8 @@ class _SingleCaseActionWidgetWidgetState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),

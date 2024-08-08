@@ -371,14 +371,33 @@ class _CaptureReadingValueScreenWidgetState
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     15.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Version',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        letterSpacing: 0.0,
-                                      ),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'version_screen',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  child: Text(
+                                    'Version',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -393,16 +412,16 @@ class _CaptureReadingValueScreenWidgetState
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: true,
           leading: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
-              borderColor: Colors.white,
+              borderColor: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: 20.0,
               borderWidth: 1.0,
               buttonSize: 40.0,
-              fillColor: const Color(0x4CFFFFFF),
+              fillColor: FlutterFlowTheme.of(context).secondaryBackground,
               icon: Icon(
                 Icons.dehaze,
                 color: FlutterFlowTheme.of(context).primaryText,
@@ -417,7 +436,7 @@ class _CaptureReadingValueScreenWidgetState
             'VDMS',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Roboto',
-                  color: const Color(0xFF0F61AB),
+                  color: FlutterFlowTheme.of(context).secondaryText,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
                 ),

@@ -11,6 +11,9 @@ class MainCaseListingScreenModel
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
+  // State field(s) for Switch widget.
+  bool? switchValue;
+
   @override
   void initState(BuildContext context) {}
 
