@@ -525,6 +525,7 @@ class _CaptureLocationScreenWidgetState
                                         );
                                       }
 
+                                      context.safePop();
                                       if (Navigator.of(context).canPop()) {
                                         context.pop();
                                       }

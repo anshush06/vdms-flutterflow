@@ -8438,6 +8438,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         backgroundColor: Color(0xFFFF8C25),
                                       ),
                                     );
+                                    context.safePop();
                                     if (Navigator.of(context).canPop()) {
                                       context.pop();
                                     }
