@@ -378,7 +378,7 @@ class _ViewAllPhotographsWidgetState extends State<ViewAllPhotographsWidget> {
                   onPressed: () async {
                     context.safePop();
                   },
-                  text: 'SAVE',
+                  text: 'GO BACK',
                   options: FFButtonOptions(
                     height: 40.0,
                     padding:
