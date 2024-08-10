@@ -89,113 +89,83 @@ class _NotificationScreenWidgetState extends State<NotificationScreenWidget> {
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: RefreshIndicator(
-                      onRefresh: () async {
-                        setState(
-                            () => _model.listViewPagingController?.refresh());
-                        await _model.waitForOnePageForListView();
-                      },
-                      child: PagedListView<ApiPagingParams, dynamic>.separated(
-                        pagingController: _model.setListViewController(
-                          (nextPageMarker) =>
-                              VdmsApiCallsGroup.getNotificationsAPICall.call(
-                            userId: functions
-                                .convertStringtoInteger(FFAppState().userId),
-                            limit: 10,
-                            page: (nextPageMarker.nextPageNumber + 1),
-                          ),
+                Container(
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  height: MediaQuery.sizeOf(context).height * 1.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      setState(
+                          () => _model.listViewPagingController?.refresh());
+                      await _model.waitForOnePageForListView();
+                    },
+                    child: PagedListView<ApiPagingParams, dynamic>.separated(
+                      pagingController: _model.setListViewController(
+                        (nextPageMarker) =>
+                            VdmsApiCallsGroup.getNotificationsAPICall.call(
+                          userId: functions
+                              .convertStringtoInteger(FFAppState().userId),
+                          limit: 10,
+                          page: (nextPageMarker.nextPageNumber + 1),
                         ),
-                        padding: const EdgeInsets.fromLTRB(
-                          0,
-                          10.0,
-                          0,
-                          0,
-                        ),
-                        shrinkWrap: true,
-                        reverse: false,
-                        scrollDirection: Axis.vertical,
-                        separatorBuilder: (_, __) => const SizedBox(height: 10.0),
-                        builderDelegate: PagedChildBuilderDelegate<dynamic>(
-                          // Customize what your widget looks like when it's loading the first page.
-                          firstPageProgressIndicatorBuilder: (_) => const Center(
-                            child: SizedBox(
-                              width: 40.0,
-                              height: 40.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color(0xFF0F61AB),
-                                ),
+                      ),
+                      padding: const EdgeInsets.fromLTRB(
+                        0,
+                        10.0,
+                        0,
+                        0,
+                      ),
+                      shrinkWrap: true,
+                      reverse: false,
+                      scrollDirection: Axis.vertical,
+                      separatorBuilder: (_, __) => const SizedBox(height: 10.0),
+                      builderDelegate: PagedChildBuilderDelegate<dynamic>(
+                        // Customize what your widget looks like when it's loading the first page.
+                        firstPageProgressIndicatorBuilder: (_) => const Center(
+                          child: SizedBox(
+                            width: 40.0,
+                            height: 40.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xFF0F61AB),
                               ),
                             ),
                           ),
-                          // Customize what your widget looks like when it's loading another page.
-                          newPageProgressIndicatorBuilder: (_) => const Center(
-                            child: SizedBox(
-                              width: 40.0,
-                              height: 40.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color(0xFF0F61AB),
-                                ),
+                        ),
+                        // Customize what your widget looks like when it's loading another page.
+                        newPageProgressIndicatorBuilder: (_) => const Center(
+                          child: SizedBox(
+                            width: 40.0,
+                            height: 40.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xFF0F61AB),
                               ),
                             ),
                           ),
+                        ),
 
-                          itemBuilder: (context, _, eachNotificationIndex) {
-                            final eachNotificationItem = _model
-                                .listViewPagingController!
-                                .itemList![eachNotificationIndex];
-                            return Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 1.0, 0.0, 0.0),
-                              child: SafeArea(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        blurRadius: 50.0,
-                                        color: Color(0x0F000000),
-                                        offset: Offset(
-                                          0.0,
-                                          0.0,
-                                        ),
-                                      )
-                                    ],
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(10.0),
-                                      bottomRight: Radius.circular(10.0),
-                                      topLeft: Radius.circular(10.0),
-                                      topRight: Radius.circular(10.0),
-                                    ),
-                                  ),
-                                  child: SingleNotificationWidgetWidget(
-                                    key: Key(
-                                        'Keympt_${eachNotificationIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
-                                    message: getJsonField(
-                                      eachNotificationItem,
-                                      r'''$.message''',
-                                    ).toString(),
-                                    date: getJsonField(
-                                      eachNotificationItem,
-                                      r'''$.dateAdded''',
-                                    ).toString(),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
+                        itemBuilder: (context, _, eachNotificationIndex) {
+                          final eachNotificationItem = _model
+                              .listViewPagingController!
+                              .itemList![eachNotificationIndex];
+                          return SingleNotificationWidgetWidget(
+                            key: Key(
+                                'Keympt_${eachNotificationIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
+                            message: getJsonField(
+                              eachNotificationItem,
+                              r'''$.message''',
+                            ).toString(),
+                            date: getJsonField(
+                              eachNotificationItem,
+                              r'''$.dateAdded''',
+                            ).toString(),
+                          );
+                        },
                       ),
                     ),
                   ),

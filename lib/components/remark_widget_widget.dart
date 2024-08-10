@@ -153,7 +153,7 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           filled: true,
-                          fillColor: const Color(0xFFF5F5F5),
+                          fillColor: FlutterFlowTheme.of(context).alternate,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Roboto',

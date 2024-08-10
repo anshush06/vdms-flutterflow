@@ -49,7 +49,6 @@ class _MainCaseListingScreenWidgetState
           ),
           3),
     )..addListener(() => setState(() {}));
-    _model.switchValue = false;
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -444,7 +443,11 @@ class _MainCaseListingScreenWidgetState
                                   size: 24.0,
                                 ),
                                 Switch.adaptive(
-                                  value: _model.switchValue!,
+                                  value: _model.switchValue ??=
+                                      Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? true
+                                          : false,
                                   onChanged: (newValue) async {
                                     setState(
                                         () => _model.switchValue = newValue);

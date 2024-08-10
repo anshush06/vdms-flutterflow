@@ -19,7 +19,7 @@ Future<void> shareLogFile() async {
       throw Exception("Unable to access external storage directory.");
     }
 
-    final logFilePath = '${directory.path}/app_log.txt';
+    final logFilePath = '${directory.path}/vdms_log.txt';
     File logFile = File(logFilePath);
 
     if (await logFile.exists()) {

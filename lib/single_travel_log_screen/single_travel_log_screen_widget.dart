@@ -47,7 +47,7 @@ class _SingleTravelLogScreenWidgetState
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
@@ -92,8 +92,8 @@ class _SingleTravelLogScreenWidgetState
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 1.0,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: Padding(
                     padding:
@@ -110,7 +110,7 @@ class _SingleTravelLogScreenWidgetState
                               height: MediaQuery.sizeOf(context).height * 0.18,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                    .primaryBackground,
                                 boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 50.0,
@@ -217,7 +217,7 @@ class _SingleTravelLogScreenWidgetState
                               height: MediaQuery.sizeOf(context).height * 0.18,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                    .primaryBackground,
                                 boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 50.0,
@@ -316,9 +316,10 @@ class _SingleTravelLogScreenWidgetState
                           ),
                           Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              boxShadow: const [
                                 BoxShadow(
                                   blurRadius: 50.0,
                                   color: Color(0x0F000000),
@@ -328,7 +329,7 @@ class _SingleTravelLogScreenWidgetState
                                   ),
                                 )
                               ],
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10.0),
                                 topLeft: Radius.circular(10.0),

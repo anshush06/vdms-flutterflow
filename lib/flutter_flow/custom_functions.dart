@@ -385,9 +385,9 @@ String? getCoordinate(
     String longitude = match.group(2)!;
 
     if (isLatitude) {
-      return latitude == '0' ? '1.0' : latitude;
+      return latitude == '0' ? '0' : latitude;
     } else {
-      return longitude == '0' ? '1.0' : longitude;
+      return longitude == '0' ? '0' : longitude;
     }
   }
   return '';

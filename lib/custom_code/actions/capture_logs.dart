@@ -25,7 +25,7 @@ class CaptureLogs extends FFApiInterceptor {
         throw Exception("Unable to access external storage directory.");
       }
 
-      final logFilePath = '${directory.path}/app_log.txt';
+      final logFilePath = '${directory.path}/vdms_log.txt';
       File logFile = File(logFilePath);
 
       if (await logFile.exists()) {
@@ -55,7 +55,7 @@ class CaptureLogs extends FFApiInterceptor {
         throw Exception("Unable to access external storage directory.");
       }
 
-      final logFilePath = '${directory.path}/app_log.txt';
+      final logFilePath = '${directory.path}/vdms_log.txt';
       File logFile = File(logFilePath);
 
       // Write or append the message to the log file
@@ -75,7 +75,7 @@ class CaptureLogs extends FFApiInterceptor {
     mes += 'API URL:- ' + options.apiUrl + "\n";
 
     // Handling potential null value for body (String?)
-    mes += "PARAMS:- " + (options.body.toString() ?? "No Body") + "\n";
+    mes += "PARAMS:- " + (options.body ?? "No Body") + "\n";
 
     // Convert headers (Map<String, dynamic>) to a string
     mes += "HEADERS:- " + options.headers.toString() + "\n";
@@ -93,14 +93,13 @@ class CaptureLogs extends FFApiInterceptor {
     // to returning it.
     String message = response.statusCode.toString();
     message += 'Current Time:- ' + DateTime.now().toString() + "\n";
-
+    message = message + 'STATUS CODE' + response.response?.statusCode;
     // Convert headers (Map<String, String>) to a string
-    message += "HEADERS:- " + response.headers.toString() + "\n";
+    message += "HEADERS:- " + response.response?.headers.toString() + "\n";
 
     // Convert response to string
     message += "\t" + "RESPONSE PARAM" + "\n";
-    message +=
-        "\t" + (response.response.toString() ?? "No Response Body") + "\n";
+    message += "\t" + (response.response?.body ?? "No Response Body") + "\n";
 
     await enterLogMessage(message);
     return response;

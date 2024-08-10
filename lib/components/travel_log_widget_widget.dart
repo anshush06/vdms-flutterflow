@@ -143,12 +143,12 @@ class _TravelLogWidgetWidgetState extends State<TravelLogWidgetWidget> {
                                 ),
                                 FlutterFlowIconButton(
                                   borderColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                      .primaryBackground,
                                   borderRadius: 20.0,
                                   borderWidth: 1.0,
                                   buttonSize: 40.0,
                                   fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                      .primaryBackground,
                                   icon: Icon(
                                     Icons.arrow_forward,
                                     color: FlutterFlowTheme.of(context)

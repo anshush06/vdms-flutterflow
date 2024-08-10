@@ -385,7 +385,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -394,9 +394,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -431,7 +433,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -491,7 +495,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -500,9 +504,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -537,7 +543,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -597,7 +605,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -608,7 +616,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -643,7 +651,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -703,7 +713,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -714,7 +724,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -749,7 +759,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -809,7 +821,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -855,7 +867,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -921,7 +935,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -967,7 +981,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1033,7 +1049,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -1079,7 +1095,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1197,10 +1215,14 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         size: 0.0,
                                                       ),
                                                       fillColor:
-                                                          const Color(0xFFF5F5F5),
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
                                                       elevation: 2.0,
                                                       borderColor:
-                                                          const Color(0xFFF5F5F5),
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
                                                       borderWidth: 2.0,
                                                       borderRadius: 8.0,
                                                       margin:
@@ -1275,7 +1297,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -1321,7 +1343,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1387,7 +1411,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -1433,7 +1457,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1500,7 +1526,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -1546,7 +1572,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1613,7 +1641,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF5F5F5),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -1659,7 +1687,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1744,10 +1774,13 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         .secondaryText,
                                                     size: 24.0,
                                                   ),
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                   elevation: 2.0,
                                                   borderColor:
-                                                      const Color(0xFFF5F5F5),
+                                                      Colors.transparent,
                                                   borderWidth: 2.0,
                                                   borderRadius: 8.0,
                                                   margin: const EdgeInsetsDirectional
@@ -1910,7 +1943,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -1954,7 +1987,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2028,9 +2064,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -2250,7 +2288,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -2294,7 +2332,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2384,9 +2425,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 0.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -2457,7 +2500,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -2501,7 +2544,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2566,7 +2612,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -2610,7 +2656,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2674,7 +2723,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -2718,7 +2767,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2783,7 +2835,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -2827,7 +2879,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -2908,7 +2963,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -2952,7 +3007,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -3016,7 +3074,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -3060,7 +3118,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -3123,7 +3184,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -3167,7 +3228,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -3230,7 +3294,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -3274,7 +3338,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -3497,9 +3564,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -3593,9 +3662,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -3772,9 +3843,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -3840,7 +3913,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -3884,7 +3957,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -3948,7 +4024,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -3992,7 +4068,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -4056,7 +4135,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -4100,7 +4179,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -4164,7 +4246,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -4208,7 +4290,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -4272,7 +4357,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -4316,7 +4401,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -4488,7 +4576,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -4539,7 +4627,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -4617,7 +4707,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -4668,7 +4758,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -4746,7 +4838,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -4797,7 +4889,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -4876,7 +4970,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -4927,7 +5021,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -5006,7 +5102,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -5057,7 +5153,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -5229,9 +5327,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -5297,7 +5397,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -5341,7 +5441,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -5425,9 +5528,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -5542,9 +5647,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -5637,9 +5744,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -5736,9 +5845,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -5811,9 +5922,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -5883,9 +5996,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -6045,9 +6160,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 elevation: 2.0,
-                                                borderColor: const Color(0xFFF5F5F5),
+                                                borderColor: Colors.transparent,
                                                 borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
@@ -6130,7 +6247,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -6181,7 +6298,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -6263,10 +6382,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       size: 24.0,
                                                     ),
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                     elevation: 2.0,
                                                     borderColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        Colors.transparent,
                                                     borderWidth: 2.0,
                                                     borderRadius: 8.0,
                                                     margin:
@@ -6343,7 +6464,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -6394,7 +6515,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -6476,10 +6599,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       size: 24.0,
                                                     ),
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                     elevation: 2.0,
                                                     borderColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        Colors.transparent,
                                                     borderWidth: 2.0,
                                                     borderRadius: 8.0,
                                                     margin:
@@ -6566,7 +6691,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -6617,7 +6742,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -6699,10 +6826,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       size: 24.0,
                                                     ),
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                     elevation: 2.0,
                                                     borderColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        Colors.transparent,
                                                     borderWidth: 2.0,
                                                     borderRadius: 8.0,
                                                     margin:
@@ -6795,7 +6924,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -6839,7 +6968,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -6903,7 +7035,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -6947,7 +7079,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -7027,7 +7162,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -7078,7 +7213,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -7160,10 +7297,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       size: 24.0,
                                                     ),
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                     elevation: 2.0,
                                                     borderColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        Colors.transparent,
                                                     borderWidth: 2.0,
                                                     borderRadius: 8.0,
                                                     margin:
@@ -7250,7 +7389,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -7301,7 +7440,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -7383,10 +7524,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       size: 24.0,
                                                     ),
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                     elevation: 2.0,
                                                     borderColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        Colors.transparent,
                                                     borderWidth: 2.0,
                                                     borderRadius: 8.0,
                                                     margin:
@@ -7473,7 +7616,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -7524,7 +7667,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -7606,10 +7751,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       size: 24.0,
                                                     ),
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                     elevation: 2.0,
                                                     borderColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        Colors.transparent,
                                                     borderWidth: 2.0,
                                                     borderRadius: 8.0,
                                                     margin:
@@ -7696,7 +7843,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF5F5F5),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -7747,7 +7894,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF5F5F5),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -7829,10 +7978,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       size: 24.0,
                                                     ),
                                                     fillColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                     elevation: 2.0,
                                                     borderColor:
-                                                        const Color(0xFFF5F5F5),
+                                                        Colors.transparent,
                                                     borderWidth: 2.0,
                                                     borderRadius: 8.0,
                                                     margin:
@@ -7902,7 +8053,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -7946,7 +8097,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -8010,7 +8164,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -8054,7 +8208,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -8207,7 +8364,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -8251,7 +8408,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -8305,7 +8465,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -8349,7 +8509,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF5F5F5),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)

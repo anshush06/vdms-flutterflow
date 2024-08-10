@@ -58,8 +58,8 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
           Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 1.0,
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -83,7 +83,8 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Roboto',
-                                  color: Colors.black,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
@@ -212,7 +213,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                         ? const Color(0xFFCC3F3F)
                                         : FlutterFlowTheme.of(context)
                                             .primaryBackground,
-                                    width: 5.0,
+                                    width: 4.0,
                                   ),
                                 ),
                                 child: Padding(
@@ -252,7 +253,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 3.0, 0.0, 0.0),
+                                0.0, 6.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -297,7 +298,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                         ? const Color(0xFFCC3F3F)
                                         : FlutterFlowTheme.of(context)
                                             .primaryBackground,
-                                    width: 5.0,
+                                    width: 4.0,
                                   ),
                                 ),
                                 child: Padding(
@@ -349,7 +350,8 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Roboto',
-                                    color: const Color(0xFF0F61AB),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -1241,7 +1243,8 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Roboto',
-                                    color: const Color(0xFF0F61AB),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,

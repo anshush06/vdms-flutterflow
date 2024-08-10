@@ -56,10 +56,10 @@ class _CaptureLocationScreenWidgetState
 
     getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
-    _model.latitudeTextController ??= TextEditingController(text: '1.0');
+    _model.latitudeTextController ??= TextEditingController(text: '0');
     _model.latitudeFocusNode ??= FocusNode();
 
-    _model.longitudeTextController ??= TextEditingController(text: '1.0');
+    _model.longitudeTextController ??= TextEditingController(text: '0');
     _model.longitudeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -276,7 +276,7 @@ class _CaptureLocationScreenWidgetState
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
-                                            color: Color(0xFFF5F5F5),
+                                            color: Color(0x00000000),
                                             width: 2.0,
                                           ),
                                           borderRadius:
@@ -284,7 +284,7 @@ class _CaptureLocationScreenWidgetState
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
-                                            color: Color(0xFFF5F5F5),
+                                            color: Color(0x00000000),
                                             width: 2.0,
                                           ),
                                           borderRadius:
@@ -309,7 +309,8 @@ class _CaptureLocationScreenWidgetState
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: const Color(0xFFF5F5F5),
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .alternate,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -352,7 +353,7 @@ class _CaptureLocationScreenWidgetState
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
-                                            color: Color(0xFFF5F5F5),
+                                            color: Color(0x00000000),
                                             width: 2.0,
                                           ),
                                           borderRadius:
@@ -360,7 +361,7 @@ class _CaptureLocationScreenWidgetState
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
-                                            color: Color(0xFFF5F5F5),
+                                            color: Color(0x00000000),
                                             width: 2.0,
                                           ),
                                           borderRadius:
@@ -385,7 +386,8 @@ class _CaptureLocationScreenWidgetState
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: const Color(0xFFF5F5F5),
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .alternate,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium

@@ -530,7 +530,7 @@ class _CaptureReadingValueScreenWidgetState
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
-                                      color: Color(0xFFF5F5F5),
+                                      color: Color(0x00000000),
                                       width: 2.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
@@ -557,7 +557,8 @@ class _CaptureReadingValueScreenWidgetState
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   filled: true,
-                                  fillColor: const Color(0xFFF5F5F5),
+                                  fillColor:
+                                      FlutterFlowTheme.of(context).alternate,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

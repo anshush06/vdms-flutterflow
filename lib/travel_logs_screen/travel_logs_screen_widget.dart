@@ -138,10 +138,13 @@ class _TravelLogsScreenWidgetState extends State<TravelLogsScreenWidget> {
                             itemBuilder: (context, eachTravelLogIndex) {
                               final eachTravelLogItem =
                                   eachTravelLog[eachTravelLogIndex];
-                              return TravelLogWidgetWidget(
-                                key: Key(
-                                    'Keym36_${eachTravelLogIndex}_of_${eachTravelLog.length}'),
-                                travelLogDetails: eachTravelLogItem,
+                              return Container(
+                                decoration: const BoxDecoration(),
+                                child: TravelLogWidgetWidget(
+                                  key: Key(
+                                      'Keym36_${eachTravelLogIndex}_of_${eachTravelLog.length}'),
+                                  travelLogDetails: eachTravelLogItem,
+                                ),
                               );
                             },
                           );

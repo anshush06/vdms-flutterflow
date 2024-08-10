@@ -90,8 +90,8 @@ Future<bool> convertCompressAndUpload(
     print('COMPRESSED FILE HERE =============== $compressedFile');
     request.files.add(await http.MultipartFile.fromPath(
       'meter_reading_image',
-      compressedFile.path,
-      contentType: MediaType('image', compressedFile.path.split('.').last),
+      file.path,
+      contentType: MediaType('image', file.path.split('.').last),
     ));
     headers.forEach((key, value) {
       request.headers[key] = value;

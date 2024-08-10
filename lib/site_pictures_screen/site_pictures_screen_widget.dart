@@ -91,11 +91,11 @@ class _SitePicturesScreenWidgetState extends State<SitePicturesScreenWidget> {
           ),
           actions: [
             FlutterFlowIconButton(
-              borderColor: const Color(0xFF0F61AB),
+              borderColor: FlutterFlowTheme.of(context).secondary,
               borderRadius: 20.0,
               borderWidth: 1.0,
               buttonSize: 40.0,
-              fillColor: const Color(0xFF0F61AB),
+              fillColor: FlutterFlowTheme.of(context).secondary,
               icon: const Icon(
                 Icons.notification_add_outlined,
                 color: Colors.white,
