@@ -1996,13 +1996,23 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       : (val) =>
                                                           setState(() {}),
                                                   controller: _model
-                                                          .nameplateValueController ??=
-                                                      FormFieldController<
-                                                              String>(
-                                                          widget
-                                                              .reportDetails!
-                                                              .inspectionFormData
-                                                              .namePlateFixed),
+                                                      .nameplateValueController ??= FormFieldController<String>((widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .namePlateFixed ==
+                                                              '0') ||
+                                                          (widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .namePlateFixed ==
+                                                              '1') ||
+                                                          (widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .namePlateFixed ==
+                                                              'Yes')
+                                                      ? 'Yes'
+                                                      : 'No'),
                                                   optionHeight: 32.0,
                                                   optionWidth:
                                                       MediaQuery.sizeOf(context)
@@ -2070,8 +2080,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     : (val) => setState(() {}),
                                                 controller: _model
                                                         .plotDemarcatedValueController ??=
-                                                    FormFieldController<String>(
-                                                        null),
+                                                    FormFieldController<
+                                                        String>((widget
+                                                                    .reportDetails
+                                                                    ?.inspectionFormData
+                                                                    .propertyDemarcated ==
+                                                                '0') ||
+                                                            (widget
+                                                                    .reportDetails
+                                                                    ?.inspectionFormData
+                                                                    .propertyDemarcated ==
+                                                                '1') ||
+                                                            (widget
+                                                                    .reportDetails
+                                                                    ?.inspectionFormData
+                                                                    .propertyDemarcated ==
+                                                                'Yes')
+                                                        ? 'Yes'
+                                                        : 'No'),
                                                 optionHeight: 32.0,
                                                 optionWidth:
                                                     MediaQuery.sizeOf(context)
