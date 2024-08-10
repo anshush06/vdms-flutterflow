@@ -93,13 +93,18 @@ class CaptureLogs extends FFApiInterceptor {
     // to returning it.
     String message = response.statusCode.toString();
     message += 'Current Time:- ' + DateTime.now().toString() + "\n";
-    message = message + 'STATUS CODE' + response.response?.statusCode;
+    message = message +
+        'STATUS CODE' +
+        response.response?.statusCode.toString() +
+        "\n";
     // Convert headers (Map<String, String>) to a string
     message += "HEADERS:- " + response.response?.headers.toString() + "\n";
 
     // Convert response to string
     message += "\t" + "RESPONSE PARAM" + "\n";
-    message += "\t" + (response.response?.body ?? "No Response Body") + "\n";
+    message += "\t" +
+        (response.response?.body.toString() ?? "No Response Body") +
+        "\n";
 
     await enterLogMessage(message);
     return response;
