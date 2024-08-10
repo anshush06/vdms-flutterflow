@@ -32,6 +32,7 @@ class VdmsApiCallsGroup {
       GetNotificationsCountAPICall();
   static SaveSurveyLocationAPICall saveSurveyLocationAPICall =
       SaveSurveyLocationAPICall();
+  static GetCaseImagesAPICall getCaseImagesAPICall = GetCaseImagesAPICall();
 }
 
 class ValidateLoginAPICall {
@@ -517,6 +518,44 @@ class SaveSurveyLocationAPICall {
         'latitude': latitude,
         'caseId': caseId,
         'userId': userId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetCaseImagesAPICall {
+  Future<ApiCallResponse> call({
+    int? page,
+    int? limit,
+    String? userId = '',
+    String? caseId = '',
+  }) async {
+    final baseUrl = VdmsApiCallsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getCaseImagesAPI',
+      apiUrl: '$baseUrl/getCaseImagesAPI',
+      callType: ApiCallType.POST,
+      headers: {
+        'api_token': 'MTY5NTEzMzY5NzExMw==',
+        'correlation_id': 'zSF1clTyQX',
+        'api_version': '2.1',
+        'app_version_code': '1',
+        'device_id': '96db57db06605205',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        'page': page,
+        'limit': limit,
+        'userId': userId,
+        'caseId': caseId,
       },
       bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
       returnBody: true,

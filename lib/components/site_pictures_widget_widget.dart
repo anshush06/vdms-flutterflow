@@ -98,65 +98,97 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                if (functions.filterImagesBySection(
-                                            'selfie',
-                                            FFAppState().sitePictures.toList(),
-                                            widget.caseDetails!.id) !=
-                                        null &&
-                                    (functions.filterImagesBySection(
-                                            'selfie',
-                                            FFAppState().sitePictures.toList(),
-                                            widget.caseDetails!.id))!
-                                        .isNotEmpty) {
+                                if ((widget.caseDetails?.statusId == '2') ||
+                                    (widget.caseDetails?.statusId == '3')) {
                                   context.pushNamed(
-                                    'view_all_photographs',
+                                    'view_all_images_for_visited_and_completed',
                                     queryParameters: {
-                                      'imageType': serializeParam(
-                                        'selfie',
-                                        ParamType.String,
-                                      ),
-                                      'section': serializeParam(
-                                        1,
-                                        ParamType.int,
-                                      ),
                                       'caseDetails': serializeParam(
                                         widget.caseDetails,
                                         ParamType.DataStruct,
+                                      ),
+                                      'sectionType': serializeParam(
+                                        'selfie',
+                                        ParamType.String,
+                                      ),
+                                      'isAllImages': serializeParam(
+                                        false,
+                                        ParamType.bool,
                                       ),
                                     }.withoutNulls,
                                     extra: <String, dynamic>{
                                       kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.rightToLeft,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
                                       ),
                                     },
                                   );
                                 } else {
-                                  context.pushNamed(
-                                    'take_pictures_screen',
-                                    queryParameters: {
-                                      'imageType': serializeParam(
-                                        'selfie',
-                                        ParamType.String,
-                                      ),
-                                      'section': serializeParam(
-                                        1,
-                                        ParamType.int,
-                                      ),
-                                      'caseDetails': serializeParam(
-                                        widget.caseDetails,
-                                        ParamType.DataStruct,
-                                      ),
-                                    }.withoutNulls,
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.rightToLeft,
-                                      ),
-                                    },
-                                  );
+                                  if (functions.filterImagesBySection(
+                                              'selfie',
+                                              FFAppState()
+                                                  .sitePictures
+                                                  .toList(),
+                                              widget.caseDetails!.id) !=
+                                          null &&
+                                      (functions.filterImagesBySection(
+                                              'selfie',
+                                              FFAppState()
+                                                  .sitePictures
+                                                  .toList(),
+                                              widget.caseDetails!.id))!
+                                          .isNotEmpty) {
+                                    context.pushNamed(
+                                      'view_all_photographs',
+                                      queryParameters: {
+                                        'imageType': serializeParam(
+                                          'selfie',
+                                          ParamType.String,
+                                        ),
+                                        'section': serializeParam(
+                                          1,
+                                          ParamType.int,
+                                        ),
+                                        'caseDetails': serializeParam(
+                                          widget.caseDetails,
+                                          ParamType.DataStruct,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
+                                        ),
+                                      },
+                                    );
+                                  } else {
+                                    context.pushNamed(
+                                      'take_pictures_screen',
+                                      queryParameters: {
+                                        'imageType': serializeParam(
+                                          'selfie',
+                                          ParamType.String,
+                                        ),
+                                        'section': serializeParam(
+                                          1,
+                                          ParamType.int,
+                                        ),
+                                        'caseDetails': serializeParam(
+                                          widget.caseDetails,
+                                          ParamType.DataStruct,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
+                                        ),
+                                      },
+                                    );
+                                  }
                                 }
                               },
                               child: Container(
@@ -2127,24 +2159,58 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                     decoration: const BoxDecoration(),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        context.pushNamed(
-                                          'view_all_captured_images_screen',
-                                          queryParameters: {
-                                            'caseDetails': serializeParam(
-                                              widget.caseDetails,
-                                              ParamType.DataStruct,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
-                                            ),
-                                          },
-                                        );
+                                        if ((widget.caseDetails?.statusId ==
+                                                '2') ||
+                                            (widget.caseDetails?.statusId ==
+                                                '3')) {
+                                          context.pushNamed(
+                                            'view_all_images_for_visited_and_completed',
+                                            queryParameters: {
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                              'sectionType': serializeParam(
+                                                'all',
+                                                ParamType.String,
+                                              ),
+                                              'isAllImages': serializeParam(
+                                                true,
+                                                ParamType.bool,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.pushNamed(
+                                            'view_all_captured_images_screen',
+                                            queryParameters: {
+                                              'caseDetails': serializeParam(
+                                                widget.caseDetails,
+                                                ParamType.DataStruct,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
+                                        }
                                       },
                                       text: 'View All photos',
                                       options: FFButtonOptions(

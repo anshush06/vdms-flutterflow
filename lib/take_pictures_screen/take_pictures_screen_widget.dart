@@ -135,103 +135,109 @@ class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  final selectedMedia =
-                                      await selectMediaWithSourceBottomSheet(
-                                    context: context,
-                                    imageQuality: 64,
-                                    allowPhoto: true,
-                                  );
-                                  if (selectedMedia != null &&
-                                      selectedMedia.every((m) =>
-                                          validateFileFormat(
-                                              m.storagePath, context))) {
-                                    setState(
-                                        () => _model.isDataUploading = true);
-                                    var selectedUploadedFiles =
-                                        <FFUploadedFile>[];
+                                  if ((widget.caseDetails?.statusId == '1') ||
+                                      (widget.caseDetails?.statusId == '4') ||
+                                      (widget.caseDetails?.statusId == '5')) {
+                                    final selectedMedia =
+                                        await selectMediaWithSourceBottomSheet(
+                                      context: context,
+                                      imageQuality: 64,
+                                      allowPhoto: true,
+                                    );
+                                    if (selectedMedia != null &&
+                                        selectedMedia.every((m) =>
+                                            validateFileFormat(
+                                                m.storagePath, context))) {
+                                      setState(
+                                          () => _model.isDataUploading = true);
+                                      var selectedUploadedFiles =
+                                          <FFUploadedFile>[];
 
-                                    try {
-                                      selectedUploadedFiles = selectedMedia
-                                          .map((m) => FFUploadedFile(
-                                                name: m.storagePath
-                                                    .split('/')
-                                                    .last,
-                                                bytes: m.bytes,
-                                                height: m.dimensions?.height,
-                                                width: m.dimensions?.width,
-                                                blurHash: m.blurHash,
-                                              ))
-                                          .toList();
-                                    } finally {
-                                      _model.isDataUploading = false;
+                                      try {
+                                        selectedUploadedFiles = selectedMedia
+                                            .map((m) => FFUploadedFile(
+                                                  name: m.storagePath
+                                                      .split('/')
+                                                      .last,
+                                                  bytes: m.bytes,
+                                                  height: m.dimensions?.height,
+                                                  width: m.dimensions?.width,
+                                                  blurHash: m.blurHash,
+                                                ))
+                                            .toList();
+                                      } finally {
+                                        _model.isDataUploading = false;
+                                      }
+                                      if (selectedUploadedFiles.length ==
+                                          selectedMedia.length) {
+                                        setState(() {
+                                          _model.uploadedLocalFile =
+                                              selectedUploadedFiles.first;
+                                        });
+                                      } else {
+                                        setState(() {});
+                                        return;
+                                      }
                                     }
-                                    if (selectedUploadedFiles.length ==
-                                        selectedMedia.length) {
-                                      setState(() {
-                                        _model.uploadedLocalFile =
-                                            selectedUploadedFiles.first;
-                                      });
-                                    } else {
-                                      setState(() {});
-                                      return;
-                                    }
-                                  }
 
-                                  if ((_model.uploadedLocalFile.bytes
-                                              ?.isNotEmpty ??
-                                          false)) {
-                                    FFAppState().addToSitePictures(
-                                        SitePictureListResponseStruct(
-                                      name: functions.getImageName(
-                                          _model.uploadedLocalFile),
-                                      bytes: functions.getImageByteArray(
-                                          _model.uploadedLocalFile),
-                                      section: widget.section,
-                                      fieldName: widget.imageType,
-                                      timestamp:
-                                          functions.getCurrentTimeStamp(),
-                                      caseId: widget.caseDetails?.id,
-                                    ));
-                                    FFAppState().update(() {});
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Image Captured Successfully',
-                                          style: TextStyle(
-                                            color: Colors.white,
+                                    if ((_model.uploadedLocalFile.bytes
+                                                ?.isNotEmpty ??
+                                            false)) {
+                                      FFAppState().addToSitePictures(
+                                          SitePictureListResponseStruct(
+                                        name: functions.getImageName(
+                                            _model.uploadedLocalFile),
+                                        bytes: functions.getImageByteArray(
+                                            _model.uploadedLocalFile),
+                                        section: widget.section,
+                                        fieldName: widget.imageType,
+                                        timestamp:
+                                            functions.getCurrentTimeStamp(),
+                                        caseId: widget.caseDetails?.id,
+                                      ));
+                                      FFAppState().update(() {});
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Image Captured Successfully',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
                                           ),
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor: Color(0xFFFF8C25),
                                         ),
-                                        duration: Duration(milliseconds: 3000),
-                                        backgroundColor: Color(0xFFFF8C25),
-                                      ),
-                                    );
-                                    if (Navigator.of(context).canPop()) {
-                                      context.pop();
+                                      );
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
+                                      context.pushNamed(
+                                        'view_all_photographs',
+                                        queryParameters: {
+                                          'imageType': serializeParam(
+                                            widget.imageType,
+                                            ParamType.String,
+                                          ),
+                                          'section': serializeParam(
+                                            widget.section,
+                                            ParamType.int,
+                                          ),
+                                          'caseDetails': serializeParam(
+                                            widget.caseDetails,
+                                            ParamType.DataStruct,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
+                                          ),
+                                        },
+                                      );
                                     }
-                                    context.pushNamed(
-                                      'view_all_photographs',
-                                      queryParameters: {
-                                        'imageType': serializeParam(
-                                          widget.imageType,
-                                          ParamType.String,
-                                        ),
-                                        'section': serializeParam(
-                                          widget.section,
-                                          ParamType.int,
-                                        ),
-                                        'caseDetails': serializeParam(
-                                          widget.caseDetails,
-                                          ParamType.DataStruct,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.rightToLeft,
-                                        ),
-                                      },
-                                    );
                                   }
                                 },
                                 child: Column(

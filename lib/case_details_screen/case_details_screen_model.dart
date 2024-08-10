@@ -21,6 +21,8 @@ class CaseDetailsScreenModel extends FlutterFlowModel<CaseDetailsScreenWidget> {
   ApiCallResponse? saveLocationAPIResponse;
   // Stores action output result for [Backend Call - API (submitSurveyAPI)] action in Button widget.
   ApiCallResponse? submitSurveyAPIResponse;
+  // Stores action output result for [Custom Action - deleteSitePicturesOfCase] action in Button widget.
+  bool? deleteSitePicturesResponse;
 
   @override
   void initState(BuildContext context) {

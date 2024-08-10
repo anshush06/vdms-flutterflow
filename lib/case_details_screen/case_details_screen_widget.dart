@@ -572,61 +572,90 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                         .submitSurveyAPIResponse
                                                         ?.succeeded ??
                                                     true)) {
-                                                  ScaffoldMessenger.of(context)
-                                                      .clearSnackBars();
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                        'Report Submit Successfully',
-                                                        style: TextStyle(
-                                                          color: Colors.white,
-                                                        ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 3000),
-                                                      backgroundColor:
-                                                          Color(0xFFFF8C25),
-                                                    ),
-                                                  );
                                                   FFAppState()
                                                       .removeAtIndexFromCaseDetails(
                                                           widget
                                                               .currentCaseIndex!);
-                                                  FFAppState()
-                                                      .removeAtIndexFromSitePictures(
-                                                          0);
                                                   FFAppState().update(() {});
-                                                  if (Navigator.of(context)
-                                                      .canPop()) {
-                                                    context.pop();
-                                                  }
-                                                  context.pushNamed(
-                                                    'main_case_listing_screen',
-                                                    queryParameters: {
-                                                      'notificationCount':
-                                                          serializeParam(
-                                                        0,
-                                                        ParamType.int,
-                                                      ),
-                                                      'tabIndex':
-                                                          serializeParam(
-                                                        2,
-                                                        ParamType.int,
-                                                      ),
-                                                    }.withoutNulls,
-                                                    extra: <String, dynamic>{
-                                                      kTransitionInfoKey:
-                                                          const TransitionInfo(
-                                                        hasTransition: true,
-                                                        transitionType:
-                                                            PageTransitionType
-                                                                .fade,
-                                                        duration: Duration(
-                                                            milliseconds: 0),
-                                                      ),
-                                                    },
+                                                  _model.deleteSitePicturesResponse =
+                                                      actions
+                                                          .deleteSitePicturesOfCase(
+                                                    FFAppState()
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.selectedCaseDetails!
+                                                        .id,
                                                   );
+                                                  if (_model
+                                                          .deleteSitePicturesResponse ==
+                                                      true) {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .clearSnackBars();
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      const SnackBar(
+                                                        content: Text(
+                                                          'Report Submit Successfully',
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 3000),
+                                                        backgroundColor:
+                                                            Color(0xFFFF8C25),
+                                                      ),
+                                                    );
+                                                    if (Navigator.of(context)
+                                                        .canPop()) {
+                                                      context.pop();
+                                                    }
+                                                    context.pushNamed(
+                                                      'main_case_listing_screen',
+                                                      queryParameters: {
+                                                        'notificationCount':
+                                                            serializeParam(
+                                                          0,
+                                                          ParamType.int,
+                                                        ),
+                                                        'tabIndex':
+                                                            serializeParam(
+                                                          2,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                      extra: <String, dynamic>{
+                                                        kTransitionInfoKey:
+                                                            const TransitionInfo(
+                                                          hasTransition: true,
+                                                          transitionType:
+                                                              PageTransitionType
+                                                                  .fade,
+                                                          duration: Duration(
+                                                              milliseconds: 0),
+                                                        ),
+                                                      },
+                                                    );
+                                                  } else {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      const SnackBar(
+                                                        content: Text(
+                                                          'Something went wrong in deleting site pictures.',
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            Color(0xFFC62626),
+                                                      ),
+                                                    );
+                                                  }
                                                 } else {
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(

@@ -79,18 +79,6 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _sitePictures;
     });
-    _safeInit(() {
-      if (prefs.containsKey('ff_submitCaseDetails')) {
-        try {
-          final serializedData =
-              prefs.getString('ff_submitCaseDetails') ?? '{}';
-          _submitCaseDetails =
-              ResponseStruct.fromSerializableMap(jsonDecode(serializedData));
-        } catch (e) {
-          print("Can't decode persisted data type. Error: $e.");
-        }
-      }
-    });
   }
 
   void update(VoidCallback callback) {
@@ -258,18 +246,6 @@ class FFAppState extends ChangeNotifier {
     sitePictures.insert(index, value);
     prefs.setStringList(
         'ff_sitePictures', _sitePictures.map((x) => x.serialize()).toList());
-  }
-
-  ResponseStruct _submitCaseDetails = ResponseStruct();
-  ResponseStruct get submitCaseDetails => _submitCaseDetails;
-  set submitCaseDetails(ResponseStruct value) {
-    _submitCaseDetails = value;
-    prefs.setString('ff_submitCaseDetails', value.serialize());
-  }
-
-  void updateSubmitCaseDetailsStruct(Function(ResponseStruct) updateFn) {
-    updateFn(_submitCaseDetails);
-    prefs.setString('ff_submitCaseDetails', _submitCaseDetails.serialize());
   }
 }
 

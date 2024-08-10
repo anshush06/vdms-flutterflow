@@ -182,15 +182,64 @@ class _ViewAllPhotographsWidgetState extends State<ViewAllPhotographsWidget> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Expanded(
-                                        child: SizedBox(
-                                          width: 100.0,
-                                          height: 100.0,
-                                          child: custom_widgets.ImageWidget(
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                  'Loading....',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 2000),
+                                                backgroundColor:
+                                                    Color(0xFFFF8C25),
+                                              ),
+                                            );
+
+                                            context.pushNamed(
+                                              'show_carousel_for_not_visited',
+                                              queryParameters: {
+                                                'sitePictures': serializeParam(
+                                                  FFAppState().sitePictures,
+                                                  ParamType.DataStruct,
+                                                  isList: true,
+                                                ),
+                                                'currentImageIndex':
+                                                    serializeParam(
+                                                  eachImageIndex,
+                                                  ParamType.int,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
+                                          },
+                                          child: SizedBox(
                                             width: 100.0,
                                             height: 100.0,
-                                            fileName: eachImageItem.name,
-                                            text: eachImageItem.timestamp,
-                                            byteArray: eachImageItem.bytes,
+                                            child: custom_widgets.ImageWidget(
+                                              width: 100.0,
+                                              height: 100.0,
+                                              fileName: eachImageItem.name,
+                                              text: eachImageItem.timestamp,
+                                              byteArray: eachImageItem.bytes,
+                                            ),
                                           ),
                                         ),
                                       ),

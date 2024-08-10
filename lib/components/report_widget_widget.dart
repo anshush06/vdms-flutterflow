@@ -362,6 +362,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         .labelMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w300,
@@ -373,6 +376,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         .labelMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           letterSpacing: 0.0,
                                                         ),
                                                     enabledBorder:
@@ -1764,7 +1770,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                           ),
                                         ),
                                       ),
-                                      theme: const ExpandableThemeData(
+                                      theme: ExpandableThemeData(
                                         tapHeaderToExpand: true,
                                         tapBodyToExpand: true,
                                         tapBodyToCollapse: true,
@@ -1772,7 +1778,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                             ExpandablePanelHeaderAlignment
                                                 .bottom,
                                         hasIcon: true,
-                                        iconPadding: EdgeInsets.fromLTRB(
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        iconPadding: const EdgeInsets.fromLTRB(
                                             0.0, 20.0, 20.0, 0.0),
                                       ),
                                     ),
@@ -3286,14 +3294,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         ),
                                       ),
                                     ),
-                                    theme: const ExpandableThemeData(
+                                    theme: ExpandableThemeData(
                                       tapHeaderToExpand: true,
                                       tapBodyToExpand: true,
                                       tapBodyToCollapse: true,
                                       headerAlignment:
                                           ExpandablePanelHeaderAlignment.bottom,
                                       hasIcon: true,
-                                      iconPadding: EdgeInsets.fromLTRB(
+                                      iconColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      iconPadding: const EdgeInsets.fromLTRB(
                                           0.0, 20.0, 20.0, 0.0),
                                     ),
                                   ),
@@ -3607,14 +3617,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         ),
                                       ),
                                     ),
-                                    theme: const ExpandableThemeData(
+                                    theme: ExpandableThemeData(
                                       tapHeaderToExpand: true,
                                       tapBodyToExpand: true,
                                       tapBodyToCollapse: true,
                                       headerAlignment:
                                           ExpandablePanelHeaderAlignment.bottom,
                                       hasIcon: true,
-                                      iconPadding: EdgeInsets.fromLTRB(
+                                      iconColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      iconPadding: const EdgeInsets.fromLTRB(
                                           0.0, 20.0, 20.0, 0.0),
                                     ),
                                   ),
@@ -4324,14 +4336,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         ),
                                       ),
                                     ),
-                                    theme: const ExpandableThemeData(
+                                    theme: ExpandableThemeData(
                                       tapHeaderToExpand: true,
                                       tapBodyToExpand: true,
                                       tapBodyToCollapse: true,
                                       headerAlignment:
                                           ExpandablePanelHeaderAlignment.bottom,
                                       hasIcon: true,
-                                      iconPadding: EdgeInsets.fromLTRB(
+                                      iconColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      iconPadding: const EdgeInsets.fromLTRB(
                                           0.0, 20.0, 20.0, 0.0),
                                     ),
                                   ),
@@ -5068,14 +5082,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         ),
                                       ],
                                     ),
-                                    theme: const ExpandableThemeData(
+                                    theme: ExpandableThemeData(
                                       tapHeaderToExpand: true,
                                       tapBodyToExpand: true,
                                       tapBodyToCollapse: true,
                                       headerAlignment:
                                           ExpandablePanelHeaderAlignment.bottom,
                                       hasIcon: true,
-                                      iconPadding: EdgeInsets.fromLTRB(
+                                      iconColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      iconPadding: const EdgeInsets.fromLTRB(
                                           0.0, 20.0, 20.0, 0.0),
                                     ),
                                   ),
@@ -5891,14 +5907,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         ),
                                       ),
                                     ),
-                                    theme: const ExpandableThemeData(
+                                    theme: ExpandableThemeData(
                                       tapHeaderToExpand: true,
                                       tapBodyToExpand: true,
                                       tapBodyToCollapse: true,
                                       headerAlignment:
                                           ExpandablePanelHeaderAlignment.bottom,
                                       hasIcon: true,
-                                      iconPadding: EdgeInsets.fromLTRB(
+                                      iconColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      iconPadding: const EdgeInsets.fromLTRB(
                                           0.0, 20.0, 20.0, 0.0),
                                     ),
                                   ),
@@ -8056,14 +8074,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         ),
                                       ),
                                     ),
-                                    theme: const ExpandableThemeData(
+                                    theme: ExpandableThemeData(
                                       tapHeaderToExpand: true,
                                       tapBodyToExpand: true,
                                       tapBodyToCollapse: true,
                                       headerAlignment:
                                           ExpandablePanelHeaderAlignment.bottom,
                                       hasIcon: true,
-                                      iconPadding: EdgeInsets.fromLTRB(
+                                      iconColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      iconPadding: const EdgeInsets.fromLTRB(
                                           0.0, 20.0, 20.0, 0.0),
                                     ),
                                   ),
@@ -8349,14 +8369,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         ),
                                       ),
                                     ),
-                                    theme: const ExpandableThemeData(
+                                    theme: ExpandableThemeData(
                                       tapHeaderToExpand: true,
                                       tapBodyToExpand: true,
                                       tapBodyToCollapse: true,
                                       headerAlignment:
                                           ExpandablePanelHeaderAlignment.bottom,
                                       hasIcon: true,
-                                      iconPadding: EdgeInsets.fromLTRB(
+                                      iconColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      iconPadding: const EdgeInsets.fromLTRB(
                                           0.0, 20.0, 20.0, 0.0),
                                     ),
                                   ),
@@ -8538,6 +8560,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                           backgroundColor: Color(0xFFFF8C25),
                                         ),
                                       );
+                                      context.safePop();
                                       if (Navigator.of(context).canPop()) {
                                         context.pop();
                                       }

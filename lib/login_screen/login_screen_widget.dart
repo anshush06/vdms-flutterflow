@@ -120,7 +120,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Roboto',
-                                                  color: const Color(0xFF3C3C3C),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   fontSize: 24.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -137,7 +139,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Roboto',
-                                                    color: const Color(0xFF14181B),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),

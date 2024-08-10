@@ -130,7 +130,7 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: FlutterFlowTheme.of(context).primaryBackground,
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -203,7 +203,7 @@ class _DocumentationWidgetWidgetState extends State<DocumentationWidgetWidget> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: FlutterFlowTheme.of(context).primaryBackground,
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,

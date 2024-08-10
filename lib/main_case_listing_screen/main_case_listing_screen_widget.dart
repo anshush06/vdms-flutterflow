@@ -48,7 +48,7 @@ class _MainCaseListingScreenWidgetState
           ),
           3),
     )..addListener(() => setState(() {}));
-    _model.switchValue = true;
+    _model.switchValue = false;
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -199,6 +199,7 @@ class _MainCaseListingScreenWidgetState
                                       FFAppState().travelStatus = '';
                                       FFAppState().startReading = '';
                                       FFAppState().caseDetails = [];
+                                      FFAppState().sitePictures = [];
                                       setState(() {});
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(

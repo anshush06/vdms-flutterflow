@@ -242,6 +242,43 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'version_screen',
           path: '/versionScreen',
           builder: (context, params) => const VersionScreenWidget(),
+        ),
+        FFRoute(
+          name: 'view_all_images_for_visited_and_completed',
+          path: '/viewAllImagesForVisitedAndCompleted',
+          builder: (context, params) =>
+              ViewAllImagesForVisitedAndCompletedWidget(
+            caseDetails: params.getParam(
+              'caseDetails',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ResponseStruct.fromSerializableMap,
+            ),
+            sectionType: params.getParam(
+              'sectionType',
+              ParamType.String,
+            ),
+            isAllImages: params.getParam(
+              'isAllImages',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'show_carousel_for_not_visited',
+          path: '/showCarouselForNotVisited',
+          builder: (context, params) => ShowCarouselForNotVisitedWidget(
+            sitePictures: params.getParam<SitePictureListResponseStruct>(
+              'sitePictures',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: SitePictureListResponseStruct.fromSerializableMap,
+            ),
+            currentImageIndex: params.getParam(
+              'currentImageIndex',
+              ParamType.int,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

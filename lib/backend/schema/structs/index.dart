@@ -3,6 +3,8 @@ export '/backend/schema/util/schema_util.dart';
 export 'floor_wise_details_struct.dart';
 export 'config_struct.dart';
 export 'error_struct.dart';
+export 'get_case_images_struct.dart';
+export 'get_case_images_response_struct.dart';
 export 'get_cases_api_struct.dart';
 export 'get_notification_api_response_struct.dart';
 export 'get_notification_count_a_p_i_struct.dart';
