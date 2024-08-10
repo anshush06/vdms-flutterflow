@@ -4,3 +4,4 @@ export 'submit_survey_documents.dart' show submitSurveyDocuments;
 export 'delete_site_pictures_of_case.dart' show deleteSitePicturesOfCase;
 export 'enter_log_message.dart' show enterLogMessage;
 export 'example_interceptor.dart' show exampleInterceptor;
+export 'capture_log_messages.dart' show captureLogMessages;

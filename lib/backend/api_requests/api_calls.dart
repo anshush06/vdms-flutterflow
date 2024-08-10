@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
+import 'interceptors.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
@@ -33,6 +34,10 @@ class VdmsApiCallsGroup {
   static SaveSurveyLocationAPICall saveSurveyLocationAPICall =
       SaveSurveyLocationAPICall();
   static GetCaseImagesAPICall getCaseImagesAPICall = GetCaseImagesAPICall();
+
+  static final interceptors = [
+    captureLogMessages(),
+  ];
 }
 
 class ValidateLoginAPICall {
@@ -42,30 +47,33 @@ class ValidateLoginAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'validateLoginAPI',
-      apiUrl: '$baseUrl/validateLoginAPI',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTcyMTg4OTU2OQ==',
-        'correlation_id': 'hfsu8ydfQG',
-        'app_version': '2.1',
-        'api_version': '1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'userId': userId,
-        'password': password,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'validateLoginAPI',
+        apiUrl: '$baseUrl/validateLoginAPI',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTcyMTg4OTU2OQ==',
+          'correlation_id': 'hfsu8ydfQG',
+          'app_version': '2.1',
+          'api_version': '1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'userId': userId,
+          'password': password,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 
@@ -91,26 +99,29 @@ class GetAreasAPICall {
   Future<ApiCallResponse> call() async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'getAreasAPI',
-      apiUrl: '$baseUrl/getAreasAPI',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {},
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'getAreasAPI',
+        apiUrl: '$baseUrl/getAreasAPI',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: const {},
+        bodyType: BodyType.JSON,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 
@@ -161,31 +172,34 @@ class GetCaseAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'getCaseAPI',
-      apiUrl: '$baseUrl/getCasesAPI',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTcyMTkyNzA4OA==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'filters': filters,
-        'userId': userId,
-        'limit': limit,
-        'page': page,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'getCaseAPI',
+        apiUrl: '$baseUrl/getCasesAPI',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTcyMTkyNzA4OA==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'filters': filters,
+          'userId': userId,
+          'limit': limit,
+          'page': page,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 }
@@ -198,30 +212,33 @@ class GetNotificationsAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'getNotificationsAPI',
-      apiUrl: '$baseUrl/getNotificationsAPI',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'page': page,
-        'limit': limit,
-        'userId': userId,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'getNotificationsAPI',
+        apiUrl: '$baseUrl/getNotificationsAPI',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'page': page,
+          'limit': limit,
+          'userId': userId,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 
@@ -241,31 +258,34 @@ class GetCaseHistoryAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'getCaseHistoryAPI',
-      apiUrl: '$baseUrl/getCaseHistoryAPI',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'page': page,
-        'limit': limit,
-        'userId': userId,
-        'caseId': caseId,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'getCaseHistoryAPI',
+        apiUrl: '$baseUrl/getCaseHistoryAPI',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'page': page,
+          'limit': limit,
+          'userId': userId,
+          'caseId': caseId,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 
@@ -284,30 +304,33 @@ class SaveRemarkAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'saveRemarkAPI',
-      apiUrl: '$baseUrl/saveRemark',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'remark': remark,
-        'userId': userId,
-        'caseId': caseId,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'saveRemarkAPI',
+        apiUrl: '$baseUrl/saveRemark',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'remark': remark,
+          'userId': userId,
+          'caseId': caseId,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 
@@ -324,28 +347,31 @@ class GetFieldEngineerTravelLogsCall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'getFieldEngineerTravelLogs',
-      apiUrl: '$baseUrl/getFieldEngineerTravelLogs',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'field_engineer_id': fieldEngineerId,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'getFieldEngineerTravelLogs',
+        apiUrl: '$baseUrl/getFieldEngineerTravelLogs',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'field_engineer_id': fieldEngineerId,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 }
@@ -356,28 +382,31 @@ class CheckFieldEngineerTravelStatusCall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'checkFieldEngineerTravelStatus',
-      apiUrl: '$baseUrl/checkFieldEngineerTravelStatus',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'field_engineer_id': fieldEngineerId,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'checkFieldEngineerTravelStatus',
+        apiUrl: '$baseUrl/checkFieldEngineerTravelStatus',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'field_engineer_id': fieldEngineerId,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 }
@@ -392,32 +421,35 @@ class SaveStartEndDayReadingAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'saveStartEndDayReadingAPI',
-      apiUrl: '$baseUrl/saveStartEndDayReading',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'multipart/form-data',
-      },
-      params: {
-        'type': type,
-        'field_engineer_id': fieldEngineerId,
-        'meter_reading': meterReading,
-        'meter_reading_image': meterReadingImage,
-        'datetime': datetime,
-      },
-      bodyType: BodyType.MULTIPART,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'saveStartEndDayReadingAPI',
+        apiUrl: '$baseUrl/saveStartEndDayReading',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'multipart/form-data',
+        },
+        params: {
+          'type': type,
+          'field_engineer_id': fieldEngineerId,
+          'meter_reading': meterReading,
+          'meter_reading_image': meterReadingImage,
+          'datetime': datetime,
+        },
+        bodyType: BodyType.MULTIPART,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 }
@@ -431,31 +463,34 @@ class SubmitSurveyAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'submitSurveyAPI',
-      apiUrl: '$baseUrl/submitSurveyAPI',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'userId': userId,
-        'caseId': caseId,
-        'timestamp': timestamp,
-        'inspectionFormData': inspectionFormData,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'submitSurveyAPI',
+        apiUrl: '$baseUrl/submitSurveyAPI',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'userId': userId,
+          'caseId': caseId,
+          'timestamp': timestamp,
+          'inspectionFormData': inspectionFormData,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 }
@@ -466,28 +501,31 @@ class GetNotificationsCountAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'getNotificationsCountAPI',
-      apiUrl: '$baseUrl/getNotificationsCountAPI',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'userId': userId,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'getNotificationsCountAPI',
+        apiUrl: '$baseUrl/getNotificationsCountAPI',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'userId': userId,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 }
@@ -501,31 +539,34 @@ class SaveSurveyLocationAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'saveSurveyLocationAPI',
-      apiUrl: '$baseUrl/saveSurveyLocationAPI',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'longitude': longitude,
-        'latitude': latitude,
-        'caseId': caseId,
-        'userId': userId,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'saveSurveyLocationAPI',
+        apiUrl: '$baseUrl/saveSurveyLocationAPI',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'longitude': longitude,
+          'latitude': latitude,
+          'caseId': caseId,
+          'userId': userId,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 }
@@ -539,31 +580,34 @@ class GetCaseImagesAPICall {
   }) async {
     final baseUrl = VdmsApiCallsGroup.getBaseUrl();
 
-    return ApiManager.instance.makeApiCall(
-      callName: 'getCaseImagesAPI',
-      apiUrl: '$baseUrl/getCaseImagesAPI',
-      callType: ApiCallType.POST,
-      headers: {
-        'api_token': 'MTY5NTEzMzY5NzExMw==',
-        'correlation_id': 'zSF1clTyQX',
-        'api_version': '2.1',
-        'app_version_code': '1',
-        'device_id': '96db57db06605205',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        'page': page,
-        'limit': limit,
-        'userId': userId,
-        'caseId': caseId,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'getCaseImagesAPI',
+        apiUrl: '$baseUrl/getCaseImagesAPI',
+        callType: ApiCallType.POST,
+        headers: const {
+          'api_token': 'MTY5NTEzMzY5NzExMw==',
+          'correlation_id': 'zSF1clTyQX',
+          'api_version': '2.1',
+          'app_version_code': '1',
+          'device_id': '96db57db06605205',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          'page': page,
+          'limit': limit,
+          'userId': userId,
+          'caseId': caseId,
+        },
+        bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      VdmsApiCallsGroup.interceptors,
     );
   }
 }
