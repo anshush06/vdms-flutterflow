@@ -3,5 +3,5 @@ export 'convert_to_f_f_uploaded_file.dart' show convertToFFUploadedFile;
 export 'submit_survey_documents.dart' show submitSurveyDocuments;
 export 'delete_site_pictures_of_case.dart' show deleteSitePicturesOfCase;
 export 'enter_log_message.dart' show enterLogMessage;
-export 'example_interceptor.dart' show exampleInterceptor;
-export 'capture_log_messages.dart' show captureLogMessages;
+export 'capture_logs.dart' show captureLogs;
+export 'share_log_file.dart' show shareLogFile;

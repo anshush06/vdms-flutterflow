@@ -36,7 +36,7 @@ class VdmsApiCallsGroup {
   static GetCaseImagesAPICall getCaseImagesAPICall = GetCaseImagesAPICall();
 
   static final interceptors = [
-    captureLogMessages(),
+    CaptureLogs(),
   ];
 }
 
