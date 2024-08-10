@@ -75,7 +75,7 @@ class CaptureLogs extends FFApiInterceptor {
     mes += 'API URL:- ' + options.apiUrl + "\n";
 
     // Handling potential null value for body (String?)
-    mes += "PARAMS:- " + (options.body ?? "No Body") + "\n";
+    mes += "PARAMS:- " + (options.body.toString() ?? "No Body") + "\n";
 
     // Convert headers (Map<String, dynamic>) to a string
     mes += "HEADERS:- " + options.headers.toString() + "\n";
