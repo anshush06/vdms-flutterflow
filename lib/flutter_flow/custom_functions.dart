@@ -451,6 +451,70 @@ List<SitePictureListResponseStruct>? filterImagesByCaseID(
 }
 
 bool checkEmptyFields(ResponseStruct caseDetails) {
+  List<String?> fieldsToCheck = [
+    caseDetails.addressLine1,
+    caseDetails.city,
+    caseDetails.state,
+    caseDetails.contactperson1,
+    caseDetails.contact1,
+    caseDetails.inspectionFormData?.refNo,
+    caseDetails.inspectionFormData?.bank,
+    caseDetails.inspectionFormData?.engrName,
+    caseDetails.inspectionFormData?.currentDate,
+    caseDetails.inspectionFormData?.applicantName,
+    caseDetails.inspectionFormData?.address1,
+    caseDetails.inspectionFormData?.address2,
+    caseDetails.inspectionFormData?.state,
+    caseDetails.inspectionFormData?.city,
+    caseDetails.inspectionFormData?.locality,
+    caseDetails.inspectionFormData?.pin,
+    caseDetails.inspectionFormData?.personMet,
+    caseDetails.inspectionFormData?.propertyLocatedIn,
+    caseDetails.inspectionFormData?.otherPropertyLocatedIn,
+    caseDetails.inspectionFormData?.relationWithOwner,
+    caseDetails.inspectionFormData?.roadWidth,
+    caseDetails.inspectionFormData?.landMark,
+    caseDetails.inspectionFormData?.classificationOfLocality,
+    caseDetails.inspectionFormData?.namePlateFixed,
+    caseDetails.inspectionFormData?.propertyDemarcated,
+    caseDetails.inspectionFormData?.propertyIdentified,
+    caseDetails.inspectionFormData?.cityCenter,
+    caseDetails.inspectionFormData?.railwayStation,
+    caseDetails.inspectionFormData?.busStop,
+    caseDetails.inspectionFormData?.hospital,
+    caseDetails.inspectionFormData?.permittedUseOfProperty,
+    caseDetails.inspectionFormData?.otherPermittedUseOfProperty,
+    caseDetails.inspectionFormData?.propertyType,
+    caseDetails.inspectionFormData?.north,
+    caseDetails.inspectionFormData?.east,
+    caseDetails.inspectionFormData?.south,
+    caseDetails.inspectionFormData?.west,
+    caseDetails.inspectionFormData?.noOfFloors,
+    caseDetails.inspectionFormData?.noOfLifts,
+    caseDetails.inspectionFormData?.floorLocation,
+    caseDetails.inspectionFormData?.structureType,
+    caseDetails.inspectionFormData?.otherStructureType,
+    caseDetails.inspectionFormData?.ageBuilding,
+    caseDetails.inspectionFormData?.constructionStatus,
+    caseDetails.inspectionFormData?.otherConstructionStatus,
+    caseDetails.inspectionFormData?.completionState,
+    caseDetails.inspectionFormData?.roof,
+    caseDetails.inspectionFormData?.otherRoof,
+    caseDetails.inspectionFormData?.unitsPerFloor,
+    caseDetails.inspectionFormData?.wallPlasterPainting,
+    caseDetails.inspectionFormData?.doorsWindows,
+    caseDetails.inspectionFormData?.flooringType,
+    caseDetails.inspectionFormData?.interiorConstructionQuality,
+    caseDetails.inspectionFormData?.exteriorConstructionQuality
+  ];
+
+  // Check if any of the fields is null or empty
+  for (String? field in fieldsToCheck) {
+    if (field == null || field.isEmpty) {
+      return false;
+    }
+  }
+
   return true;
 }
 
