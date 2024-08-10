@@ -52,7 +52,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -62,8 +62,10 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
               color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: SingleChildScrollView(
+              primary: false,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Form(

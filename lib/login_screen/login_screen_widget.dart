@@ -187,7 +187,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 focusedErrorBorder:
                                                     InputBorder.none,
                                                 filled: true,
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 prefixIcon: const Icon(
                                                   Icons.person,
                                                   color: Color(0xFFC8C8C8),
@@ -261,7 +263,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 focusedErrorBorder:
                                                     InputBorder.none,
                                                 filled: true,
-                                                fillColor: const Color(0xFFF5F5F5),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 prefixIcon: const Icon(
                                                   Icons.key,
                                                   color: Color(0xFFC8C8C8),

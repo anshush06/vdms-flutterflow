@@ -121,6 +121,7 @@ class _SitePicturesScreenWidgetState extends State<SitePicturesScreenWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
                 child: Container(

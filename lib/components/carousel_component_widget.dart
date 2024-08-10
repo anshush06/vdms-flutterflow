@@ -95,20 +95,16 @@ class _CarouselComponentWidgetState extends State<CarouselComponentWidget> {
                         itemCount: eachImage.length,
                         itemBuilder: (context, eachImageIndex, _) {
                           final eachImageItem = eachImage[eachImageIndex];
-                          return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 0.0, 0.0),
-                            child: Container(
-                              decoration: const BoxDecoration(),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.network(
-                                  functions
-                                      .getImageUrl(eachImageItem.downloadUrl)!,
-                                  width: 300.0,
-                                  height: 200.0,
-                                  fit: BoxFit.cover,
-                                ),
+                          return Container(
+                            decoration: const BoxDecoration(),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.network(
+                                functions
+                                    .getImageUrl(eachImageItem.downloadUrl)!,
+                                width: 300.0,
+                                height: 200.0,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           );

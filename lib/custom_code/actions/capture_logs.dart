@@ -95,10 +95,12 @@ class CaptureLogs extends FFApiInterceptor {
     message += 'Current Time:- ' + DateTime.now().toString() + "\n";
     message = message +
         'STATUS CODE' +
-        response.response?.statusCode.toString() +
+        (response.response?.statusCode.toString() ?? "No Status Code") +
         "\n";
     // Convert headers (Map<String, String>) to a string
-    message += "HEADERS:- " + response.response?.headers.toString() + "\n";
+    message += "HEADERS:- " +
+        (response.response?.headers.toString() ?? "No Headers") +
+        "\n";
 
     // Convert response to string
     message += "\t" + "RESPONSE PARAM" + "\n";
