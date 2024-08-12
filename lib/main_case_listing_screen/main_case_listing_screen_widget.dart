@@ -198,8 +198,6 @@ class _MainCaseListingScreenWidgetState
                                       FFAppState().userId = '';
                                       FFAppState().travelStatus = '';
                                       FFAppState().startReading = '';
-                                      FFAppState().caseDetails = [];
-                                      FFAppState().sitePictures = [];
                                       setState(() {});
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(

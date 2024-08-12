@@ -545,7 +545,7 @@ class _CaptureReadingScreenWidgetState
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -556,18 +556,21 @@ class _CaptureReadingScreenWidgetState
                                       size: 34.0,
                                     ),
                                   ),
-                                  Text(
-                                    FFAppState().travelStatus,
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: Colors.white,
-                                          fontSize: 20.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                        ),
+                                  Container(
+                                    decoration: const BoxDecoration(),
+                                    child: Text(
+                                      FFAppState().travelStatus,
+                                      textAlign: TextAlign.end,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: Colors.white,
+                                            fontSize: 20.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                    ),
                                   ),
                                 ].divide(const SizedBox(width: 15.0)),
                               ),
