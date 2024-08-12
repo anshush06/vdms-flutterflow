@@ -215,9 +215,16 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                   ),
                 ),
               ),
-              Container(
-                decoration: const BoxDecoration(),
-                child: Padding(
+              if ((functions.filterImagesByCaseIDAndImageType(
+                              FFAppState().sitePictures.toList(),
+                              widget.selectedCaseDetails!.id,
+                              'selfie') ==
+                          true) &&
+                      ((widget.selectedCaseDetails?.latitude != '0') &&
+                          (widget.selectedCaseDetails?.longitude != '0'))
+                  ? true
+                  : false)
+                Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
@@ -301,7 +308,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                10.0, 10.0, 10.0, 0.0),
+                                10.0, 10.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: ((widget
                                               .selectedCaseDetails?.statusId ==
@@ -802,7 +809,6 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                     ],
                   ),
                 ),
-              ),
             ]
                 .divide(const SizedBox(height: 10.0))
                 .addToStart(const SizedBox(height: 10.0))
