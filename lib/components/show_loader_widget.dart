@@ -53,10 +53,12 @@ class _ShowLoaderWidgetState extends State<ShowLoaderWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Loading....',
+                  'Fetching Location....',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Roboto',
+                        fontSize: 24.0,
                         letterSpacing: 0.0,
+                        fontWeight: FontWeight.w500,
                       ),
                 ),
               ],
