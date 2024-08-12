@@ -191,6 +191,22 @@ class _ViewAllPhotographsWidgetState extends State<ViewAllPhotographsWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                    'Loading....',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 2000),
+                                                  backgroundColor:
+                                                      Color(0xFFFF8C25),
+                                                ),
+                                              );
+
                                               context.pushNamed(
                                                 'show_carousel_for_not_visited',
                                                 queryParameters: {

@@ -556,21 +556,27 @@ class _CaptureReadingScreenWidgetState
                                       size: 34.0,
                                     ),
                                   ),
-                                  Container(
-                                    decoration: const BoxDecoration(),
-                                    child: Text(
-                                      FFAppState().travelStatus,
-                                      textAlign: TextAlign.end,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
+                                  Text(
+                                    FFAppState().travelStatus,
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          color: Colors.white,
+                                          fontSize: 20.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Hello World',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ].divide(const SizedBox(width: 15.0)),
                               ),
