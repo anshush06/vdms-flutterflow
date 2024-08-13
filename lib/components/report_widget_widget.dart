@@ -9315,7 +9315,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 ..west = _model
                                                     .westTextController.text
                                                 ..noOfFloors = _model
-                                                    .otherStructureTypeTextController
+                                                    .totalFloorsTextController
                                                     .text
                                                 ..noOfLifts = _model
                                                     .noofliftsTextController
@@ -9643,7 +9643,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 ..west = _model
                                                     .westTextController.text
                                                 ..noOfFloors = _model
-                                                    .otherStructureTypeTextController
+                                                    .totalFloorsTextController
                                                     .text
                                                 ..noOfLifts = _model
                                                     .noofliftsTextController
