@@ -1310,7 +1310,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                           'take_pictures_screen',
                                           queryParameters: {
                                             'imageType': serializeParam(
-                                              'front',
+                                              'room',
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
@@ -2267,11 +2267,25 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                       .caseDetails?.latitude !=
                                                   '0') &&
                                               (widget.caseDetails?.longitude !=
-                                                  '0');
+                                                  '0') &&
+                                              (widget.caseDetails?.longitude !=
+                                                  'fetching...') &&
+                                              (widget.caseDetails?.latitude !=
+                                                  'fetching...') &&
+                                              (widget.caseDetails?.longitude !=
+                                                      null &&
+                                                  widget.caseDetails
+                                                          ?.longitude !=
+                                                      '') &&
+                                              (widget.caseDetails?.latitude !=
+                                                      null &&
+                                                  widget.caseDetails
+                                                          ?.latitude !=
+                                                      '');
                                           _model.updatePage(() {});
                                           if ((_model.isSelfieNotFilled ==
                                                   true) &&
-                                              (_model.isSelfieNotFilled ==
+                                              (_model.isLocationNotFilled ==
                                                   true)) {
                                             context.safePop();
                                             if (Navigator.of(context)

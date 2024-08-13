@@ -12,8 +12,7 @@ import 'package:image/image.dart' as img;
 import 'package:intl/intl.dart';
 import 'dart:typed_data';
 
-List<int> addTimestampAndNameToImage(
-    List<int> byteArray, String imageName) async {
+List<int> addTimestampAndNameToImage(List<int> byteArray, String imageName) {
   // Convert the byte array to Uint8List
   Uint8List imageBytes = Uint8List.fromList(byteArray);
 

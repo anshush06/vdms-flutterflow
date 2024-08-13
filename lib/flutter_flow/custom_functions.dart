@@ -452,18 +452,7 @@ List<SitePictureListResponseStruct>? filterImagesByCaseID(
 
 bool checkEmptyFields(ResponseStruct caseDetails) {
   List<String?> fieldsToCheck = [
-    caseDetails.addressLine1,
-    caseDetails.city,
-    caseDetails.state,
-    caseDetails.contactperson1,
-    caseDetails.contact1,
-    caseDetails.inspectionFormData?.refNo,
-    caseDetails.inspectionFormData?.bank,
-    caseDetails.inspectionFormData?.engrName,
-    caseDetails.inspectionFormData?.currentDate,
-    caseDetails.inspectionFormData?.applicantName,
     caseDetails.inspectionFormData?.address1,
-    caseDetails.inspectionFormData?.address2,
     caseDetails.inspectionFormData?.state,
     caseDetails.inspectionFormData?.city,
     caseDetails.inspectionFormData?.locality,
@@ -499,7 +488,6 @@ bool checkEmptyFields(ResponseStruct caseDetails) {
     caseDetails.inspectionFormData?.otherConstructionStatus,
     caseDetails.inspectionFormData?.completionState,
     caseDetails.inspectionFormData?.roof,
-    caseDetails.inspectionFormData?.otherRoof,
     caseDetails.inspectionFormData?.unitsPerFloor,
     caseDetails.inspectionFormData?.wallPlasterPainting,
     caseDetails.inspectionFormData?.doorsWindows,

@@ -569,15 +569,6 @@ class _CaptureReadingScreenWidgetState
                                           fontWeight: FontWeight.w600,
                                         ),
                                   ),
-                                  Text(
-                                    'Hello World',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
                                 ].divide(const SizedBox(width: 15.0)),
                               ),
                             ),

@@ -59,15 +59,6 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   FocusNode? addressline2FocusNode;
   TextEditingController? addressline2TextController;
   String? Function(BuildContext, String?)? addressline2TextControllerValidator;
-  String? _addressline2TextControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Address2 is required';
-    }
-
-    return null;
-  }
-
   // State field(s) for statedropdown widget.
   String? statedropdownValue;
   FormFieldController<String>? statedropdownValueController;
@@ -566,24 +557,19 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   FocusNode? remarkNo1FocusNode;
   TextEditingController? remarkNo1TextController;
   String? Function(BuildContext, String?)? remarkNo1TextControllerValidator;
-  String? _remarkNo1TextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    return null;
-  }
-
   // State field(s) for Aadditional_remark widget.
   FocusNode? aadditionalRemarkFocusNode;
   TextEditingController? aadditionalRemarkTextController;
   String? Function(BuildContext, String?)?
       aadditionalRemarkTextControllerValidator;
+  // Stores action output result for [Validate Form] action in Button widget.
+  bool? validateFormFields;
+  // Stores action output result for [Validate Form] action in Button widget.
+  bool? validateForm;
 
   @override
   void initState(BuildContext context) {
     addressline1TextControllerValidator = _addressline1TextControllerValidator;
-    addressline2TextControllerValidator = _addressline2TextControllerValidator;
     localityTextControllerValidator = _localityTextControllerValidator;
     pincodeTextControllerValidator = _pincodeTextControllerValidator;
     personMetAndContactTextControllerValidator =
@@ -623,7 +609,6 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
         _marketRatesMinimumTextControllerValidator;
     marketRatesMaximumTextControllerValidator =
         _marketRatesMaximumTextControllerValidator;
-    remarkNo1TextControllerValidator = _remarkNo1TextControllerValidator;
   }
 
   @override

@@ -192,15 +192,6 @@ class _CaptureLocationScreenWidgetState
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text(
-                              '${widget.caseDetails?.latitude}-${widget.caseDetails?.longitude}',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            Text(
                               'Latitude and Longitude',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
