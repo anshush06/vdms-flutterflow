@@ -7,14 +7,15 @@ import 'package:flutter/material.dart';
 class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   ///  Local state fields for this component.
 
-  List<String> widgetComp = ['accomdation1'];
-  void addToWidgetComp(String item) => widgetComp.add(item);
-  void removeFromWidgetComp(String item) => widgetComp.remove(item);
-  void removeAtIndexFromWidgetComp(int index) => widgetComp.removeAt(index);
-  void insertAtIndexInWidgetComp(int index, String item) =>
-      widgetComp.insert(index, item);
-  void updateWidgetCompAtIndex(int index, Function(String) updateFn) =>
-      widgetComp[index] = updateFn(widgetComp[index]);
+  bool otherPropertyLocated = false;
+
+  bool otherPermittedProperty = false;
+
+  bool otherPropertyStructure = false;
+
+  bool otherRoof = false;
+
+  bool otherConstructionStatus = false;
 
   ///  State fields for stateful widgets in this component.
 
@@ -117,6 +118,20 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   // State field(s) for propertylocationdropdown widget.
   String? propertylocationdropdownValue;
   FormFieldController<String>? propertylocationdropdownValueController;
+  // State field(s) for other_property_located widget.
+  FocusNode? otherPropertyLocatedFocusNode;
+  TextEditingController? otherPropertyLocatedTextController;
+  String? Function(BuildContext, String?)?
+      otherPropertyLocatedTextControllerValidator;
+  String? _otherPropertyLocatedTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController2;
 
@@ -267,12 +282,40 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   // State field(s) for permitted_use_property widget.
   String? permittedUsePropertyValue;
   FormFieldController<String>? permittedUsePropertyValueController;
+  // State field(s) for other_permitted_property widget.
+  FocusNode? otherPermittedPropertyFocusNode;
+  TextEditingController? otherPermittedPropertyTextController;
+  String? Function(BuildContext, String?)?
+      otherPermittedPropertyTextControllerValidator;
+  String? _otherPermittedPropertyTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController4;
 
   // State field(s) for type_of_structure widget.
   String? typeOfStructureValue;
   FormFieldController<String>? typeOfStructureValueController;
+  // State field(s) for other_structure_type widget.
+  FocusNode? otherStructureTypeFocusNode;
+  TextEditingController? otherStructureTypeTextController;
+  String? Function(BuildContext, String?)?
+      otherStructureTypeTextControllerValidator;
+  String? _otherStructureTypeTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for total_floors widget.
   FocusNode? totalFloorsFocusNode;
   TextEditingController? totalFloorsTextController;
@@ -367,6 +410,20 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   // State field(s) for construction_status widget.
   String? constructionStatusValue;
   FormFieldController<String>? constructionStatusValueController;
+  // State field(s) for other_construction_status widget.
+  FocusNode? otherConstructionStatusFocusNode;
+  TextEditingController? otherConstructionStatusTextController;
+  String? Function(BuildContext, String?)?
+      otherConstructionStatusTextControllerValidator;
+  String? _otherConstructionStatusTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for completion_stage widget.
   FocusNode? completionStageFocusNode;
   TextEditingController? completionStageTextController;
@@ -384,6 +441,18 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   // State field(s) for roof_terrace widget.
   String? roofTerraceValue;
   FormFieldController<String>? roofTerraceValueController;
+  // State field(s) for other_roof widget.
+  FocusNode? otherRoofFocusNode;
+  TextEditingController? otherRoofTextController;
+  String? Function(BuildContext, String?)? otherRoofTextControllerValidator;
+  String? _otherRoofTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for walls_dropdown widget.
   List<String>? wallsDropdownValue;
   FormFieldController<List<String>>? wallsDropdownValueController;
@@ -576,6 +645,8 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
         _personMetAndContactTextControllerValidator;
     relationWithOwnerTextControllerValidator =
         _relationWithOwnerTextControllerValidator;
+    otherPropertyLocatedTextControllerValidator =
+        _otherPropertyLocatedTextControllerValidator;
     landmarkTextControllerValidator = _landmarkTextControllerValidator;
     roadWidthTextControllerValidator = _roadWidthTextControllerValidator;
     distanceFromCityTextControllerValidator =
@@ -590,14 +661,21 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
     southTextControllerValidator = _southTextControllerValidator;
     eastTextControllerValidator = _eastTextControllerValidator;
     westTextControllerValidator = _westTextControllerValidator;
+    otherPermittedPropertyTextControllerValidator =
+        _otherPermittedPropertyTextControllerValidator;
+    otherStructureTypeTextControllerValidator =
+        _otherStructureTypeTextControllerValidator;
     totalFloorsTextControllerValidator = _totalFloorsTextControllerValidator;
     totalUnitsTextControllerValidator = _totalUnitsTextControllerValidator;
     floorLocationTextControllerValidator =
         _floorLocationTextControllerValidator;
     noofliftsTextControllerValidator = _noofliftsTextControllerValidator;
     buildingAgeTextControllerValidator = _buildingAgeTextControllerValidator;
+    otherConstructionStatusTextControllerValidator =
+        _otherConstructionStatusTextControllerValidator;
     completionStageTextControllerValidator =
         _completionStageTextControllerValidator;
+    otherRoofTextControllerValidator = _otherRoofTextControllerValidator;
     carpetAreaTextControllerValidator = _carpetAreaTextControllerValidator;
     balconyAreaTextControllerValidator = _balconyAreaTextControllerValidator;
     superAreaTextControllerValidator = _superAreaTextControllerValidator;
@@ -647,6 +725,9 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
     relationWithOwnerFocusNode?.dispose();
     relationWithOwnerTextController?.dispose();
 
+    otherPropertyLocatedFocusNode?.dispose();
+    otherPropertyLocatedTextController?.dispose();
+
     expandableExpandableController2.dispose();
     landmarkFocusNode?.dispose();
     landmarkTextController?.dispose();
@@ -679,7 +760,13 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
     westTextController?.dispose();
 
     expandableExpandableController3.dispose();
+    otherPermittedPropertyFocusNode?.dispose();
+    otherPermittedPropertyTextController?.dispose();
+
     expandableExpandableController4.dispose();
+    otherStructureTypeFocusNode?.dispose();
+    otherStructureTypeTextController?.dispose();
+
     totalFloorsFocusNode?.dispose();
     totalFloorsTextController?.dispose();
 
@@ -712,8 +799,14 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
     actualAreaMeasuredTextController?.dispose();
 
     expandableExpandableController6.dispose();
+    otherConstructionStatusFocusNode?.dispose();
+    otherConstructionStatusTextController?.dispose();
+
     completionStageFocusNode?.dispose();
     completionStageTextController?.dispose();
+
+    otherRoofFocusNode?.dispose();
+    otherRoofTextController?.dispose();
 
     expandableExpandableController7.dispose();
     carpetAreaFocusNode?.dispose();

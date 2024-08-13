@@ -87,6 +87,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails?.inspectionFormData.relationWithOwner);
     _model.relationWithOwnerFocusNode ??= FocusNode();
 
+    _model.otherPropertyLocatedTextController ??= TextEditingController(
+        text:
+            widget.reportDetails?.inspectionFormData.otherPropertyLocatedIn);
+    _model.otherPropertyLocatedFocusNode ??= FocusNode();
+
     _model.expandableExpandableController2 =
         ExpandableController(initialExpanded: false);
     _model.landmarkTextController ??= TextEditingController(
@@ -131,8 +136,17 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
 
     _model.expandableExpandableController3 =
         ExpandableController(initialExpanded: false);
+    _model.otherPermittedPropertyTextController ??= TextEditingController(
+        text: widget
+            .reportDetails?.inspectionFormData.otherPermittedUseOfProperty);
+    _model.otherPermittedPropertyFocusNode ??= FocusNode();
+
     _model.expandableExpandableController4 =
         ExpandableController(initialExpanded: false);
+    _model.otherStructureTypeTextController ??= TextEditingController(
+        text: widget.reportDetails?.inspectionFormData.otherStructureType);
+    _model.otherStructureTypeFocusNode ??= FocusNode();
+
     _model.totalFloorsTextController ??= TextEditingController(
         text: widget.reportDetails?.inspectionFormData.noOfFloors);
     _model.totalFloorsFocusNode ??= FocusNode();
@@ -172,9 +186,18 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
 
     _model.expandableExpandableController6 =
         ExpandableController(initialExpanded: false);
+    _model.otherConstructionStatusTextController ??= TextEditingController(
+        text:
+            widget.reportDetails?.inspectionFormData.otherConstructionStatus);
+    _model.otherConstructionStatusFocusNode ??= FocusNode();
+
     _model.completionStageTextController ??= TextEditingController(
         text: widget.reportDetails?.inspectionFormData.completionState);
     _model.completionStageFocusNode ??= FocusNode();
+
+    _model.otherRoofTextController ??= TextEditingController(
+        text: widget.reportDetails?.inspectionFormData.otherRoof);
+    _model.otherRoofFocusNode ??= FocusNode();
 
     _model.expandableExpandableController7 =
         ExpandableController(initialExpanded: false);
@@ -1715,9 +1738,17 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   'Pvt. Colony',
                                                   'Other'
                                                 ],
-                                                onChanged: (val) => setState(() =>
-                                                    _model.propertylocationdropdownValue =
-                                                        val),
+                                                onChanged: (val) async {
+                                                  setState(() => _model
+                                                          .propertylocationdropdownValue =
+                                                      val);
+                                                  _model.otherPropertyLocated =
+                                                      _model.propertylocationdropdownValue ==
+                                                              '7'
+                                                          ? true
+                                                          : false;
+                                                  setState(() {});
+                                                },
                                                 width: 326.0,
                                                 height: 56.0,
                                                 textStyle:
@@ -1758,6 +1789,112 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isMultiSelect: false,
                                               ),
                                             ),
+                                            if (_model.otherPropertyLocated)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .otherPropertyLocatedTextController,
+                                                  focusNode: _model
+                                                      .otherPropertyLocatedFocusNode,
+                                                  autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                    hintText:
+                                                        'Other Property Location*',
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFF5F5F5),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                  validator: _model
+                                                      .otherPropertyLocatedTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
                                           ].divide(const SizedBox(height: 5.0)),
                                         ),
                                       ),
@@ -3624,9 +3761,17 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   'Industrial cum Commercial',
                                                   'Other'
                                                 ],
-                                                onChanged: (val) => setState(() =>
-                                                    _model.permittedUsePropertyValue =
-                                                        val),
+                                                onChanged: (val) async {
+                                                  setState(() => _model
+                                                          .permittedUsePropertyValue =
+                                                      val);
+                                                  _model.otherPermittedProperty =
+                                                      _model.permittedUsePropertyValue ==
+                                                              '12'
+                                                          ? true
+                                                          : false;
+                                                  setState(() {});
+                                                },
                                                 width: 326.0,
                                                 height: 56.0,
                                                 textStyle:
@@ -3667,6 +3812,112 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isMultiSelect: false,
                                               ),
                                             ),
+                                            if (_model.otherPermittedProperty)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .otherPermittedPropertyTextController,
+                                                  focusNode: _model
+                                                      .otherPermittedPropertyFocusNode,
+                                                  autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                    hintText:
+                                                        'Other Permitted Property*',
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFF5F5F5),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                  validator: _model
+                                                      .otherPermittedPropertyTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
                                           ].divide(const SizedBox(height: 5.0)),
                                         ),
                                       ),
@@ -3804,9 +4055,17 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   'RCC with T-iron Roofing',
                                                   'Other'
                                                 ],
-                                                onChanged: (val) => setState(() =>
-                                                    _model.typeOfStructureValue =
-                                                        val),
+                                                onChanged: (val) async {
+                                                  setState(() => _model
+                                                          .typeOfStructureValue =
+                                                      val);
+                                                  _model.otherPropertyStructure =
+                                                      _model.typeOfStructureValue ==
+                                                              '7'
+                                                          ? true
+                                                          : false;
+                                                  setState(() {});
+                                                },
                                                 width: 326.0,
                                                 height: 56.0,
                                                 textStyle:
@@ -3848,6 +4107,112 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isMultiSelect: false,
                                               ),
                                             ),
+                                            if (_model.otherPropertyStructure)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .otherStructureTypeTextController,
+                                                  focusNode: _model
+                                                      .otherStructureTypeFocusNode,
+                                                  autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                    hintText:
+                                                        'Other Structure Type*',
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFF5F5F5),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                  validator: _model
+                                                      .otherStructureTypeTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
                                             Text(
                                               'Total No. of Floors*',
                                               style:
@@ -5289,9 +5654,17 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   'N.A.',
                                                   'Other'
                                                 ],
-                                                onChanged: (val) => setState(() =>
-                                                    _model.constructionStatusValue =
-                                                        val),
+                                                onChanged: (val) async {
+                                                  setState(() => _model
+                                                          .constructionStatusValue =
+                                                      val);
+                                                  _model.otherConstructionStatus =
+                                                      _model.constructionStatusValue ==
+                                                              '4'
+                                                          ? true
+                                                          : false;
+                                                  setState(() {});
+                                                },
                                                 width: 326.0,
                                                 height: 56.0,
                                                 textStyle:
@@ -5330,6 +5703,108 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isOverButton: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: TextFormField(
+                                                controller: _model
+                                                    .otherConstructionStatusTextController,
+                                                focusNode: _model
+                                                    .otherConstructionStatusFocusNode,
+                                                autofocus: true,
+                                                readOnly: (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '2') ||
+                                                    (widget.reportDetails
+                                                            ?.statusId ==
+                                                        '3'),
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                  hintText:
+                                                      'Other Construction Status*',
+                                                  hintStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                      color: Color(0xFFF5F5F5),
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                validator: _model
+                                                    .otherConstructionStatusTextControllerValidator
+                                                    .asValidator(context),
                                               ),
                                             ),
                                             Text(
@@ -5489,10 +5964,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   'PVC & Teen Shade',
                                                   'Other'
                                                 ],
-                                                onChanged: (val) => setState(
-                                                    () => _model
-                                                            .roofTerraceValue =
-                                                        val),
+                                                onChanged: (val) async {
+                                                  setState(() => _model
+                                                      .roofTerraceValue = val);
+                                                  _model.otherRoof =
+                                                      _model.roofTerraceValue ==
+                                                              '7'
+                                                          ? true
+                                                          : false;
+                                                  setState(() {});
+                                                },
                                                 width: 326.0,
                                                 height: 56.0,
                                                 textStyle:
@@ -5533,6 +6014,111 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isMultiSelect: false,
                                               ),
                                             ),
+                                            if (_model.otherRoof)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .otherRoofTextController,
+                                                  focusNode:
+                                                      _model.otherRoofFocusNode,
+                                                  autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                    hintText: 'Other Roof*',
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFF5F5F5),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                  validator: _model
+                                                      .otherRoofTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
                                             Text(
                                               'Walls, Plaster and Painting*',
                                               style:
@@ -8573,6 +9159,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                       if (_model.plotDemarcatedValue == null) {
                                         _model.validateFormFields = false;
                                       }
+                                      if (_model
+                                              .propertyIdentifiedDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
                                       if (_model.typeOfPropertyValue == null) {
                                         _model.validateFormFields = false;
                                       }
@@ -8622,6 +9213,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         _model.validateFormFields = false;
                                       }
                                       if (_model.superAreaDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.plotAreaDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.rentalDropdownValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.marketMinimumDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.marketMaximumDropdownValue ==
                                           null) {
                                         _model.validateFormFields = false;
                                       }
@@ -8698,7 +9304,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 ..west = _model
                                                     .westTextController.text
                                                 ..noOfFloors = _model
-                                                    .totalFloorsTextController
+                                                    .otherStructureTypeTextController
                                                     .text
                                                 ..noOfLifts = _model
                                                     .noofliftsTextController
@@ -8773,6 +9379,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .text
                                                 ..dealerMobileNumber = _model
                                                     .dealerContactTextController
+                                                    .text
+                                                ..otherStructureType = _model
+                                                    .otherStructureTypeTextController
+                                                    .text
+                                                ..otherPropertyLocatedIn = _model
+                                                    .otherPropertyLocatedTextController
+                                                    .text
+                                                ..otherPermittedUseOfProperty =
+                                                    _model
+                                                        .otherPermittedPropertyTextController
+                                                        .text
+                                                ..otherConstructionStatus = _model
+                                                    .otherConstructionStatusTextController
+                                                    .text
+                                                ..otherRoof = _model
+                                                    .otherRoofTextController
                                                     .text,
                                             )
                                             ..statusId = '5'
@@ -8867,6 +9489,11 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                       if (_model.plotDemarcatedValue == null) {
                                         _model.validateForm = false;
                                       }
+                                      if (_model
+                                              .propertyIdentifiedDropdownValue ==
+                                          null) {
+                                        _model.validateForm = false;
+                                      }
                                       if (_model.typeOfPropertyValue == null) {
                                         _model.validateForm = false;
                                       }
@@ -8916,6 +9543,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                         _model.validateForm = false;
                                       }
                                       if (_model.superAreaDropdownValue ==
+                                          null) {
+                                        _model.validateForm = false;
+                                      }
+                                      if (_model.plotAreaDropdownValue ==
+                                          null) {
+                                        _model.validateForm = false;
+                                      }
+                                      if (_model.rentalDropdownValue == null) {
+                                        _model.validateForm = false;
+                                      }
+                                      if (_model.marketMinimumDropdownValue ==
+                                          null) {
+                                        _model.validateForm = false;
+                                      }
+                                      if (_model.marketMaximumDropdownValue ==
                                           null) {
                                         _model.validateForm = false;
                                       }
@@ -8990,7 +9632,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 ..west = _model
                                                     .westTextController.text
                                                 ..noOfFloors = _model
-                                                    .totalFloorsTextController
+                                                    .otherStructureTypeTextController
                                                     .text
                                                 ..noOfLifts = _model
                                                     .noofliftsTextController
@@ -9065,6 +9707,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .text
                                                 ..dealerMobileNumber = _model
                                                     .dealerContactTextController
+                                                    .text
+                                                ..otherStructureType = _model
+                                                    .otherStructureTypeTextController
+                                                    .text
+                                                ..otherPropertyLocatedIn = _model
+                                                    .otherPropertyLocatedTextController
+                                                    .text
+                                                ..otherPermittedUseOfProperty =
+                                                    _model
+                                                        .otherPermittedPropertyTextController
+                                                        .text
+                                                ..otherConstructionStatus = _model
+                                                    .otherConstructionStatusTextController
+                                                    .text
+                                                ..otherRoof = _model
+                                                    .otherRoofTextController
                                                     .text,
                                             ),
                                         );
