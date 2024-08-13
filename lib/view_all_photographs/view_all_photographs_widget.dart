@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -342,12 +343,18 @@ class _ViewAllPhotographsWidgetState extends State<ViewAllPhotographsWidget> {
 
                         if ((_model.uploadedLocalFile.bytes?.isNotEmpty ??
                                 false)) {
+                          _model.addTimestampAndNameToImage =
+                              actions.addTimestampAndNameToImage(
+                            functions
+                                .getImageByteArray(_model.uploadedLocalFile)
+                                .toList(),
+                            functions.getImageName(_model.uploadedLocalFile)!,
+                          );
                           FFAppState()
                               .addToSitePictures(SitePictureListResponseStruct(
                             name: functions
                                 .getImageName(_model.uploadedLocalFile),
-                            bytes: functions
-                                .getImageByteArray(_model.uploadedLocalFile),
+                            bytes: _model.addTimestampAndNameToImage,
                             section: widget.section,
                             fieldName: widget.imageType,
                             timestamp: functions.getCurrentTimeStamp(),
@@ -367,6 +374,8 @@ class _ViewAllPhotographsWidgetState extends State<ViewAllPhotographsWidget> {
                             ),
                           );
                         }
+
+                        setState(() {});
                       },
                     ),
                   ],

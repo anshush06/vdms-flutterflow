@@ -11,9 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:intl/intl.dart';
 import 'dart:typed_data';
-import 'package:geolocator/geolocator.dart';
 
-Future<List<int>> addTimestampAndNameToImage(
+List<int> addTimestampAndNameToImage(
     List<int> byteArray, String imageName) async {
   // Convert the byte array to Uint8List
   Uint8List imageBytes = Uint8List.fromList(byteArray);
@@ -25,12 +24,12 @@ Future<List<int>> addTimestampAndNameToImage(
   String timestamp = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
 
   // Get the current location
-  Position position = await _determinePosition();
-  String coordinates =
-      'Lat: ${position.latitude.toStringAsFixed(4)}, Long: ${position.longitude.toStringAsFixed(4)}';
+  // Position position = await _determinePosition();
+  // String coordinates =
+  //  'Lat: ${position.latitude.toStringAsFixed(4)}, Long: ${position.longitude.toStringAsFixed(4)}';
 
   // Combine timestamp and coordinates
-  String text = '$timestamp\n$coordinates';
+  String text = '$timestamp';
 
   int padding = 10;
   int fontSize = 48;
@@ -40,57 +39,22 @@ Future<List<int>> addTimestampAndNameToImage(
   // Draw a black rectangle as background
   img.fillRect(
     image,
-    0,
-    0,
-    textWidth + padding * 2,
-    textHeight + padding * 2,
-    img.getColor(0, 0, 0),
+    x1: 0,
+    y1: 0,
+    x2: textWidth + padding * 2,
+    y2: textHeight + padding * 2,
+    color: img.ColorFloat16.rgb(0.0, 0.0, 0.0),
   );
 
   // Draw the combined text on the image (on top of the black rectangle)
-  img.drawString(image, img.arial_48, padding, padding, text,
-      color: img.getColor(255, 255, 255));
+  img.drawString(image, text,
+      font: img.arial48,
+      x: padding,
+      y: padding,
+      color: img.ColorFloat16.rgb(1.0, 1.0, 1.0));
   // Encode the image back to a List<int> (byte array)
   List<int> resultBytes = img.encodeJpg(image);
   return resultBytes;
-}
-
-Future<Position> _determinePosition() async {
-  bool serviceEnabled;
-  LocationPermission permission;
-
-  // Test if location services are enabled.
-  serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  if (!serviceEnabled) {
-    // Location services are not enabled don't continue
-    // accessing the position and request users of the
-    // App to enable the location services.
-    return Future.error('Location services are disabled.');
-  }
-
-  permission = await Geolocator.checkPermission();
-  if (permission == LocationPermission.denied) {
-    permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied) {
-      // Permissions are denied, next time you could try
-      // requesting permissions again (this is also where
-      // Android's shouldShowRequestPermissionRationale
-      // returned true. According to Android guidelines
-      // your App should show an explanatory UI now.
-      return Future.error('Location permissions are denied');
-    }
-  }
-
-  if (permission == LocationPermission.deniedForever) {
-    // Permissions are denied forever, handle appropriately.
-    return Future.error(
-      'Location permissions are permanently denied, we cannot request permissions.',
-    );
-  }
-
-  // When we reach here, permissions are granted and we can
-  // continue accessing the position of the device.
-  return await Geolocator.getCurrentPosition();
 }
 
 // Set your action name, define your arguments and return parameter,
