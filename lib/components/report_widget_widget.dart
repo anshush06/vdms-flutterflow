@@ -1789,7 +1789,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isMultiSelect: false,
                                               ),
                                             ),
-                                            if (_model.otherPropertyLocated)
+                                            if (_model
+                                                    .otherPropertyLocatedTextController
+                                                    .text ==
+                                                '7')
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -3812,7 +3815,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isMultiSelect: false,
                                               ),
                                             ),
-                                            if (_model.otherPermittedProperty)
+                                            if (_model
+                                                    .permittedUsePropertyValue ==
+                                                '12')
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -4107,7 +4112,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isMultiSelect: false,
                                               ),
                                             ),
-                                            if (_model.otherPropertyStructure)
+                                            if (_model.typeOfStructureValue ==
+                                                '7')
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -5705,108 +5711,114 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isMultiSelect: false,
                                               ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 10.0, 0.0),
-                                              child: TextFormField(
-                                                controller: _model
-                                                    .otherConstructionStatusTextController,
-                                                focusNode: _model
-                                                    .otherConstructionStatusFocusNode,
-                                                autofocus: true,
-                                                readOnly: (widget.reportDetails
-                                                            ?.statusId ==
-                                                        '2') ||
-                                                    (widget.reportDetails
-                                                            ?.statusId ==
-                                                        '3'),
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                  hintText:
-                                                      'Other Construction Status*',
-                                                  hintStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                            if (_model
+                                                    .constructionStatusValue ==
+                                                '4')
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .otherConstructionStatusTextController,
+                                                  focusNode: _model
+                                                      .otherConstructionStatusFocusNode,
+                                                  autofocus: true,
+                                                  readOnly: (widget
+                                                              .reportDetails
+                                                              ?.statusId ==
+                                                          '2') ||
+                                                      (widget.reportDetails
+                                                              ?.statusId ==
+                                                          '3'),
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FontWeight.normal,
+                                                              FontWeight.w300,
                                                         ),
-                                                validator: _model
-                                                    .otherConstructionStatusTextControllerValidator
-                                                    .asValidator(context),
+                                                    hintText:
+                                                        'Other Construction Status*',
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFF5F5F5),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                  validator: _model
+                                                      .otherConstructionStatusTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
                                               ),
-                                            ),
                                             Text(
                                               'Completion Stage (%)*',
                                               style:
@@ -6014,7 +6026,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 isMultiSelect: false,
                                               ),
                                             ),
-                                            if (_model.otherRoof)
+                                            if (_model.roofTerraceValue == '7')
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
