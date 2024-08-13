@@ -327,142 +327,90 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                           '3'))
                                   ? null
                                   : () async {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: const Text('Confirmation'),
-                                                    content: const Text(
-                                                        'Are you want to submit the form ?'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: const Text('Cancel'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: const Text('Confirm'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        ScaffoldMessenger.of(context)
-                                            .clearSnackBars();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                              'Uploading Images....',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 10000),
-                                            backgroundColor: Color(0xFFFF8C25),
-                                          ),
-                                        );
-                                        _model.submitSurveyAPIResponse1 =
-                                            await actions.submitSurveyDocuments(
-                                          widget.selectedCaseDetails!.id,
-                                          FFAppState().userId,
-                                          functions
-                                              .filterImagesByCaseID(
-                                                  FFAppState()
-                                                      .sitePictures
-                                                      .toList(),
-                                                  widget
-                                                      .selectedCaseDetails!.id)!
-                                              .toList(),
-                                        );
-                                        if (_model.submitSurveyAPIResponse1 ==
-                                            true) {
+                                      if (functions.checkEmptyFields(
+                                          widget.selectedCaseDetails!)) {
+                                        var confirmDialogResponse =
+                                            await showDialog<bool>(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title:
+                                                          const Text('Confirmation'),
+                                                      content: const Text(
+                                                          'Are you want to submit the form ?'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child: const Text('Cancel'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child:
+                                                              const Text('Confirm'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                ) ??
+                                                false;
+                                        if (confirmDialogResponse) {
                                           ScaffoldMessenger.of(context)
                                               .clearSnackBars();
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             const SnackBar(
                                               content: Text(
-                                                'Images Uploaded Successfully',
+                                                'Uploading Images....',
                                                 style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                               ),
                                               duration:
-                                                  Duration(milliseconds: 4000),
+                                                  Duration(milliseconds: 10000),
                                               backgroundColor:
                                                   Color(0xFFFF8C25),
                                             ),
                                           );
-                                          ScaffoldMessenger.of(context)
-                                              .clearSnackBars();
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                'Saving Location...',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  Color(0xFFFF8C25),
-                                            ),
+                                          _model.submitSurveyAPIResponse1 =
+                                              await actions
+                                                  .submitSurveyDocuments(
+                                            widget.selectedCaseDetails!.id,
+                                            FFAppState().userId,
+                                            functions
+                                                .filterImagesByCaseID(
+                                                    FFAppState()
+                                                        .sitePictures
+                                                        .toList(),
+                                                    widget.selectedCaseDetails!
+                                                        .id)!
+                                                .toList(),
                                           );
-                                          _model.saveLocationAPIResponse =
-                                              await VdmsApiCallsGroup
-                                                  .saveSurveyLocationAPICall
-                                                  .call(
-                                            longitude: widget
-                                                .selectedCaseDetails?.longitude,
-                                            latitude: widget
-                                                .selectedCaseDetails?.latitude,
-                                            caseId:
-                                                widget.selectedCaseDetails?.id,
-                                            userId: FFAppState().userId,
-                                          );
-
-                                          if (getJsonField(
-                                                (_model.saveLocationAPIResponse
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.error.message''',
-                                              ) ==
-                                              null) {
+                                          if (_model.submitSurveyAPIResponse1 ==
+                                              true) {
                                             ScaffoldMessenger.of(context)
                                                 .clearSnackBars();
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
-                                              SnackBar(
+                                              const SnackBar(
                                                 content: Text(
-                                                  getJsonField(
-                                                    (_model.saveLocationAPIResponse
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$.response.message''',
-                                                  ).toString(),
-                                                  style: const TextStyle(
+                                                  'Images Uploaded Successfully',
+                                                  style: TextStyle(
                                                     color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
                                                   ),
                                                 ),
-                                                duration: const Duration(
-                                                    milliseconds: 2000),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
                                                 backgroundColor:
-                                                    const Color(0xFFFF8C25),
+                                                    Color(0xFFFF8C25),
                                               ),
                                             );
                                             ScaffoldMessenger.of(context)
@@ -471,196 +419,280 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                 .showSnackBar(
                                               const SnackBar(
                                                 content: Text(
-                                                  'Saving Report Form...',
+                                                  'Saving Location...',
                                                   style: TextStyle(
                                                     color: Colors.white,
-                                                    fontWeight: FontWeight.w500,
                                                   ),
                                                 ),
                                                 duration: Duration(
-                                                    milliseconds: 10000),
+                                                    milliseconds: 4000),
                                                 backgroundColor:
                                                     Color(0xFFFF8C25),
                                               ),
                                             );
-                                            _model.submitSurveyAPIResponse =
+                                            _model.saveLocationAPIResponse =
                                                 await VdmsApiCallsGroup
-                                                    .submitSurveyAPICall
+                                                    .saveSurveyLocationAPICall
                                                     .call(
-                                              userId: functions
-                                                  .convertStringtoInteger(
-                                                      FFAppState().userId),
-                                              caseId: functions
-                                                  .convertStringtoInteger(
-                                                      widget
-                                                          .selectedCaseDetails!
-                                                          .id),
-                                              timestamp: functions
-                                                  .getCurrentTimeStamp(),
-                                              inspectionFormData: functions.convertDataToJson(
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .refNo,
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .bank,
-                                                  FFAppState().username,
-                                                  functions
-                                                      .getCurrentTimeStamp(),
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .applicantName,
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .address1,
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .state,
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .locality,
-                                                  widget.selectedCaseDetails
-                                                      ?.inspectionFormData.pin,
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .propertyLocatedIn,
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .classificationOfLocality,
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .namePlateFixed,
-                                                  widget
-                                                      .selectedCaseDetails
-                                                      ?.inspectionFormData
-                                                      .propertyDemarcated,
-                                                  widget.selectedCaseDetails?.inspectionFormData.propertyType,
-                                                  widget.selectedCaseDetails?.inspectionFormData.permittedUseOfProperty,
-                                                  widget.selectedCaseDetails?.inspectionFormData.structureType,
-                                                  widget.selectedCaseDetails?.inspectionFormData.constructionStatus,
-                                                  widget.selectedCaseDetails?.inspectionFormData.roof,
-                                                  widget.selectedCaseDetails?.inspectionFormData.interiorConstructionQuality,
-                                                  widget.selectedCaseDetails?.inspectionFormData.exteriorConstructionQuality,
-                                                  widget.selectedCaseDetails?.inspectionFormData.valuationType,
-                                                  widget.selectedCaseDetails?.inspectionFormData.carpet,
-                                                  widget.selectedCaseDetails?.inspectionFormData.balcony,
-                                                  widget.selectedCaseDetails?.inspectionFormData.salableArea,
-                                                  widget.selectedCaseDetails?.inspectionFormData.plotArea,
-                                                  widget.selectedCaseDetails?.inspectionFormData.rentalValue,
-                                                  widget.selectedCaseDetails?.inspectionFormData.minimumMarketRates,
-                                                  widget.selectedCaseDetails?.inspectionFormData.maximumMarketRates,
-                                                  widget.selectedCaseDetails?.inspectionFormData.city,
-                                                  widget.selectedCaseDetails?.inspectionFormData.address2,
-                                                  widget.selectedCaseDetails?.inspectionFormData.personMet,
-                                                  widget.selectedCaseDetails?.inspectionFormData.relationWithOwner,
-                                                  widget.selectedCaseDetails?.inspectionFormData.landMark,
-                                                  widget.selectedCaseDetails?.inspectionFormData.roadWidth,
-                                                  widget.selectedCaseDetails?.inspectionFormData.propertyIdentified,
-                                                  widget.selectedCaseDetails?.inspectionFormData.cityCenter,
-                                                  widget.selectedCaseDetails?.inspectionFormData.railwayStation,
-                                                  widget.selectedCaseDetails?.inspectionFormData.busStop,
-                                                  widget.selectedCaseDetails?.inspectionFormData.hospital,
-                                                  widget.selectedCaseDetails?.inspectionFormData.north,
-                                                  widget.selectedCaseDetails?.inspectionFormData.south,
-                                                  widget.selectedCaseDetails?.inspectionFormData.east,
-                                                  widget.selectedCaseDetails?.inspectionFormData.west,
-                                                  widget.selectedCaseDetails?.inspectionFormData.otherPermittedUseOfProperty,
-                                                  widget.selectedCaseDetails?.inspectionFormData.noOfFloors,
-                                                  widget.selectedCaseDetails?.inspectionFormData.unitsPerFloor,
-                                                  widget.selectedCaseDetails?.inspectionFormData.noOfLifts,
-                                                  widget.selectedCaseDetails?.inspectionFormData.floorLocation,
-                                                  widget.selectedCaseDetails?.inspectionFormData.ageBuilding,
-                                                  widget.selectedCaseDetails?.inspectionFormData.completionState,
-                                                  widget.selectedCaseDetails?.inspectionFormData.otherRoof,
-                                                  widget.selectedCaseDetails?.inspectionFormData.wallPlasterPainting,
-                                                  widget.selectedCaseDetails?.inspectionFormData.doorsWindows,
-                                                  widget.selectedCaseDetails?.inspectionFormData.flooringType,
-                                                  widget.selectedCaseDetails?.inspectionFormData.plotLength,
-                                                  widget.selectedCaseDetails?.inspectionFormData.plotWidth,
-                                                  widget.selectedCaseDetails?.inspectionFormData.reasonPortionNotSeen,
-                                                  widget.selectedCaseDetails?.inspectionFormData.anyOtherInformation.toList()),
+                                              longitude: widget
+                                                  .selectedCaseDetails
+                                                  ?.longitude,
+                                              latitude: widget
+                                                  .selectedCaseDetails
+                                                  ?.latitude,
+                                              caseId: widget
+                                                  .selectedCaseDetails?.id,
+                                              userId: FFAppState().userId,
                                             );
 
-                                            if ((_model.submitSurveyAPIResponse
-                                                    ?.succeeded ??
-                                                true)) {
-                                              FFAppState()
-                                                  .removeAtIndexFromCaseDetails(
-                                                      widget
-                                                          .currentCaseIndex!);
-                                              FFAppState().update(() {});
-                                              _model.deleteSitePicturesResponse =
-                                                  actions
-                                                      .deleteSitePicturesOfCase(
-                                                FFAppState()
-                                                    .sitePictures
-                                                    .toList(),
-                                                widget.selectedCaseDetails!.id,
-                                              );
-                                              if (_model
-                                                      .deleteSitePicturesResponse ==
-                                                  true) {
-                                                ScaffoldMessenger.of(context)
-                                                    .clearSnackBars();
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  const SnackBar(
-                                                    content: Text(
-                                                      'Report Submit Successfully',
-                                                      style: TextStyle(
-                                                        color: Colors.white,
-                                                      ),
+                                            if (getJsonField(
+                                                  (_model.saveLocationAPIResponse
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.error.message''',
+                                                ) ==
+                                                null) {
+                                              ScaffoldMessenger.of(context)
+                                                  .clearSnackBars();
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    getJsonField(
+                                                      (_model.saveLocationAPIResponse
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.response.message''',
+                                                    ).toString(),
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
                                                     ),
-                                                    duration: Duration(
-                                                        milliseconds: 3000),
-                                                    backgroundColor:
-                                                        Color(0xFFFF8C25),
                                                   ),
+                                                  duration: const Duration(
+                                                      milliseconds: 2000),
+                                                  backgroundColor:
+                                                      const Color(0xFFFF8C25),
+                                                ),
+                                              );
+                                              ScaffoldMessenger.of(context)
+                                                  .clearSnackBars();
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                    'Saving Report Form...',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 10000),
+                                                  backgroundColor:
+                                                      Color(0xFFFF8C25),
+                                                ),
+                                              );
+                                              _model.submitSurveyAPIResponse =
+                                                  await VdmsApiCallsGroup
+                                                      .submitSurveyAPICall
+                                                      .call(
+                                                userId: functions
+                                                    .convertStringtoInteger(
+                                                        FFAppState().userId),
+                                                caseId: functions
+                                                    .convertStringtoInteger(
+                                                        widget
+                                                            .selectedCaseDetails!
+                                                            .id),
+                                                timestamp: functions
+                                                    .getCurrentTimeStamp(),
+                                                inspectionFormData: functions.convertDataToJson(
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .refNo,
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .bank,
+                                                    FFAppState().username,
+                                                    functions
+                                                        .getCurrentTimeStamp(),
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .applicantName,
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .address1,
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .state,
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .locality,
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .pin,
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .propertyLocatedIn,
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .classificationOfLocality,
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .namePlateFixed,
+                                                    widget
+                                                        .selectedCaseDetails
+                                                        ?.inspectionFormData
+                                                        .propertyDemarcated,
+                                                    widget.selectedCaseDetails?.inspectionFormData.propertyType,
+                                                    widget.selectedCaseDetails?.inspectionFormData.permittedUseOfProperty,
+                                                    widget.selectedCaseDetails?.inspectionFormData.structureType,
+                                                    widget.selectedCaseDetails?.inspectionFormData.constructionStatus,
+                                                    widget.selectedCaseDetails?.inspectionFormData.roof,
+                                                    widget.selectedCaseDetails?.inspectionFormData.interiorConstructionQuality,
+                                                    widget.selectedCaseDetails?.inspectionFormData.exteriorConstructionQuality,
+                                                    widget.selectedCaseDetails?.inspectionFormData.valuationType,
+                                                    widget.selectedCaseDetails?.inspectionFormData.carpet,
+                                                    widget.selectedCaseDetails?.inspectionFormData.balcony,
+                                                    widget.selectedCaseDetails?.inspectionFormData.salableArea,
+                                                    widget.selectedCaseDetails?.inspectionFormData.plotArea,
+                                                    widget.selectedCaseDetails?.inspectionFormData.rentalValue,
+                                                    widget.selectedCaseDetails?.inspectionFormData.minimumMarketRates,
+                                                    widget.selectedCaseDetails?.inspectionFormData.maximumMarketRates,
+                                                    widget.selectedCaseDetails?.inspectionFormData.city,
+                                                    widget.selectedCaseDetails?.inspectionFormData.address2,
+                                                    widget.selectedCaseDetails?.inspectionFormData.personMet,
+                                                    widget.selectedCaseDetails?.inspectionFormData.relationWithOwner,
+                                                    widget.selectedCaseDetails?.inspectionFormData.landMark,
+                                                    widget.selectedCaseDetails?.inspectionFormData.roadWidth,
+                                                    widget.selectedCaseDetails?.inspectionFormData.propertyIdentified,
+                                                    widget.selectedCaseDetails?.inspectionFormData.cityCenter,
+                                                    widget.selectedCaseDetails?.inspectionFormData.railwayStation,
+                                                    widget.selectedCaseDetails?.inspectionFormData.busStop,
+                                                    widget.selectedCaseDetails?.inspectionFormData.hospital,
+                                                    widget.selectedCaseDetails?.inspectionFormData.north,
+                                                    widget.selectedCaseDetails?.inspectionFormData.south,
+                                                    widget.selectedCaseDetails?.inspectionFormData.east,
+                                                    widget.selectedCaseDetails?.inspectionFormData.west,
+                                                    widget.selectedCaseDetails?.inspectionFormData.otherPermittedUseOfProperty,
+                                                    widget.selectedCaseDetails?.inspectionFormData.noOfFloors,
+                                                    widget.selectedCaseDetails?.inspectionFormData.unitsPerFloor,
+                                                    widget.selectedCaseDetails?.inspectionFormData.noOfLifts,
+                                                    widget.selectedCaseDetails?.inspectionFormData.floorLocation,
+                                                    widget.selectedCaseDetails?.inspectionFormData.ageBuilding,
+                                                    widget.selectedCaseDetails?.inspectionFormData.completionState,
+                                                    widget.selectedCaseDetails?.inspectionFormData.otherRoof,
+                                                    widget.selectedCaseDetails?.inspectionFormData.wallPlasterPainting,
+                                                    widget.selectedCaseDetails?.inspectionFormData.doorsWindows,
+                                                    widget.selectedCaseDetails?.inspectionFormData.flooringType,
+                                                    widget.selectedCaseDetails?.inspectionFormData.plotLength,
+                                                    widget.selectedCaseDetails?.inspectionFormData.plotWidth,
+                                                    widget.selectedCaseDetails?.inspectionFormData.reasonPortionNotSeen,
+                                                    widget.selectedCaseDetails?.inspectionFormData.anyOtherInformation.toList()),
+                                              );
+
+                                              if ((_model
+                                                      .submitSurveyAPIResponse
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                FFAppState()
+                                                    .removeAtIndexFromCaseDetails(
+                                                        widget
+                                                            .currentCaseIndex!);
+                                                FFAppState().update(() {});
+                                                _model.deleteSitePicturesResponse =
+                                                    actions
+                                                        .deleteSitePicturesOfCase(
+                                                  FFAppState()
+                                                      .sitePictures
+                                                      .toList(),
+                                                  widget
+                                                      .selectedCaseDetails!.id,
                                                 );
-                                                if (Navigator.of(context)
-                                                    .canPop()) {
-                                                  context.pop();
-                                                }
-                                                context.pushNamed(
-                                                  'main_case_listing_screen',
-                                                  queryParameters: {
-                                                    'notificationCount':
-                                                        serializeParam(
-                                                      0,
-                                                      ParamType.int,
-                                                    ),
-                                                    'tabIndex': serializeParam(
-                                                      2,
-                                                      ParamType.int,
-                                                    ),
-                                                  }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    kTransitionInfoKey:
-                                                        const TransitionInfo(
-                                                      hasTransition: true,
-                                                      transitionType:
-                                                          PageTransitionType
-                                                              .fade,
+                                                if (_model
+                                                        .deleteSitePicturesResponse ==
+                                                    true) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .clearSnackBars();
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                        'Report Submit Successfully',
+                                                        style: TextStyle(
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
                                                       duration: Duration(
-                                                          milliseconds: 0),
+                                                          milliseconds: 3000),
+                                                      backgroundColor:
+                                                          Color(0xFFFF8C25),
                                                     ),
-                                                  },
-                                                );
+                                                  );
+                                                  if (Navigator.of(context)
+                                                      .canPop()) {
+                                                    context.pop();
+                                                  }
+                                                  context.pushNamed(
+                                                    'main_case_listing_screen',
+                                                    queryParameters: {
+                                                      'notificationCount':
+                                                          serializeParam(
+                                                        0,
+                                                        ParamType.int,
+                                                      ),
+                                                      'tabIndex':
+                                                          serializeParam(
+                                                        2,
+                                                        ParamType.int,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      kTransitionInfoKey:
+                                                          const TransitionInfo(
+                                                        hasTransition: true,
+                                                        transitionType:
+                                                            PageTransitionType
+                                                                .fade,
+                                                        duration: Duration(
+                                                            milliseconds: 0),
+                                                      ),
+                                                    },
+                                                  );
+                                                } else {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                        'Something went wrong in deleting site pictures.',
+                                                        style: TextStyle(
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          Color(0xFFC62626),
+                                                    ),
+                                                  );
+                                                }
                                               } else {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   const SnackBar(
                                                     content: Text(
-                                                      'Something went wrong in deleting site pictures.',
+                                                      'Something went wrong. Try again!',
                                                       style: TextStyle(
                                                         color: Colors.white,
                                                       ),
@@ -668,24 +700,29 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                     duration: Duration(
                                                         milliseconds: 4000),
                                                     backgroundColor:
-                                                        Color(0xFFC62626),
+                                                        Color(0xFFFF0000),
                                                   ),
                                                 );
                                               }
                                             } else {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
-                                                const SnackBar(
+                                                SnackBar(
                                                   content: Text(
-                                                    'Something went wrong. Try again!',
-                                                    style: TextStyle(
+                                                    getJsonField(
+                                                      (_model.saveLocationAPIResponse
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.response.message''',
+                                                    ).toString(),
+                                                    style: const TextStyle(
                                                       color: Colors.white,
                                                     ),
                                                   ),
-                                                  duration: Duration(
+                                                  duration: const Duration(
                                                       milliseconds: 4000),
                                                   backgroundColor:
-                                                      Color(0xFFFF0000),
+                                                      const Color(0xFFD2393C),
                                                 ),
                                               );
                                             }
@@ -694,43 +731,61 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                 .showSnackBar(
                                               SnackBar(
                                                 content: Text(
-                                                  getJsonField(
-                                                    (_model.saveLocationAPIResponse
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$.response.message''',
-                                                  ).toString(),
-                                                  style: const TextStyle(
-                                                    color: Colors.white,
+                                                  'Not Uploaded. Something went wrong!',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
                                                   ),
                                                 ),
                                                 duration: const Duration(
                                                     milliseconds: 4000),
                                                 backgroundColor:
-                                                    const Color(0xFFD2393C),
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
                                               ),
                                             );
                                           }
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Not Uploaded. Something went wrong!',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  const Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
                                         }
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Please fill the report form fields',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 2500),
+                                            backgroundColor: Color(0xFFFF0000),
+                                          ),
+                                        );
+
+                                        context.pushNamed(
+                                          'report_screen',
+                                          queryParameters: {
+                                            'caseDetailsForReport':
+                                                serializeParam(
+                                              widget.selectedCaseDetails,
+                                              ParamType.DataStruct,
+                                            ),
+                                            'caseIndex': serializeParam(
+                                              widget.currentCaseIndex,
+                                              ParamType.int,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                            ),
+                                          },
+                                        );
                                       }
 
                                       setState(() {});
