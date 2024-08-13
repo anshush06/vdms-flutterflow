@@ -1790,8 +1790,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               ),
                                             ),
                                             if (_model
-                                                    .otherPropertyLocatedTextController
-                                                    .text ==
+                                                    .propertylocationdropdownValue ==
                                                 '7')
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
