@@ -451,56 +451,237 @@ List<SitePictureListResponseStruct>? filterImagesByCaseID(
 }
 
 bool checkEmptyFields(ResponseStruct caseDetails) {
-  List<String?> fieldsToCheck = [
-    caseDetails.inspectionFormData?.address1,
-    caseDetails.inspectionFormData?.state,
-    caseDetails.inspectionFormData?.city,
-    caseDetails.inspectionFormData?.locality,
-    caseDetails.inspectionFormData?.pin,
-    caseDetails.inspectionFormData?.personMet,
-    caseDetails.inspectionFormData?.propertyLocatedIn,
-    caseDetails.inspectionFormData?.otherPropertyLocatedIn,
-    caseDetails.inspectionFormData?.relationWithOwner,
-    caseDetails.inspectionFormData?.roadWidth,
-    caseDetails.inspectionFormData?.landMark,
-    caseDetails.inspectionFormData?.classificationOfLocality,
-    caseDetails.inspectionFormData?.namePlateFixed,
-    caseDetails.inspectionFormData?.propertyDemarcated,
-    caseDetails.inspectionFormData?.propertyIdentified,
-    caseDetails.inspectionFormData?.cityCenter,
-    caseDetails.inspectionFormData?.railwayStation,
-    caseDetails.inspectionFormData?.busStop,
-    caseDetails.inspectionFormData?.hospital,
-    caseDetails.inspectionFormData?.permittedUseOfProperty,
-    caseDetails.inspectionFormData?.otherPermittedUseOfProperty,
-    caseDetails.inspectionFormData?.propertyType,
-    caseDetails.inspectionFormData?.north,
-    caseDetails.inspectionFormData?.east,
-    caseDetails.inspectionFormData?.south,
-    caseDetails.inspectionFormData?.west,
-    caseDetails.inspectionFormData?.noOfFloors,
-    caseDetails.inspectionFormData?.noOfLifts,
-    caseDetails.inspectionFormData?.floorLocation,
-    caseDetails.inspectionFormData?.structureType,
-    caseDetails.inspectionFormData?.otherStructureType,
-    caseDetails.inspectionFormData?.ageBuilding,
-    caseDetails.inspectionFormData?.constructionStatus,
-    caseDetails.inspectionFormData?.otherConstructionStatus,
-    caseDetails.inspectionFormData?.completionState,
-    caseDetails.inspectionFormData?.roof,
-    caseDetails.inspectionFormData?.unitsPerFloor,
-    caseDetails.inspectionFormData?.wallPlasterPainting,
-    caseDetails.inspectionFormData?.doorsWindows,
-    caseDetails.inspectionFormData?.flooringType,
-    caseDetails.inspectionFormData?.interiorConstructionQuality,
-    caseDetails.inspectionFormData?.exteriorConstructionQuality
-  ];
-
-  // Check if any of the fields is null or empty
-  for (String? field in fieldsToCheck) {
-    if (field == null || field.isEmpty) {
-      return false;
+  if (caseDetails.addressLine1 == null || caseDetails.addressLine1!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.city == null || caseDetails.city!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.state == null || caseDetails.state!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.contactperson1 == null ||
+      caseDetails.contactperson1!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.contact1 == null || caseDetails.contact1!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.refNo == null ||
+      caseDetails.inspectionFormData!.refNo!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.bank == null ||
+      caseDetails.inspectionFormData!.bank!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.engrName == null ||
+      caseDetails.inspectionFormData!.engrName!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.currentDate == null ||
+      caseDetails.inspectionFormData!.currentDate!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.applicantName == null ||
+      caseDetails.inspectionFormData!.applicantName!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.address1 == null ||
+      caseDetails.inspectionFormData!.address1!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.address2 == null ||
+      caseDetails.inspectionFormData!.address2!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.state == null ||
+      caseDetails.inspectionFormData!.state!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.city == null ||
+      caseDetails.inspectionFormData!.city!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.locality == null ||
+      caseDetails.inspectionFormData!.locality!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.pin == null ||
+      caseDetails.inspectionFormData!.pin!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.personMet == null ||
+      caseDetails.inspectionFormData!.personMet!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.propertyLocatedIn == null ||
+      caseDetails.inspectionFormData!.propertyLocatedIn!.isEmpty) {
+    if (caseDetails.inspectionFormData?.propertyLocatedIn == "7") {
+      if (caseDetails.inspectionFormData?.otherPropertyLocatedIn == null ||
+          caseDetails.inspectionFormData!.otherPropertyLocatedIn!.isEmpty) {
+        return false;
+      }
     }
+  } else {
+    return false;
+  }
+
+  if (caseDetails.inspectionFormData?.relationWithOwner == null ||
+      caseDetails.inspectionFormData!.relationWithOwner!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.roadWidth == null ||
+      caseDetails.inspectionFormData!.roadWidth!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.landMark == null ||
+      caseDetails.inspectionFormData!.landMark!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.classificationOfLocality == null ||
+      caseDetails.inspectionFormData!.classificationOfLocality!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.namePlateFixed == null ||
+      caseDetails.inspectionFormData!.namePlateFixed!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.propertyDemarcated == null ||
+      caseDetails.inspectionFormData!.propertyDemarcated!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.propertyIdentified == null ||
+      caseDetails.inspectionFormData!.propertyIdentified!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.cityCenter == null ||
+      caseDetails.inspectionFormData!.cityCenter!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.railwayStation == null ||
+      caseDetails.inspectionFormData!.railwayStation!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.busStop == null ||
+      caseDetails.inspectionFormData!.busStop!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.hospital == null ||
+      caseDetails.inspectionFormData!.hospital!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.permittedUseOfProperty == null ||
+      caseDetails.inspectionFormData!.permittedUseOfProperty!.isEmpty) {
+    if (caseDetails.inspectionFormData?.permittedUseOfProperty == "12") {
+      if (caseDetails.inspectionFormData?.otherPermittedUseOfProperty == null ||
+          caseDetails
+              .inspectionFormData!.otherPermittedUseOfProperty!.isEmpty) {
+        return false;
+      }
+    }
+  } else {
+    return false;
+  }
+
+  if (caseDetails.inspectionFormData?.propertyType == null ||
+      caseDetails.inspectionFormData!.propertyType!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.north == null ||
+      caseDetails.inspectionFormData!.north!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.east == null ||
+      caseDetails.inspectionFormData!.east!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.south == null ||
+      caseDetails.inspectionFormData!.south!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.west == null ||
+      caseDetails.inspectionFormData!.west!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.noOfFloors == null ||
+      caseDetails.inspectionFormData!.noOfFloors!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.noOfLifts == null ||
+      caseDetails.inspectionFormData!.noOfLifts!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.floorLocation == null ||
+      caseDetails.inspectionFormData!.floorLocation!.isEmpty) {
+    return false;
+  }
+
+  if (caseDetails.inspectionFormData?.structureType == null ||
+      caseDetails.inspectionFormData!.structureType!.isEmpty) {
+    if (caseDetails.inspectionFormData!.structureType == "7") {
+      if (caseDetails.inspectionFormData?.otherStructureType == null ||
+          caseDetails.inspectionFormData!.otherStructureType!.isEmpty) {
+        return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.ageBuilding == null ||
+      caseDetails.inspectionFormData!.ageBuilding!.isEmpty) {
+    return false;
+  }
+
+  if (caseDetails.inspectionFormData?.constructionStatus == null ||
+      caseDetails.inspectionFormData!.constructionStatus!.isEmpty) {
+    if (caseDetails.inspectionFormData?.constructionStatus == "4") {
+      if (caseDetails.inspectionFormData?.otherConstructionStatus == null ||
+          caseDetails.inspectionFormData!.otherConstructionStatus!.isEmpty) {
+        return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.completionState == null ||
+      caseDetails.inspectionFormData!.completionState!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.roof == null ||
+      caseDetails.inspectionFormData!.roof!.isEmpty) {
+    if (caseDetails.inspectionFormData?.roof == "7") {
+      if (caseDetails.inspectionFormData?.otherRoof == null ||
+          caseDetails.inspectionFormData!.otherRoof!.isEmpty) {
+        return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.unitsPerFloor == null ||
+      caseDetails.inspectionFormData!.unitsPerFloor!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.wallPlasterPainting == null ||
+      caseDetails.inspectionFormData!.wallPlasterPainting!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.doorsWindows == null ||
+      caseDetails.inspectionFormData!.doorsWindows!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.flooringType == null ||
+      caseDetails.inspectionFormData!.flooringType!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.interiorConstructionQuality == null ||
+      caseDetails.inspectionFormData!.interiorConstructionQuality!.isEmpty) {
+    return false;
+  }
+  if (caseDetails.inspectionFormData?.exteriorConstructionQuality == null ||
+      caseDetails.inspectionFormData!.exteriorConstructionQuality!.isEmpty) {
+    return false;
   }
 
   return true;
