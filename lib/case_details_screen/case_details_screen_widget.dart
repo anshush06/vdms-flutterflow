@@ -220,8 +220,16 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                               widget.selectedCaseDetails!.id,
                               'selfie') ==
                           true) &&
-                      ((widget.selectedCaseDetails?.latitude != '0') &&
-                          (widget.selectedCaseDetails?.longitude != '0'))
+                      ((widget.selectedCaseDetails?.latitude !=
+                              'fetching...') &&
+                          (widget.selectedCaseDetails?.longitude !=
+                              'fetching...') &&
+                          (widget.selectedCaseDetails?.longitude != '0') &&
+                          (widget.selectedCaseDetails?.latitude != '0') &&
+                          (widget.selectedCaseDetails?.longitude != null &&
+                              widget.selectedCaseDetails?.longitude != '') &&
+                          (widget.selectedCaseDetails?.latitude != null &&
+                              widget.selectedCaseDetails?.latitude != ''))
                   ? true
                   : false)
                 Padding(
@@ -229,80 +237,82 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 0.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              FFAppState().updateCaseDetailsAtIndex(
-                                functions.getDraftCaseIndexInList(
-                                    FFAppState().caseDetails.toList(),
-                                    widget.selectedCaseDetails)!,
-                                (e) => e
-                                  ..statusId = '4'
-                                  ..statusName = 'Draft Report',
-                              );
-                              setState(() {});
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                    'Draft Added Successfully.',
-                                    style: TextStyle(
-                                      color: Colors.white,
+                      if (!((widget.selectedCaseDetails?.statusId == '2') ||
+                          (widget.selectedCaseDetails?.statusId == '3')))
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                FFAppState().updateCaseDetailsAtIndex(
+                                  functions.getDraftCaseIndexInList(
+                                      FFAppState().caseDetails.toList(),
+                                      widget.selectedCaseDetails)!,
+                                  (e) => e
+                                    ..statusId = '4'
+                                    ..statusName = 'Draft Report',
+                                );
+                                setState(() {});
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Draft Added Successfully.',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
                                     ),
+                                    duration: Duration(milliseconds: 2000),
+                                    backgroundColor: Color(0xFFFF8C25),
                                   ),
-                                  duration: Duration(milliseconds: 2000),
-                                  backgroundColor: Color(0xFFFF8C25),
-                                ),
-                              );
+                                );
 
-                              context.pushNamed(
-                                'main_case_listing_screen',
-                                queryParameters: {
-                                  'notificationCount': serializeParam(
-                                    0,
-                                    ParamType.int,
-                                  ),
-                                  'tabIndex': serializeParam(
-                                    1,
-                                    ParamType.int,
-                                  ),
-                                }.withoutNulls,
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: const TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
-                              );
-                            },
-                            text: 'SAVE DRAFT',
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: const Color(0xFF0F61AB),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: const BorderSide(
-                                color: Color(0xFF0F61AB),
-                                width: 1.0,
+                                context.pushNamed(
+                                  'main_case_listing_screen',
+                                  queryParameters: {
+                                    'notificationCount': serializeParam(
+                                      0,
+                                      ParamType.int,
+                                    ),
+                                    'tabIndex': serializeParam(
+                                      1,
+                                      ParamType.int,
+                                    ),
+                                  }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: const TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                    ),
+                                  },
+                                );
+                              },
+                              text: 'SAVE DRAFT',
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: const Color(0xFF0F61AB),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: Colors.white,
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: const BorderSide(
+                                  color: Color(0xFF0F61AB),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                              borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
                         ),
-                      ),
                       if (!((widget.selectedCaseDetails?.statusId == '2') ||
                           (widget.selectedCaseDetails?.statusId == '3')))
                         Expanded(

@@ -10,6 +10,9 @@ class TakePicturesScreenModel
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
+  // Stores action output result for [Custom Action - addTimestampAndNameToImage] action in Column widget.
+  List<int>? addTimestampAndNameToImage;
+
   @override
   void initState(BuildContext context) {}
 

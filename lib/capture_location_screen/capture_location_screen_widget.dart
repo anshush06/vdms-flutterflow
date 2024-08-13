@@ -41,8 +41,25 @@ class _CaptureLocationScreenWidgetState
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       currentUserLocationValue =
           await getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0));
-      if (!((_model.latitudeTextController.text == '0') &&
-          (_model.longitudeTextController.text == '0'))) {
+      if ((_model.latitudeTextController.text == '0') &&
+          (_model.longitudeTextController.text == '0')) {
+        await showDialog(
+          context: context,
+          builder: (dialogContext) {
+            return Dialog(
+              elevation: 0,
+              insetPadding: EdgeInsets.zero,
+              backgroundColor: Colors.transparent,
+              alignment: const AlignmentDirectional(0.0, 0.0)
+                  .resolve(Directionality.of(context)),
+              child: GestureDetector(
+                onTap: () => FocusScope.of(dialogContext).unfocus(),
+                child: const ShowLoaderWidget(),
+              ),
+            );
+          },
+        );
+      } else {
         setState(() {
           _model.latitudeTextController?.text = functions.getCoordinate(true,
               functions.convertLocationToString(currentUserLocationValue)!)!;
@@ -56,43 +73,16 @@ class _CaptureLocationScreenWidgetState
               offset: _model.longitudeTextController!.text.length);
         });
       }
-      await showDialog(
-        context: context,
-        builder: (dialogContext) {
-          return Dialog(
-            elevation: 0,
-            insetPadding: EdgeInsets.zero,
-            backgroundColor: Colors.transparent,
-            alignment: const AlignmentDirectional(0.0, 0.0)
-                .resolve(Directionality.of(context)),
-            child: GestureDetector(
-              onTap: () => FocusScope.of(dialogContext).unfocus(),
-              child: const ShowLoaderWidget(),
-            ),
-          );
-        },
-      );
-
-      setState(() {
-        _model.latitudeTextController?.text = functions.getCoordinate(true,
-            functions.convertLocationToString(currentUserLocationValue)!)!;
-        _model.latitudeTextController?.selection = TextSelection.collapsed(
-            offset: _model.latitudeTextController!.text.length);
-      });
-      setState(() {
-        _model.longitudeTextController?.text = functions.getCoordinate(false,
-            functions.convertLocationToString(currentUserLocationValue)!)!;
-        _model.longitudeTextController?.selection = TextSelection.collapsed(
-            offset: _model.longitudeTextController!.text.length);
-      });
     });
 
     getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
-    _model.latitudeTextController ??= TextEditingController(text: '0');
+    _model.latitudeTextController ??=
+        TextEditingController(text: 'fetching...');
     _model.latitudeFocusNode ??= FocusNode();
 
-    _model.longitudeTextController ??= TextEditingController(text: '0');
+    _model.longitudeTextController ??=
+        TextEditingController(text: 'fetching...');
     _model.longitudeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));

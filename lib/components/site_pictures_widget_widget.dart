@@ -2273,6 +2273,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                                   true) &&
                                               (_model.isSelfieNotFilled ==
                                                   true)) {
+                                            context.safePop();
                                             if (Navigator.of(context)
                                                 .canPop()) {
                                               context.pop();
