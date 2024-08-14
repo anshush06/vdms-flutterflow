@@ -721,3 +721,7 @@ String? convertAdditionalRemarkToString(String remark) {
 
   return '';
 }
+
+String filterToString() {
+  return "{'caseStatus':'2'}";
+}
