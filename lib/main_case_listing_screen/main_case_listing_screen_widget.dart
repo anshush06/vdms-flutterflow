@@ -871,7 +871,7 @@ class _MainCaseListingScreenWidgetState
                           ),
                           FutureBuilder<ApiCallResponse>(
                             future: VdmsApiCallsGroup.getCaseAPICall.call(
-                              filters: '{\"caseStatus\":\"1\"}',
+                              filters: '\"{\"caseStatus\":\"2\"}\"',
                               userId: functions
                                   .convertStringtoInteger(FFAppState().userId),
                             ),

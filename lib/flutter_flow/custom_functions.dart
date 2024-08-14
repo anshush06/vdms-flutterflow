@@ -713,33 +713,11 @@ bool filterImagesByCaseIDAndImageType(
   return false;
 }
 
-List<String> convertAdditionalRemarkToString(
-  String remark1,
-  String remark2,
-  String remark3,
-  String remark4,
-  String remark5,
-) {
-  List<String> ans = [];
-  if (remark1.trim() != '') {
-    String jsonString = '{"info": "$remark1"}';
-    ans.add(jsonString);
+String? convertAdditionalRemarkToString(String remark) {
+  if (remark.trim() != '') {
+    String jsonString = '{"info": "$remark"}';
+    return jsonString;
   }
-  if (remark2.trim() != '') {
-    String jsonString = '{"info": "$remark2"}';
-    ans.add(jsonString);
-  }
-  if (remark3.trim() != '') {
-    String jsonString = '{"info": "$remark3"}';
-    ans.add(jsonString);
-  }
-  if (remark4.trim() != '') {
-    String jsonString = '{"info": "$remark4"}';
-    ans.add(jsonString);
-  }
-  if (remark5.trim() != '') {
-    String jsonString = '{"info": "$remark5"}';
-    ans.add(jsonString);
-  }
-  return ans;
+
+  return '';
 }

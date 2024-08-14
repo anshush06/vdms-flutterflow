@@ -165,7 +165,7 @@ class GetAreasAPICall {
 
 class GetCaseAPICall {
   Future<ApiCallResponse> call({
-    String? filters = '{\"caseStatus\":\"2\"}',
+    String? filters = '',
     int? userId,
     int? limit = 10,
     int? page = 1,
