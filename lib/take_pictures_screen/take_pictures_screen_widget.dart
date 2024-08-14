@@ -197,20 +197,6 @@ class _TakePicturesScreenWidgetState extends State<TakePicturesScreenWidget> {
                                         caseId: widget.caseDetails?.id,
                                       ));
                                       FFAppState().update(() {});
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                          content: Text(
-                                            'Image Captured Successfully',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 3000),
-                                          backgroundColor: Color(0xFFFF8C25),
-                                        ),
-                                      );
                                       if (Navigator.of(context).canPop()) {
                                         context.pop();
                                       }

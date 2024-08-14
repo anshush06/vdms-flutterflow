@@ -712,3 +712,11 @@ bool filterImagesByCaseIDAndImageType(
   }
   return false;
 }
+
+String? convertAdditionalRemarkToString(String text) {
+  if (text.trim() != '') {
+    String jsonString = '{"info": "$text"}';
+    return jsonString;
+  }
+  return null;
+}

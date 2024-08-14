@@ -79,6 +79,10 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _sitePictures;
     });
+    _safeInit(() {
+      _isActionCompleted =
+          prefs.getBool('ff_isActionCompleted') ?? _isActionCompleted;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -246,6 +250,13 @@ class FFAppState extends ChangeNotifier {
     sitePictures.insert(index, value);
     prefs.setStringList(
         'ff_sitePictures', _sitePictures.map((x) => x.serialize()).toList());
+  }
+
+  bool _isActionCompleted = false;
+  bool get isActionCompleted => _isActionCompleted;
+  set isActionCompleted(bool value) {
+    _isActionCompleted = value;
+    prefs.setBool('ff_isActionCompleted', value);
   }
 }
 

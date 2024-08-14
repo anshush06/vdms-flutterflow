@@ -7,15 +7,16 @@ import 'package:flutter/material.dart';
 class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   ///  Local state fields for this component.
 
-  bool otherPropertyLocated = false;
+  List<String> remarkList = [];
+  void addToRemarkList(String item) => remarkList.add(item);
+  void removeFromRemarkList(String item) => remarkList.remove(item);
+  void removeAtIndexFromRemarkList(int index) => remarkList.removeAt(index);
+  void insertAtIndexInRemarkList(int index, String item) =>
+      remarkList.insert(index, item);
+  void updateRemarkListAtIndex(int index, Function(String) updateFn) =>
+      remarkList[index] = updateFn(remarkList[index]);
 
-  bool otherPermittedProperty = false;
-
-  bool otherPropertyStructure = false;
-
-  bool otherRoof = false;
-
-  bool otherConstructionStatus = false;
+  int? additionalRemarkNumber = 1;
 
   ///  State fields for stateful widgets in this component.
 
@@ -626,11 +627,31 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   FocusNode? remarkNo1FocusNode;
   TextEditingController? remarkNo1TextController;
   String? Function(BuildContext, String?)? remarkNo1TextControllerValidator;
-  // State field(s) for Aadditional_remark widget.
-  FocusNode? aadditionalRemarkFocusNode;
-  TextEditingController? aadditionalRemarkTextController;
+  // State field(s) for Aadditional_remark1 widget.
+  FocusNode? aadditionalRemark1FocusNode;
+  TextEditingController? aadditionalRemark1TextController;
   String? Function(BuildContext, String?)?
-      aadditionalRemarkTextControllerValidator;
+      aadditionalRemark1TextControllerValidator;
+  // State field(s) for Aadditional_remark2 widget.
+  FocusNode? aadditionalRemark2FocusNode;
+  TextEditingController? aadditionalRemark2TextController;
+  String? Function(BuildContext, String?)?
+      aadditionalRemark2TextControllerValidator;
+  // State field(s) for Aadditional_remark3 widget.
+  FocusNode? aadditionalRemark3FocusNode;
+  TextEditingController? aadditionalRemark3TextController;
+  String? Function(BuildContext, String?)?
+      aadditionalRemark3TextControllerValidator;
+  // State field(s) for Aadditional_remark4 widget.
+  FocusNode? aadditionalRemark4FocusNode;
+  TextEditingController? aadditionalRemark4TextController;
+  String? Function(BuildContext, String?)?
+      aadditionalRemark4TextControllerValidator;
+  // State field(s) for Aadditional_remark5 widget.
+  FocusNode? aadditionalRemark5FocusNode;
+  TextEditingController? aadditionalRemark5TextController;
+  String? Function(BuildContext, String?)?
+      aadditionalRemark5TextControllerValidator;
   // Stores action output result for [Validate Form] action in Button widget.
   bool? validateFormFields;
   // Stores action output result for [Validate Form] action in Button widget.
@@ -846,8 +867,20 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
     remarkNo1FocusNode?.dispose();
     remarkNo1TextController?.dispose();
 
-    aadditionalRemarkFocusNode?.dispose();
-    aadditionalRemarkTextController?.dispose();
+    aadditionalRemark1FocusNode?.dispose();
+    aadditionalRemark1TextController?.dispose();
+
+    aadditionalRemark2FocusNode?.dispose();
+    aadditionalRemark2TextController?.dispose();
+
+    aadditionalRemark3FocusNode?.dispose();
+    aadditionalRemark3TextController?.dispose();
+
+    aadditionalRemark4FocusNode?.dispose();
+    aadditionalRemark4TextController?.dispose();
+
+    aadditionalRemark5FocusNode?.dispose();
+    aadditionalRemark5TextController?.dispose();
   }
 
   /// Additional helper methods.

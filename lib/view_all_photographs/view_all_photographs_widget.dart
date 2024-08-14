@@ -1,4 +1,5 @@
 import '/backend/schema/structs/index.dart';
+import '/components/show_carousel_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -135,154 +136,186 @@ class _ViewAllPhotographsWidgetState extends State<ViewAllPhotographsWidget> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(),
-                  child: Container(
-                    width: 100.0,
-                    height: 100.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Builder(
-                              builder: (context) {
-                                final eachImage = functions
-                                        .filterImagesBySection(
-                                            widget.imageType!,
-                                            FFAppState().sitePictures.toList(),
-                                            widget.caseDetails!.id)
-                                        ?.toList() ??
-                                    [];
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              width: 100.0,
+                              height: 100.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Builder(
+                                        builder: (context) {
+                                          final eachImage = functions
+                                                  .filterImagesBySection(
+                                                      widget.imageType!,
+                                                      FFAppState()
+                                                          .sitePictures
+                                                          .toList(),
+                                                      widget.caseDetails!.id)
+                                                  ?.toList() ??
+                                              [];
 
-                                return ListView.separated(
-                                  padding: const EdgeInsets.fromLTRB(
-                                    0,
-                                    10.0,
-                                    0,
-                                    0,
-                                  ),
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: eachImage.length,
-                                  separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 10.0),
-                                  itemBuilder: (context, eachImageIndex) {
-                                    final eachImageItem =
-                                        eachImage[eachImageIndex];
-                                    return Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                const SnackBar(
-                                                  content: Text(
-                                                    'Loading....',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
+                                          return ListView.separated(
+                                            padding: const EdgeInsets.fromLTRB(
+                                              0,
+                                              10.0,
+                                              0,
+                                              0,
+                                            ),
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount: eachImage.length,
+                                            separatorBuilder: (_, __) =>
+                                                const SizedBox(height: 10.0),
+                                            itemBuilder:
+                                                (context, eachImageIndex) {
+                                              final eachImageItem =
+                                                  eachImage[eachImageIndex];
+                                              return Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Expanded(
+                                                    child: Builder(
+                                                      builder: (context) =>
+                                                          InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: const AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () =>
+                                                                      FocusScope.of(
+                                                                              dialogContext)
+                                                                          .unfocus(),
+                                                                  child:
+                                                                      ShowCarouselWidget(
+                                                                    parameter1:
+                                                                        eachImageIndex,
+                                                                    parameter2: functions.filterImagesBySection(
+                                                                        widget
+                                                                            .imageType!,
+                                                                        FFAppState()
+                                                                            .sitePictures
+                                                                            .toList(),
+                                                                        widget
+                                                                            .caseDetails!
+                                                                            .id)!,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                        child: SizedBox(
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          child: custom_widgets
+                                                              .ImageWidget(
+                                                            width: 100.0,
+                                                            height: 100.0,
+                                                            fileName:
+                                                                eachImageItem
+                                                                    .name,
+                                                            text: eachImageItem
+                                                                .timestamp,
+                                                            byteArray:
+                                                                eachImageItem
+                                                                    .bytes,
+                                                          ),
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
-                                                  duration: Duration(
-                                                      milliseconds: 2000),
-                                                  backgroundColor:
-                                                      Color(0xFFFF8C25),
-                                                ),
-                                              );
-
-                                              context.pushNamed(
-                                                'show_carousel_for_not_visited',
-                                                queryParameters: {
-                                                  'sitePictures':
-                                                      serializeParam(
-                                                    FFAppState().sitePictures,
-                                                    ParamType.DataStruct,
-                                                    isList: true,
+                                                  FlutterFlowIconButton(
+                                                    borderColor: Colors.white,
+                                                    borderRadius: 20.0,
+                                                    borderWidth: 1.0,
+                                                    buttonSize: 40.0,
+                                                    fillColor: Colors.white,
+                                                    icon: const Icon(
+                                                      Icons.delete_sharp,
+                                                      color: Color(0xFF0F61AB),
+                                                      size: 25.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      FFAppState().removeAtIndexFromSitePictures(
+                                                          functions.getCurrentImageIndexByID(
+                                                              eachImageItem
+                                                                  .name,
+                                                              FFAppState()
+                                                                  .sitePictures
+                                                                  .toList()));
+                                                      setState(() {});
+                                                    },
                                                   ),
-                                                  'currentImageIndex':
-                                                      serializeParam(
-                                                    eachImageIndex,
-                                                    ParamType.int,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  kTransitionInfoKey:
-                                                      const TransitionInfo(
-                                                    hasTransition: true,
-                                                    transitionType:
-                                                        PageTransitionType.fade,
-                                                    duration: Duration(
-                                                        milliseconds: 0),
-                                                  ),
-                                                },
+                                                ],
                                               );
                                             },
-                                            child: SizedBox(
-                                              width: 100.0,
-                                              height: 100.0,
-                                              child: custom_widgets.ImageWidget(
-                                                width: 100.0,
-                                                height: 100.0,
-                                                fileName: eachImageItem.name,
-                                                text: eachImageItem.timestamp,
-                                                byteArray: eachImageItem.bytes,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        FlutterFlowIconButton(
-                                          borderColor: Colors.white,
-                                          borderRadius: 20.0,
-                                          borderWidth: 1.0,
-                                          buttonSize: 40.0,
-                                          fillColor: Colors.white,
-                                          icon: const Icon(
-                                            Icons.delete_sharp,
-                                            color: Color(0xFF0F61AB),
-                                            size: 25.0,
-                                          ),
-                                          onPressed: () async {
-                                            FFAppState()
-                                                .removeAtIndexFromSitePictures(
-                                                    functions
-                                                        .getCurrentImageIndexByID(
-                                                            eachImageItem.name,
-                                                            FFAppState()
-                                                                .sitePictures
-                                                                .toList()));
-                                            setState(() {});
-                                          },
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              },
+                                          );
+                                        },
+                                      ),
+                                    ]
+                                        .divide(const SizedBox(height: 15.0))
+                                        .addToEnd(const SizedBox(height: 10.0)),
+                                  ),
+                                ),
+                              ),
                             ),
-                          ]
-                              .divide(const SizedBox(height: 15.0))
-                              .addToEnd(const SizedBox(height: 10.0)),
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
               Padding(
@@ -354,18 +387,6 @@ class _ViewAllPhotographsWidgetState extends State<ViewAllPhotographsWidget> {
                             caseId: widget.caseDetails?.id,
                           ));
                           FFAppState().update(() {});
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Image Captured Successfully',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              duration: Duration(milliseconds: 3000),
-                              backgroundColor: Color(0xFFFF8C25),
-                            ),
-                          );
                         }
                       },
                     ),

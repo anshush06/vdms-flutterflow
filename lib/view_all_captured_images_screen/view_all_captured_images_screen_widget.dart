@@ -1,4 +1,5 @@
 import '/backend/schema/structs/index.dart';
+import '/components/show_carousel_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -153,15 +154,61 @@ class _ViewAllCapturedImagesScreenWidgetState
                                         CrossAxisAlignment.center,
                                     children: [
                                       Expanded(
-                                        child: SizedBox(
-                                          width: 100.0,
-                                          height: 100.0,
-                                          child: custom_widgets.ImageWidget(
-                                            width: 100.0,
-                                            height: 100.0,
-                                            fileName: eachImageItem.name,
-                                            text: eachImageItem.timestamp,
-                                            byteArray: eachImageItem.bytes,
+                                        child: Builder(
+                                          builder: (context) => InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () =>
+                                                          FocusScope.of(
+                                                                  dialogContext)
+                                                              .unfocus(),
+                                                      child: ShowCarouselWidget(
+                                                        parameter1:
+                                                            eachImageIndex,
+                                                        parameter2: functions
+                                                            .filterImagesByCaseID(
+                                                                FFAppState()
+                                                                    .sitePictures
+                                                                    .toList(),
+                                                                widget
+                                                                    .caseDetails!
+                                                                    .id)!,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            },
+                                            child: SizedBox(
+                                              width: 100.0,
+                                              height: 100.0,
+                                              child: custom_widgets.ImageWidget(
+                                                width: 100.0,
+                                                height: 100.0,
+                                                fileName: eachImageItem.name,
+                                                text: eachImageItem.timestamp,
+                                                byteArray: eachImageItem.bytes,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
