@@ -599,7 +599,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                     widget.selectedCaseDetails?.inspectionFormData.plotLength,
                                                     widget.selectedCaseDetails?.inspectionFormData.plotWidth,
                                                     widget.selectedCaseDetails?.inspectionFormData.reasonPortionNotSeen,
-                                                    widget.selectedCaseDetails?.inspectionFormData.anyOtherInformation.toList()),
+                                                    widget.selectedCaseDetails?.inspectionFormData.anyOtherInformation.map((e) => e.info).toList().toList()),
                                               );
 
                                               if ((_model

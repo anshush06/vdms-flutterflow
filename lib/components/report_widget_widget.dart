@@ -9952,10 +9952,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .text
                                                 ..reasonPortionNotSeen = _model
                                                     .remarkNo1TextController
-                                                    .text
-                                                ..updateAnyOtherInformation(
-                                                  (e) => e.add(''),
-                                                ),
+                                                    .text,
                                             )
                                             ..statusId = '5'
                                             ..statusName =
@@ -10286,12 +10283,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .text
                                                 ..reasonPortionNotSeen = _model
                                                     .remarkNo1TextController
-                                                    .text
-                                                ..updateAnyOtherInformation(
-                                                  (e) => e.add(_model
-                                                      .aadditionalRemark1TextController
-                                                      .text),
-                                                ),
+                                                    .text,
                                             ),
                                         );
                                         FFAppState().update(() {});

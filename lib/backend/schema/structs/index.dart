@@ -1,6 +1,7 @@
 export '/backend/schema/util/schema_util.dart';
 
 export 'floor_wise_details_struct.dart';
+export 'any_other_info_response_struct.dart';
 export 'config_struct.dart';
 export 'error_struct.dart';
 export 'get_case_images_struct.dart';

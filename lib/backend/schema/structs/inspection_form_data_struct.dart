@@ -68,9 +68,9 @@ class InspectionFormDataStruct extends BaseStruct {
     String? dealerName,
     String? dealerMobileNumber,
     String? reasonPortionNotSeen,
-    List<String>? anyOtherInformation,
     int? filledFieldsCount,
     List<FloorWiseDetailsStruct>? floorwiseDetails,
+    List<AnyOtherInfoResponseStruct>? anyOtherInformation,
   })  : _refNo = refNo,
         _bank = bank,
         _engrName = engrName,
@@ -133,9 +133,9 @@ class InspectionFormDataStruct extends BaseStruct {
         _dealerName = dealerName,
         _dealerMobileNumber = dealerMobileNumber,
         _reasonPortionNotSeen = reasonPortionNotSeen,
-        _anyOtherInformation = anyOtherInformation,
         _filledFieldsCount = filledFieldsCount,
-        _floorwiseDetails = floorwiseDetails;
+        _floorwiseDetails = floorwiseDetails,
+        _anyOtherInformation = anyOtherInformation;
 
   // "ref_no" field.
   String? _refNo;
@@ -574,17 +574,6 @@ class InspectionFormDataStruct extends BaseStruct {
 
   bool hasReasonPortionNotSeen() => _reasonPortionNotSeen != null;
 
-  // "any_other_information" field.
-  List<String>? _anyOtherInformation;
-  List<String> get anyOtherInformation => _anyOtherInformation ?? const [];
-  set anyOtherInformation(List<String>? val) => _anyOtherInformation = val;
-
-  void updateAnyOtherInformation(Function(List<String>) updateFn) {
-    updateFn(_anyOtherInformation ??= []);
-  }
-
-  bool hasAnyOtherInformation() => _anyOtherInformation != null;
-
   // "filled_fields_count" field.
   int? _filledFieldsCount;
   int get filledFieldsCount => _filledFieldsCount ?? 0;
@@ -607,6 +596,20 @@ class InspectionFormDataStruct extends BaseStruct {
   }
 
   bool hasFloorwiseDetails() => _floorwiseDetails != null;
+
+  // "any_other_information" field.
+  List<AnyOtherInfoResponseStruct>? _anyOtherInformation;
+  List<AnyOtherInfoResponseStruct> get anyOtherInformation =>
+      _anyOtherInformation ?? const [];
+  set anyOtherInformation(List<AnyOtherInfoResponseStruct>? val) =>
+      _anyOtherInformation = val;
+
+  void updateAnyOtherInformation(
+      Function(List<AnyOtherInfoResponseStruct>) updateFn) {
+    updateFn(_anyOtherInformation ??= []);
+  }
+
+  bool hasAnyOtherInformation() => _anyOtherInformation != null;
 
   static InspectionFormDataStruct fromMap(Map<String, dynamic> data) =>
       InspectionFormDataStruct(
@@ -675,11 +678,14 @@ class InspectionFormDataStruct extends BaseStruct {
         dealerName: data['dealer_name'] as String?,
         dealerMobileNumber: data['dealer_mobile_number'] as String?,
         reasonPortionNotSeen: data['reason_portion_not_seen'] as String?,
-        anyOtherInformation: getDataList(data['any_other_information']),
         filledFieldsCount: castToType<int>(data['filled_fields_count']),
         floorwiseDetails: getStructList(
           data['floorwise_details'],
           FloorWiseDetailsStruct.fromMap,
+        ),
+        anyOtherInformation: getStructList(
+          data['any_other_information'],
+          AnyOtherInfoResponseStruct.fromMap,
         ),
       );
 
@@ -750,9 +756,10 @@ class InspectionFormDataStruct extends BaseStruct {
         'dealer_name': _dealerName,
         'dealer_mobile_number': _dealerMobileNumber,
         'reason_portion_not_seen': _reasonPortionNotSeen,
-        'any_other_information': _anyOtherInformation,
         'filled_fields_count': _filledFieldsCount,
         'floorwise_details': _floorwiseDetails?.map((e) => e.toMap()).toList(),
+        'any_other_information':
+            _anyOtherInformation?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -1005,17 +1012,17 @@ class InspectionFormDataStruct extends BaseStruct {
           _reasonPortionNotSeen,
           ParamType.String,
         ),
-        'any_other_information': serializeParam(
-          _anyOtherInformation,
-          ParamType.String,
-          isList: true,
-        ),
         'filled_fields_count': serializeParam(
           _filledFieldsCount,
           ParamType.int,
         ),
         'floorwise_details': serializeParam(
           _floorwiseDetails,
+          ParamType.DataStruct,
+          isList: true,
+        ),
+        'any_other_information': serializeParam(
+          _anyOtherInformation,
           ParamType.DataStruct,
           isList: true,
         ),
@@ -1334,11 +1341,6 @@ class InspectionFormDataStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        anyOtherInformation: deserializeParam<String>(
-          data['any_other_information'],
-          ParamType.String,
-          true,
-        ),
         filledFieldsCount: deserializeParam(
           data['filled_fields_count'],
           ParamType.int,
@@ -1349,6 +1351,12 @@ class InspectionFormDataStruct extends BaseStruct {
           ParamType.DataStruct,
           true,
           structBuilder: FloorWiseDetailsStruct.fromSerializableMap,
+        ),
+        anyOtherInformation: deserializeStructParam<AnyOtherInfoResponseStruct>(
+          data['any_other_information'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: AnyOtherInfoResponseStruct.fromSerializableMap,
         ),
       );
 
@@ -1421,9 +1429,9 @@ class InspectionFormDataStruct extends BaseStruct {
         dealerName == other.dealerName &&
         dealerMobileNumber == other.dealerMobileNumber &&
         reasonPortionNotSeen == other.reasonPortionNotSeen &&
-        listEquality.equals(anyOtherInformation, other.anyOtherInformation) &&
         filledFieldsCount == other.filledFieldsCount &&
-        listEquality.equals(floorwiseDetails, other.floorwiseDetails);
+        listEquality.equals(floorwiseDetails, other.floorwiseDetails) &&
+        listEquality.equals(anyOtherInformation, other.anyOtherInformation);
   }
 
   @override
@@ -1490,9 +1498,9 @@ class InspectionFormDataStruct extends BaseStruct {
         dealerName,
         dealerMobileNumber,
         reasonPortionNotSeen,
-        anyOtherInformation,
         filledFieldsCount,
-        floorwiseDetails
+        floorwiseDetails,
+        anyOtherInformation
       ]);
 }
 
