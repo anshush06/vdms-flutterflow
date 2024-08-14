@@ -33,5 +33,3 @@ export '/view_all_captured_images_screen/view_all_captured_images_screen_widget.
 export '/version_screen/version_screen_widget.dart' show VersionScreenWidget;
 export '/view_all_images_for_visited_and_completed/view_all_images_for_visited_and_completed_widget.dart'
     show ViewAllImagesForVisitedAndCompletedWidget;
-export '/show_carousel_for_not_visited/show_carousel_for_not_visited_widget.dart'
-    show ShowCarouselForNotVisitedWidget;

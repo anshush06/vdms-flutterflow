@@ -263,22 +263,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.bool,
             ),
           ),
-        ),
-        FFRoute(
-          name: 'show_carousel_for_not_visited',
-          path: '/showCarouselForNotVisited',
-          builder: (context, params) => ShowCarouselForNotVisitedWidget(
-            sitePictures: params.getParam<SitePictureListResponseStruct>(
-              'sitePictures',
-              ParamType.DataStruct,
-              isList: true,
-              structBuilder: SitePictureListResponseStruct.fromSerializableMap,
-            ),
-            currentImageIndex: params.getParam(
-              'currentImageIndex',
-              ParamType.int,
-            ),
-          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

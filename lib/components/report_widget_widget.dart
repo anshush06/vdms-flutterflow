@@ -9952,7 +9952,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .text
                                                 ..reasonPortionNotSeen = _model
                                                     .remarkNo1TextController
-                                                    .text,
+                                                    .text
+                                                ..anyOtherInformation =
+                                                    [].toList(),
                                             )
                                             ..statusId = '5'
                                             ..statusName =
@@ -10280,7 +10282,12 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     .text
                                                 ..otherRoof = _model
                                                     .otherRoofTextController
-                                                    .text,
+                                                    .text
+                                                ..reasonPortionNotSeen = _model
+                                                    .remarkNo1TextController
+                                                    .text
+                                                ..anyOtherInformation =
+                                                    [].toList(),
                                             ),
                                         );
                                         FFAppState().update(() {});
