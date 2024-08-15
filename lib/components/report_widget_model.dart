@@ -627,6 +627,14 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   FocusNode? remarkNo1FocusNode;
   TextEditingController? remarkNo1TextController;
   String? Function(BuildContext, String?)? remarkNo1TextControllerValidator;
+  String? _remarkNo1TextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for Aadditional_remark1 widget.
   FocusNode? aadditionalRemark1FocusNode;
   TextEditingController? aadditionalRemark1TextController;
@@ -708,6 +716,7 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
         _marketRatesMinimumTextControllerValidator;
     marketRatesMaximumTextControllerValidator =
         _marketRatesMaximumTextControllerValidator;
+    remarkNo1TextControllerValidator = _remarkNo1TextControllerValidator;
   }
 
   @override

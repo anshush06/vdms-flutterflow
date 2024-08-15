@@ -180,19 +180,44 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
 
     _model.expandableExpandableController5 =
         ExpandableController(initialExpanded: false);
-    _model.nameOfFloorTextController ??= TextEditingController();
+    _model.nameOfFloorTextController ??= TextEditingController(
+        text:
+            widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
+                ? widget.reportDetails?.inspectionFormData.floorwiseDetails
+                    .first.floor
+                : '');
     _model.nameOfFloorFocusNode ??= FocusNode();
 
-    _model.occupiedByTextController ??= TextEditingController();
+    _model.occupiedByTextController ??= TextEditingController(
+        text:
+            widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
+                ? widget.reportDetails?.inspectionFormData.floorwiseDetails
+                    .first.occupied
+                : '');
     _model.occupiedByFocusNode ??= FocusNode();
 
-    _model.usageTextController ??= TextEditingController();
+    _model.usageTextController ??= TextEditingController(
+        text:
+            widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
+                ? widget.reportDetails?.inspectionFormData.floorwiseDetails
+                    .first.usage
+                : '');
     _model.usageFocusNode ??= FocusNode();
 
-    _model.accommodationTextController ??= TextEditingController();
+    _model.accommodationTextController ??= TextEditingController(
+        text:
+            widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
+                ? widget.reportDetails?.inspectionFormData.floorwiseDetails
+                    .first.accomodation
+                : '');
     _model.accommodationFocusNode ??= FocusNode();
 
-    _model.actualAreaMeasuredTextController ??= TextEditingController();
+    _model.actualAreaMeasuredTextController ??= TextEditingController(
+        text:
+            widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
+                ? widget.reportDetails?.inspectionFormData.floorwiseDetails
+                    .first.actualAreaMeasured
+                : '');
     _model.actualAreaMeasuredFocusNode ??= FocusNode();
 
     _model.expandableExpandableController6 =
