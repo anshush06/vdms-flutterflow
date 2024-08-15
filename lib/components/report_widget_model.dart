@@ -18,16 +18,6 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
 
   int? additionalRemarkNumber = 1;
 
-  bool currentRemoveRemark1 = true;
-
-  bool currentRemoveRemark2 = true;
-
-  bool currentRemoveRemark3 = true;
-
-  bool currentRemoveRemark4 = true;
-
-  bool currentRemoveRemark5 = true;
-
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();

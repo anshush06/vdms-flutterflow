@@ -263,9 +263,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
     _model.remarkNo1FocusNode ??= FocusNode();
 
     _model.aadditionalRemark1TextController ??= TextEditingController(
-        text: (widget.reportDetails?.inspectionFormData
-                    .anyOtherInformation[0]) !=
-                null
+        text: widget.reportDetails!.inspectionFormData.anyOtherInformation.isNotEmpty
             ? (widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[0])
                 ?.info
@@ -273,9 +271,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
     _model.aadditionalRemark1FocusNode ??= FocusNode();
 
     _model.aadditionalRemark2TextController ??= TextEditingController(
-        text: (widget.reportDetails?.inspectionFormData
-                    .anyOtherInformation[1]) !=
-                null
+        text: widget.reportDetails!.inspectionFormData.anyOtherInformation
+                    .length >=
+                2
             ? (widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[1])
                 ?.info
@@ -283,9 +281,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
     _model.aadditionalRemark2FocusNode ??= FocusNode();
 
     _model.aadditionalRemark3TextController ??= TextEditingController(
-        text: (widget.reportDetails?.inspectionFormData
-                    .anyOtherInformation[2]) !=
-                null
+        text: widget.reportDetails!.inspectionFormData.anyOtherInformation
+                    .length >=
+                3
             ? (widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[2])
                 ?.info
@@ -293,9 +291,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
     _model.aadditionalRemark3FocusNode ??= FocusNode();
 
     _model.aadditionalRemark4TextController ??= TextEditingController(
-        text: (widget.reportDetails?.inspectionFormData
-                    .anyOtherInformation[3]) !=
-                null
+        text: widget.reportDetails!.inspectionFormData.anyOtherInformation
+                    .length >=
+                4
             ? (widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[3])
                 ?.info
@@ -303,9 +301,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
     _model.aadditionalRemark4FocusNode ??= FocusNode();
 
     _model.aadditionalRemark5TextController ??= TextEditingController(
-        text: (widget.reportDetails?.inspectionFormData
-                    .anyOtherInformation[4]) !=
-                null
+        text: widget.reportDetails!.inspectionFormData.anyOtherInformation
+                    .length >=
+                5
             ? (widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[4])
                 ?.info
