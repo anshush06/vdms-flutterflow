@@ -754,30 +754,23 @@ List<AnyOtherInfoResponseStruct>? convertAdditionalRemarkToDataType(
   return list;
 }
 
-List<String> convertAdditionalRemarksToList(
+List<dynamic> convertAdditionalRemarksToList(
     List<AnyOtherInfoResponseStruct>? remarkList) {
-  // Initialize an empty list to store the JSON-encoded strings
-  List<String> jsonStringList = [];
-
-  // Check if remarkList is not null
-  if (remarkList != null) {
-    // Iterate over the list of AnyOtherInfoResponseStruct
-    for (var struct in remarkList) {
-      // Construct the map for each remark
-      Map<String, String> remarkMap = {
-        "info": struct.info,
-      };
-
-      // Convert the map to a JSON-encoded string
-      String jsonString = jsonEncode(remarkMap);
-
-      // Add the JSON-encoded string to the list
-      jsonStringList.add(jsonString);
-    }
+  // Check if remarkList is null, if so return an empty list
+  if (remarkList == null) {
+    return [];
   }
 
-  // Return the list of JSON-encoded strings
-  return jsonStringList;
+  // Create the list of maps for additional information
+  List<Map<String, String>> remarkMapList = remarkList.map((info) {
+    // Create a map for each info
+    return {
+      "info": info.info,
+    };
+  }).toList();
+
+  // Return the list of maps
+  return remarkMapList;
 }
 
 List<FloorWiseDetailsStruct> convertFloorDetailsToDataType(
@@ -805,15 +798,17 @@ List<FloorWiseDetailsStruct> convertFloorDetailsToDataType(
   return floorDetailsList;
 }
 
-List<String> convertFloorDetailsToList(
-    List<FloorWiseDetailsStruct> floorDetailsList) {
-  // Initialize an empty list to store the JSON-like strings
-  List<String> jsonStringList = [];
+List<dynamic> convertFloorDetailsToList(
+    List<FloorWiseDetailsStruct>? floorDetailsList) {
+  // Check if floorDetailsList is not null, if so return an empty list
+  if (floorDetailsList == null) {
+    return [];
+  }
 
-  // Iterate over the list of FloorWiseDetailsStruct
-  for (var details in floorDetailsList) {
-    // Construct the map for each floor's details
-    Map<String, String?> floorDetailsMap = {
+  // Create the list of maps for floor details
+  List<Map<String, String?>> floorDetailsMapList =
+      floorDetailsList.map((details) {
+    return {
       "floor": details.floor,
       "usage": details.usage,
       "occupied": details.occupied,
@@ -822,14 +817,8 @@ List<String> convertFloorDetailsToList(
           ? details.actualAreaMeasured
           : '',
     };
+  }).toList();
 
-    // Convert the map to a JSON string
-    String jsonString = jsonEncode(floorDetailsMap);
-
-    // Add the JSON string to the list
-    jsonStringList.add(jsonString);
-  }
-
-  // Return the list of JSON-like strings
-  return jsonStringList;
+  // Return the list of maps
+  return floorDetailsMapList;
 }
