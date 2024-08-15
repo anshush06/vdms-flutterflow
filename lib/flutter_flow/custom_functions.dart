@@ -277,6 +277,7 @@ String? convertDataToJson(
   String? plotWidth,
   String? reasonPortionNotSeen,
   List<String>? anyOtherInformation,
+  List<String>? floorDetails,
 ) {
   Map<String, dynamic> dataMap = {
     'ref_no': refNo,
@@ -337,6 +338,7 @@ String? convertDataToJson(
     'plot_width': plotWidth,
     'reason_portion_not_seen': reasonPortionNotSeen,
     'any_other_information': anyOtherInformation,
+    'floorwise_details': floorDetails
   };
 
   // Convert the Map to a JSON string
@@ -765,6 +767,50 @@ List<String> convertAdditionalRemarksToList(
       // Add the constructed string to the list
       jsonStringList.add(jsonString);
     }
+  }
+
+  // Return the list of JSON-like strings
+  return jsonStringList;
+}
+
+List<FloorWiseDetailsStruct> convertFloorDetailsToDataType(
+  String floor1,
+  String usage1,
+  String occupied1,
+  String accomodation1,
+  String? actualArea1,
+) {
+  List<FloorWiseDetailsStruct> floorDetailsList = [];
+
+  // Create a FloorWiseDetailsStruct object with the provided arguments
+  FloorWiseDetailsStruct floorDetails = FloorWiseDetailsStruct(
+    floor: floor1,
+    usage: usage1,
+    occupied: occupied1,
+    accomodation: accomodation1,
+    actualAreaMeasured: actualArea1,
+  );
+
+  // Add the object to the list
+  floorDetailsList.add(floorDetails);
+
+  // Return the list of FloorWiseDetailsStruct objects
+  return floorDetailsList;
+}
+
+List<String> convertFloorDetailsToList(
+    List<FloorWiseDetailsStruct> floorDetailsList) {
+  // Initialize an empty list to store the JSON-like strings
+  List<String> jsonStringList = [];
+
+  // Iterate over the list of FloorWiseDetailsStruct
+  for (var details in floorDetailsList) {
+    // Construct the JSON-like string
+    String jsonString =
+        '{"floor": "${details.floor}", "usage": "${details.usage}", "occupied": "${details.occupied}", "accomodation": "${details.accomodation}", "actual_measured_area": "${details.actualAreaMeasured}"}';
+
+    // Add the constructed string to the list
+    jsonStringList.add(jsonString);
   }
 
   // Return the list of JSON-like strings

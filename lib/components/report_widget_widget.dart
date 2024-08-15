@@ -10016,6 +10016,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .text,
                                                         _model
                                                             .additionalRemarkNumber!)!
+                                                    .toList()
+                                                ..floorwiseDetails = functions
+                                                    .convertFloorDetailsToDataType(
+                                                        _model
+                                                            .nameOfFloorTextController
+                                                            .text,
+                                                        _model
+                                                            .usageTextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedByTextController
+                                                            .text,
+                                                        _model
+                                                            .accommodationTextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasuredTextController
+                                                            .text)
                                                     .toList(),
                                             )
                                             ..statusId = '5'
@@ -10367,6 +10385,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .text,
                                                         _model
                                                             .additionalRemarkNumber!)!
+                                                    .toList()
+                                                ..floorwiseDetails = functions
+                                                    .convertFloorDetailsToDataType(
+                                                        _model
+                                                            .nameOfFloorTextController
+                                                            .text,
+                                                        _model
+                                                            .usageTextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedByTextController
+                                                            .text,
+                                                        _model
+                                                            .accommodationTextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasuredTextController
+                                                            .text)
                                                     .toList(),
                                             ),
                                         );

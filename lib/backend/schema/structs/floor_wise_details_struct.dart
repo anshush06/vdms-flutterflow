@@ -11,12 +11,12 @@ class FloorWiseDetailsStruct extends BaseStruct {
     String? usage,
     String? occupied,
     String? accomodation,
-    String? actualMeasuredArea,
+    String? actualAreaMeasured,
   })  : _floor = floor,
         _usage = usage,
         _occupied = occupied,
         _accomodation = accomodation,
-        _actualMeasuredArea = actualMeasuredArea;
+        _actualAreaMeasured = actualAreaMeasured;
 
   // "floor" field.
   String? _floor;
@@ -46,12 +46,12 @@ class FloorWiseDetailsStruct extends BaseStruct {
 
   bool hasAccomodation() => _accomodation != null;
 
-  // "actual_measured_area" field.
-  String? _actualMeasuredArea;
-  String get actualMeasuredArea => _actualMeasuredArea ?? '';
-  set actualMeasuredArea(String? val) => _actualMeasuredArea = val;
+  // "actualAreaMeasured" field.
+  String? _actualAreaMeasured;
+  String get actualAreaMeasured => _actualAreaMeasured ?? '';
+  set actualAreaMeasured(String? val) => _actualAreaMeasured = val;
 
-  bool hasActualMeasuredArea() => _actualMeasuredArea != null;
+  bool hasActualAreaMeasured() => _actualAreaMeasured != null;
 
   static FloorWiseDetailsStruct fromMap(Map<String, dynamic> data) =>
       FloorWiseDetailsStruct(
@@ -59,7 +59,7 @@ class FloorWiseDetailsStruct extends BaseStruct {
         usage: data['usage'] as String?,
         occupied: data['occupied'] as String?,
         accomodation: data['accomodation'] as String?,
-        actualMeasuredArea: data['actual_measured_area'] as String?,
+        actualAreaMeasured: data['actualAreaMeasured'] as String?,
       );
 
   static FloorWiseDetailsStruct? maybeFromMap(dynamic data) => data is Map
@@ -71,7 +71,7 @@ class FloorWiseDetailsStruct extends BaseStruct {
         'usage': _usage,
         'occupied': _occupied,
         'accomodation': _accomodation,
-        'actual_measured_area': _actualMeasuredArea,
+        'actualAreaMeasured': _actualAreaMeasured,
       }.withoutNulls;
 
   @override
@@ -92,8 +92,8 @@ class FloorWiseDetailsStruct extends BaseStruct {
           _accomodation,
           ParamType.String,
         ),
-        'actual_measured_area': serializeParam(
-          _actualMeasuredArea,
+        'actualAreaMeasured': serializeParam(
+          _actualAreaMeasured,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -121,8 +121,8 @@ class FloorWiseDetailsStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        actualMeasuredArea: deserializeParam(
-          data['actual_measured_area'],
+        actualAreaMeasured: deserializeParam(
+          data['actualAreaMeasured'],
           ParamType.String,
           false,
         ),
@@ -138,12 +138,12 @@ class FloorWiseDetailsStruct extends BaseStruct {
         usage == other.usage &&
         occupied == other.occupied &&
         accomodation == other.accomodation &&
-        actualMeasuredArea == other.actualMeasuredArea;
+        actualAreaMeasured == other.actualAreaMeasured;
   }
 
   @override
   int get hashCode => const ListEquality()
-      .hash([floor, usage, occupied, accomodation, actualMeasuredArea]);
+      .hash([floor, usage, occupied, accomodation, actualAreaMeasured]);
 }
 
 FloorWiseDetailsStruct createFloorWiseDetailsStruct({
@@ -151,12 +151,12 @@ FloorWiseDetailsStruct createFloorWiseDetailsStruct({
   String? usage,
   String? occupied,
   String? accomodation,
-  String? actualMeasuredArea,
+  String? actualAreaMeasured,
 }) =>
     FloorWiseDetailsStruct(
       floor: floor,
       usage: usage,
       occupied: occupied,
       accomodation: accomodation,
-      actualMeasuredArea: actualMeasuredArea,
+      actualAreaMeasured: actualAreaMeasured,
     );
