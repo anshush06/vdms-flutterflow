@@ -723,6 +723,7 @@ List<AnyOtherInfoResponseStruct>? convertAdditionalRemarkToDataType(
   String remark5,
   int limit,
 ) {
+  // Initialize an empty list to store the JSON-like strings
   List<AnyOtherInfoResponseStruct> list = [];
 
   // Helper function to add non-empty remarks
@@ -755,21 +756,27 @@ List<AnyOtherInfoResponseStruct>? convertAdditionalRemarkToDataType(
 
 List<String> convertAdditionalRemarksToList(
     List<AnyOtherInfoResponseStruct>? remarkList) {
+  // Initialize an empty list to store the JSON-encoded strings
   List<String> jsonStringList = [];
 
   // Check if remarkList is not null
   if (remarkList != null) {
     // Iterate over the list of AnyOtherInfoResponseStruct
     for (var struct in remarkList) {
-      // Construct the JSON-like string
-      String jsonString = '{"info": "${struct.info}"}';
+      // Construct the map for each remark
+      Map<String, String> remarkMap = {
+        "info": struct.info,
+      };
 
-      // Add the constructed string to the list
+      // Convert the map to a JSON-encoded string
+      String jsonString = jsonEncode(remarkMap);
+
+      // Add the JSON-encoded string to the list
       jsonStringList.add(jsonString);
     }
   }
 
-  // Return the list of JSON-like strings
+  // Return the list of JSON-encoded strings
   return jsonStringList;
 }
 
@@ -805,11 +812,21 @@ List<String> convertFloorDetailsToList(
 
   // Iterate over the list of FloorWiseDetailsStruct
   for (var details in floorDetailsList) {
-    // Construct the JSON-like string
-    String jsonString =
-        '{"floor": "${details.floor}", "usage": "${details.usage}", "occupied": "${details.occupied}", "accomodation": "${details.accomodation}", "actual_measured_area": "${details.actualAreaMeasured}"}';
+    // Construct the map for each floor's details
+    Map<String, String?> floorDetailsMap = {
+      "floor": details.floor,
+      "usage": details.usage,
+      "occupied": details.occupied,
+      "accomodation": details.accomodation,
+      "actual_measured_area": details.actualAreaMeasured?.isNotEmpty == true
+          ? details.actualAreaMeasured
+          : '',
+    };
 
-    // Add the constructed string to the list
+    // Convert the map to a JSON string
+    String jsonString = jsonEncode(floorDetailsMap);
+
+    // Add the JSON string to the list
     jsonStringList.add(jsonString);
   }
 
