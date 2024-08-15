@@ -599,7 +599,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                     widget.selectedCaseDetails?.inspectionFormData.plotLength,
                                                     widget.selectedCaseDetails?.inspectionFormData.plotWidth,
                                                     widget.selectedCaseDetails?.inspectionFormData.reasonPortionNotSeen,
-                                                    functions.convertAdditionalRemarksToList(widget.selectedCaseDetails?.inspectionFormData.anyOtherInformation.toList()).toList(),
+                                                    widget.selectedCaseDetails?.inspectionFormData.anyOtherInformation.map((e) => e.info).toList().toList(),
                                                     functions.convertFloorDetailsToList(widget.selectedCaseDetails!.inspectionFormData.floorwiseDetails.toList()).toList()),
                                               );
 
