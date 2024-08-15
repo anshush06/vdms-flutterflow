@@ -18,6 +18,16 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
 
   int? additionalRemarkNumber = 1;
 
+  bool currentRemoveRemark1 = true;
+
+  bool currentRemoveRemark2 = true;
+
+  bool currentRemoveRemark3 = true;
+
+  bool currentRemoveRemark4 = true;
+
+  bool currentRemoveRemark5 = true;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
@@ -652,10 +662,6 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   TextEditingController? aadditionalRemark5TextController;
   String? Function(BuildContext, String?)?
       aadditionalRemark5TextControllerValidator;
-  // Stores action output result for [Validate Form] action in Button widget.
-  bool? validateFormFields;
-  // Stores action output result for [Validate Form] action in Button widget.
-  bool? validateForm;
 
   @override
   void initState(BuildContext context) {

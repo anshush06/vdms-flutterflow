@@ -713,15 +713,60 @@ bool filterImagesByCaseIDAndImageType(
   return false;
 }
 
-String? convertAdditionalRemarkToString(String remark) {
-  if (remark.trim() != '') {
-    String jsonString = '{"info": "$remark"}';
-    return jsonString;
+List<AnyOtherInfoResponseStruct>? convertAdditionalRemarkToDataType(
+  String remark1,
+  String remark2,
+  String remark3,
+  String remark4,
+  String remark5,
+  int limit,
+) {
+  List<AnyOtherInfoResponseStruct> list = [];
+
+  // Helper function to add non-empty remarks
+  void addRemarkIfNotEmpty(String remark) {
+    if (remark.trim().isNotEmpty) {
+      // Assuming AnyOtherInfoResponseStruct has a constructor that accepts a string
+      list.add(AnyOtherInfoResponseStruct(info: remark.trim()));
+    }
   }
 
-  return '';
+  // Check each remark and add to the list if not empty
+  if (limit >= 1) {
+    addRemarkIfNotEmpty(remark1);
+  }
+  if (limit >= 2) {
+    addRemarkIfNotEmpty(remark2);
+  }
+  if (limit >= 3) {
+    addRemarkIfNotEmpty(remark3);
+  }
+  if (limit >= 4) {
+    addRemarkIfNotEmpty(remark4);
+  }
+  if (limit >= 5) {
+    addRemarkIfNotEmpty(remark5);
+  }
+
+  return list;
 }
 
-String filterToString() {
-  return "{'caseStatus':'2'}";
+List<String> convertAdditionalRemarksToList(
+    List<AnyOtherInfoResponseStruct>? remarkList) {
+  List<String> jsonStringList = [];
+
+  // Check if remarkList is not null
+  if (remarkList != null) {
+    // Iterate over the list of AnyOtherInfoResponseStruct
+    for (var struct in remarkList) {
+      // Construct the JSON-like string
+      String jsonString = '{"info": "${struct.info}"}';
+
+      // Add the constructed string to the list
+      jsonStringList.add(jsonString);
+    }
+  }
+
+  // Return the list of JSON-like strings
+  return jsonStringList;
 }
