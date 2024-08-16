@@ -858,15 +858,16 @@ List<dynamic> convertAdditionalRemarksToList(
   }
 
   // Create the list of maps for additional information
-  List<Map<String, String>> remarkMapList = remarkList.map((info) {
-    // Create a map for each info
-    return {
-      "info": info.info,
-    };
-  }).toList();
+  Map<String, String> remarkMapList = {};
+  List<dynamic> list = [];
+
+  for (var remark in remarkList) {
+    remarkMapList['info'] = remark.info;
+    list.add(remarkMapList);
+  }
 
   // Return the list of maps
-  return remarkMapList;
+  return list;
 }
 
 List<FloorWiseDetailsStruct> convertFloorDetailsToDataType(

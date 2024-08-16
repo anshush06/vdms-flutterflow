@@ -724,20 +724,6 @@ class _CaptureReadingValueScreenWidgetState
                                       ),
                                     );
                                   }
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Cancel',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: const Duration(milliseconds: 4000),
-                                      backgroundColor: const Color(0xFFC10032),
-                                    ),
-                                  );
                                 }
                               }
 
