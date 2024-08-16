@@ -278,8 +278,8 @@ String? convertDataToJson(
   String? plotLength,
   String? plotWidth,
   String? reasonPortionNotSeen,
-  List<String>? anyOtherInformation,
-  List<String>? floorDetails,
+  List<dynamic> anyOtherInformation,
+  List<dynamic> floorDetails,
 ) {
   Map<String, dynamic> dataMap = {
     'ref_no': refNo,
@@ -858,12 +858,11 @@ List<dynamic> convertAdditionalRemarksToList(
   }
 
   // Create the list of maps for additional information
-  Map<String, String> remarkMapList = {};
   List<dynamic> list = [];
 
   for (var remark in remarkList) {
-    remarkMapList['info'] = remark.info;
-    list.add(remarkMapList);
+    Map<String, String> remarkMap = {'info': remark.info};
+    list.add(remarkMap);
   }
 
   // Return the list of maps
