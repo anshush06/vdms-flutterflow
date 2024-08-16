@@ -211,7 +211,7 @@ bool validateReading(
   }
 
   // Compare the readings
-  return end - start > 0 ? false : true;
+  return end - start >= 0 ? false : true;
 }
 
 String? getCurrentTimeStamp() {
@@ -453,236 +453,330 @@ List<SitePictureListResponseStruct>? filterImagesByCaseID(
 }
 
 bool checkEmptyFields(ResponseStruct caseDetails) {
+  int i = 1;
   if (caseDetails.addressLine1 == null || caseDetails.addressLine1!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.city == null || caseDetails.city!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.state == null || caseDetails.state!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.contactperson1 == null ||
       caseDetails.contactperson1!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.contact1 == null || caseDetails.contact1!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.refNo == null ||
       caseDetails.inspectionFormData!.refNo!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.bank == null ||
       caseDetails.inspectionFormData!.bank!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.engrName == null ||
       caseDetails.inspectionFormData!.engrName!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.currentDate == null ||
       caseDetails.inspectionFormData!.currentDate!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.applicantName == null ||
       caseDetails.inspectionFormData!.applicantName!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.address1 == null ||
       caseDetails.inspectionFormData!.address1!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
-  if (caseDetails.inspectionFormData?.address2 == null ||
-      caseDetails.inspectionFormData!.address2!.isEmpty) {
-    return false;
-  }
+  i++;
+
   if (caseDetails.inspectionFormData?.state == null ||
       caseDetails.inspectionFormData!.state!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.city == null ||
       caseDetails.inspectionFormData!.city!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.locality == null ||
       caseDetails.inspectionFormData!.locality!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.pin == null ||
       caseDetails.inspectionFormData!.pin!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.personMet == null ||
       caseDetails.inspectionFormData!.personMet!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
-  if (caseDetails.inspectionFormData?.propertyLocatedIn == null ||
-      caseDetails.inspectionFormData!.propertyLocatedIn!.isEmpty) {
+  i++;
+  if (caseDetails.inspectionFormData?.propertyLocatedIn != null ||
+      caseDetails.inspectionFormData!.propertyLocatedIn!.isNotEmpty) {
     if (caseDetails.inspectionFormData?.propertyLocatedIn == "7") {
       if (caseDetails.inspectionFormData?.otherPropertyLocatedIn == null ||
           caseDetails.inspectionFormData!.otherPropertyLocatedIn!.isEmpty) {
+        print('INDEX $i');
         return false;
       }
     }
   } else {
+    print('INDEX ELSE1 $i');
     return false;
   }
-
+  i++;
   if (caseDetails.inspectionFormData?.relationWithOwner == null ||
       caseDetails.inspectionFormData!.relationWithOwner!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.roadWidth == null ||
       caseDetails.inspectionFormData!.roadWidth!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.landMark == null ||
       caseDetails.inspectionFormData!.landMark!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.classificationOfLocality == null ||
       caseDetails.inspectionFormData!.classificationOfLocality!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.namePlateFixed == null ||
       caseDetails.inspectionFormData!.namePlateFixed!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.propertyDemarcated == null ||
       caseDetails.inspectionFormData!.propertyDemarcated!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.propertyIdentified == null ||
       caseDetails.inspectionFormData!.propertyIdentified!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.cityCenter == null ||
       caseDetails.inspectionFormData!.cityCenter!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.railwayStation == null ||
       caseDetails.inspectionFormData!.railwayStation!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.busStop == null ||
       caseDetails.inspectionFormData!.busStop!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.hospital == null ||
       caseDetails.inspectionFormData!.hospital!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
-  if (caseDetails.inspectionFormData?.permittedUseOfProperty == null ||
-      caseDetails.inspectionFormData!.permittedUseOfProperty!.isEmpty) {
+  i++;
+  if (caseDetails.inspectionFormData?.permittedUseOfProperty != null ||
+      caseDetails.inspectionFormData!.permittedUseOfProperty!.isNotEmpty) {
     if (caseDetails.inspectionFormData?.permittedUseOfProperty == "12") {
       if (caseDetails.inspectionFormData?.otherPermittedUseOfProperty == null ||
           caseDetails
               .inspectionFormData!.otherPermittedUseOfProperty!.isEmpty) {
         return false;
+        print('INDEX $i');
       }
     }
   } else {
+    print('INDEX ELSE2 $i');
     return false;
   }
-
+  i++;
   if (caseDetails.inspectionFormData?.propertyType == null ||
       caseDetails.inspectionFormData!.propertyType!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.north == null ||
       caseDetails.inspectionFormData!.north!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.east == null ||
       caseDetails.inspectionFormData!.east!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.south == null ||
       caseDetails.inspectionFormData!.south!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.west == null ||
       caseDetails.inspectionFormData!.west!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.noOfFloors == null ||
       caseDetails.inspectionFormData!.noOfFloors!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.noOfLifts == null ||
       caseDetails.inspectionFormData!.noOfLifts!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.floorLocation == null ||
       caseDetails.inspectionFormData!.floorLocation!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
-
-  if (caseDetails.inspectionFormData?.structureType == null ||
-      caseDetails.inspectionFormData!.structureType!.isEmpty) {
+  i++;
+  if (caseDetails.inspectionFormData?.structureType != null ||
+      caseDetails.inspectionFormData!.structureType!.isNotEmpty) {
     if (caseDetails.inspectionFormData!.structureType == "7") {
       if (caseDetails.inspectionFormData?.otherStructureType == null ||
           caseDetails.inspectionFormData!.otherStructureType!.isEmpty) {
+        print('INDEX $i');
         return false;
       }
     }
   } else {
+    print('INDEX EL3 $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.ageBuilding == null ||
       caseDetails.inspectionFormData!.ageBuilding!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
-
-  if (caseDetails.inspectionFormData?.constructionStatus == null ||
-      caseDetails.inspectionFormData!.constructionStatus!.isEmpty) {
+  i++;
+  if (caseDetails.inspectionFormData?.constructionStatus != null ||
+      caseDetails.inspectionFormData!.constructionStatus!.isNotEmpty) {
     if (caseDetails.inspectionFormData?.constructionStatus == "4") {
       if (caseDetails.inspectionFormData?.otherConstructionStatus == null ||
           caseDetails.inspectionFormData!.otherConstructionStatus!.isEmpty) {
+        print('INDEX $i');
         return false;
       }
     }
   } else {
+    print('INDEX EL4 $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.completionState == null ||
       caseDetails.inspectionFormData!.completionState!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
-  if (caseDetails.inspectionFormData?.roof == null ||
-      caseDetails.inspectionFormData!.roof!.isEmpty) {
+  i++;
+  if (caseDetails.inspectionFormData?.roof != null ||
+      caseDetails.inspectionFormData!.roof!.isNotEmpty) {
     if (caseDetails.inspectionFormData?.roof == "7") {
       if (caseDetails.inspectionFormData?.otherRoof == null ||
           caseDetails.inspectionFormData!.otherRoof!.isEmpty) {
+        print('INDEX $i');
         return false;
       }
     }
   } else {
+    print('INDEX EL5 $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.unitsPerFloor == null ||
       caseDetails.inspectionFormData!.unitsPerFloor!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.wallPlasterPainting == null ||
       caseDetails.inspectionFormData!.wallPlasterPainting!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.doorsWindows == null ||
       caseDetails.inspectionFormData!.doorsWindows!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.flooringType == null ||
       caseDetails.inspectionFormData!.flooringType!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.interiorConstructionQuality == null ||
       caseDetails.inspectionFormData!.interiorConstructionQuality!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
+  i++;
   if (caseDetails.inspectionFormData?.exteriorConstructionQuality == null ||
       caseDetails.inspectionFormData!.exteriorConstructionQuality!.isEmpty) {
+    print('INDEX $i');
     return false;
   }
 

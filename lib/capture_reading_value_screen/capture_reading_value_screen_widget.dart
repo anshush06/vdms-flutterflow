@@ -670,7 +670,8 @@ class _CaptureReadingValueScreenWidgetState
                                     FFAppState().travelStatus,
                                     FFAppState().userId,
                                   );
-                                  if (_model.uploadReadingImageResponse!) {
+                                  if (_model.uploadReadingImageResponse ==
+                                      'Success') {
                                     FFAppState().travelStatus =
                                         FFAppState().travelStatus ==
                                                 'End your previous day'
@@ -697,11 +698,10 @@ class _CaptureReadingValueScreenWidgetState
 
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text(
+                                        content: const Text(
                                           'Reading Captured Successfully',
                                           style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                            color: Colors.white,
                                           ),
                                         ),
                                         duration: const Duration(milliseconds: 4000),
@@ -714,10 +714,9 @@ class _CaptureReadingValueScreenWidgetState
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Not Success',
-                                          style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                          _model.uploadReadingImageResponse!,
+                                          style: const TextStyle(
+                                            color: Colors.white,
                                           ),
                                         ),
                                         duration: const Duration(milliseconds: 4000),

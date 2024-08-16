@@ -21,7 +21,7 @@ String base64ConvertedString(String str) {
   return base64.encode(utf8.encode(str));
 }
 
-Future<bool> convertCompressAndUpload(
+Future<String> convertCompressAndUpload(
     String fileName, // Directly receive the file name
     List<int> byteArray, // Directly receive the byte array
     String outputFileName,
@@ -48,7 +48,7 @@ Future<bool> convertCompressAndUpload(
 
     if (image == null) {
       print('Failed to decode image');
-      return false;
+      return 'Failed to decode image';
     }
 
     // Compress the image (example: encode as JPEG with quality = 70)
@@ -110,23 +110,23 @@ Future<bool> convertCompressAndUpload(
     print('API PARAMS: $params');
     print('API HEADERS: ${request.headers.toString()}');
     print('API RESPONSE: $responseData');
-
+    var decodedData = jsonDecode(responseData.toString());
     if (response.statusCode == 200) {
-      var decodedData = jsonDecode(responseData.toString());
       print('Response: $decodedData');
       if (decodedData['error'] != null && decodedData['error'].isNotEmpty) {
         print('Error Message: ${decodedData['error']['message']}');
-        return false; // Indicate that there was an error
+        return '${decodedData['error']['message']}'; // Indicate that there was an error
       }
-      return true;
+      return 'Success';
     } else {
       print(response.statusCode.toString());
-      return false;
+      return '${decodedData['error']['message']}';
+      ;
     }
   } catch (e, stackTrace) {
     print('Failed to process and upload image: $e');
     print(stackTrace);
-    return false;
+    return '$e';
   }
 }
 

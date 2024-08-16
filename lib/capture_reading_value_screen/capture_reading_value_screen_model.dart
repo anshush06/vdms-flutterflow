@@ -24,7 +24,7 @@ class CaptureReadingValueScreenModel
   }
 
   // Stores action output result for [Custom Action - convertCompressAndUpload] action in Button widget.
-  bool? uploadReadingImageResponse;
+  String? uploadReadingImageResponse;
 
   @override
   void initState(BuildContext context) {
