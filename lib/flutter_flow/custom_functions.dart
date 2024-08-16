@@ -94,6 +94,8 @@ int getFilledFieldsCount(InspectionFormDataStruct? inspectionFormData) {
   if (inspectionFormData.reasonPortionNotSeen?.isNotEmpty ?? false) count++;
   if (inspectionFormData.anyOtherInformation != null &&
       inspectionFormData.anyOtherInformation!.isNotEmpty) count++;
+  if (inspectionFormData.floorwiseDetails != null &&
+      inspectionFormData.floorwiseDetails!.isNotEmpty) count++;
 
   return count;
 }
@@ -873,20 +875,66 @@ List<FloorWiseDetailsStruct> convertFloorDetailsToDataType(
   String occupied1,
   String accomodation1,
   String? actualArea1,
+  String? floor2,
+  String? floor3,
+  String? floor4,
+  String? floor5,
+  String? usage2,
+  String? usage3,
+  String? usage4,
+  String? usage5,
+  String? occupied2,
+  String? occupied3,
+  String? occupied4,
+  String? occupied5,
+  String? accomodation2,
+  String? accomodation3,
+  String? accomodation4,
+  String? accomodation5,
+  String? actualArea2,
+  String? actualArea3,
+  String? actualArea4,
+  String? actualArea5,
+  int floorCount,
 ) {
+  // Initialize an empty list to store the FloorWiseDetailsStruct objects
   List<FloorWiseDetailsStruct> floorDetailsList = [];
 
-  // Create a FloorWiseDetailsStruct object with the provided arguments
-  FloorWiseDetailsStruct floorDetails = FloorWiseDetailsStruct(
-    floor: floor1,
-    usage: usage1,
-    occupied: occupied1,
-    accomodation: accomodation1,
-    actualAreaMeasured: actualArea1,
-  );
+  // Helper function to add a floor detail if the floor is not empty
+  void addFloorDetailIfNotEmpty(String? floor, String? usage, String? occupied,
+      String? accomodation, String? actualArea) {
+    if (floor != null && floor.trim().isNotEmpty) {
+      floorDetailsList.add(FloorWiseDetailsStruct(
+        floor: floor.trim(),
+        usage: usage?.trim(),
+        occupied: occupied?.trim(),
+        accomodation: accomodation?.trim(),
+        actualAreaMeasured: actualArea?.trim(),
+      ));
+    }
+  }
 
-  // Add the object to the list
-  floorDetailsList.add(floorDetails);
+  // Add each floor's details based on the floor count
+  if (floorCount >= 1) {
+    addFloorDetailIfNotEmpty(
+        floor1, usage1, occupied1, accomodation1, actualArea1);
+  }
+  if (floorCount >= 2) {
+    addFloorDetailIfNotEmpty(
+        floor2, usage2, occupied2, accomodation2, actualArea2);
+  }
+  if (floorCount >= 3) {
+    addFloorDetailIfNotEmpty(
+        floor3, usage3, occupied3, accomodation3, actualArea3);
+  }
+  if (floorCount >= 4) {
+    addFloorDetailIfNotEmpty(
+        floor4, usage4, occupied4, accomodation4, actualArea4);
+  }
+  if (floorCount >= 5) {
+    addFloorDetailIfNotEmpty(
+        floor5, usage5, occupied5, accomodation5, actualArea5);
+  }
 
   // Return the list of FloorWiseDetailsStruct objects
   return floorDetailsList;

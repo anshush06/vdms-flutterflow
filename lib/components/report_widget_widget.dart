@@ -49,6 +49,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
           ? 1
           : widget
               .reportDetails?.inspectionFormData.anyOtherInformation.length;
+      _model.additionalFloorNumber = widget.reportDetails?.inspectionFormData
+                  .floorwiseDetails.isEmpty
+          ? 1
+          : widget.reportDetails!.inspectionFormData.floorwiseDetails.length;
       setState(() {});
     });
 
@@ -180,45 +184,225 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
 
     _model.expandableExpandableController5 =
         ExpandableController(initialExpanded: false);
-    _model.nameOfFloorTextController ??= TextEditingController(
+    _model.nameOfFloor1TextController ??= TextEditingController(
         text:
             widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
                 ? widget.reportDetails?.inspectionFormData.floorwiseDetails
                     .first.floor
                 : '');
-    _model.nameOfFloorFocusNode ??= FocusNode();
+    _model.nameOfFloor1FocusNode ??= FocusNode();
 
-    _model.occupiedByTextController ??= TextEditingController(
+    _model.occupiedBy1TextController ??= TextEditingController(
         text:
             widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
                 ? widget.reportDetails?.inspectionFormData.floorwiseDetails
                     .first.occupied
                 : '');
-    _model.occupiedByFocusNode ??= FocusNode();
+    _model.occupiedBy1FocusNode ??= FocusNode();
 
-    _model.usageTextController ??= TextEditingController(
+    _model.usage1TextController ??= TextEditingController(
         text:
             widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
                 ? widget.reportDetails?.inspectionFormData.floorwiseDetails
                     .first.usage
                 : '');
-    _model.usageFocusNode ??= FocusNode();
+    _model.usage1FocusNode ??= FocusNode();
 
-    _model.accommodationTextController ??= TextEditingController(
+    _model.accommodation1TextController ??= TextEditingController(
         text:
             widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
                 ? widget.reportDetails?.inspectionFormData.floorwiseDetails
                     .first.accomodation
                 : '');
-    _model.accommodationFocusNode ??= FocusNode();
+    _model.accommodation1FocusNode ??= FocusNode();
 
-    _model.actualAreaMeasuredTextController ??= TextEditingController(
+    _model.actualAreaMeasured1TextController ??= TextEditingController(
         text:
             widget.reportDetails!.inspectionFormData.floorwiseDetails.isNotEmpty
                 ? widget.reportDetails?.inspectionFormData.floorwiseDetails
                     .first.actualAreaMeasured
                 : '');
-    _model.actualAreaMeasuredFocusNode ??= FocusNode();
+    _model.actualAreaMeasured1FocusNode ??= FocusNode();
+
+    _model.nameOfFloor2TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                2
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.floor
+            : '');
+    _model.nameOfFloor2FocusNode ??= FocusNode();
+
+    _model.occupiedBy2TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                2
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.occupied
+            : '');
+    _model.occupiedBy2FocusNode ??= FocusNode();
+
+    _model.usage2TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                2
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.usage
+            : '');
+    _model.usage2FocusNode ??= FocusNode();
+
+    _model.accommodation2TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                2
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.accomodation
+            : '');
+    _model.accommodation2FocusNode ??= FocusNode();
+
+    _model.actualAreaMeasured2TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                2
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.actualAreaMeasured
+            : '');
+    _model.actualAreaMeasured2FocusNode ??= FocusNode();
+
+    _model.nameOfFloor3TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                3
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.floor
+            : '');
+    _model.nameOfFloor3FocusNode ??= FocusNode();
+
+    _model.occupiedBy3TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                3
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.occupied
+            : '');
+    _model.occupiedBy3FocusNode ??= FocusNode();
+
+    _model.usage3TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                3
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.usage
+            : '');
+    _model.usage3FocusNode ??= FocusNode();
+
+    _model.accommodation3TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                3
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.accomodation
+            : '');
+    _model.accommodation3FocusNode ??= FocusNode();
+
+    _model.actualAreaMeasured3TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                3
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.actualAreaMeasured
+            : '');
+    _model.actualAreaMeasured3FocusNode ??= FocusNode();
+
+    _model.nameOfFloor4TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                4
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.floor
+            : '');
+    _model.nameOfFloor4FocusNode ??= FocusNode();
+
+    _model.occupiedBy4TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                4
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.occupied
+            : '');
+    _model.occupiedBy4FocusNode ??= FocusNode();
+
+    _model.usage4TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                4
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.usage
+            : '');
+    _model.usage4FocusNode ??= FocusNode();
+
+    _model.accommodation4TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                4
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.accomodation
+            : '');
+    _model.accommodation4FocusNode ??= FocusNode();
+
+    _model.actualAreaMeasured4TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                4
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.actualAreaMeasured
+            : '');
+    _model.actualAreaMeasured4FocusNode ??= FocusNode();
+
+    _model.nameOfFloor5TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                5
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.floor
+            : '');
+    _model.nameOfFloor5FocusNode ??= FocusNode();
+
+    _model.occupiedBy5TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                5
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.occupied
+            : '');
+    _model.occupiedBy5FocusNode ??= FocusNode();
+
+    _model.usage5TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                5
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.usage
+            : '');
+    _model.usage5FocusNode ??= FocusNode();
+
+    _model.accommodation5TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                5
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.accomodation
+            : '');
+    _model.accommodation5FocusNode ??= FocusNode();
+
+    _model.actualAreaMeasured5TextController ??= TextEditingController(
+        text: widget.reportDetails!.inspectionFormData.floorwiseDetails
+                    .length >=
+                5
+            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.actualAreaMeasured
+            : '');
+    _model.actualAreaMeasured5FocusNode ??= FocusNode();
 
     _model.expandableExpandableController6 =
         ExpandableController(initialExpanded: false);
@@ -487,8 +671,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -501,7 +685,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .alternate,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -514,7 +698,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -527,7 +711,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -596,8 +780,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -610,7 +794,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .alternate,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -623,7 +807,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -636,7 +820,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -705,8 +889,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -716,7 +900,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -729,7 +913,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -742,7 +926,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -810,8 +994,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -821,7 +1005,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -834,7 +1018,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -847,7 +1031,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -916,8 +1100,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -927,7 +1111,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -940,7 +1124,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -953,7 +1137,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1019,7 +1203,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Address1',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -1027,8 +1211,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1038,7 +1222,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1051,7 +1235,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1064,7 +1248,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1130,7 +1314,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Address2',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -1138,8 +1322,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1149,7 +1333,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1162,7 +1346,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1175,7 +1359,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1367,7 +1551,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Locality',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -1375,8 +1559,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1386,7 +1570,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1399,7 +1583,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1412,7 +1596,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1478,7 +1662,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Pincode',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -1486,8 +1670,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1497,7 +1681,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1510,7 +1694,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1523,7 +1707,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1590,16 +1774,20 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       'Person met and contact',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         letterSpacing: 0.0,
                                                       ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1609,7 +1797,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1622,7 +1810,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1635,7 +1823,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1702,7 +1890,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       'Relation with owner',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -1710,8 +1898,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1721,7 +1909,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1734,7 +1922,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1747,7 +1935,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1897,7 +2085,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         'Other Property Location*',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .labelMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
@@ -2106,7 +2294,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Landmark',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -2114,8 +2302,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2125,7 +2313,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2138,7 +2326,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2151,7 +2339,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2475,7 +2663,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Road width',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -2483,8 +2671,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2494,7 +2682,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2507,7 +2695,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2520,7 +2708,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2687,7 +2875,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       'distance_from_city',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -2695,8 +2883,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2706,7 +2894,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2719,7 +2907,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2732,7 +2920,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2799,7 +2987,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       'distance_from_station',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -2807,8 +2995,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2818,7 +3006,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2831,7 +3019,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2844,7 +3032,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2910,7 +3098,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'distance_from_bus',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -2918,8 +3106,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2929,7 +3117,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2942,7 +3130,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -2955,7 +3143,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3022,7 +3210,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       'distance from hospital',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -3030,8 +3218,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3041,7 +3229,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3054,7 +3242,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3067,7 +3255,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3150,7 +3338,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'North',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -3158,8 +3346,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3169,7 +3357,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3182,7 +3370,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3195,7 +3383,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3261,7 +3449,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'South',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -3269,8 +3457,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3280,7 +3468,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3293,7 +3481,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3306,7 +3494,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3371,7 +3559,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'East',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -3379,8 +3567,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3390,7 +3578,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3403,7 +3591,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3416,7 +3604,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3481,7 +3669,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'West',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -3489,8 +3677,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3500,7 +3688,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3513,7 +3701,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3526,7 +3714,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3914,7 +4102,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         'Other Permitted Property*',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .labelMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
@@ -4202,7 +4390,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         'Other Structure Type*',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .labelMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
@@ -4315,7 +4503,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Total floors',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -4323,8 +4511,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4334,7 +4522,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4347,7 +4535,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4360,7 +4548,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4426,7 +4614,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Total units\n',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -4434,8 +4622,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4445,7 +4633,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4458,7 +4646,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4471,7 +4659,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4537,7 +4725,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Floor Location\n',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -4545,8 +4733,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4556,7 +4744,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4569,7 +4757,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4582,7 +4770,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4648,7 +4836,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'No. of Lifts\n',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -4656,8 +4844,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4667,7 +4855,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4680,7 +4868,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4693,7 +4881,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4759,7 +4947,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Building Age',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -4767,8 +4955,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4778,7 +4966,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4791,7 +4979,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4804,7 +4992,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -4923,18 +5111,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.stretch,
                                                 children: [
-                                                  Text(
-                                                    'Name of Floor*',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
@@ -4942,9 +5120,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .nameOfFloorTextController,
+                                                          .nameOfFloor1TextController,
                                                       focusNode: _model
-                                                          .nameOfFloorFocusNode,
+                                                          .nameOfFloor1FocusNode,
                                                       autofocus: true,
                                                       readOnly: (widget
                                                                   .reportDetails
@@ -4974,7 +5152,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -4986,8 +5164,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5000,7 +5178,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5014,7 +5192,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5028,7 +5206,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5053,19 +5231,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                     .normal,
                                                           ),
                                                       validator: _model
-                                                          .nameOfFloorTextControllerValidator
+                                                          .nameOfFloor1TextControllerValidator
                                                           .asValidator(context),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    'Occupied By*',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
                                                   ),
                                                   Padding(
                                                     padding:
@@ -5074,9 +5242,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .occupiedByTextController,
+                                                          .occupiedBy1TextController,
                                                       focusNode: _model
-                                                          .occupiedByFocusNode,
+                                                          .occupiedBy1FocusNode,
                                                       autofocus: true,
                                                       readOnly: (widget
                                                                   .reportDetails
@@ -5105,7 +5273,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -5117,8 +5285,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5131,7 +5299,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5145,7 +5313,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5159,7 +5327,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5184,19 +5352,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                     .normal,
                                                           ),
                                                       validator: _model
-                                                          .occupiedByTextControllerValidator
+                                                          .occupiedBy1TextControllerValidator
                                                           .asValidator(context),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    'Usage*',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
                                                   ),
                                                   Padding(
                                                     padding:
@@ -5205,9 +5363,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .usageTextController,
-                                                      focusNode:
-                                                          _model.usageFocusNode,
+                                                          .usage1TextController,
+                                                      focusNode: _model
+                                                          .usage1FocusNode,
                                                       autofocus: true,
                                                       readOnly: (widget
                                                                   .reportDetails
@@ -5236,7 +5394,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -5248,8 +5406,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5262,7 +5420,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5276,7 +5434,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5290,7 +5448,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5315,19 +5473,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                     .normal,
                                                           ),
                                                       validator: _model
-                                                          .usageTextControllerValidator
+                                                          .usage1TextControllerValidator
                                                           .asValidator(context),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    'Accommodation',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
                                                   ),
                                                   Padding(
                                                     padding:
@@ -5336,9 +5484,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .accommodationTextController,
+                                                          .accommodation1TextController,
                                                       focusNode: _model
-                                                          .accommodationFocusNode,
+                                                          .accommodation1FocusNode,
                                                       autofocus: true,
                                                       readOnly: (widget
                                                                   .reportDetails
@@ -5368,7 +5516,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -5380,8 +5528,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5394,7 +5542,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5408,7 +5556,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5422,7 +5570,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5447,19 +5595,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                     .normal,
                                                           ),
                                                       validator: _model
-                                                          .accommodationTextControllerValidator
+                                                          .accommodation1TextControllerValidator
                                                           .asValidator(context),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    'Actual Area Measured*',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
                                                   ),
                                                   Padding(
                                                     padding:
@@ -5468,9 +5606,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                 10.0, 0.0),
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .actualAreaMeasuredTextController,
+                                                          .actualAreaMeasured1TextController,
                                                       focusNode: _model
-                                                          .actualAreaMeasuredFocusNode,
+                                                          .actualAreaMeasured1FocusNode,
                                                       autofocus: true,
                                                       readOnly: (widget
                                                                   .reportDetails
@@ -5500,7 +5638,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -5512,8 +5650,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5526,7 +5664,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5540,7 +5678,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5554,7 +5692,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -5579,8 +5717,2868 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                     .normal,
                                                           ),
                                                       validator: _model
-                                                          .actualAreaMeasuredTextControllerValidator
+                                                          .actualAreaMeasured1TextControllerValidator
                                                           .asValidator(context),
+                                                    ),
+                                                  ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      2)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20.0,
+                                                                  5.0,
+                                                                  20.0,
+                                                                  5.0),
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        height: 3.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      2)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .nameOfFloor2TextController,
+                                                        focusNode: _model
+                                                            .nameOfFloor2FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Name of Floor',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .nameOfFloor2TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      2)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .occupiedBy2TextController,
+                                                        focusNode: _model
+                                                            .occupiedBy2FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Occupied By',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .occupiedBy2TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      2)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .usage2TextController,
+                                                        focusNode: _model
+                                                            .usage2FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText: 'Usage\n',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .usage2TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      2)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .accommodation2TextController,
+                                                        focusNode: _model
+                                                            .accommodation2FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Accommodation',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .accommodation2TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      2)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .actualAreaMeasured2TextController,
+                                                        focusNode: _model
+                                                            .actualAreaMeasured2FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Actual Area Measured',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .actualAreaMeasured2TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      3)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20.0,
+                                                                  5.0,
+                                                                  20.0,
+                                                                  5.0),
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        height: 3.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      3)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .nameOfFloor3TextController,
+                                                        focusNode: _model
+                                                            .nameOfFloor3FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Name of Floor',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .nameOfFloor3TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      3)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .occupiedBy3TextController,
+                                                        focusNode: _model
+                                                            .occupiedBy3FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Occupied By',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .occupiedBy3TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      3)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .usage3TextController,
+                                                        focusNode: _model
+                                                            .usage3FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText: 'Usage\n',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .usage3TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      3)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .accommodation3TextController,
+                                                        focusNode: _model
+                                                            .accommodation3FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Accommodation',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .accommodation3TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      3)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .actualAreaMeasured3TextController,
+                                                        focusNode: _model
+                                                            .actualAreaMeasured3FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Actual Area Measured',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .actualAreaMeasured3TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      4)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20.0,
+                                                                  5.0,
+                                                                  20.0,
+                                                                  5.0),
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        height: 3.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      4)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .nameOfFloor4TextController,
+                                                        focusNode: _model
+                                                            .nameOfFloor4FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Name of Floor\n',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .nameOfFloor4TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      4)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .occupiedBy4TextController,
+                                                        focusNode: _model
+                                                            .occupiedBy4FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Occupied By',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .occupiedBy4TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      4)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .usage4TextController,
+                                                        focusNode: _model
+                                                            .usage4FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText: 'Usage\n',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .usage4TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      4)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .accommodation4TextController,
+                                                        focusNode: _model
+                                                            .accommodation4FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Accommodation',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .accommodation4TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      4)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .actualAreaMeasured4TextController,
+                                                        focusNode: _model
+                                                            .actualAreaMeasured4FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Actual Area Measured',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .actualAreaMeasured4TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      5)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20.0,
+                                                                  5.0,
+                                                                  20.0,
+                                                                  5.0),
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        height: 3.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      5)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .nameOfFloor5TextController,
+                                                        focusNode: _model
+                                                            .nameOfFloor5FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Name of Floor\n',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .nameOfFloor5TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      5)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .occupiedBy5TextController,
+                                                        focusNode: _model
+                                                            .occupiedBy5FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Occupied By',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .occupiedBy5TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      5)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .usage5TextController,
+                                                        focusNode: _model
+                                                            .usage5FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText: 'Usage\n',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .usage5TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      5)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .accommodation5TextController,
+                                                        focusNode: _model
+                                                            .accommodation5FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Accommodation',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .accommodation5TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  if (_model
+                                                          .additionalFloorNumber >=
+                                                      5)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .actualAreaMeasured5TextController,
+                                                        focusNode: _model
+                                                            .actualAreaMeasured5FocusNode,
+                                                        autofocus: true,
+                                                        readOnly: (widget
+                                                                    .reportDetails
+                                                                    ?.statusId ==
+                                                                '2') ||
+                                                            (widget.reportDetails
+                                                                    ?.statusId ==
+                                                                '3'),
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                  ),
+                                                          hintText:
+                                                              'Actual Area Measured',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF1F4F8),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFF5F5F5),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                        validator: _model
+                                                            .actualAreaMeasured5TextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                      ),
+                                                    ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                10.0, 0.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceAround,
+                                                      children: [
+                                                        Expanded(
+                                                          child: FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
+                                                              if (_model
+                                                                      .additionalFloorNumber <
+                                                                  5) {
+                                                                _model.additionalFloorNumber =
+                                                                    _model.additionalFloorNumber +
+                                                                        1;
+                                                                setState(() {});
+                                                              } else {
+                                                                ScaffoldMessenger.of(
+                                                                        context)
+                                                                    .showSnackBar(
+                                                                  const SnackBar(
+                                                                    content:
+                                                                        Text(
+                                                                      'Only 5 Floor Details Allowed.',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                      ),
+                                                                    ),
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            2000),
+                                                                    backgroundColor:
+                                                                        Color(
+                                                                            0xFFEF393C),
+                                                                  ),
+                                                                );
+                                                              }
+                                                            },
+                                                            text: 'ADD MORE',
+                                                            options:
+                                                                FFButtonOptions(
+                                                              height: 40.0,
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                              iconPadding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              color: const Color(
+                                                                  0xFF0F61AB),
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Roboto',
+                                                                        color: Colors
+                                                                            .white,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                              elevation: 3.0,
+                                                              borderSide:
+                                                                  const BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          child: FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
+                                                              if (_model
+                                                                      .additionalFloorNumber >=
+                                                                  2) {
+                                                                _model.additionalFloorNumber =
+                                                                    _model.additionalFloorNumber +
+                                                                        -1;
+                                                                setState(() {});
+                                                              }
+                                                            },
+                                                            text: 'REMOVE',
+                                                            options:
+                                                                FFButtonOptions(
+                                                              height: 40.0,
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                              iconPadding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              color: const Color(
+                                                                  0xFFEF393C),
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Roboto',
+                                                                        color: Colors
+                                                                            .white,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                              elevation: 3.0,
+                                                              borderSide:
+                                                                  const BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ].divide(const SizedBox(
+                                                          width: 15.0)),
                                                     ),
                                                   ),
                                                 ].divide(const SizedBox(height: 5.0)),
@@ -5794,7 +8792,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         'Other Construction Status*',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .labelMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
@@ -5803,8 +8801,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0x00000000),
-                                                        width: 2.0,
+                                                            Color(0xFFF1F4F8),
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -5815,7 +8813,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       borderSide: const BorderSide(
                                                         color:
                                                             Color(0xFFF5F5F5),
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -5828,7 +8826,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -5841,7 +8839,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -5907,7 +8905,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Completion Status',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -6100,7 +9098,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     hintText: 'Other Roof*',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .labelMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
@@ -6109,7 +9107,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0x00000000),
+                                                            Color(0xFFF1F4F8),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -6858,7 +9856,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -6870,8 +9868,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -6884,7 +9882,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -6898,7 +9896,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -6912,7 +9910,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7075,7 +10073,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -7087,8 +10085,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7101,7 +10099,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7115,7 +10113,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7129,7 +10127,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7302,7 +10300,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -7314,8 +10312,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7328,7 +10326,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7342,7 +10340,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7356,7 +10354,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7539,7 +10537,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Length in Sq. ft.',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -7547,8 +10545,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -7558,7 +10556,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -7571,7 +10569,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -7584,7 +10582,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -7650,7 +10648,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Width in Sq. ft.',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -7658,8 +10656,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -7669,7 +10667,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -7682,7 +10680,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -7695,7 +10693,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -7773,7 +10771,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -7785,8 +10783,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7799,7 +10797,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7813,7 +10811,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -7827,7 +10825,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8000,7 +10998,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -8012,8 +11010,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8026,7 +11024,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8040,7 +11038,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8054,7 +11052,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8227,7 +11225,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -8239,8 +11237,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8253,7 +11251,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8267,7 +11265,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8281,7 +11279,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8454,7 +11452,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -8466,8 +11464,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0x00000000),
-                                                            width: 2.0,
+                                                                0xFFF1F4F8),
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8480,7 +11478,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                               const BorderSide(
                                                             color: Color(
                                                                 0xFFF5F5F5),
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8494,7 +11492,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8508,7 +11506,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            width: 2.0,
+                                                            width: 1.0,
                                                           ),
                                                           borderRadius:
                                                               BorderRadius
@@ -8668,7 +11666,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Dealer Name',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -8676,8 +11674,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -8687,7 +11685,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -8700,7 +11698,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -8713,7 +11711,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -8779,7 +11777,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Dealer Mobile',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -8787,8 +11785,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -8798,7 +11796,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -8811,7 +11809,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -8824,7 +11822,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -8979,7 +11977,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   hintText: 'Remark No.1',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -8987,8 +11985,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -8998,7 +11996,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -9011,7 +12009,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -9024,7 +12022,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -9081,7 +12079,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       'Additional Remark 1',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .labelMedium
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
@@ -9089,8 +12087,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2.0,
+                                                      color: Color(0xFFF1F4F8),
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -9100,7 +12098,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
                                                       color: Color(0xFFF5F5F5),
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -9113,7 +12111,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -9126,7 +12124,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .error,
-                                                      width: 2.0,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -9187,7 +12185,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         'Additional Remark 2',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .labelMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
@@ -9196,8 +12194,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0x00000000),
-                                                        width: 2.0,
+                                                            Color(0xFFF1F4F8),
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9208,7 +12206,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       borderSide: const BorderSide(
                                                         color:
                                                             Color(0xFFF5F5F5),
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9221,7 +12219,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9234,7 +12232,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9295,7 +12293,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         'Additional Remark 3',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .labelMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
@@ -9304,8 +12302,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0x00000000),
-                                                        width: 2.0,
+                                                            Color(0xFFF1F4F8),
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9316,7 +12314,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       borderSide: const BorderSide(
                                                         color:
                                                             Color(0xFFF5F5F5),
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9329,7 +12327,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9342,7 +12340,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9403,7 +12401,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         'Additional Remark 4',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .labelMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
@@ -9412,8 +12410,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0x00000000),
-                                                        width: 2.0,
+                                                            Color(0xFFF1F4F8),
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9424,7 +12422,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       borderSide: const BorderSide(
                                                         color:
                                                             Color(0xFFF5F5F5),
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9437,7 +12435,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9450,7 +12448,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9511,7 +12509,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         'Additional Remark 5',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .labelMedium
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
@@ -9520,8 +12518,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0x00000000),
-                                                        width: 2.0,
+                                                            Color(0xFFF1F4F8),
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9532,7 +12530,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       borderSide: const BorderSide(
                                                         color:
                                                             Color(0xFFF5F5F5),
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9545,7 +12543,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9558,7 +12556,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 2.0,
+                                                        width: 1.0,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -9584,141 +12582,150 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       .asValidator(context),
                                                 ),
                                               ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              children: [
-                                                Expanded(
-                                                  child: FFButtonWidget(
-                                                    onPressed: () async {
-                                                      if (_model
-                                                              .additionalRemarkNumber! <
-                                                          5) {
-                                                        _model.additionalRemarkNumber =
-                                                            _model.additionalRemarkNumber! +
-                                                                1;
-                                                        setState(() {});
-                                                      } else {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Only 5 Additional Remarks Allowed.',
-                                                              style: TextStyle(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  Expanded(
+                                                    child: FFButtonWidget(
+                                                      onPressed: () async {
+                                                        if (_model
+                                                                .additionalRemarkNumber! <
+                                                            5) {
+                                                          _model.additionalRemarkNumber =
+                                                              _model.additionalRemarkNumber! +
+                                                                  1;
+                                                          setState(() {});
+                                                        } else {
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                'Only 5 Additional Remarks Allowed.',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
                                                               ),
+                                                              duration: const Duration(
+                                                                  milliseconds:
+                                                                      2000),
+                                                              backgroundColor:
+                                                                  const Color(
+                                                                      0xFFEF393C),
                                                             ),
-                                                            duration: const Duration(
-                                                                milliseconds:
-                                                                    2000),
-                                                            backgroundColor:
-                                                                const Color(
-                                                                    0xFFEF393C),
-                                                          ),
-                                                        );
-                                                      }
-                                                    },
-                                                    text: 'ADD MORE',
-                                                    options: FFButtonOptions(
-                                                      height: 40.0,
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  24.0,
-                                                                  0.0,
-                                                                  24.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color: const Color(0xFF0F61AB),
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: Colors
-                                                                    .white,
-                                                                letterSpacing:
+                                                          );
+                                                        }
+                                                      },
+                                                      text: 'ADD MORE',
+                                                      options: FFButtonOptions(
+                                                        height: 40.0,
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    24.0,
                                                                     0.0,
-                                                              ),
-                                                      elevation: 3.0,
-                                                      borderSide: const BorderSide(
+                                                                    24.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
                                                         color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
+                                                            const Color(0xFF0F61AB),
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Colors
+                                                                      .white,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        elevation: 3.0,
+                                                        borderSide: const BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10.0),
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
                                                     ),
                                                   ),
-                                                ),
-                                                Expanded(
-                                                  child: FFButtonWidget(
-                                                    onPressed: () async {
-                                                      if (_model
-                                                              .additionalRemarkNumber! >=
-                                                          2) {
-                                                        _model.additionalRemarkNumber =
-                                                            _model.additionalRemarkNumber! +
-                                                                -1;
-                                                        setState(() {});
-                                                      }
-                                                    },
-                                                    text: 'REMOVE',
-                                                    options: FFButtonOptions(
-                                                      height: 40.0,
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  24.0,
-                                                                  0.0,
-                                                                  24.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color: const Color(0xFFEF393C),
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: Colors
-                                                                    .white,
-                                                                letterSpacing:
+                                                  Expanded(
+                                                    child: FFButtonWidget(
+                                                      onPressed: () async {
+                                                        if (_model
+                                                                .additionalRemarkNumber! >=
+                                                            2) {
+                                                          _model.additionalRemarkNumber =
+                                                              _model.additionalRemarkNumber! +
+                                                                  -1;
+                                                          setState(() {});
+                                                        }
+                                                      },
+                                                      text: 'REMOVE',
+                                                      options: FFButtonOptions(
+                                                        height: 40.0,
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    24.0,
                                                                     0.0,
-                                                              ),
-                                                      elevation: 3.0,
-                                                      borderSide: const BorderSide(
+                                                                    24.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
                                                         color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
+                                                            const Color(0xFFEF393C),
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Colors
+                                                                      .white,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        elevation: 3.0,
+                                                        borderSide: const BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10.0),
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
                                                     ),
                                                   ),
-                                                ),
-                                              ].divide(const SizedBox(width: 15.0)),
+                                                ].divide(const SizedBox(width: 15.0)),
+                                              ),
                                             ),
                                           ].divide(const SizedBox(height: 5.0)),
                                         ),
@@ -10045,20 +13052,82 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 ..floorwiseDetails = functions
                                                     .convertFloorDetailsToDataType(
                                                         _model
-                                                            .nameOfFloorTextController
+                                                            .nameOfFloor1TextController
                                                             .text,
                                                         _model
-                                                            .usageTextController
+                                                            .usage1TextController
                                                             .text,
                                                         _model
-                                                            .occupiedByTextController
+                                                            .occupiedBy1TextController
                                                             .text,
                                                         _model
-                                                            .accommodationTextController
+                                                            .accommodation1TextController
                                                             .text,
                                                         _model
-                                                            .actualAreaMeasuredTextController
-                                                            .text)
+                                                            .actualAreaMeasured1TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor2TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor3TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor4TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor5TextController
+                                                            .text,
+                                                        _model
+                                                            .usage2TextController
+                                                            .text,
+                                                        _model
+                                                            .usage3TextController
+                                                            .text,
+                                                        _model
+                                                            .usage4TextController
+                                                            .text,
+                                                        _model
+                                                            .usage5TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy2TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy3TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy4TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy5TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation2TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation3TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation4TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation5TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured2TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured3TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured4TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured5TextController
+                                                            .text,
+                                                        _model
+                                                            .additionalFloorNumber)
                                                     .toList(),
                                             )
                                             ..statusId = '5'
@@ -10414,20 +13483,82 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 ..floorwiseDetails = functions
                                                     .convertFloorDetailsToDataType(
                                                         _model
-                                                            .nameOfFloorTextController
+                                                            .nameOfFloor1TextController
                                                             .text,
                                                         _model
-                                                            .usageTextController
+                                                            .usage1TextController
                                                             .text,
                                                         _model
-                                                            .occupiedByTextController
+                                                            .occupiedBy1TextController
                                                             .text,
                                                         _model
-                                                            .accommodationTextController
+                                                            .accommodation1TextController
                                                             .text,
                                                         _model
-                                                            .actualAreaMeasuredTextController
-                                                            .text)
+                                                            .actualAreaMeasured1TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor2TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor3TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor4TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor5TextController
+                                                            .text,
+                                                        _model
+                                                            .usage2TextController
+                                                            .text,
+                                                        _model
+                                                            .usage3TextController
+                                                            .text,
+                                                        _model
+                                                            .usage4TextController
+                                                            .text,
+                                                        _model
+                                                            .usage5TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy2TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy3TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy4TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy5TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation2TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation3TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation4TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation5TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured2TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured3TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured4TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured5TextController
+                                                            .text,
+                                                        _model
+                                                            .additionalFloorNumber)
                                                     .toList(),
                                             ),
                                         );

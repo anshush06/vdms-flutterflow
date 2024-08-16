@@ -18,6 +18,8 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
 
   int? additionalRemarkNumber = 1;
 
+  int additionalFloorNumber = 1;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
@@ -384,27 +386,116 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController5;
 
-  // State field(s) for name_of_floor widget.
-  FocusNode? nameOfFloorFocusNode;
-  TextEditingController? nameOfFloorTextController;
-  String? Function(BuildContext, String?)? nameOfFloorTextControllerValidator;
-  // State field(s) for occupied_by widget.
-  FocusNode? occupiedByFocusNode;
-  TextEditingController? occupiedByTextController;
-  String? Function(BuildContext, String?)? occupiedByTextControllerValidator;
-  // State field(s) for usage widget.
-  FocusNode? usageFocusNode;
-  TextEditingController? usageTextController;
-  String? Function(BuildContext, String?)? usageTextControllerValidator;
-  // State field(s) for accommodation widget.
-  FocusNode? accommodationFocusNode;
-  TextEditingController? accommodationTextController;
-  String? Function(BuildContext, String?)? accommodationTextControllerValidator;
-  // State field(s) for actual_area_measured widget.
-  FocusNode? actualAreaMeasuredFocusNode;
-  TextEditingController? actualAreaMeasuredTextController;
+  // State field(s) for name_of_floor1 widget.
+  FocusNode? nameOfFloor1FocusNode;
+  TextEditingController? nameOfFloor1TextController;
+  String? Function(BuildContext, String?)? nameOfFloor1TextControllerValidator;
+  // State field(s) for occupied_by1 widget.
+  FocusNode? occupiedBy1FocusNode;
+  TextEditingController? occupiedBy1TextController;
+  String? Function(BuildContext, String?)? occupiedBy1TextControllerValidator;
+  // State field(s) for usage1 widget.
+  FocusNode? usage1FocusNode;
+  TextEditingController? usage1TextController;
+  String? Function(BuildContext, String?)? usage1TextControllerValidator;
+  // State field(s) for accommodation1 widget.
+  FocusNode? accommodation1FocusNode;
+  TextEditingController? accommodation1TextController;
   String? Function(BuildContext, String?)?
-      actualAreaMeasuredTextControllerValidator;
+      accommodation1TextControllerValidator;
+  // State field(s) for actual_area_measured1 widget.
+  FocusNode? actualAreaMeasured1FocusNode;
+  TextEditingController? actualAreaMeasured1TextController;
+  String? Function(BuildContext, String?)?
+      actualAreaMeasured1TextControllerValidator;
+  // State field(s) for name_of_floor2 widget.
+  FocusNode? nameOfFloor2FocusNode;
+  TextEditingController? nameOfFloor2TextController;
+  String? Function(BuildContext, String?)? nameOfFloor2TextControllerValidator;
+  // State field(s) for occupied_by2 widget.
+  FocusNode? occupiedBy2FocusNode;
+  TextEditingController? occupiedBy2TextController;
+  String? Function(BuildContext, String?)? occupiedBy2TextControllerValidator;
+  // State field(s) for usage2 widget.
+  FocusNode? usage2FocusNode;
+  TextEditingController? usage2TextController;
+  String? Function(BuildContext, String?)? usage2TextControllerValidator;
+  // State field(s) for accommodation2 widget.
+  FocusNode? accommodation2FocusNode;
+  TextEditingController? accommodation2TextController;
+  String? Function(BuildContext, String?)?
+      accommodation2TextControllerValidator;
+  // State field(s) for actual_area_measured2 widget.
+  FocusNode? actualAreaMeasured2FocusNode;
+  TextEditingController? actualAreaMeasured2TextController;
+  String? Function(BuildContext, String?)?
+      actualAreaMeasured2TextControllerValidator;
+  // State field(s) for name_of_floor3 widget.
+  FocusNode? nameOfFloor3FocusNode;
+  TextEditingController? nameOfFloor3TextController;
+  String? Function(BuildContext, String?)? nameOfFloor3TextControllerValidator;
+  // State field(s) for occupied_by3 widget.
+  FocusNode? occupiedBy3FocusNode;
+  TextEditingController? occupiedBy3TextController;
+  String? Function(BuildContext, String?)? occupiedBy3TextControllerValidator;
+  // State field(s) for usage3 widget.
+  FocusNode? usage3FocusNode;
+  TextEditingController? usage3TextController;
+  String? Function(BuildContext, String?)? usage3TextControllerValidator;
+  // State field(s) for accommodation3 widget.
+  FocusNode? accommodation3FocusNode;
+  TextEditingController? accommodation3TextController;
+  String? Function(BuildContext, String?)?
+      accommodation3TextControllerValidator;
+  // State field(s) for actual_area_measured3 widget.
+  FocusNode? actualAreaMeasured3FocusNode;
+  TextEditingController? actualAreaMeasured3TextController;
+  String? Function(BuildContext, String?)?
+      actualAreaMeasured3TextControllerValidator;
+  // State field(s) for name_of_floor4 widget.
+  FocusNode? nameOfFloor4FocusNode;
+  TextEditingController? nameOfFloor4TextController;
+  String? Function(BuildContext, String?)? nameOfFloor4TextControllerValidator;
+  // State field(s) for occupied_by4 widget.
+  FocusNode? occupiedBy4FocusNode;
+  TextEditingController? occupiedBy4TextController;
+  String? Function(BuildContext, String?)? occupiedBy4TextControllerValidator;
+  // State field(s) for usage4 widget.
+  FocusNode? usage4FocusNode;
+  TextEditingController? usage4TextController;
+  String? Function(BuildContext, String?)? usage4TextControllerValidator;
+  // State field(s) for accommodation4 widget.
+  FocusNode? accommodation4FocusNode;
+  TextEditingController? accommodation4TextController;
+  String? Function(BuildContext, String?)?
+      accommodation4TextControllerValidator;
+  // State field(s) for actual_area_measured4 widget.
+  FocusNode? actualAreaMeasured4FocusNode;
+  TextEditingController? actualAreaMeasured4TextController;
+  String? Function(BuildContext, String?)?
+      actualAreaMeasured4TextControllerValidator;
+  // State field(s) for name_of_floor5 widget.
+  FocusNode? nameOfFloor5FocusNode;
+  TextEditingController? nameOfFloor5TextController;
+  String? Function(BuildContext, String?)? nameOfFloor5TextControllerValidator;
+  // State field(s) for occupied_by5 widget.
+  FocusNode? occupiedBy5FocusNode;
+  TextEditingController? occupiedBy5TextController;
+  String? Function(BuildContext, String?)? occupiedBy5TextControllerValidator;
+  // State field(s) for usage5 widget.
+  FocusNode? usage5FocusNode;
+  TextEditingController? usage5TextController;
+  String? Function(BuildContext, String?)? usage5TextControllerValidator;
+  // State field(s) for accommodation5 widget.
+  FocusNode? accommodation5FocusNode;
+  TextEditingController? accommodation5TextController;
+  String? Function(BuildContext, String?)?
+      accommodation5TextControllerValidator;
+  // State field(s) for actual_area_measured5 widget.
+  FocusNode? actualAreaMeasured5FocusNode;
+  TextEditingController? actualAreaMeasured5TextController;
+  String? Function(BuildContext, String?)?
+      actualAreaMeasured5TextControllerValidator;
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController6;
 
@@ -813,20 +904,80 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
     buildingAgeTextController?.dispose();
 
     expandableExpandableController5.dispose();
-    nameOfFloorFocusNode?.dispose();
-    nameOfFloorTextController?.dispose();
+    nameOfFloor1FocusNode?.dispose();
+    nameOfFloor1TextController?.dispose();
 
-    occupiedByFocusNode?.dispose();
-    occupiedByTextController?.dispose();
+    occupiedBy1FocusNode?.dispose();
+    occupiedBy1TextController?.dispose();
 
-    usageFocusNode?.dispose();
-    usageTextController?.dispose();
+    usage1FocusNode?.dispose();
+    usage1TextController?.dispose();
 
-    accommodationFocusNode?.dispose();
-    accommodationTextController?.dispose();
+    accommodation1FocusNode?.dispose();
+    accommodation1TextController?.dispose();
 
-    actualAreaMeasuredFocusNode?.dispose();
-    actualAreaMeasuredTextController?.dispose();
+    actualAreaMeasured1FocusNode?.dispose();
+    actualAreaMeasured1TextController?.dispose();
+
+    nameOfFloor2FocusNode?.dispose();
+    nameOfFloor2TextController?.dispose();
+
+    occupiedBy2FocusNode?.dispose();
+    occupiedBy2TextController?.dispose();
+
+    usage2FocusNode?.dispose();
+    usage2TextController?.dispose();
+
+    accommodation2FocusNode?.dispose();
+    accommodation2TextController?.dispose();
+
+    actualAreaMeasured2FocusNode?.dispose();
+    actualAreaMeasured2TextController?.dispose();
+
+    nameOfFloor3FocusNode?.dispose();
+    nameOfFloor3TextController?.dispose();
+
+    occupiedBy3FocusNode?.dispose();
+    occupiedBy3TextController?.dispose();
+
+    usage3FocusNode?.dispose();
+    usage3TextController?.dispose();
+
+    accommodation3FocusNode?.dispose();
+    accommodation3TextController?.dispose();
+
+    actualAreaMeasured3FocusNode?.dispose();
+    actualAreaMeasured3TextController?.dispose();
+
+    nameOfFloor4FocusNode?.dispose();
+    nameOfFloor4TextController?.dispose();
+
+    occupiedBy4FocusNode?.dispose();
+    occupiedBy4TextController?.dispose();
+
+    usage4FocusNode?.dispose();
+    usage4TextController?.dispose();
+
+    accommodation4FocusNode?.dispose();
+    accommodation4TextController?.dispose();
+
+    actualAreaMeasured4FocusNode?.dispose();
+    actualAreaMeasured4TextController?.dispose();
+
+    nameOfFloor5FocusNode?.dispose();
+    nameOfFloor5TextController?.dispose();
+
+    occupiedBy5FocusNode?.dispose();
+    occupiedBy5TextController?.dispose();
+
+    usage5FocusNode?.dispose();
+    usage5TextController?.dispose();
+
+    accommodation5FocusNode?.dispose();
+    accommodation5TextController?.dispose();
+
+    actualAreaMeasured5FocusNode?.dispose();
+    actualAreaMeasured5TextController?.dispose();
 
     expandableExpandableController6.dispose();
     otherConstructionStatusFocusNode?.dispose();
