@@ -947,10 +947,11 @@ List<dynamic> convertFloorDetailsToList(
     return [];
   }
 
-  // Create the list of maps for floor details
-  List<Map<String, String?>> floorDetailsMapList =
-      floorDetailsList.map((details) {
-    return {
+  // Create the list of maps for additional information
+  List<dynamic> list = [];
+
+  for (var details in floorDetailsList) {
+    Map<String, String> floorMap = {
       "floor": details.floor,
       "usage": details.usage,
       "occupied": details.occupied,
@@ -959,8 +960,9 @@ List<dynamic> convertFloorDetailsToList(
           ? details.actualAreaMeasured
           : '',
     };
-  }).toList();
+    list.add(floorMap);
+  }
 
   // Return the list of maps
-  return floorDetailsMapList;
+  return list;
 }
