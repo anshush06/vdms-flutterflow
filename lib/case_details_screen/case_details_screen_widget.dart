@@ -641,6 +641,7 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                           Color(0xFFFF8C25),
                                                     ),
                                                   );
+                                                  Navigator.pop(context);
                                                   if (Navigator.of(context)
                                                       .canPop()) {
                                                     context.pop();

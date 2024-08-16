@@ -9,7 +9,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'main_case_listing_screen_model.dart';
 export 'main_case_listing_screen_model.dart';
@@ -39,11 +38,6 @@ class _MainCaseListingScreenWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => MainCaseListingScreenModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      Navigator.pop(context);
-    });
 
     _model.tabBarController = TabController(
       vsync: this,
