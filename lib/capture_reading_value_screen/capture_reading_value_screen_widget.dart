@@ -530,29 +530,29 @@ class _CaptureReadingValueScreenWidgetState
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 2.0,
+                                      color: Color(0xFFF1F4F8),
+                                      width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
                                       color: Color(0xFFF5F5F5),
-                                      width: 2.0,
+                                      width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
+                                      width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
+                                      width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),

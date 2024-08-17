@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'capture_reading_screen_model.dart';
 export 'capture_reading_screen_model.dart';
@@ -12,10 +13,12 @@ class CaptureReadingScreenWidget extends StatefulWidget {
     super.key,
     required this.enableDrawer,
     required this.type,
+    this.clearImageData,
   });
 
   final String? enableDrawer;
   final String? type;
+  final bool? clearImageData;
 
   @override
   State<CaptureReadingScreenWidget> createState() =>
@@ -32,6 +35,17 @@ class _CaptureReadingScreenWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CaptureReadingScreenModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.clearImageData == true) {
+        setState(() {
+          _model.isDataUploading = false;
+          _model.uploadedLocalFile =
+              FFUploadedFile(bytes: Uint8List.fromList([]));
+        });
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

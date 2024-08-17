@@ -162,6 +162,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'type',
               ParamType.String,
             ),
+            clearImageData: params.getParam(
+              'clearImageData',
+              ParamType.bool,
+            ),
           ),
         ),
         FFRoute(

@@ -8424,10 +8424,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                       ),
                                                     ),
                                                   if ((widget.reportDetails
-                                                              ?.statusId ==
-                                                          '2') ||
+                                                              ?.statusId !=
+                                                          '2') &&
                                                       (widget.reportDetails
-                                                              ?.statusId ==
+                                                              ?.statusId !=
                                                           '3'))
                                                     Padding(
                                                       padding:
@@ -10027,7 +10027,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     elevation: 2.0,
                                                     borderColor:
                                                         const Color(0xFFF1F4F8),
-                                                    borderWidth: 2.0,
+                                                    borderWidth: 1.0,
                                                     borderRadius: 8.0,
                                                     margin:
                                                         const EdgeInsetsDirectional
@@ -10244,7 +10244,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     elevation: 2.0,
                                                     borderColor:
                                                         const Color(0xFFF1F4F8),
-                                                    borderWidth: 2.0,
+                                                    borderWidth: 1.0,
                                                     borderRadius: 8.0,
                                                     margin:
                                                         const EdgeInsetsDirectional
@@ -10471,7 +10471,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     elevation: 2.0,
                                                     borderColor:
                                                         const Color(0xFFF1F4F8),
-                                                    borderWidth: 2.0,
+                                                    borderWidth: 1.0,
                                                     borderRadius: 8.0,
                                                     margin:
                                                         const EdgeInsetsDirectional
@@ -10942,7 +10942,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     elevation: 2.0,
                                                     borderColor:
                                                         const Color(0xFFF1F4F8),
-                                                    borderWidth: 2.0,
+                                                    borderWidth: 1.0,
                                                     borderRadius: 8.0,
                                                     margin:
                                                         const EdgeInsetsDirectional
@@ -11169,7 +11169,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     elevation: 2.0,
                                                     borderColor:
                                                         const Color(0xFFF1F4F8),
-                                                    borderWidth: 2.0,
+                                                    borderWidth: 1.0,
                                                     borderRadius: 8.0,
                                                     margin:
                                                         const EdgeInsetsDirectional
@@ -11396,7 +11396,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     elevation: 2.0,
                                                     borderColor:
                                                         const Color(0xFFF1F4F8),
-                                                    borderWidth: 2.0,
+                                                    borderWidth: 1.0,
                                                     borderRadius: 8.0,
                                                     margin:
                                                         const EdgeInsetsDirectional
@@ -11623,7 +11623,7 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                     elevation: 2.0,
                                                     borderColor:
                                                         const Color(0xFFF1F4F8),
-                                                    borderWidth: 2.0,
+                                                    borderWidth: 1.0,
                                                     borderRadius: 8.0,
                                                     margin:
                                                         const EdgeInsetsDirectional
@@ -12601,10 +12601,10 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 ),
                                               ),
                                             if ((widget.reportDetails
-                                                        ?.statusId ==
-                                                    '2') ||
+                                                        ?.statusId !=
+                                                    '2') &&
                                                 (widget.reportDetails
-                                                        ?.statusId ==
+                                                        ?.statusId !=
                                                     '3'))
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
@@ -12640,21 +12640,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                                   ScaffoldMessenger.of(
                                                                           context)
                                                                       .showSnackBar(
-                                                                    SnackBar(
+                                                                    const SnackBar(
                                                                       content:
                                                                           Text(
                                                                         'Only 5 Additional Remarks Allowed.',
                                                                         style:
                                                                             TextStyle(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                              Colors.white,
                                                                         ),
                                                                       ),
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               2000),
                                                                       backgroundColor:
-                                                                          const Color(
+                                                                          Color(
                                                                               0xFFEF393C),
                                                                     ),
                                                                   );
