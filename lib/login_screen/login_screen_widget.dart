@@ -401,50 +401,75 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                                 .userId),
                                                   );
 
-                                                  context.goNamed(
-                                                    'main_case_listing_screen',
-                                                    queryParameters: {
-                                                      'notificationCount':
-                                                          serializeParam(
-                                                        GetNotificationCountAPIStruct
-                                                                .maybeFromMap((_model
-                                                                        .notificationCountAPIResponse
-                                                                        ?.jsonBody ??
-                                                                    ''))
-                                                            ?.response
-                                                            .count,
-                                                        ParamType.int,
-                                                      ),
-                                                    }.withoutNulls,
-                                                    extra: <String, dynamic>{
-                                                      kTransitionInfoKey:
-                                                          const TransitionInfo(
-                                                        hasTransition: true,
-                                                        transitionType:
-                                                            PageTransitionType
-                                                                .rightToLeft,
-                                                        duration: Duration(
-                                                            milliseconds: 1000),
-                                                      ),
-                                                    },
-                                                  );
-
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                        'Login Successfully',
-                                                        style: TextStyle(
-                                                          color:
-                                                              Color(0xFFF5FBFF),
+                                                  if (TravelReadingStruct
+                                                              .maybeFromMap((_model
+                                                                      .checkTravelStatusAPIResponse2
+                                                                      ?.jsonBody ??
+                                                                  ''))
+                                                          ?.response
+                                                          .message ==
+                                                      'End your previous day') {
+                                                    context.goNamed(
+                                                      'capture_reading_screen',
+                                                      queryParameters: {
+                                                        'enableDrawer':
+                                                            serializeParam(
+                                                          TravelReadingStruct
+                                                                  .maybeFromMap((_model
+                                                                          .checkTravelStatusAPIResponse2
+                                                                          ?.jsonBody ??
+                                                                      ''))
+                                                              ?.response
+                                                              .message,
+                                                          ParamType.String,
                                                         ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 2500),
-                                                      backgroundColor:
-                                                          Color(0xFF0F61AB),
-                                                    ),
-                                                  );
+                                                        'type': serializeParam(
+                                                          'end',
+                                                          ParamType.String,
+                                                        ),
+                                                      }.withoutNulls,
+                                                      extra: <String, dynamic>{
+                                                        kTransitionInfoKey:
+                                                            const TransitionInfo(
+                                                          hasTransition: true,
+                                                          transitionType:
+                                                              PageTransitionType
+                                                                  .rightToLeft,
+                                                        ),
+                                                      },
+                                                    );
+                                                  } else {
+                                                    context.goNamed(
+                                                      'main_case_listing_screen',
+                                                      queryParameters: {
+                                                        'notificationCount':
+                                                            serializeParam(
+                                                          GetNotificationCountAPIStruct
+                                                                  .maybeFromMap((_model
+                                                                          .notificationCountAPIResponse
+                                                                          ?.jsonBody ??
+                                                                      ''))
+                                                              ?.response
+                                                              .count,
+                                                          ParamType.int,
+                                                        ),
+                                                        'tabIndex':
+                                                            serializeParam(
+                                                          0,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                      extra: <String, dynamic>{
+                                                        kTransitionInfoKey:
+                                                            const TransitionInfo(
+                                                          hasTransition: true,
+                                                          transitionType:
+                                                              PageTransitionType
+                                                                  .rightToLeft,
+                                                        ),
+                                                      },
+                                                    );
+                                                  }
                                                 } else {
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
