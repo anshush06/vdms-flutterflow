@@ -202,15 +202,6 @@ class _RemarkWidgetWidgetState extends State<RemarkWidgetWidget> {
                                       r'''$.response''',
                                     ) !=
                                     null) {
-                                  FFAppState().updateCaseDetailsAtIndex(
-                                    widget.caseIndexForRemark!,
-                                    (e) => e
-                                      ..remark =
-                                          _model.remarksTextController.text
-                                      ..remarkDate =
-                                          functions.getTimeStampOfRemark(),
-                                  );
-                                  FFAppState().update(() {});
                                   setState(() {
                                     _model.remarksTextController?.clear();
                                   });

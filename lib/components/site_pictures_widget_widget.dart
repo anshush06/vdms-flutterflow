@@ -827,7 +827,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                           'view_all_photographs',
                                           queryParameters: {
                                             'imageType': serializeParam(
-                                              'front',
+                                              'right',
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(
@@ -852,7 +852,7 @@ class _SitePicturesWidgetWidgetState extends State<SitePicturesWidgetWidget> {
                                           'take_pictures_screen',
                                           queryParameters: {
                                             'imageType': serializeParam(
-                                              'front',
+                                              'right',
                                               ParamType.String,
                                             ),
                                             'section': serializeParam(

@@ -13,12 +13,17 @@ import 'package:vdms/app_state.dart';
 
 bool deleteSitePicturesOfCase(
     List<SitePictureListResponseStruct> sitePictures, String caseId) {
-  int index = 0;
-  for (var image in sitePictures) {
-    if (image.caseId == caseId) {
-      FFAppState().removeAtIndexFromSitePictures(index);
+  List<int> indicesToDelete = [];
+
+  for (int index = 0; index < sitePictures.length; index++) {
+    if (sitePictures[index].caseId == caseId) {
+      indicesToDelete.add(index);
     }
-    index++;
+  }
+
+  // Remove items starting from the end of the list to avoid reindexing issues.
+  for (int i = indicesToDelete.length - 1; i >= 0; i--) {
+    FFAppState().removeAtIndexFromSitePictures(indicesToDelete[i]);
   }
   return true;
 }
