@@ -280,6 +280,11 @@ String? convertDataToJson(
   String? reasonPortionNotSeen,
   List<dynamic> anyOtherInformation,
   List<dynamic> floorDetails,
+  String? otherconstructionstatus,
+  String? otherstructuretype,
+  String? otherpropertylocatedin,
+  String? dealerName,
+  String? dealerMobileNumber,
 ) {
   Map<String, dynamic> dataMap = {
     'ref_no': refNo,
@@ -293,8 +298,8 @@ String? convertDataToJson(
     'pin': pin,
     'property_located_in': propertyLocatedIn,
     'classification_of_locality': classificationOfLocality,
-    'name_plate_fixed': namePlateFixed == "YES" ? "1" : "2",
-    'property_demarcated': propertyDemarcated == "YES" ? "1" : "2",
+    'name_plate_fixed': namePlateFixed == "Yes" ? "1" : "2",
+    'property_demarcated': propertyDemarcated == "Yes" ? "1" : "2",
     'property_type': propertyType,
     'permitted_use_of_property': permittedUseOfProperty,
     'structure_type': structureType,
@@ -340,7 +345,12 @@ String? convertDataToJson(
     'plot_width': plotWidth,
     'reason_portion_not_seen': reasonPortionNotSeen,
     'any_other_information': anyOtherInformation,
-    'floorwise_details': floorDetails
+    'floorwise_details': floorDetails,
+    'other_property_located_in': otherpropertylocatedin,
+    'other_structure_type': otherstructuretype,
+    'other_construction_status': otherconstructionstatus,
+    'dealer_mobile_number': dealerName,
+    'dealer_name': dealerMobileNumber
   };
 
   // Convert the Map to a JSON string
@@ -965,4 +975,25 @@ List<dynamic> convertFloorDetailsToList(
 
   // Return the list of maps
   return list;
+}
+
+String? breakValueForInputAndDropdown(
+  bool isDropdown,
+  String? text,
+) {
+  if (text == null || text.isEmpty) {
+    return null;
+  }
+
+  List<String> parts = text.split('##');
+
+  if (parts.isEmpty) {
+    return null;
+  }
+
+  if (isDropdown) {
+    return parts.length > 1 ? parts[1] : null;
+  } else {
+    return parts[0];
+  }
 }

@@ -752,9 +752,9 @@ class ReportWidgetModel extends FlutterFlowModel<ReportWidgetWidget> {
   String? Function(BuildContext, String?)?
       aadditionalRemark5TextControllerValidator;
   // Stores action output result for [Validate Form] action in Button widget.
-  bool? validateFormFields;
+  bool? validateFormFields1;
   // Stores action output result for [Validate Form] action in Button widget.
-  bool? validateForm;
+  bool? validateFormFields;
 
   @override
   void initState(BuildContext context) {

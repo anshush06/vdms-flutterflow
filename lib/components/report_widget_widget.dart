@@ -422,15 +422,27 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
     _model.expandableExpandableController7 =
         ExpandableController(initialExpanded: false);
     _model.carpetAreaTextController ??= TextEditingController(
-        text: widget.reportDetails?.inspectionFormData.carpet);
+        text: widget.reportDetails?.inspectionFormData.carpet != null &&
+                widget.reportDetails?.inspectionFormData.carpet != ''
+            ? functions.breakValueForInputAndDropdown(
+                false, widget.reportDetails?.inspectionFormData.carpet)
+            : '');
     _model.carpetAreaFocusNode ??= FocusNode();
 
     _model.balconyAreaTextController ??= TextEditingController(
-        text: widget.reportDetails?.inspectionFormData.balcony);
+        text: widget.reportDetails?.inspectionFormData.balcony != null &&
+                widget.reportDetails?.inspectionFormData.balcony != ''
+            ? functions.breakValueForInputAndDropdown(
+                false, widget.reportDetails?.inspectionFormData.balcony)
+            : '');
     _model.balconyAreaFocusNode ??= FocusNode();
 
     _model.superAreaTextController ??= TextEditingController(
-        text: widget.reportDetails?.inspectionFormData.salableArea);
+        text: widget.reportDetails?.inspectionFormData.salableArea != null &&
+                widget.reportDetails?.inspectionFormData.salableArea != ''
+            ? functions.breakValueForInputAndDropdown(
+                false, widget.reportDetails?.inspectionFormData.salableArea)
+            : '');
     _model.superAreaFocusNode ??= FocusNode();
 
     _model.plotLengthTextController ??= TextEditingController(
@@ -442,19 +454,39 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
     _model.plotWidthFocusNode ??= FocusNode();
 
     _model.plotAreaTextController ??= TextEditingController(
-        text: widget.reportDetails?.inspectionFormData.plotArea);
+        text: widget.reportDetails?.inspectionFormData.plotArea != null &&
+                widget.reportDetails?.inspectionFormData.plotArea != ''
+            ? functions.breakValueForInputAndDropdown(
+                false, widget.reportDetails?.inspectionFormData.plotArea)
+            : '');
     _model.plotAreaFocusNode ??= FocusNode();
 
     _model.rentalValueTextController ??= TextEditingController(
-        text: widget.reportDetails?.inspectionFormData.rentalValue);
+        text: widget.reportDetails?.inspectionFormData.rentalValue != null &&
+                widget.reportDetails?.inspectionFormData.rentalValue != ''
+            ? functions.breakValueForInputAndDropdown(
+                false, widget.reportDetails?.inspectionFormData.rentalValue)
+            : '');
     _model.rentalValueFocusNode ??= FocusNode();
 
     _model.marketRatesMinimumTextController ??= TextEditingController(
-        text: widget.reportDetails?.inspectionFormData.minimumMarketRates);
+        text: widget.reportDetails?.inspectionFormData.minimumMarketRates !=
+                    null &&
+                widget.reportDetails?.inspectionFormData.minimumMarketRates !=
+                    ''
+            ? functions.breakValueForInputAndDropdown(false,
+                widget.reportDetails?.inspectionFormData.minimumMarketRates)
+            : '');
     _model.marketRatesMinimumFocusNode ??= FocusNode();
 
     _model.marketRatesMaximumTextController ??= TextEditingController(
-        text: widget.reportDetails?.inspectionFormData.maximumMarketRates);
+        text: widget.reportDetails?.inspectionFormData.maximumMarketRates !=
+                    null &&
+                widget.reportDetails?.inspectionFormData.maximumMarketRates !=
+                    ''
+            ? functions.breakValueForInputAndDropdown(false,
+                widget.reportDetails?.inspectionFormData.maximumMarketRates)
+            : '');
     _model.marketRatesMaximumFocusNode ??= FocusNode();
 
     _model.dealerNameTextController ??= TextEditingController(
@@ -9968,8 +10000,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .carpetAreaDropdownValueController ??=
                                                         FormFieldController<
                                                             String>(
-                                                      _model.carpetAreaDropdownValue ??=
-                                                          '1',
+                                                      _model
+                                                          .carpetAreaDropdownValue ??= widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .carpet !=
+                                                                  null &&
+                                                              widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .carpet !=
+                                                                  ''
+                                                          ? functions.breakValueForInputAndDropdown(
+                                                              true,
+                                                              widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .carpet)
+                                                          : '1',
                                                     ),
                                                     options: List<String>.from([
                                                       '1',
@@ -10047,6 +10095,16 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                   ),
                                                 ),
                                               ],
+                                            ),
+                                            Text(
+                                              'Balcony Area',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -10185,8 +10243,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .balconyAreaDropdownValueController ??=
                                                         FormFieldController<
                                                             String>(
-                                                      _model.balconyAreaDropdownValue ??=
-                                                          '1',
+                                                      _model
+                                                          .balconyAreaDropdownValue ??= widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .balcony !=
+                                                                  null &&
+                                                              widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .balcony !=
+                                                                  ''
+                                                          ? functions.breakValueForInputAndDropdown(
+                                                              true,
+                                                              widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .balcony)
+                                                          : '1',
                                                     ),
                                                     options: List<String>.from([
                                                       '1',
@@ -10412,8 +10486,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .superAreaDropdownValueController ??=
                                                         FormFieldController<
                                                             String>(
-                                                      _model.superAreaDropdownValue ??=
-                                                          '1',
+                                                      _model
+                                                          .superAreaDropdownValue ??= widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .salableArea !=
+                                                                  null &&
+                                                              widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .salableArea !=
+                                                                  ''
+                                                          ? functions.breakValueForInputAndDropdown(
+                                                              true,
+                                                              widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .salableArea)
+                                                          : '1',
                                                     ),
                                                     options: List<String>.from([
                                                       '1',
@@ -10883,8 +10973,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .plotAreaDropdownValueController ??=
                                                         FormFieldController<
                                                             String>(
-                                                      _model.plotAreaDropdownValue ??=
-                                                          '1',
+                                                      _model
+                                                          .plotAreaDropdownValue ??= widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .plotArea !=
+                                                                  null &&
+                                                              widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .plotArea !=
+                                                                  ''
+                                                          ? functions.breakValueForInputAndDropdown(
+                                                              true,
+                                                              widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .plotArea)
+                                                          : '1',
                                                     ),
                                                     options: List<String>.from([
                                                       '1',
@@ -11110,8 +11216,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .rentalDropdownValueController ??=
                                                         FormFieldController<
                                                             String>(
-                                                      _model.rentalDropdownValue ??=
-                                                          '1',
+                                                      _model
+                                                          .rentalDropdownValue ??= widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .rentalValue !=
+                                                                  null &&
+                                                              widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .rentalValue !=
+                                                                  ''
+                                                          ? functions.breakValueForInputAndDropdown(
+                                                              true,
+                                                              widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .rentalValue)
+                                                          : '1',
                                                     ),
                                                     options: List<String>.from([
                                                       '1',
@@ -11337,8 +11459,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .marketMinimumDropdownValueController ??=
                                                         FormFieldController<
                                                             String>(
-                                                      _model.marketMinimumDropdownValue ??=
-                                                          '1',
+                                                      _model
+                                                          .marketMinimumDropdownValue ??= widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .minimumMarketRates !=
+                                                                  null &&
+                                                              widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .minimumMarketRates !=
+                                                                  ''
+                                                          ? functions.breakValueForInputAndDropdown(
+                                                              true,
+                                                              widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .minimumMarketRates)
+                                                          : '1',
                                                     ),
                                                     options: List<String>.from([
                                                       '1',
@@ -11564,8 +11702,24 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                             .marketMaximumDropdownValueController ??=
                                                         FormFieldController<
                                                             String>(
-                                                      _model.marketMaximumDropdownValue ??=
-                                                          '1',
+                                                      _model
+                                                          .marketMaximumDropdownValue ??= widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .maximumMarketRates !=
+                                                                  null &&
+                                                              widget
+                                                                      .reportDetails
+                                                                      ?.inspectionFormData
+                                                                      .maximumMarketRates !=
+                                                                  ''
+                                                          ? functions.breakValueForInputAndDropdown(
+                                                              true,
+                                                              widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .maximumMarketRates)
+                                                          : '1',
                                                     ),
                                                     options: List<String>.from([
                                                       '1',
@@ -12815,216 +12969,105 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                   onPressed: () async {
                                     if (widget.reportDetails?.statusId ==
                                         '1') {
-                                      _model.validateFormFields = true;
+                                      _model.validateFormFields1 = true;
                                       if (_model.formKey.currentState == null ||
                                           !_model.formKey.currentState!
                                               .validate()) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.statedropdownValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model
                                               .propertylocationdropdownValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.classificationLocalityValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.nameplateValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.plotDemarcatedValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model
                                               .propertyIdentifiedDropdownValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.typeOfPropertyValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.permittedUsePropertyValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.typeOfStructureValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.constructionStatusValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.roofTerraceValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.wallsDropdownValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.doorsWindowsDropdownValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.floorTypeValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model
                                               .interiorConstructionQualityValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model
                                               .exteriorConstructionQualityValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.valuationTypeValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.carpetAreaDropdownValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.balconyAreaDropdownValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.superAreaDropdownValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.plotAreaDropdownValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.rentalDropdownValue == null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.marketMinimumDropdownValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
                                       if (_model.marketMaximumDropdownValue ==
                                           null) {
-                                        _model.validateFormFields = false;
+                                        _model.validateFormFields1 = false;
                                       }
-                                      if (!_model.validateFormFields!) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                              'Please fill the report form fields',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 2500),
-                                            backgroundColor: Color(0xFFFF0000),
-                                          ),
-                                        );
-                                      }
-                                    } else {
-                                      _model.validateForm = true;
-                                      if (_model.formKey.currentState == null ||
-                                          !_model.formKey.currentState!
-                                              .validate()) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.statedropdownValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model
-                                              .propertylocationdropdownValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.classificationLocalityValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.nameplateValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.plotDemarcatedValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model
-                                              .propertyIdentifiedDropdownValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.typeOfPropertyValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.permittedUsePropertyValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.typeOfStructureValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.constructionStatusValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.roofTerraceValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.wallsDropdownValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.doorsWindowsDropdownValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.floorTypeValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model
-                                              .interiorConstructionQualityValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model
-                                              .exteriorConstructionQualityValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.valuationTypeValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.carpetAreaDropdownValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.balconyAreaDropdownValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.superAreaDropdownValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.plotAreaDropdownValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.rentalDropdownValue == null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.marketMinimumDropdownValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.marketMaximumDropdownValue ==
-                                          null) {
-                                        _model.validateForm = false;
-                                      }
-                                      if (_model.validateForm!) {
+                                      if (_model.validateFormFields1!) {
+                                        FFAppState().addToCaseDetails(
+                                            widget.reportDetails!);
                                         FFAppState().updateCaseDetailsAtIndex(
                                           functions.getDraftCaseIndexInList(
                                               FFAppState().caseDetails.toList(),
@@ -13139,32 +13182,451 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         .exteriorConstructionQualityValue
                                                 ..valuationType =
                                                     _model.valuationTypeValue
-                                                ..carpet = _model
-                                                    .carpetAreaTextController
-                                                    .text
-                                                ..balcony = _model
-                                                    .balconyAreaTextController
-                                                    .text
-                                                ..salableArea = _model
-                                                    .superAreaTextController
-                                                    .text
+                                                ..carpet =
+                                                    '${_model.carpetAreaTextController.text}##${_model.carpetAreaDropdownValue}'
+                                                ..balcony =
+                                                    '${_model.balconyAreaTextController.text}##${_model.balconyAreaDropdownValue}'
+                                                ..salableArea =
+                                                    '${_model.superAreaTextController.text}##${_model.superAreaDropdownValue}'
                                                 ..plotLength = _model
                                                     .plotLengthTextController
                                                     .text
                                                 ..plotWidth = _model
                                                     .plotWidthTextController
                                                     .text
-                                                ..plotArea = _model
-                                                    .plotAreaTextController.text
-                                                ..rentalValue = _model
-                                                    .rentalValueTextController
+                                                ..plotArea =
+                                                    '${_model.plotAreaTextController.text}##${_model.plotAreaDropdownValue}'
+                                                ..rentalValue =
+                                                    '${_model.rentalValueTextController.text}##${_model.rentalDropdownValue}'
+                                                ..minimumMarketRates =
+                                                    '${_model.marketRatesMinimumTextController.text}##${_model.marketMinimumDropdownValue}'
+                                                ..maximumMarketRates =
+                                                    '${_model.marketMaximumDropdownValue}##${_model.marketMaximumDropdownValue}'
+                                                ..dealerName = _model
+                                                    .dealerNameTextController
                                                     .text
-                                                ..minimumMarketRates = _model
-                                                    .marketRatesMinimumTextController
+                                                ..dealerMobileNumber = _model
+                                                    .dealerContactTextController
                                                     .text
-                                                ..maximumMarketRates = _model
-                                                    .marketRatesMaximumTextController
+                                                ..otherStructureType = _model
+                                                    .otherStructureTypeTextController
                                                     .text
+                                                ..otherPropertyLocatedIn = _model
+                                                    .otherPropertyLocatedTextController
+                                                    .text
+                                                ..otherPermittedUseOfProperty =
+                                                    _model
+                                                        .otherPermittedPropertyTextController
+                                                        .text
+                                                ..otherConstructionStatus = _model
+                                                    .otherConstructionStatusTextController
+                                                    .text
+                                                ..otherRoof = _model
+                                                    .otherRoofTextController
+                                                    .text
+                                                ..reasonPortionNotSeen = _model
+                                                    .remarkNo1TextController
+                                                    .text
+                                                ..anyOtherInformation = functions
+                                                    .convertAdditionalRemarkToDataType(
+                                                        _model
+                                                            .aadditionalRemark1TextController
+                                                            .text,
+                                                        _model
+                                                            .aadditionalRemark2TextController
+                                                            .text,
+                                                        _model
+                                                            .aadditionalRemark3TextController
+                                                            .text,
+                                                        _model
+                                                            .aadditionalRemark4TextController
+                                                            .text,
+                                                        _model
+                                                            .aadditionalRemark5TextController
+                                                            .text,
+                                                        _model
+                                                            .additionalRemarkNumber!)!
+                                                    .toList()
+                                                ..floorwiseDetails = functions
+                                                    .convertFloorDetailsToDataType(
+                                                        _model
+                                                            .nameOfFloor1TextController
+                                                            .text,
+                                                        _model
+                                                            .usage1TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy1TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation1TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured1TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor2TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor3TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor4TextController
+                                                            .text,
+                                                        _model
+                                                            .nameOfFloor5TextController
+                                                            .text,
+                                                        _model
+                                                            .usage2TextController
+                                                            .text,
+                                                        _model
+                                                            .usage3TextController
+                                                            .text,
+                                                        _model
+                                                            .usage4TextController
+                                                            .text,
+                                                        _model
+                                                            .usage5TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy2TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy3TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy4TextController
+                                                            .text,
+                                                        _model
+                                                            .occupiedBy5TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation2TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation3TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation4TextController
+                                                            .text,
+                                                        _model
+                                                            .accommodation5TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured2TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured3TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured4TextController
+                                                            .text,
+                                                        _model
+                                                            .actualAreaMeasured5TextController
+                                                            .text,
+                                                        _model
+                                                            .additionalFloorNumber)
+                                                    .toList(),
+                                            )
+                                            ..statusId = '5'
+                                            ..statusName =
+                                                'Ready For Draft Report',
+                                        );
+                                        FFAppState().update(() {});
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Report Saved Successfully.',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 1500),
+                                            backgroundColor: Color(0xFFFF8C25),
+                                          ),
+                                        );
+                                        context.safePop();
+                                        if (Navigator.of(context).canPop()) {
+                                          context.pop();
+                                        }
+                                        context.pushNamed(
+                                          'case_details_screen',
+                                          queryParameters: {
+                                            'selectedCaseDetails':
+                                                serializeParam(
+                                              FFAppState().caseDetails[functions
+                                                  .getDraftCaseIndexInList(
+                                                      FFAppState()
+                                                          .caseDetails
+                                                          .toList(),
+                                                      widget.reportDetails)!],
+                                              ParamType.DataStruct,
+                                            ),
+                                            'currentCaseIndex': serializeParam(
+                                              widget.caseIndexInList,
+                                              ParamType.int,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                            ),
+                                          },
+                                        );
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Please fill the report form fields',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 2500),
+                                            backgroundColor: Color(0xFFFF0000),
+                                          ),
+                                        );
+                                      }
+                                    } else {
+                                      _model.validateFormFields = true;
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.statedropdownValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model
+                                              .propertylocationdropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.classificationLocalityValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.nameplateValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.plotDemarcatedValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model
+                                              .propertyIdentifiedDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.typeOfPropertyValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.permittedUsePropertyValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.typeOfStructureValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.constructionStatusValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.roofTerraceValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.wallsDropdownValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.doorsWindowsDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.floorTypeValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model
+                                              .interiorConstructionQualityValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model
+                                              .exteriorConstructionQualityValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.valuationTypeValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.carpetAreaDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.balconyAreaDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.superAreaDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.plotAreaDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.rentalDropdownValue == null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.marketMinimumDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.marketMaximumDropdownValue ==
+                                          null) {
+                                        _model.validateFormFields = false;
+                                      }
+                                      if (_model.validateFormFields!) {
+                                        FFAppState().updateCaseDetailsAtIndex(
+                                          functions.getDraftCaseIndexInList(
+                                              FFAppState().caseDetails.toList(),
+                                              widget.reportDetails)!,
+                                          (e) => e
+                                            ..updateInspectionFormData(
+                                              (e) => e
+                                                ..personMet = _model
+                                                    .personMetAndContactTextController
+                                                    .text
+                                                ..propertyLocatedIn = _model
+                                                    .propertylocationdropdownValue
+                                                ..address1 = _model
+                                                    .addressline1TextController
+                                                    .text
+                                                ..address2 = _model
+                                                    .addressline2TextController
+                                                    .text
+                                                ..state =
+                                                    _model.statedropdownValue
+                                                ..city =
+                                                    widget.reportDetails?.city
+                                                ..locality = _model
+                                                    .localityTextController.text
+                                                ..pin = _model
+                                                    .pincodeTextController.text
+                                                ..relationWithOwner = _model
+                                                    .relationWithOwnerTextController
+                                                    .text
+                                                ..roadWidth = _model
+                                                    .roadWidthTextController
+                                                    .text
+                                                ..landMark = _model
+                                                    .landmarkTextController.text
+                                                ..classificationOfLocality = _model
+                                                    .classificationLocalityValue
+                                                ..namePlateFixed =
+                                                    _model.nameplateValue
+                                                ..propertyDemarcated =
+                                                    _model.plotDemarcatedValue
+                                                ..propertyIdentified = functions
+                                                    .createCommaSeparatedStringFromList(
+                                                        _model
+                                                            .propertyIdentifiedDropdownValue!
+                                                            .toList())
+                                                ..cityCenter = _model
+                                                    .distanceFromCityTextController
+                                                    .text
+                                                ..railwayStation = _model
+                                                    .distanceFromStationTextController
+                                                    .text
+                                                ..busStop = _model
+                                                    .distanceFromBusTextController
+                                                    .text
+                                                ..hospital = _model
+                                                    .distanceFromHospitalTextController
+                                                    .text
+                                                ..permittedUseOfProperty = _model
+                                                    .permittedUsePropertyValue
+                                                ..propertyType =
+                                                    _model.typeOfPropertyValue
+                                                ..north = _model
+                                                    .northTextController.text
+                                                ..east = _model
+                                                    .eastTextController.text
+                                                ..south = _model
+                                                    .southTextController.text
+                                                ..west = _model
+                                                    .westTextController.text
+                                                ..noOfFloors = _model
+                                                    .totalFloorsTextController
+                                                    .text
+                                                ..noOfLifts = _model
+                                                    .noofliftsTextController
+                                                    .text
+                                                ..floorLocation = _model
+                                                    .floorLocationTextController
+                                                    .text
+                                                ..structureType =
+                                                    _model.typeOfStructureValue
+                                                ..ageBuilding = _model
+                                                    .buildingAgeTextController
+                                                    .text
+                                                ..constructionStatus = _model
+                                                    .constructionStatusValue
+                                                ..completionState = _model
+                                                    .completionStageTextController
+                                                    .text
+                                                ..roof = _model.roofTerraceValue
+                                                ..unitsPerFloor = _model
+                                                    .totalUnitsTextController
+                                                    .text
+                                                ..wallPlasterPainting = functions
+                                                    .convertListDropdownsToHashSeparateStringForDraftReport(
+                                                        _model
+                                                            .wallsDropdownValue
+                                                            ?.toList())
+                                                ..doorsWindows = functions
+                                                    .convertListDropdownsToHashSeparateStringForDraftReport(
+                                                        _model
+                                                            .doorsWindowsDropdownValue
+                                                            ?.toList())
+                                                ..flooringType = functions
+                                                    .convertListDropdownsToHashSeparateStringForDraftReport(
+                                                        _model.floorTypeValue
+                                                            ?.toList())
+                                                ..interiorConstructionQuality =
+                                                    _model
+                                                        .interiorConstructionQualityValue
+                                                ..exteriorConstructionQuality =
+                                                    _model
+                                                        .exteriorConstructionQualityValue
+                                                ..valuationType =
+                                                    _model.valuationTypeValue
+                                                ..carpet =
+                                                    '${_model.carpetAreaTextController.text}##${_model.carpetAreaDropdownValue}'
+                                                ..balcony =
+                                                    '${_model.balconyAreaTextController.text}##${_model.balconyAreaDropdownValue}'
+                                                ..salableArea =
+                                                    '${_model.superAreaTextController.text}##${_model.superAreaDropdownValue}'
+                                                ..plotLength = _model
+                                                    .plotLengthTextController
+                                                    .text
+                                                ..plotWidth = _model
+                                                    .plotWidthTextController
+                                                    .text
+                                                ..plotArea =
+                                                    '${_model.plotAreaTextController.text}##${_model.plotAreaDropdownValue}'
+                                                ..rentalValue =
+                                                    '${_model.rentalValueTextController.text}##${_model.rentalDropdownValue}'
+                                                ..minimumMarketRates =
+                                                    '${_model.marketRatesMinimumTextController.text}##${_model.marketMinimumDropdownValue}'
+                                                ..maximumMarketRates =
+                                                    '${_model.marketMaximumDropdownValue}##${_model.marketMaximumDropdownValue}'
                                                 ..dealerName = _model
                                                     .dealerNameTextController
                                                     .text

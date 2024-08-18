@@ -600,7 +600,12 @@ class _CaseDetailsScreenWidgetState extends State<CaseDetailsScreenWidget> {
                                                     widget.selectedCaseDetails?.inspectionFormData.plotWidth,
                                                     widget.selectedCaseDetails?.inspectionFormData.reasonPortionNotSeen,
                                                     functions.convertAdditionalRemarksToList(widget.selectedCaseDetails?.inspectionFormData.anyOtherInformation.toList()).toList(),
-                                                    functions.convertFloorDetailsToList(widget.selectedCaseDetails?.inspectionFormData.floorwiseDetails.toList()).toList()),
+                                                    functions.convertFloorDetailsToList(widget.selectedCaseDetails?.inspectionFormData.floorwiseDetails.toList()).toList(),
+                                                    widget.selectedCaseDetails?.inspectionFormData.otherConstructionStatus,
+                                                    widget.selectedCaseDetails?.inspectionFormData.otherStructureType,
+                                                    widget.selectedCaseDetails?.inspectionFormData.otherPropertyLocatedIn,
+                                                    widget.selectedCaseDetails?.inspectionFormData.dealerName,
+                                                    widget.selectedCaseDetails?.inspectionFormData.dealerMobileNumber),
                                               );
 
                                               if ((_model
