@@ -349,8 +349,8 @@ String? convertDataToJson(
     'other_property_located_in': otherpropertylocatedin,
     'other_structure_type': otherstructuretype,
     'other_construction_status': otherconstructionstatus,
-    'dealer_mobile_number': dealerName,
-    'dealer_name': dealerMobileNumber
+    'dealer_mobile_number': dealerMobileNumber,
+    'dealer_name': dealerName
   };
 
   // Convert the Map to a JSON string
@@ -966,9 +966,7 @@ List<dynamic> convertFloorDetailsToList(
       "usage": details.usage,
       "occupied": details.occupied,
       "accomodation": details.accomodation,
-      "actual_measured_area": details.actualAreaMeasured?.isNotEmpty == true
-          ? details.actualAreaMeasured
-          : '',
+      "actual_measured_area": details.actualAreaMeasured
     };
     list.add(floorMap);
   }

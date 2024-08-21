@@ -10,6 +10,9 @@ class ViewAllPhotographsModel
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
+  // Stores action output result for [Custom Action - addTimestampAndNameToImage] action in IconButton widget.
+  List<int>? image;
+
   @override
   void initState(BuildContext context) {}
 

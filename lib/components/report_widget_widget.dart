@@ -228,8 +228,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 2
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
-                ?.floor
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.floor)
             : '');
     _model.nameOfFloor2FocusNode ??= FocusNode();
 
@@ -237,8 +237,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 2
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
-                ?.occupied
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.occupied)
             : '');
     _model.occupiedBy2FocusNode ??= FocusNode();
 
@@ -246,8 +246,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 2
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
-                ?.usage
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.usage)
             : '');
     _model.usage2FocusNode ??= FocusNode();
 
@@ -255,8 +255,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 2
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
-                ?.accomodation
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.accomodation)
             : '');
     _model.accommodation2FocusNode ??= FocusNode();
 
@@ -264,8 +264,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 2
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
-                ?.actualAreaMeasured
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[1])
+                ?.actualAreaMeasured)
             : '');
     _model.actualAreaMeasured2FocusNode ??= FocusNode();
 
@@ -273,8 +273,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 3
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
-                ?.floor
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.floor)
             : '');
     _model.nameOfFloor3FocusNode ??= FocusNode();
 
@@ -282,8 +282,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 3
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
-                ?.occupied
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.occupied)
             : '');
     _model.occupiedBy3FocusNode ??= FocusNode();
 
@@ -291,8 +291,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 3
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
-                ?.usage
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.usage)
             : '');
     _model.usage3FocusNode ??= FocusNode();
 
@@ -300,8 +300,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 3
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
-                ?.accomodation
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.accomodation)
             : '');
     _model.accommodation3FocusNode ??= FocusNode();
 
@@ -309,8 +309,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 3
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
-                ?.actualAreaMeasured
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[2])
+                ?.actualAreaMeasured)
             : '');
     _model.actualAreaMeasured3FocusNode ??= FocusNode();
 
@@ -318,8 +318,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 4
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
-                ?.floor
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.floor)
             : '');
     _model.nameOfFloor4FocusNode ??= FocusNode();
 
@@ -327,8 +327,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 4
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
-                ?.occupied
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.occupied)
             : '');
     _model.occupiedBy4FocusNode ??= FocusNode();
 
@@ -336,8 +336,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 4
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
-                ?.usage
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.usage)
             : '');
     _model.usage4FocusNode ??= FocusNode();
 
@@ -345,8 +345,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 4
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
-                ?.accomodation
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.accomodation)
             : '');
     _model.accommodation4FocusNode ??= FocusNode();
 
@@ -354,8 +354,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 4
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
-                ?.actualAreaMeasured
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[3])
+                ?.actualAreaMeasured)
             : '');
     _model.actualAreaMeasured4FocusNode ??= FocusNode();
 
@@ -363,8 +363,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 5
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
-                ?.floor
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.floor)
             : '');
     _model.nameOfFloor5FocusNode ??= FocusNode();
 
@@ -372,8 +372,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 5
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
-                ?.occupied
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.occupied)
             : '');
     _model.occupiedBy5FocusNode ??= FocusNode();
 
@@ -381,8 +381,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 5
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
-                ?.usage
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.usage)
             : '');
     _model.usage5FocusNode ??= FocusNode();
 
@@ -390,8 +390,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 5
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
-                ?.accomodation
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.accomodation)
             : '');
     _model.accommodation5FocusNode ??= FocusNode();
 
@@ -399,8 +399,8 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.floorwiseDetails
                     .length >=
                 5
-            ? (widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
-                ?.actualAreaMeasured
+            ? ((widget.reportDetails?.inspectionFormData.floorwiseDetails[4])
+                ?.actualAreaMeasured)
             : '');
     _model.actualAreaMeasured5FocusNode ??= FocusNode();
 
@@ -505,9 +505,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
 
     _model.aadditionalRemark1TextController ??= TextEditingController(
         text: widget.reportDetails!.inspectionFormData.anyOtherInformation.isNotEmpty
-            ? (widget
+            ? ((widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[0])
-                ?.info
+                ?.info)
             : '');
     _model.aadditionalRemark1FocusNode ??= FocusNode();
 
@@ -515,9 +515,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.anyOtherInformation
                     .length >=
                 2
-            ? (widget
+            ? ((widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[1])
-                ?.info
+                ?.info)
             : '');
     _model.aadditionalRemark2FocusNode ??= FocusNode();
 
@@ -525,9 +525,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.anyOtherInformation
                     .length >=
                 3
-            ? (widget
+            ? ((widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[2])
-                ?.info
+                ?.info)
             : '');
     _model.aadditionalRemark3FocusNode ??= FocusNode();
 
@@ -535,9 +535,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.anyOtherInformation
                     .length >=
                 4
-            ? (widget
+            ? ((widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[3])
-                ?.info
+                ?.info)
             : '');
     _model.aadditionalRemark4FocusNode ??= FocusNode();
 
@@ -545,9 +545,9 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
         text: widget.reportDetails!.inspectionFormData.anyOtherInformation
                     .length >=
                 5
-            ? (widget
+            ? ((widget
                     .reportDetails?.inspectionFormData.anyOtherInformation[4])
-                ?.info
+                ?.info)
             : '');
     _model.aadditionalRemark5FocusNode ??= FocusNode();
 
@@ -2010,14 +2010,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 controller: _model
                                                         .propertylocationdropdownValueController ??=
                                                     FormFieldController<String>(
-                                                  _model.propertylocationdropdownValue ??=
-                                                      valueOrDefault<String>(
-                                                    widget
-                                                        .reportDetails
-                                                        ?.inspectionFormData
-                                                        .propertyLocatedIn,
-                                                    '1',
-                                                  ),
+                                                  _model
+                                                      .propertylocationdropdownValue ??= widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .propertyLocatedIn !=
+                                                              null &&
+                                                          widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .propertyLocatedIn !=
+                                                              ''
+                                                      ? widget
+                                                          .reportDetails
+                                                          ?.inspectionFormData
+                                                          .propertyLocatedIn
+                                                      : '1',
                                                 ),
                                                 options: List<String>.from([
                                                   '1',
@@ -2414,14 +2422,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 controller: _model
                                                         .classificationLocalityValueController ??=
                                                     FormFieldController<String>(
-                                                  _model.classificationLocalityValue ??=
-                                                      valueOrDefault<String>(
-                                                    widget
-                                                        .reportDetails
-                                                        ?.inspectionFormData
-                                                        .classificationOfLocality,
-                                                    '1',
-                                                  ),
+                                                  _model
+                                                      .classificationLocalityValue ??= widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .classificationOfLocality !=
+                                                              null &&
+                                                          widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .classificationOfLocality !=
+                                                              ''
+                                                      ? widget
+                                                          .reportDetails
+                                                          ?.inspectionFormData
+                                                          .classificationOfLocality
+                                                      : '1',
                                                 ),
                                                 options: List<String>.from(
                                                     ['1', '2', '3', '4']),
@@ -3878,11 +3894,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 controller: _model
                                                         .typeOfPropertyValueController ??=
                                                     FormFieldController<String>(
-                                                  _model.typeOfPropertyValue ??=
-                                                      widget
+                                                  _model
+                                                      .typeOfPropertyValue ??= widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .propertyType !=
+                                                              null &&
+                                                          widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .propertyType !=
+                                                              ''
+                                                      ? widget
                                                           .reportDetails
                                                           ?.inspectionFormData
-                                                          .propertyType,
+                                                          .propertyType
+                                                      : '1',
                                                 ),
                                                 options: List<String>.from([
                                                   '1',
@@ -4018,11 +4045,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 controller: _model
                                                         .permittedUsePropertyValueController ??=
                                                     FormFieldController<String>(
-                                                  _model.permittedUsePropertyValue ??=
-                                                      widget
+                                                  _model
+                                                      .permittedUsePropertyValue ??= widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .permittedUseOfProperty !=
+                                                              null &&
+                                                          widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .permittedUseOfProperty !=
+                                                              ''
+                                                      ? widget
                                                           .reportDetails
                                                           ?.inspectionFormData
-                                                          .permittedUseOfProperty,
+                                                          .permittedUseOfProperty
+                                                      : '1',
                                                 ),
                                                 options: List<String>.from([
                                                   '1',
@@ -4312,11 +4350,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 controller: _model
                                                         .typeOfStructureValueController ??=
                                                     FormFieldController<String>(
-                                                  _model.typeOfStructureValue ??=
-                                                      widget
+                                                  _model
+                                                      .typeOfStructureValue ??= widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .structureType !=
+                                                              null &&
+                                                          widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .structureType !=
+                                                              ''
+                                                      ? widget
                                                           .reportDetails
                                                           ?.inspectionFormData
-                                                          .structureType,
+                                                          .structureType
+                                                      : '1',
                                                 ),
                                                 options: List<String>.from([
                                                   '1',
@@ -8740,11 +8789,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 controller: _model
                                                         .constructionStatusValueController ??=
                                                     FormFieldController<String>(
-                                                  _model.constructionStatusValue ??=
-                                                      widget
+                                                  _model
+                                                      .constructionStatusValue ??= widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .constructionStatus !=
+                                                              null &&
+                                                          widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .constructionStatus !=
+                                                              ''
+                                                      ? widget
                                                           .reportDetails
                                                           ?.inspectionFormData
-                                                          .constructionStatus,
+                                                          .constructionStatus
+                                                      : '1',
                                                 ),
                                                 options: List<String>.from([
                                                   '1',
@@ -9043,8 +9103,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 controller: _model
                                                         .roofTerraceValueController ??=
                                                     FormFieldController<String>(
-                                                  _model.roofTerraceValue ??=
-                                                      '1',
+                                                  _model
+                                                      .roofTerraceValue ??= widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .roof !=
+                                                              null &&
+                                                          widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .roof !=
+                                                              ''
+                                                      ? widget
+                                                          .reportDetails
+                                                          ?.inspectionFormData
+                                                          .roof
+                                                      : '1',
                                                 ),
                                                 options: List<String>.from([
                                                   '1',
@@ -9799,8 +9873,22 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                 controller: _model
                                                         .valuationTypeValueController ??=
                                                     FormFieldController<String>(
-                                                  _model.valuationTypeValue ??=
-                                                      '1',
+                                                  _model
+                                                      .valuationTypeValue ??= widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .valuationType !=
+                                                              null &&
+                                                          widget
+                                                                  .reportDetails
+                                                                  ?.inspectionFormData
+                                                                  .valuationType !=
+                                                              ''
+                                                      ? widget
+                                                          .reportDetails
+                                                          ?.inspectionFormData
+                                                          .valuationType
+                                                      : '1',
                                                 ),
                                                 options: List<String>.from(
                                                     ['1', '2', '3']),
@@ -10001,16 +10089,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         FormFieldController<
                                                             String>(
                                                       _model
-                                                          .carpetAreaDropdownValue ??= widget
+                                                          .carpetAreaDropdownValue ??= (widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .carpet !=
+                                                                      null &&
+                                                                  widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .carpet !=
+                                                                      '') &&
+                                                              (widget
                                                                       .reportDetails
                                                                       ?.inspectionFormData
                                                                       .carpet !=
-                                                                  null &&
-                                                              widget
-                                                                      .reportDetails
-                                                                      ?.inspectionFormData
-                                                                      .carpet !=
-                                                                  ''
+                                                                  '##')
                                                           ? functions.breakValueForInputAndDropdown(
                                                               true,
                                                               widget
@@ -10244,16 +10337,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         FormFieldController<
                                                             String>(
                                                       _model
-                                                          .balconyAreaDropdownValue ??= widget
+                                                          .balconyAreaDropdownValue ??= (widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .balcony !=
+                                                                      null &&
+                                                                  widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .balcony !=
+                                                                      '') &&
+                                                              (widget
                                                                       .reportDetails
                                                                       ?.inspectionFormData
                                                                       .balcony !=
-                                                                  null &&
-                                                              widget
-                                                                      .reportDetails
-                                                                      ?.inspectionFormData
-                                                                      .balcony !=
-                                                                  ''
+                                                                  '##')
                                                           ? functions.breakValueForInputAndDropdown(
                                                               true,
                                                               widget
@@ -10487,16 +10585,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         FormFieldController<
                                                             String>(
                                                       _model
-                                                          .superAreaDropdownValue ??= widget
+                                                          .superAreaDropdownValue ??= (widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .salableArea !=
+                                                                      null &&
+                                                                  widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .salableArea !=
+                                                                      '') &&
+                                                              (widget
                                                                       .reportDetails
                                                                       ?.inspectionFormData
                                                                       .salableArea !=
-                                                                  null &&
-                                                              widget
-                                                                      .reportDetails
-                                                                      ?.inspectionFormData
-                                                                      .salableArea !=
-                                                                  ''
+                                                                  '##')
                                                           ? functions.breakValueForInputAndDropdown(
                                                               true,
                                                               widget
@@ -10974,16 +11077,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         FormFieldController<
                                                             String>(
                                                       _model
-                                                          .plotAreaDropdownValue ??= widget
+                                                          .plotAreaDropdownValue ??= (widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .plotArea !=
+                                                                      null &&
+                                                                  widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .plotArea !=
+                                                                      '') &&
+                                                              (widget
                                                                       .reportDetails
                                                                       ?.inspectionFormData
                                                                       .plotArea !=
-                                                                  null &&
-                                                              widget
-                                                                      .reportDetails
-                                                                      ?.inspectionFormData
-                                                                      .plotArea !=
-                                                                  ''
+                                                                  '##')
                                                           ? functions.breakValueForInputAndDropdown(
                                                               true,
                                                               widget
@@ -11217,16 +11325,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         FormFieldController<
                                                             String>(
                                                       _model
-                                                          .rentalDropdownValue ??= widget
+                                                          .rentalDropdownValue ??= (widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .rentalValue !=
+                                                                      null &&
+                                                                  widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .rentalValue !=
+                                                                      '') &&
+                                                              (widget
                                                                       .reportDetails
                                                                       ?.inspectionFormData
                                                                       .rentalValue !=
-                                                                  null &&
-                                                              widget
-                                                                      .reportDetails
-                                                                      ?.inspectionFormData
-                                                                      .rentalValue !=
-                                                                  ''
+                                                                  '##')
                                                           ? functions.breakValueForInputAndDropdown(
                                                               true,
                                                               widget
@@ -11460,16 +11573,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         FormFieldController<
                                                             String>(
                                                       _model
-                                                          .marketMinimumDropdownValue ??= widget
+                                                          .marketMinimumDropdownValue ??= (widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .minimumMarketRates !=
+                                                                      null &&
+                                                                  widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .minimumMarketRates !=
+                                                                      '') &&
+                                                              (widget
                                                                       .reportDetails
                                                                       ?.inspectionFormData
                                                                       .minimumMarketRates !=
-                                                                  null &&
-                                                              widget
-                                                                      .reportDetails
-                                                                      ?.inspectionFormData
-                                                                      .minimumMarketRates !=
-                                                                  ''
+                                                                  '##')
                                                           ? functions.breakValueForInputAndDropdown(
                                                               true,
                                                               widget
@@ -11703,16 +11821,21 @@ class _ReportWidgetWidgetState extends State<ReportWidgetWidget> {
                                                         FormFieldController<
                                                             String>(
                                                       _model
-                                                          .marketMaximumDropdownValue ??= widget
+                                                          .marketMaximumDropdownValue ??= (widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .maximumMarketRates !=
+                                                                      null &&
+                                                                  widget
+                                                                          .reportDetails
+                                                                          ?.inspectionFormData
+                                                                          .maximumMarketRates !=
+                                                                      '') &&
+                                                              (widget
                                                                       .reportDetails
                                                                       ?.inspectionFormData
                                                                       .maximumMarketRates !=
-                                                                  null &&
-                                                              widget
-                                                                      .reportDetails
-                                                                      ?.inspectionFormData
-                                                                      .maximumMarketRates !=
-                                                                  ''
+                                                                  '##')
                                                           ? functions.breakValueForInputAndDropdown(
                                                               true,
                                                               widget
